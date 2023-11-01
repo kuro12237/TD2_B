@@ -3,7 +3,7 @@
 #include"IScene.h"
 #include"DebugScene.h"
 #include"../DebugTools/Camera/DebugCamera.h"
-#include"DemoScene.h"
+#include"GameScene.h"
 class GameManager
 {
 public:

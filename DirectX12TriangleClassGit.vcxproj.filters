@@ -273,17 +273,8 @@
     <ClCompile Include="CLEYERA\Audio\AudioDataResource.cpp">
       <Filter>CLEYERA\Audio</Filter>
     </ClCompile>
-    <ClCompile Include="Project\Scene\DemoScene.cpp">
+    <ClCompile Include="Project\Scene\GameScene.cpp">
       <Filter>Project\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="Project\GameObject\DemoObject\DemoPlayer.cpp">
-      <Filter>Project\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Project\GameObject\DemoObject\DemoEnemy.cpp">
-      <Filter>Project\GameObject</Filter>
-    </ClCompile>
-    <ClCompile Include="Project\GameObject\DemoObject\DemoPlayerBullet.cpp">
-      <Filter>Project\GameObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -458,20 +449,11 @@
     <ClInclude Include="CLEYERA\Audio\AudioDataResource.h">
       <Filter>CLEYERA\Audio</Filter>
     </ClInclude>
-    <ClInclude Include="Project\Scene\DemoScene.h">
-      <Filter>Project\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="CLEYERA\Cleyera.h">
       <Filter>CLEYERA</Filter>
     </ClInclude>
-    <ClInclude Include="Project\GameObject\DemoObject\DemoPlayer.h">
-      <Filter>Project\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Project\GameObject\DemoObject\DemoEnemy.h">
-      <Filter>Project\GameObject</Filter>
-    </ClInclude>
-    <ClInclude Include="Project\GameObject\DemoObject\DemoPlayerBullet.h">
-      <Filter>Project\GameObject</Filter>
+    <ClInclude Include="Project\Scene\GameScene.h">
+      <Filter>Project\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
