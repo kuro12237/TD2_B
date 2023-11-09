@@ -14,7 +14,7 @@ GameManager::~GameManager()
 	Cleyera::Finalize();
 }
 
-void GameManager::Run()
+void GameManager::Run()//ƒQ[ƒ€ƒ‹[ƒv
 {
 	while (WinApp::WinMsg())
 	{
