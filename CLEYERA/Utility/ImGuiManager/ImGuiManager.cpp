@@ -38,7 +38,7 @@ void ImGuiManager::BeginFlame()
 
 void ImGuiManager::EndFlame()
 {
-	
+
 	ImGui::Render();
 	ImGui_ImplDX12_RenderDrawData(ImGui::GetDrawData(), DirectXCommon::GetInstance()->GetCommands().m_pList.Get());
 
@@ -48,3 +48,25 @@ void ImGuiManager::Finalize()
 {
 	ImGui_ImplDX12_Shutdown();
 }
+
+void ImGuiManager::UpdateUI()
+{
+	ImGui::PushStyleColor(ImGuiCol_TitleBgActive, ImVec4(0.08f, 0.08f, 0.08f, 1.0f));
+	ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.02f, 0.02f, 0.02f, 1.0f));
+
+
+	ImGui::Begin("Test");
+
+	if (ImGui::TreeNode("Scene")) {
+
+
+
+		ImGui::TreePop();
+	};
+	ImGui::PopStyleColor();
+	ImGui::PopStyleColor();
+
+	ImGui::End();
+}
+
+

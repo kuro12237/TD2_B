@@ -20,13 +20,14 @@ void GameManager::Run()
 	{
 		Cleyera::BeginFlame();
 	
-	
+		ImGuiManager::UpdateUI();
 		Scene_->Update(this);
-		
+
 		Scene_->Back2dSpriteDraw();
 		Scene_->Object3dDraw();
 		Scene_->Flont2dSpriteDraw();
-	
+		//ImGui::ShowDemoWindow();
+
 		Cleyera::EndFlame();
 	}
 }

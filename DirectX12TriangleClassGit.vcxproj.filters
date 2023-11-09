@@ -130,6 +130,12 @@
     <Filter Include="Project\GameObject">
       <UniqueIdentifier>{e6c962cd-fcc4-4e45-9870-1c278152fe09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\Scene\Title">
+      <UniqueIdentifier>{643e5fca-e344-49a0-bd8e-50c2f83dae94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Scene\Debug">
+      <UniqueIdentifier>{98cc9ca6-0246-48b2-ac83-b05a01be6967}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="CLEYERA\Config\.editorconfig">
@@ -233,9 +239,6 @@
     <ClCompile Include="CLEYERA\Sprite\state\SpriteBoxState.cpp">
       <Filter>CLEYERA\Sprite\state</Filter>
     </ClCompile>
-    <ClCompile Include="Project\Scene\DebugScene.cpp">
-      <Filter>Project\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="CLEYERA\Input\Input.cpp">
       <Filter>CLEYERA\Input</Filter>
     </ClCompile>
@@ -275,6 +278,12 @@
     </ClCompile>
     <ClCompile Include="Project\Scene\GameScene.cpp">
       <Filter>Project\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\Scene\DebugScene.cpp">
+      <Filter>Project\Scene\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\Scene\Title\TitleScene.cpp">
+      <Filter>Project\Scene\Title</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -401,9 +410,6 @@
     <ClInclude Include="Project\Scene\IScene.h">
       <Filter>Project\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Project\Scene\DebugScene.h">
-      <Filter>Project\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="CLEYERA\Input\Input.h">
       <Filter>CLEYERA\Input</Filter>
     </ClInclude>
@@ -454,6 +460,12 @@
     </ClInclude>
     <ClInclude Include="Project\Scene\GameScene.h">
       <Filter>Project\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\Scene\Title\TitleScene.h">
+      <Filter>Project\Scene\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\Scene\DebugScene.h">
+      <Filter>Project\Scene\Debug</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
