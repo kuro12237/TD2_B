@@ -3,8 +3,17 @@
 void DemoPlayer::Initialize()
 {
 	worldTransform_.Initialize();
-	worldTransform_.translate.y = 1;
+
+	playerVertex_.RightTopX_ =( worldTransform_.translate.x + PlayerRadius_-1) / BlockSize_;
+
+	playerVertex_.RightBottomX_ = (worldTransform_.translate.x+PlayerRadius_-1)/BlockSize_;
+
+	playerVertex_.LeftTopX_ = (worldTransform_.translate.x - PlayerRadius_) / BlockSize_;
+
+	playerVertex_.LeftBottomX_ = (worldTransform_.translate.x - PlayerRadius_ / BlockSize_);
+
 	worldTransform_.UpdateMatrix();
+
 
 	model_ = make_unique<Model>();
 	model_->UseLight(HARF_LAMBERT);
