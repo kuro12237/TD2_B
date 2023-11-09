@@ -15,7 +15,6 @@ public:
 
 	static void BeginFlame();
 
-	static void UpdateUI();
 
 	static void EndFlame();
 

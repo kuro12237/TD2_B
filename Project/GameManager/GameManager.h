@@ -17,6 +17,8 @@ public:
     void Run();
     void ChangeState(IScene *newScene);
 
+
+
 private:
 
 	IScene* Scene_ = nullptr;
