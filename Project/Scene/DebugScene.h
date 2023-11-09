@@ -13,7 +13,6 @@ public:
 	DebugScene() {};
 	~DebugScene();
 
-
 	void Initialize()override;
 
 	void Update(GameManager* Scene)override;
