@@ -49,7 +49,7 @@ private:
 	bool isEnd_ = false;
 
 	uint32_t EndTimer_ = 0;
-	const uint32_t EndTimerMax_ = 300;
+	const uint32_t EndTimerMax_ = 180;
 
 	bool SceneChangeFlag = false;
 };
