@@ -29,7 +29,6 @@ void SceneChange::Update()
 			SceneChange::GetInstance()->SceneChangeFlag = true;
 			SceneChange::GetInstance()->isStart_ = false;
 			SceneChange::GetInstance()->isEnd_ = true;
-			
 		}
 	
 	}
@@ -72,7 +71,6 @@ bool SceneChange::Spown()
 	{
 		return true;
 	}
-
 	return false;
 }
 
