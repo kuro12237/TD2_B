@@ -4,6 +4,9 @@
 #include"DebugScene.h"
 #include"../DebugTools/Camera/DebugCamera.h"
 #include"GameScene.h"
+#include"Title/TitleScene.h"
+
+
 class GameManager
 {
 public:
@@ -13,6 +16,8 @@ public:
 
     void Run();
     void ChangeState(IScene *newScene);
+
+
 
 private:
 

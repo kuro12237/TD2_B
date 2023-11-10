@@ -38,7 +38,7 @@ void ImGuiManager::BeginFlame()
 
 void ImGuiManager::EndFlame()
 {
-	
+
 	ImGui::Render();
 	ImGui_ImplDX12_RenderDrawData(ImGui::GetDrawData(), DirectXCommon::GetInstance()->GetCommands().m_pList.Get());
 
@@ -48,3 +48,7 @@ void ImGuiManager::Finalize()
 {
 	ImGui_ImplDX12_Shutdown();
 }
+
+
+
+

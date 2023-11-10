@@ -1,15 +1,13 @@
 #pragma once
 #include"IScene.h"
-#include"Pch.h"
-#include"LogManager.h"
+#include"GameManager.h"
 #include"GameObject/SceneChange/SceneChange.h"
-#include"Scene/Title/TitleScene.h"
 
-class GameScene :public IScene
+class TitleScene : public IScene
 {
 public:
-	GameScene() {};
-	~GameScene() {};
+	TitleScene() {};
+	~TitleScene() {};
 
 	void Initialize()override;
 
@@ -18,8 +16,11 @@ public:
 	void Back2dSpriteDraw()override;
 	void Object3dDraw()override;
 	void Flont2dSpriteDraw()override;
+
 private:
-	
-	
-	
+
+	ViewProjection view{};
+
+	const string SceneName = "TitleScene";
+
 };
