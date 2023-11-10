@@ -1,6 +1,7 @@
 #pragma once
 #include"IScene.h"
 #include"GameManager.h"
+#include"GameObject/SceneChange/SceneChange.h"
 
 class TitleScene : public IScene
 {
@@ -19,5 +20,7 @@ public:
 private:
 
 	ViewProjection view{};
+
+	const string SceneName = "TitleScene";
 
 };

@@ -1,6 +1,9 @@
 #pragma once
 #include"IScene.h"
 #include"Pch.h"
+#include"LogManager.h"
+#include"GameObject/SceneChange/SceneChange.h"
+#include"Scene/Title/TitleScene.h"
 
 class GameScene :public IScene
 {

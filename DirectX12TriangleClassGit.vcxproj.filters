@@ -136,6 +136,9 @@
     <Filter Include="Project\Scene\Debug">
       <UniqueIdentifier>{98cc9ca6-0246-48b2-ac83-b05a01be6967}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\GameObject\SceneChange">
+      <UniqueIdentifier>{cb85cf71-5b01-4520-8908-62cd261aeee0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="CLEYERA\Config\.editorconfig">
@@ -284,6 +287,9 @@
     </ClCompile>
     <ClCompile Include="Project\Scene\Title\TitleScene.cpp">
       <Filter>Project\Scene\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\SceneChange\SceneChange.cpp">
+      <Filter>Project\GameObject\SceneChange</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -466,6 +472,9 @@
     </ClInclude>
     <ClInclude Include="Project\Scene\DebugScene.h">
       <Filter>Project\Scene\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\SceneChange\SceneChange.h">
+      <Filter>Project\GameObject\SceneChange</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

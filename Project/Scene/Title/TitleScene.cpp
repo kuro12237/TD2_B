@@ -2,17 +2,32 @@
 
 void TitleScene::Initialize()
 {
-	LogManager::Log("TitleScene");
+	SceneChange::Initialize();
+
+	LogManager::Log(SceneName+"\n");
 	view.Initialize();
 }
 
 void TitleScene::Update(GameManager* Scene)
 {
-	Scene;
-	ImGui::Begin("Title");
+	
 
-	ImGui::End();
+	if (ImGui::TreeNode("Scene"))
+	{
+		bool flag = false;
+		if (ImGui::Checkbox("changeSecne", &flag))
+		{
+			SceneChange::SetIsStart(flag);
+		}
+		ImGui::TreePop();
+	}
+	
+	if (SceneChange::GetScenChangeFlag())
+	{
+		Scene->ChangeState(new GameScene);
+	}
 
+	
 	view.UpdateMatrix();
 }
 
@@ -27,4 +42,5 @@ void TitleScene::Object3dDraw()
 
 void TitleScene::Flont2dSpriteDraw()
 {
+	
 }

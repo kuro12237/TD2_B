@@ -3,7 +3,7 @@
 GameManager::GameManager()
 {
 	Cleyera::Initialize();
-	Scene_ = new GameScene();
+	Scene_ = new TitleScene();
 	Scene_->Initialize();
 }
 
@@ -25,26 +25,21 @@ void GameManager::Run()
 
 
 		ImGui::Begin("Test");
-
-		if (ImGui::TreeNode("Scene")) {
-
-
-
-			ImGui::TreePop();
-		};
-		ImGui::PopStyleColor();
-		ImGui::PopStyleColor();
-
-		ImGui::End();
-
-
+		SceneChange::Update();
 		Scene_->Update(this);
+		
+		
+		ImGui::PopStyleColor();
+		ImGui::PopStyleColor();
+		
+		ImGui::End();
 
 		Scene_->Back2dSpriteDraw();
 		Scene_->Object3dDraw();
 		Scene_->Flont2dSpriteDraw();
-		//ImGui::ShowDemoWindow();
-
+		
+		SceneChange::Draw();
+		
 		Cleyera::EndFlame();
 	}
 }
