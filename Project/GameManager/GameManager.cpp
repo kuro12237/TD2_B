@@ -5,6 +5,7 @@ GameManager::GameManager()
 	Cleyera::Initialize();
 	Scene_ = new TitleScene();
 	Scene_->Initialize();
+	SceneChange::Initialize();
 }
 
 GameManager::~GameManager()
@@ -50,5 +51,4 @@ void GameManager::ChangeState(IScene *newScene)
 	delete Scene_;
 	Scene_ = newScene;
 	Scene_->Initialize();
-	return;
 }

@@ -32,7 +32,7 @@ private:
 	static LRESULT CALLBACK WindowProc(HWND hwnd, UINT msg, WPARAM wparam, LPARAM lparam);
 
 	static const int32_t kWindowWidth = 1280;
-	static const int32_t kWindowHeight = 720;
+	static const int32_t kWindowHeight = 768;
 
 	static const int32_t kDebugToolWindowWidth = 320;
 	static const int32_t kDebugToolWindowHeight = 130;

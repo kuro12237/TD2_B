@@ -2,7 +2,6 @@
 
 void TitleScene::Initialize()
 {
-	SceneChange::Initialize();
 
 	LogManager::Log(SceneName+"\n");
 	view.Initialize();
@@ -10,14 +9,12 @@ void TitleScene::Initialize()
 
 void TitleScene::Update(GameManager* Scene)
 {
-	
-
 	if (ImGui::TreeNode("Scene"))
 	{
 		bool flag = false;
 		if (ImGui::Checkbox("changeSecne", &flag))
 		{
-			SceneChange::SetIsStart(flag);
+			SceneChange::ChangeStart();
 		}
 		ImGui::TreePop();
 	}
@@ -27,7 +24,6 @@ void TitleScene::Update(GameManager* Scene)
 		Scene->ChangeState(new GameScene);
 	}
 
-	
 	view.UpdateMatrix();
 }
 

@@ -2,6 +2,7 @@
 #include"Sprite/Sprite.h"
 #include"Graphics/TextureManager/TextureManager.h"
 #include"VectorTransform.h"
+#define SCENECHANGE_SPRITE_MAX 60
 
 class SceneChange
 {
@@ -17,7 +18,7 @@ public:
 
 	static void Draw();
 
-	static void SetIsStart(bool flag) { SceneChange::GetInstance()->isStart_ = flag; }
+	static void ChangeStart();
 
 	static bool GetScenChangeFlag();
 private:
@@ -39,8 +40,8 @@ private:
 
 	uint32_t texHandle = 0;
 	
-	unique_ptr<Sprite>sprite_ = nullptr;
-	WorldTransform worldTransform_{};
+	unique_ptr<Sprite>sprite_[SCENECHANGE_SPRITE_MAX] = {};
+	WorldTransform worldTransform_[SCENECHANGE_SPRITE_MAX]{};
 
 	bool DrawFlag = false;
 
@@ -52,5 +53,7 @@ private:
 	const uint32_t EndTimerMax_ = 180;
 
 	bool SceneChangeFlag = false;
+
+	bool isUpdate = false;
 };
 
