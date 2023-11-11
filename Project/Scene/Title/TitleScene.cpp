@@ -34,8 +34,6 @@ void TitleScene::Update(GameManager* Scene)
 		return;
 	}
 
-
-	
 	worldTransform_.UpdateMatrix();
 
 	view.UpdateMatrix();

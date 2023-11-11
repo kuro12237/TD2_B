@@ -24,10 +24,7 @@ void GameScene::Update(GameManager* Scene)
 		return;
 	}
 
-	if (SceneChange::GetisSceneUpdate())
-	{
-		return;
-	}
+	
 
 
 }
