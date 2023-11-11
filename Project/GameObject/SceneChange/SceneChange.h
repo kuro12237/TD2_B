@@ -20,6 +20,9 @@ public:
 
 	static void ChangeStart();
 
+	static bool GetisSceneUpdate();
+
+
 	static bool GetScenChangeFlag();
 private:
 
@@ -50,10 +53,11 @@ private:
 	bool isEnd_ = false;
 
 	uint32_t EndTimer_ = 0;
-	const uint32_t EndTimerMax_ = 180;
+	const uint32_t EndTimerMax_ = 60;
 
 	bool SceneChangeFlag = false;
 
 	bool isUpdate = false;
+	
 };
 

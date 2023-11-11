@@ -35,7 +35,6 @@ void SceneChange::Initialize()
 			width = 1;
 		}
 	}
-	
 }
 
 void SceneChange::Update()
@@ -70,6 +69,7 @@ void SceneChange::Update()
 			SceneChange::GetInstance()->isUpdate = false;
 		}
 	}
+
 }
 
 void SceneChange::Draw()
@@ -80,7 +80,6 @@ void SceneChange::Draw()
 		{
 			SceneChange::GetInstance()->worldTransform_[i].UpdateMatrix();
 			SceneChange::GetInstance()->sprite_[i]->Draw(SceneChange::GetInstance()->worldTransform_[i]);
-
 		}
     }
 }
@@ -94,6 +93,16 @@ void SceneChange::ChangeStart()
 	}
 }
 
+bool SceneChange::GetisSceneUpdate()
+{
+	if (SceneChange::GetInstance()->isUpdate)
+	{
+		return true;
+	}
+
+	return false;
+}
+
 bool SceneChange::GetScenChangeFlag()
 {
 	bool result = SceneChange::GetInstance()->SceneChangeFlag;
@@ -103,11 +112,14 @@ bool SceneChange::GetScenChangeFlag()
 
 bool SceneChange::Spown()
 {
+	const float ScaleAddSpeed = 0.01f;
+
 	for (int i = 0; i < SCENECHANGE_SPRITE_MAX; i++)
 	{
 		SceneChange::GetInstance()->DrawFlag = true;
-		SceneChange::GetInstance()->worldTransform_[i].scale = VectorTransform::Add(SceneChange::GetInstance()->worldTransform_[i].scale, {0.01f,0.01f,0.01f});
-		if (SceneChange::GetInstance()->worldTransform_[i].scale.x >= 1.0f)
+		SceneChange::GetInstance()->worldTransform_[i].scale = VectorTransform::Add(SceneChange::GetInstance()->worldTransform_[i].scale, { ScaleAddSpeed, ScaleAddSpeed, ScaleAddSpeed });
+	
+		if (SceneChange::GetInstance()->worldTransform_[i].scale.x >= 1.0f|| SceneChange::GetInstance()->worldTransform_[i].scale.y >= 1.0f|| SceneChange::GetInstance()->worldTransform_[i].scale.z >= 1.0f)
 		{
 			SceneChange::GetInstance()->worldTransform_[i].scale = {1,1,1};
 			return true;
@@ -119,11 +131,13 @@ bool SceneChange::Spown()
 
 bool SceneChange::DeSpown()
 {
+	const float ScaleAddSpeed = 0.01f;
+
 	for (int i = 0; i < SCENECHANGE_SPRITE_MAX; i++)
 	{
-		SceneChange::GetInstance()->worldTransform_[i].scale = VectorTransform::Subtruct(SceneChange::GetInstance()->worldTransform_[i].scale, {0.01f,0.01f,0.01f});
+		SceneChange::GetInstance()->worldTransform_[i].scale = VectorTransform::Subtruct(SceneChange::GetInstance()->worldTransform_[i].scale, { ScaleAddSpeed, ScaleAddSpeed, ScaleAddSpeed });
 
-		if (SceneChange::GetInstance()->worldTransform_[i].scale.x <= 0.0f)
+		if (SceneChange::GetInstance()->worldTransform_[i].scale.x <= 0.0f || SceneChange::GetInstance()->worldTransform_[i].scale.y <= 0.0f || SceneChange::GetInstance()->worldTransform_[i].scale.z <= 0.0f)
 		{
 			SceneChange::GetInstance()->worldTransform_[i].scale = {0,0,0};
 			SceneChange::GetInstance()->DrawFlag = false;

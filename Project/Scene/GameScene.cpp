@@ -17,9 +17,16 @@ void GameScene::Update(GameManager* Scene)
 		
 		ImGui::TreePop();
 	}
+
 	if (SceneChange::GetScenChangeFlag())
 	{
 		Scene->ChangeState(new TitleScene);
+		return;
+	}
+
+	if (SceneChange::GetisSceneUpdate())
+	{
+		return;
 	}
 
 
