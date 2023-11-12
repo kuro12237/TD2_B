@@ -7,6 +7,7 @@
 #include"ModelSphereState.h"
 #include"ModelObjState.h"
 #include"ModelCubeState.h"
+
 #include"WorldTransform.h"
 #include"ViewProjection.h"
 
@@ -18,19 +19,18 @@ enum SUseLight
 };
 
 
-
 class Model
 {
 public:
 	~Model();
 	/// <summary>
-	/// ƒ‚ƒfƒ‹‚Ì‰Šú‰»
+	/// ï¿½ï¿½ï¿½fï¿½ï¿½ï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 	/// </summary>
-	/// <param name="ƒ‚[ƒh‘I‘ğ"></param>
+	/// <param name="ï¿½ï¿½ï¿½[ï¿½hï¿½Iï¿½ï¿½"></param>
 	void Initialize(IModelState* state, Vector4 CenterPos = { 0,0,0,1 }, float size = { 0.5 }, Vector4 color = { 1,1,1,1 });
 
 	/// <summary>
-	/// DrawLine‚Ì‰Šú‰»
+	/// DrawLineï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½
 	/// </summary>
 	/// <param name="StertPosition"></param>
 	/// <param name="EndPosition"></param>
@@ -43,7 +43,7 @@ public:
 	void Draw(WorldTransform worldTransform, ViewProjection viewprojection);
 
 	/// <summary>
-	/// ƒ‰ƒCƒg‚ğg‚¤‚© : ‰Šú‰»‚Ì‘O‚És‚¤
+	/// ï¿½ï¿½ï¿½Cï¿½gï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ : ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‘Oï¿½Ésï¿½ï¿½
 	/// </summary>
 	void UseLight(SUseLight use);
 
@@ -87,7 +87,7 @@ public:
 	float GetSize() { return size_; }
 
 	/// <summary>
-	/// FƒR[ƒh‚ğVector4‚É•ÏŠ·ŠÖ”
+	/// ï¿½Fï¿½Rï¿½[ï¿½hï¿½ï¿½Vector4ï¿½É•ÏŠï¿½ï¿½Öï¿½
 	/// </summary>
 	static Vector4 ColorConversion(uint32_t rgbaValue);
 
