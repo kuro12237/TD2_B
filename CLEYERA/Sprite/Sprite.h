@@ -45,7 +45,7 @@ public:
 	Vector2 GetSize() { return size_; }
 
 	/// <summary>
-	/// FƒR[ƒh‚ğVector4‚É•ÏŠ·ŠÖ”
+	/// ï¿½Fï¿½Rï¿½[ï¿½hï¿½ï¿½Vector4ï¿½É•ÏŠï¿½ï¿½Öï¿½
 	/// </summary>
 	static Vector4 ColorConversion(uint32_t rgbaValue);
 

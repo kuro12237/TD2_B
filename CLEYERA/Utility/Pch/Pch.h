@@ -29,7 +29,7 @@
 #include <wrl.h>
 
 
-#define DIRECTINPUT_VERSION 0x0800//DirectInput‚Ìƒo[ƒWƒ‡ƒ“w’è
+#define DIRECTINPUT_VERSION 0x0800//DirectInputï¿½Ìƒoï¿½[ï¿½Wï¿½ï¿½ï¿½ï¿½ï¿½wï¿½ï¿½
 #include <dinput.h>
 #include <Xinput.h>
 #pragma comment(lib,"xinput.lib")
