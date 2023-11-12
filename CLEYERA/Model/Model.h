@@ -7,6 +7,7 @@
 #include"ModelSphereState.h"
 #include"ModelObjState.h"
 #include"ModelCubeState.h"
+
 #include"WorldTransform.h"
 #include"ViewProjection.h"
 
@@ -16,7 +17,6 @@ enum SUseLight
 	LAMBERT,
 	HARF_LAMBERT
 };
-
 
 
 class Model

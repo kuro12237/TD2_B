@@ -53,6 +53,7 @@ void DirectXCommon::BeginFlame()
 	//ClearScreen
 	commands.m_pList.Get()->OMSetRenderTargets(1, &DirectXCommon::GetInstance()->rtv.rtvHandles[backBufferIndex], false, nullptr);
 	float clearColor[] = { 0.1f,0.25f,0.5f,1.0f };
+
 	commands.m_pList.Get()->ClearRenderTargetView(DirectXCommon::GetInstance()->rtv.rtvHandles[backBufferIndex], clearColor, 0, nullptr);
 
 	//Depth

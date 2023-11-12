@@ -23,6 +23,7 @@ public:
 	void SetBlendMode(BlendMode blendMode) { blendMode_ = blendMode; }
 	void SetSrc(Vector2 TR, Vector2 BR, Vector2 TL, Vector2 BL);
 
+	void SetAnkerPos(Vector2 v) { ankerPos = v; }
 #pragma endregion 
 
 #pragma region get
@@ -44,6 +45,8 @@ public:
 	/// </summary>
 	Vector2 GetSize() { return size_; }
 
+	Vector2 GetAnkerPos() { return ankerPos; }
+
 	/// <summary>
 	/// �F�R�[�h��Vector4�ɕϊ��֐�
 	/// </summary>
@@ -59,6 +62,7 @@ public:
 private:
 	Vector2 Pos_ = { 0,0};
 	Vector2 size_ = {};
+	Vector2 ankerPos = {};
 	Vector4 color_ = { 1,1,1,1 };
 
 	WorldTransform worldTransform_ = {};

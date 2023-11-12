@@ -2,6 +2,7 @@
 #include"IScene.h"
 #include"GameManager.h"
 #include"GameObject/SceneChange/SceneChange.h"
+#include"Model.h"
 
 class TitleScene : public IScene
 {
@@ -22,5 +23,6 @@ private:
 	ViewProjection view{};
 
 	const string SceneName = "TitleScene";
-
+	unique_ptr<Model>model_ = nullptr;
+	WorldTransform worldTransform_{};
 };

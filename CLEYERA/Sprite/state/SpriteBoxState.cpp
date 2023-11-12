@@ -21,18 +21,20 @@ void SpriteBoxState::Draw(Sprite* state, WorldTransform worldTransform)
 	resource_.Index->Map(0, nullptr, reinterpret_cast<void**>(&indexData));
 	Vector2 pos = state->GetPos();
 	Vector2 size = state->GetSize();
+	
+	size = { size.x / 2,size.y / 2 };
 
-	vertexData[0].position = { pos.x,pos.y+size.y,0,1 };
+	vertexData[0].position = { pos.x-size.x,pos.y+size.y,0,1 };
 	vertexData[0].texcoord = state->GetSrcBL();
 	
-	vertexData[1].position = { pos.x ,pos.y,0,1 };
+	vertexData[1].position = { pos.x-size.x ,pos.y-size.y,0,1 };
 	vertexData[1].texcoord = state->GetSrcTL();
 
 
 	vertexData[2].position = { pos.x + size.x,pos.y+size.y,0,1 };
 	vertexData[2].texcoord = state->GetSrcBR();
 
-	vertexData[3].position = { pos.x + size.x,pos.y,0,1 };
+	vertexData[3].position = { pos.x + size.x,pos.y-size.y,0,1 };
 	vertexData[3].texcoord = state->GetSrcTR();
 
 
@@ -99,13 +101,13 @@ void SpriteBoxState::CommandCall(uint32_t texHandle,Sprite* state)
 	commands.m_pList->IASetVertexBuffers(0, 1, &resource_.BufferView);
 	commands.m_pList->IASetIndexBuffer(&resource_.IndexBufferView);
 
-	//Œ`ó‚ðÝ’èBPSO‚ÉÝ’è‚µ‚Ä‚¢‚é‚à‚Ì‚Æ‚Í‚Ü‚½•ÊB“¯‚¶‚à‚Ì‚ðÝ’è‚·‚é‚Æl‚¦‚Ä‚¨‚¯‚Î—Ç‚¢
+	//ï¿½`ï¿½ï¿½ï¿½Ý’ï¿½BPSOï¿½ÉÝ’è‚µï¿½Ä‚ï¿½ï¿½ï¿½ï¿½Ì‚Æ‚Í‚Ü‚ï¿½ï¿½ÊBï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ì‚ï¿½Ý’è‚·ï¿½ï¿½Ælï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½Î—Ç‚ï¿½
 	commands.m_pList->IASetPrimitiveTopology(D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-	//ƒ}ƒeƒŠƒAƒ‹CBuffer‚ÌêŠ‚ðÝ’è
+	//ï¿½}ï¿½eï¿½ï¿½ï¿½Aï¿½ï¿½CBufferï¿½ÌêŠï¿½ï¿½Ý’ï¿½
 	commands.m_pList->SetGraphicsRootConstantBufferView(0, resource_.Material->GetGPUVirtualAddress());
 
-	//wvp—p‚ÌCBuffer‚ÌêŠ‚ðÝ’è
+	//wvpï¿½pï¿½ï¿½CBufferï¿½ÌêŠï¿½ï¿½Ý’ï¿½
 	commands.m_pList->SetGraphicsRootConstantBufferView(1, resource_.wvpResource->GetGPUVirtualAddress());
 
 	if (!texHandle == 0)
@@ -113,7 +115,7 @@ void SpriteBoxState::CommandCall(uint32_t texHandle,Sprite* state)
 		DescriptorManager::rootParamerterCommand(2, texHandle);
 	}
 
-	//•`‰æ(DrawCall/ƒhƒ[ƒR[ƒ‹)B
+	//ï¿½`ï¿½ï¿½(DrawCall/ï¿½hï¿½ï¿½ï¿½[ï¿½Rï¿½[ï¿½ï¿½)ï¿½B
 	commands.m_pList->DrawIndexedInstanced(IndexSize, 1, 0, 0, 0);
 
 
