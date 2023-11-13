@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"Pch.h"
 #include"WinApp.h"
 #include"LogManager.h"
@@ -37,8 +37,8 @@ private:
 
 
 
-	//0x80=‰Ÿ‚µ‚Ä‚¢‚éó‘Ô
-	//0x00=‰Ÿ‚µ‚Ä‚È‚¢ó‘Ô
+	//0x80=ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½ï¿½
+	//0x00=ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚È‚ï¿½ï¿½ï¿½ï¿½
 	Input() = default;
 	~Input() = default;
 	Input(const Input&) = delete;

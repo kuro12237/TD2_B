@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"LogManager.h"
 #include"DirectXCommon.h"
 #include"ShaderManager.h"
@@ -59,7 +59,7 @@ private:
 	);
 
 	/// <summary>
-	/// InputElement‚Ìİ’è
+	/// InputElementï¿½Ìİ’ï¿½
 	/// </summary>
 	/// <param name="inputElementDescs"></param>
 	/// <param name="SemanticName"></param>
@@ -75,7 +75,7 @@ private:
 		);
 
 	/// <summary>
-	/// ƒuƒŒƒ“ƒhƒ‚[ƒh‚Ìİ’è
+	/// ï¿½uï¿½ï¿½ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½[ï¿½hï¿½Ìİ’ï¿½
 	/// </summary>
 	/// <param name="blenddesc"></param>
 	/// <param name="mode"></param>
@@ -84,11 +84,11 @@ private:
 		BlendMode mode);
 
 	/// <summary>
-	/// ƒ‰ƒXƒ^ƒ‰ƒCƒU[‚Ìİ’è
+	/// ï¿½ï¿½ï¿½Xï¿½^ï¿½ï¿½ï¿½Cï¿½Uï¿½[ï¿½Ìİ’ï¿½
 	/// </summary>
 	/// <param name="rasterizerDesc"></param>
-	/// <param name="CullMode : ‚Ç‚ÌŒü‚«‚É•\¦‚·‚é‚©"></param>
-	/// <param name="FillMode : “h‚è‚Â‚Ô‚·‚©"></param>
+	/// <param name="CullMode : ï¿½Ç‚ÌŒï¿½ï¿½ï¿½ï¿½É•\ï¿½ï¿½ï¿½ï¿½ï¿½é‚©"></param>
+	/// <param name="FillMode : ï¿½hï¿½ï¿½Â‚Ô‚ï¿½ï¿½ï¿½"></param>
 	static void SettingRasterizer(
 		D3D12_RASTERIZER_DESC& rasterizerDesc,
 		D3D12_CULL_MODE CullMode,
@@ -96,7 +96,7 @@ private:
 	);
 
 	/// <summary>
-	/// [“x‚Ìİ’è
+	/// ï¿½[ï¿½xï¿½Ìİ’ï¿½
 	/// </summary>
 	/// <param name="despthStencilDesc"></param>
 	/// <param name="EnableFlag"></param>

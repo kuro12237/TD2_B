@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"Pch.h"
 #include"DirectXCommon.h"
 #include"CreateResource.h"
@@ -64,7 +64,7 @@ class CreateResources
 public:
 
 	/// <summary>
-	/// Resource‚ğì¬
+	/// Resourceï¿½ï¿½ì¬
 	/// </summary>
 	/// <param name="device"></param>
 	/// <param name="sizeInbyte"></param>
@@ -72,14 +72,14 @@ public:
 	static ComPtr<ID3D12Resource> CreateBufferResource(size_t sizeInbyte);
 
 	/// <summary>
-	/// BufferView‚ğì¬
+	/// BufferViewï¿½ï¿½ì¬
 	/// </summary>
 	/// <param name="sizeInbyte"></param>
 	/// <param name="Resource"></param>
 	/// <returns></returns>
 	static D3D12_VERTEX_BUFFER_VIEW VertexCreateBufferView(size_t sizeInbyte, ComPtr<ID3D12Resource> Resource, int size);
 	/// <summary>
-	/// index‚ÌBufferView
+	/// indexï¿½ï¿½BufferView
 	/// </summary>
 	/// <param name="NumVertex"></param>
 	/// <returns></returns>

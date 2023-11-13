@@ -1,4 +1,4 @@
-#include"Input.h"
+ï»¿#include"Input.h"
 
 Input* Input::GetInstance()
 {
@@ -15,12 +15,12 @@ void Input::Initialize()
 		assert(0);
 	}
 
-	//InputDevice‚Ìì¬
+	//InputDeviceï¿½Ìì¬
 	result = DirectInput8Create(WinApp::GetInstance()->GetWc().hInstance, DIRECTINPUT_VERSION, IID_IDirectInput8,
 		(void**)&Input::GetInstance()->directInput, nullptr);
 
 	assert(SUCCEEDED(result));
-	//ƒL[ƒ{[ƒhƒfƒoƒCƒX‚Ìì¬
+	//ï¿½Lï¿½[ï¿½{ï¿½[ï¿½hï¿½fï¿½oï¿½Cï¿½Xï¿½Ìì¬
 	CreateKeybordDevice();
 	Input::GetInstance()->isInitialize = true;
 }
@@ -64,7 +64,7 @@ void Input::CreateKeybordDevice()
 	Input::GetInstance()->directInput->CreateDevice(GUID_SysKeyboard,
 		&Input::GetInstance()->keyboard, NULL);
 	assert(SUCCEEDED(hr));
-	//“ü—Íƒf[ƒ^Œ`Ž®‚ÌƒZƒbƒg
+	//ï¿½ï¿½ï¿½Íƒfï¿½[ï¿½^ï¿½`ï¿½ï¿½ï¿½ÌƒZï¿½bï¿½g
 	hr = Input::GetInstance()->keyboard->SetDataFormat(&c_dfDIKeyboard);
 	assert(SUCCEEDED(hr));
 	//

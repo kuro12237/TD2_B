@@ -1,4 +1,4 @@
-#include"CollisionManager.h"
+ï»¿#include"CollisionManager.h"
 
 
 void CollisionManager::CheckAllCollision()
@@ -13,7 +13,7 @@ void CollisionManager::CheckAllCollision()
 		itrB++;
 		for (; itrB != colliders_.end(); ++itrB) {
 			Collider* colliderB = *itrB;
-			//“–‚½‚è”»’èˆ—
+			//ï¿½ï¿½ï¿½ï¿½ï¿½è”»ï¿½èˆï¿½ï¿½
 			CheckCollisionPair(colliderA, colliderB);
 		}
 	}
@@ -21,12 +21,12 @@ void CollisionManager::CheckAllCollision()
 
 void CollisionManager::CheckCollisionPair(Collider* cA, Collider* cB) {
 
-	//ƒtƒBƒ‹ƒ^ƒŠƒ“ƒO
+	//ï¿½tï¿½Bï¿½ï¿½ï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½O
 	if ((cA->GetCollosionAttribute() & cB->GetCollisionMask()) == 0 ||
 		(cA->GetCollisionMask() & cB->GetCollosionAttribute()) == 0) {
 		return;
 	}
-	//“–‚½‚è”»’è‚ÌŒvŽZŠJŽn
+	//ï¿½ï¿½ï¿½ï¿½ï¿½è”»ï¿½ï¿½ÌŒvï¿½Zï¿½Jï¿½n
 	Vector3 cApos = cA->GetWorldPosition();
 	Vector3 cBpos = cB->GetWorldPosition();
 

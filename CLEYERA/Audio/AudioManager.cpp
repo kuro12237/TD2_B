@@ -1,4 +1,4 @@
-#include"AudioManager.h"
+ï»¿#include"AudioManager.h"
 
 AudioManager* AudioManager::GetInstance()
 {
@@ -20,7 +20,7 @@ void AudioManager::Initialize()
 
 	hr = XAudio2Create(&AudioManager::GetInstance()->xAudio, 0, XAUDIO2_DEFAULT_PROCESSOR);
 	assert(SUCCEEDED(hr));
-	//master‚Ìƒ{ƒCƒX‚Ìì¬
+	//masterï¿½Ìƒ{ï¿½Cï¿½Xï¿½Ìì¬
 	hr = AudioManager::GetInstance()->xAudio->CreateMasteringVoice(&AudioManager::GetInstance()->masterVoice);
 	assert(SUCCEEDED(hr));
 }
@@ -44,7 +44,7 @@ uint32_t AudioManager::SoundLoadWave(const char* filename)
 		RiffHeader riff = {};
 		file.read((char*)&riff, sizeof(riff));
 
-		//file‚ªRiff‚Éˆê’v‚·‚é‚©Type‚ªWave‚©	
+		//fileï¿½ï¿½Riffï¿½Éˆï¿½vï¿½ï¿½ï¿½é‚©Typeï¿½ï¿½Waveï¿½ï¿½	
 		if (strncmp(riff.chunk.id, "RIFF", 4) != 0)
 		{
 			LogManager::Log("RIFF_ERROR");
@@ -56,9 +56,9 @@ uint32_t AudioManager::SoundLoadWave(const char* filename)
 			assert(0);
 		}
 
-		//Format‚Ìƒ`ƒƒƒ“ƒN“Ç‚İ‚İ
+		//Formatï¿½Ìƒ`ï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½Ç‚İï¿½ï¿½ï¿½
 		FormatChunk format = {};
-		//ƒ`ƒƒƒ“ƒNƒwƒbƒ_[‚ÌŠm”F
+		//ï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½wï¿½bï¿½_ï¿½[ï¿½ÌŠmï¿½F
 		file.read((char*)&format, sizeof(ChunkHeader));
 		if (strncmp(format.chunk.id, "fmt ", 4) != 0) {
 			assert(0);
@@ -67,7 +67,7 @@ uint32_t AudioManager::SoundLoadWave(const char* filename)
 		assert(format.chunk.size <= sizeof(format.fmt));
 		file.read((char*)&format.fmt, format.chunk.size);
 
-		//Dataƒ`ƒƒƒ“ƒN‚Ì“Ç‚İ‚İ
+		//Dataï¿½`ï¿½ï¿½ï¿½ï¿½ï¿½Nï¿½Ì“Ç‚İï¿½ï¿½ï¿½
 		ChunkHeader data = {};
 		file.read((char*)&data, sizeof(data));
 		if (strncmp(data.id, "JUNK", 4) == 0) {
@@ -83,7 +83,7 @@ uint32_t AudioManager::SoundLoadWave(const char* filename)
 		file.read(pBuffer, data.size);
 		file.close();
 
-		//Œ^•ÏŠ·
+		//ï¿½^ï¿½ÏŠï¿½
 		soundData soundData;
 		soundData.wfex = format.fmt;
 		soundData.pBuffer = reinterpret_cast<BYTE*>(pBuffer);

@@ -1,4 +1,4 @@
-#include "CreateResource.h"
+ï»¿#include "CreateResource.h"
 
 ComPtr<ID3D12Resource> CreateResources::CreateBufferResource(size_t sizeInbyte)
 {
@@ -6,9 +6,9 @@ ComPtr<ID3D12Resource> CreateResources::CreateBufferResource(size_t sizeInbyte)
 	ComPtr<ID3D12Resource> result;
 
 	D3D12_HEAP_PROPERTIES uploadHeapProperties{};
-	uploadHeapProperties.Type = D3D12_HEAP_TYPE_UPLOAD; //UploadHeap‚ğg‚¤
+	uploadHeapProperties.Type = D3D12_HEAP_TYPE_UPLOAD; //UploadHeapï¿½ï¿½gï¿½ï¿½
 
-	//’¸“_ƒŠƒ\[ƒX‚Ìİ’è
+	//ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½\ï¿½[ï¿½Xï¿½Ìİ’ï¿½
 	D3D12_RESOURCE_DESC ResourceDesc{};
 	ResourceDesc.Dimension = D3D12_RESOURCE_DIMENSION_BUFFER;
 	ResourceDesc.Width = sizeInbyte; 
@@ -32,10 +32,10 @@ D3D12_VERTEX_BUFFER_VIEW CreateResources::VertexCreateBufferView(size_t sizeInby
 
 	resultBufferView.BufferLocation = Resource->GetGPUVirtualAddress();
 
-	//g—p‚·‚éƒŠƒ\[ƒX‚ÌƒTƒCƒY‚Í’¸“_3‚Â•ª‚ÌƒTƒCƒY
+	//ï¿½gï¿½pï¿½ï¿½ï¿½éƒŠï¿½\ï¿½[ï¿½Xï¿½ÌƒTï¿½Cï¿½Yï¿½Í’ï¿½ï¿½_3ï¿½Â•ï¿½ï¿½ÌƒTï¿½Cï¿½Y
 	resultBufferView.SizeInBytes = UINT(sizeInbyte);
 
-	//1’¸“_‚ ‚½‚è‚ÌƒTƒCƒY
+	//1ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌƒTï¿½Cï¿½Y
 	resultBufferView.StrideInBytes = UINT(sizeInbyte / size);
 	return resultBufferView; 
 }
@@ -46,10 +46,10 @@ D3D12_INDEX_BUFFER_VIEW CreateResources::IndexCreateBufferView(size_t sizeInbyte
 
 	resultBufferView.BufferLocation = Resource->GetGPUVirtualAddress();
 
-	//g—p‚·‚éƒŠƒ\[ƒX‚ÌƒTƒCƒY‚Í’¸“_3‚Â•ª‚ÌƒTƒCƒY
+	//ï¿½gï¿½pï¿½ï¿½ï¿½éƒŠï¿½\ï¿½[ï¿½Xï¿½ÌƒTï¿½Cï¿½Yï¿½Í’ï¿½ï¿½_3ï¿½Â•ï¿½ï¿½ÌƒTï¿½Cï¿½Y
 	resultBufferView.SizeInBytes = UINT(sizeInbyte);
 
-	//1’¸“_‚ ‚½‚è‚ÌƒTƒCƒY
+	//1ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÌƒTï¿½Cï¿½Y
 	resultBufferView.Format = DXGI_FORMAT_R32_UINT;
 
 	return resultBufferView;

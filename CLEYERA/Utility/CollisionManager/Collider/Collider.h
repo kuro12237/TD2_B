@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"Pch.h"
 
 class Collider {
@@ -19,9 +19,9 @@ public:
 
 private:
 
-	//Ž©•ª
+	//ï¿½ï¿½ï¿½ï¿½
 	uint32_t collisionAttribute_ = 0xffffffff;
-	//‘ŠŽè
+	//ï¿½ï¿½ï¿½ï¿½
 	uint32_t CollisionMask_ = 0xffffffff;
 
 	float radious_ = 0.5f;

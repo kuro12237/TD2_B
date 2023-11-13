@@ -15,7 +15,7 @@ void DebugScene::Initialize()
 
 	sprite_ = make_unique<Sprite>();
 
-	SpriteTexHandle = TextureManager::LoadTexture("Resources/mob.png");
+	SpriteTexHandle_ = TextureManager::LoadTexture("Resources/mob.png");
 
 	uint32_t SpriteTexHandle = TextureManager::LoadTexture("Resources/mob.png");
 
