@@ -1,4 +1,4 @@
-#include"DescriptorManager.h"
+ï»¿#include"DescriptorManager.h"
 
 DescriptorManager *DescriptorManager::GetInstance()
 {
@@ -19,8 +19,8 @@ void DescriptorManager::BeginFlame()
 {
 	if (DescriptorManager::GetInstance()->index >= DESCRIPTER_MAX)
 	{
-		//DescripterIndex‚Ì”‚ªãŒÀ‚ğ’´‚¦‚½
-		//#define DescripterMax ‚Ì”‚ğ‘‚â‚·‚©ƒeƒNƒXƒ`ƒƒEParticle‚Ì—˜—p”‚ğŒ¸‚·
+		//DescripterIndexï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ğ’´‚ï¿½ï¿½ï¿½
+		//#define DescripterMax ï¿½Ìï¿½ï¿½ğ‘‚â‚·ï¿½ï¿½ï¿½eï¿½Nï¿½Xï¿½`ï¿½ï¿½ï¿½EParticleï¿½Ì—ï¿½ï¿½pï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		LogManager::Log("DescripterManager index Overflow");
 		assert(0);
 	}
