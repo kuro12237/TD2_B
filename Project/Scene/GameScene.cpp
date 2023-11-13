@@ -3,6 +3,7 @@
 void GameScene::Initialize()
 {
 	LogManager::Log("GameScene_1\n");
+	MapManager::Initialize();
 }
 
 void GameScene::Update(GameManager* Scene)
@@ -23,10 +24,6 @@ void GameScene::Update(GameManager* Scene)
 		Scene->ChangeState(new TitleScene);
 		return;
 	}
-
-	
-
-
 }
 
 void GameScene::Back2dSpriteDraw()
