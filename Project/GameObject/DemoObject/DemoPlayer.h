@@ -41,11 +41,11 @@ private:
 		int RightTopX_;
 		int RightBottomX_;
 		int RightTopY_;
-		int RightBottomY;
+		int RightBottomY_;
 
 		int LeftTopX_;
 		int LeftBottomX_;
-		int LeftTopX_;
+		int LeftTopY_;
 		int LeftBottomY_;
 
 	};

@@ -5,6 +5,7 @@ void DemoPlayer::Initialize()
 	worldTransform_.Initialize();
 
 	playerVertex_.RightTopX_ =( worldTransform_.translate.x + PlayerRadius_-1) / BlockSize_;
+	playerVertex_.RightTopY_ = (worldTransform_.translate.y - PlayerRadius_) / BlockSize_;
 
 	playerVertex_.RightBottomX_ = (worldTransform_.translate.x+PlayerRadius_-1)/BlockSize_;
 

@@ -285,6 +285,7 @@
     <ClCompile Include="Project\GameObject\DemoObject\DemoPlayerBullet.cpp">
       <Filter>Project\GameObject</Filter>
     </ClCompile>
+    <ClCompile Include="Stage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLEYERA\Utility\Pch\Pch.h">
@@ -473,6 +474,7 @@
     <ClInclude Include="Project\GameObject\DemoObject\DemoPlayerBullet.h">
       <Filter>Project\GameObject</Filter>
     </ClInclude>
+    <ClInclude Include="Stage.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Resources\Shader\ShapeObject3d.PS.hlsl">
