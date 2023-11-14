@@ -4,6 +4,18 @@
 #include"Collider.h"
 #include"ColliderConfig.h"
 #include"DemoPlayerBullet.h"
+struct PlayerVertex {//プレイヤーの四隅
+	float RightTopX_;
+	float RightBottomX_;
+	float RightTopY_;
+	float RightBottomY_;
+
+	float LeftTopX_;
+	float LeftBottomX_;
+	float LeftTopY_;
+	float LeftBottomY_;
+
+};
 
 class DemoPlayer:public Collider
 {
@@ -22,7 +34,9 @@ public:
 	Vector3 GetWorldPosition()override;
 	void OnCollision()override;
 
+	PlayerVertex GetplayerVertex_() { return playerVertex_; };
 
+	PlayerVertex playerVertex_;
 private:
 
 	void keyControl();
@@ -36,20 +50,8 @@ private:
 	list<shared_ptr<DemoPlayerBullet>>bullets_;
 
 	
-	struct PlayerVertex {//プレイヤーの四隅
-		
-		int RightTopX_;
-		int RightBottomX_;
-		int RightTopY_;
-		int RightBottomY_;
 
-		int LeftTopX_;
-		int LeftBottomX_;
-		int LeftTopY_;
-		int LeftBottomY_;
-
-	};
-	PlayerVertex playerVertex_{};
+	
 
 	float PlayerRadius_=0.0f;//プレイヤーの半径
 

@@ -4,14 +4,7 @@ void DemoPlayer::Initialize()
 {
 	worldTransform_.Initialize();
 
-	playerVertex_.RightTopX_ =( worldTransform_.translate.x + PlayerRadius_-1) / BlockSize_;
-	playerVertex_.RightTopY_ = (worldTransform_.translate.y - PlayerRadius_) / BlockSize_;
-
-	playerVertex_.RightBottomX_ = (worldTransform_.translate.x+PlayerRadius_-1)/BlockSize_;
-
-	playerVertex_.LeftTopX_ = (worldTransform_.translate.x - PlayerRadius_) / BlockSize_;
-
-	playerVertex_.LeftBottomX_ = (worldTransform_.translate.x - PlayerRadius_ / BlockSize_);
+	worldTransform_.translate.y = 1;
 
 	worldTransform_.UpdateMatrix();
 
@@ -28,6 +21,20 @@ void DemoPlayer::Initialize()
 void DemoPlayer::Update()
 {
 	model_->SetColor({ 1,1,1,1 });
+
+	//ÉvÉåÉCÉÑÅ[ÇÃìñÇΩÇËîªíË
+	playerVertex_.RightTopX_ = (worldTransform_.translate.x + PlayerRadius_ - 1) / BlockSize_;
+	playerVertex_.RightTopY_ = (worldTransform_.translate.y - PlayerRadius_) / BlockSize_;
+
+	playerVertex_.RightBottomX_ = (worldTransform_.translate.x +PlayerRadius_ - 1) /BlockSize_;
+	playerVertex_.RightBottomY_ = (worldTransform_.translate.y + PlayerRadius_ - 1) / BlockSize_;
+
+	playerVertex_.LeftTopX_ = (worldTransform_.translate.x -PlayerRadius_) /BlockSize_;
+	playerVertex_.LeftTopY_ = (worldTransform_.translate.y - PlayerRadius_) /BlockSize_;
+
+	playerVertex_.LeftBottomX_ = (worldTransform_.translate.x - PlayerRadius_) / BlockSize_;
+	playerVertex_.LeftBottomY_ = (worldTransform_.translate.y - PlayerRadius_ - 1) /BlockSize_;
+	//
 
 	keyControl();
 	JoyControl();
