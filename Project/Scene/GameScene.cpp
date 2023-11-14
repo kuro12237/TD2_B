@@ -46,6 +46,24 @@ void GameScene::Update(GameManager* Scene)
 			MapManager::SetSelectMap(2);
 		}
 
+		bool flag3 = false;
+		ImGui::Checkbox("MapStage3", &flag3);
+		if (flag3)
+		{
+			MapManager::SetSelectMap(3);
+		}
+		bool flag4 = false;
+		ImGui::Checkbox("MapStage4", &flag4);
+		if (flag4)
+		{
+			MapManager::SetSelectMap(4);
+		}
+		bool flag5 = false;
+		ImGui::Checkbox("MapStage5", &flag5);
+		if (flag5)
+		{
+			MapManager::SetSelectMap(5);
+		}
 		ImGui::TreePop();
 	}
 

@@ -10,9 +10,7 @@ void MapManager::Initialize()
 {
     CreateModels();
 
-	MapTipFileLoad("Resources/MapData/stage1.csv");
-	MapTipFileLoad("Resources/MapData/stage2.csv");
-
+	MapTip1_10();
 }
 
 void MapManager::Update()
@@ -121,4 +119,13 @@ void MapManager::MapTipFileLoad(const string filePath)
 	data.maptip = Maptip;
 	data.stageNumber = stageNumber;
 	MapManager::GetInstance()->mapDatas_[filePath] = make_unique<MapData>(data);
+}
+
+void MapManager::MapTip1_10()
+{
+	MapTipFileLoad("Resources/MapData/stage1.csv");
+	MapTipFileLoad("Resources/MapData/stage2.csv");
+	MapTipFileLoad("Resources/MapData/stage3.csv");
+	MapTipFileLoad("Resources/MapData/stage4.csv");
+	MapTipFileLoad("Resources/MapData/stage5.csv");
 }
