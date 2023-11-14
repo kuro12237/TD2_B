@@ -13,6 +13,7 @@
 #include<random>
 #include<map>
 #include<array>
+#include<stdlib.h>
 
 #include<Windows.h>
 #pragma comment(lib,"winmm.lib")

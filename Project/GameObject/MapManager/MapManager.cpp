@@ -9,12 +9,15 @@ MapManager* MapManager::GetInstance()
 void MapManager::Initialize()
 {
     CreateModels();
-	TestMap();
+
+	MapTipFileLoad("Resources/MapData/stage1.csv");
+	MapTipFileLoad("Resources/MapData/stage2.csv");
+
 }
 
 void MapManager::Update()
 {
-
+	//前のステージ番号と今のステージ番号を比べ違うときに今のステージ番号のマップをコンテナから読み込む
 	if (MapManager::GetInstance()->prevStageNumber_ != MapManager::GetInstance()->NowStageNumber_)
 	{
 		MapManager::GetInstance()->prevStageNumber_ = MapManager::GetInstance()->NowStageNumber_;
@@ -29,7 +32,7 @@ void MapManager::Update()
 		}
 	}	
 
-
+	//worldTransformとかの更新
 	for (int y = 0; y < MapTip_MAX_Y; y++)
 	{
 		for (int x = 0; x < MapTip_MAX_X; x++)
@@ -42,8 +45,7 @@ void MapManager::Update()
 }
 
 void MapManager::Draw(ViewProjection view)
-{
-	
+{	
 	for (int y = 0; y < MapTip_MAX_Y; y++)
 	{
 		for (int x = 0; x < MapTip_MAX_X; x++)
@@ -75,57 +77,48 @@ void MapManager::CreateModels()
 	}
 }
 
-void MapManager::TestMap()
+
+
+void MapManager::MapTipFileLoad(const string filePath)
 {
+	stringstream file;
+	file = FileLoader::CSVLoadFile(filePath);
+	
+	string line;
+	uint32_t stageNumber = 0;
+	array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> Maptip{};
+	int y = -1;
+
+	while(getline(file, line))
+	{
+		istringstream line_stream(line);
+		string word;
+		getline(line_stream, word, ',');
+		
+		if (word.find("//") == 0)
+		{
+			continue;
+		}
+
+		if (word.find("MapNumber") == 0)
+		{
+			getline(line_stream, word, ',');
+			stageNumber = (uint32_t)std::atof(word.c_str());
+		}
+	
+		if (word.find("MapTip") == 0)
+		{
+			for (int x = 0; x < 18; x++)
+			{
+				getline(line_stream, word, ',');
+				Maptip[y][x] = (int)atoi(word.c_str());
+			}
+		}
+		y++;
+	}
+
 	SMapData data;
-
-	std::array<std::array<int, MapTip_MAX_X>, MapTip_MAX_Y> maptip = 
-	{
-		{
-			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-            {1,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1,0,1},
-            {1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-
-		}
-	};
-
-	SMapData data2;
-	std::array<std::array<int, MapTip_MAX_X>, MapTip_MAX_Y> maptip2 =
-	{
-		{
-			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-			{1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1},
-			{1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1}
-
-		}
-	};
-
-	//MapManager::GetInstance()->NowMaptip_ = maptip;
-
-	data.stageNumber = 1;
-	data.maptip = maptip;
-
-	data2.stageNumber = 2;
-	data2.maptip = maptip2;
-
-	MapManager::GetInstance()->mapDatas_["testData"] = make_unique<MapData>(data);
-	MapManager::GetInstance()->mapDatas_["testData2"] = make_unique<MapData>(data2);
+	data.maptip = Maptip;
+	data.stageNumber = stageNumber;
+	MapManager::GetInstance()->mapDatas_[filePath] = make_unique<MapData>(data);
 }
