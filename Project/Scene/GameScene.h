@@ -21,6 +21,6 @@ public:
 	void Flont2dSpriteDraw()override;
 private:
 	
-	
+	ViewProjection viewProjection_{};
 	
 };
