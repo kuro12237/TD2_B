@@ -139,6 +139,12 @@
     <Filter Include="Project\GameObject\SceneChange">
       <UniqueIdentifier>{cb85cf71-5b01-4520-8908-62cd261aeee0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\GameObject\MapManager">
+      <UniqueIdentifier>{435aa8ee-a54d-46a3-bc6e-81397eaebc32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\MapManager\MapData">
+      <UniqueIdentifier>{09d0888e-9b16-4c35-abe8-961666c7046e}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="CLEYERA\Config\.editorconfig">
@@ -290,6 +296,9 @@
     </ClCompile>
     <ClCompile Include="Project\GameObject\SceneChange\SceneChange.cpp">
       <Filter>Project\GameObject\SceneChange</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\MapManager\MapManager.cpp">
+      <Filter>Project\GameObject\MapManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -475,6 +484,12 @@
     </ClInclude>
     <ClInclude Include="Project\GameObject\SceneChange\SceneChange.h">
       <Filter>Project\GameObject\SceneChange</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\MapManager\MapManager.h">
+      <Filter>Project\GameObject\MapManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\MapManager\Data\MapData.h">
+      <Filter>Project\GameObject\MapManager\MapData</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

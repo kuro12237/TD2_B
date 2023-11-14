@@ -4,6 +4,7 @@
 #include"LogManager.h"
 #include"GameObject/SceneChange/SceneChange.h"
 #include"Scene/Title/TitleScene.h"
+#include"GameObject/MapManager/MapManager.h"
 
 class GameScene :public IScene
 {
@@ -20,6 +21,6 @@ public:
 	void Flont2dSpriteDraw()override;
 private:
 	
-	
+	ViewProjection viewProjection_{};
 	
 };
