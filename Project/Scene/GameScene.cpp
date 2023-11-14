@@ -2,6 +2,10 @@
 
 void GameScene::Initialize()
 {
+	DebugCamera* debugCamera = new DebugCamera();
+	debugCamera->Initialize();
+	DebugTools::addCommand(debugCamera,"d");
+
 	LogManager::Log("GameScene_1\n");
 	MapManager::Initialize();
 	viewProjection_.Initialize();
@@ -9,6 +13,10 @@ void GameScene::Initialize()
 	viewProjection_.translation_.y = 7;
 	viewProjection_.translation_.z = -39;
 	viewProjection_.UpdateMatrix();
+
+	player_ = make_unique<Player>();
+	player_->Initialize();
+
 }
 
 void GameScene::Update(GameManager* Scene)
@@ -55,9 +63,13 @@ void GameScene::Update(GameManager* Scene)
 		return;
 	}
 
+	player_->Update();
 	MapManager::Update();
 
 	viewProjection_.UpdateMatrix();
+	DebugTools::UpdateExecute(0);
+
+	viewProjection_ = DebugTools::ConvertViewProjection(viewProjection_);
 }
 
 void GameScene::Back2dSpriteDraw()
@@ -66,6 +78,9 @@ void GameScene::Back2dSpriteDraw()
 
 void GameScene::Object3dDraw()
 {
+	DebugTools::DrawExecute(0);
+
+	player_->Draw(viewProjection_);
 	MapManager::GetInstance()->Draw(viewProjection_);
 }
 

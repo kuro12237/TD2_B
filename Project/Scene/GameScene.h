@@ -5,6 +5,7 @@
 #include"GameObject/SceneChange/SceneChange.h"
 #include"Scene/Title/TitleScene.h"
 #include"GameObject/MapManager/MapManager.h"
+#include"GameObject/Player/Player.h"
 
 class GameScene :public IScene
 {
@@ -21,6 +22,8 @@ public:
 	void Flont2dSpriteDraw()override;
 private:
 	
+	unique_ptr<Player>player_ = nullptr;
+
 	ViewProjection viewProjection_{};
 	
 };
