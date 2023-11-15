@@ -51,7 +51,6 @@ void MapCollisionManager::Collision(MapCollider* ob1)
 				ob1->RightCollision();
 
 			}
-
 		}
 		//左に動いているときのチェック
 		if (velocity.x < 0)
@@ -60,7 +59,6 @@ void MapCollisionManager::Collision(MapCollider* ob1)
 			{
 				ob1->LeftCollision();
 			}
-
 		}
 	}
 
