@@ -24,6 +24,8 @@ public:
 
 	static void SetSelectMap(uint32_t stageNumber);
 
+	static array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> GetNowMapTip() { return MapManager::GetInstance()->NowMaptip_; }
+
 private:
 
 	static void CreateModels();
@@ -39,6 +41,9 @@ private:
 	array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> NowMaptip_;
 	//ModelとworldTransform
 	array<array<SBlock_param,MapTip_MAX_X>,MapTip_MAX_Y> block_ = {};
+
+	unique_ptr<Model>WorldCenterModel_ = nullptr;
+	WorldTransform CenterWorldTransform_{};
 
 #pragma region Singleton
 	MapManager() = default;

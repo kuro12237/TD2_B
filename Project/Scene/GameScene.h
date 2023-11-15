@@ -5,6 +5,7 @@
 #include"GameObject/SceneChange/SceneChange.h"
 #include"Scene/Title/TitleScene.h"
 #include"GameObject/MapManager/MapManager.h"
+#include"GameObject/MapCollisionManager/MapCollisionManager.h"
 #include"GameObject/Player/Player.h"
 
 class GameScene :public IScene
@@ -26,4 +27,5 @@ private:
 
 	ViewProjection viewProjection_{};
 	
+	unique_ptr<MapCollisionManager> mapCollisionManager_ = nullptr;
 };

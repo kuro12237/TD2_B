@@ -309,6 +309,9 @@
     <ClCompile Include="Project\GameObject\Player\Player.cpp">
       <Filter>Project\GameObject\Player</Filter>
     </ClCompile>
+    <ClCompile Include="Project\GameObject\MapCollisionManager\MapCollisionManager.cpp">
+      <Filter>Project\GameObject\MapManager\MapCollision</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLEYERA\Utility\Pch\Pch.h">

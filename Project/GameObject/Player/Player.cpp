@@ -14,7 +14,7 @@ void Player::Update()
 
 	if (ImGui::TreeNode("Player"))
 	{
-	
+		ImGui::Text("position %f %f %f", worldTransform_.translate.x, worldTransform_.translate.y, worldTransform_.translate.z);
 		ImGui::SliderFloat("speed", &speed,-1.0f,1.0f);
 		ImGui::TreePop();
 	}
@@ -38,13 +38,44 @@ void Player::Update()
 		velocity_.y = -speed;
 	}
 
-	worldTransform_.translate = VectorTransform::Add(worldTransform_.translate, velocity_);
-
+	Vector2 v = { velocity_.x,velocity_.y };
+	SetVelocity(v);
+	SetRadious(0.5f);
 	worldTransform_.UpdateMatrix();
 
+}
+
+void Player::Move()
+{
+	worldTransform_.translate = VectorTransform::Add(worldTransform_.translate, velocity_);
 }
 
 void Player::Draw(ViewProjection view)
 {
 	model_->Draw(worldTransform_, view);
+}
+
+void Player::RightCollision()
+{
+	velocity_.x = 0;
+}
+
+void Player::LeftCollision()
+{
+	velocity_.x = 0;
+}
+
+void Player::TopCollision()
+{
+	velocity_.y = 0;
+}
+
+void Player::DownCollision()
+{
+	velocity_.y = 0;
+}
+
+void Player::MapCollision()
+{
+
 }

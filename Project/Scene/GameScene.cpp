@@ -17,6 +17,7 @@ void GameScene::Initialize()
 	player_ = make_unique<Player>();
 	player_->Initialize();
 
+	mapCollisionManager_ = make_unique<MapCollisionManager>();
 }
 
 void GameScene::Update(GameManager* Scene)
@@ -63,8 +64,17 @@ void GameScene::Update(GameManager* Scene)
 		return;
 	}
 
+
 	player_->Update();
+	
 	MapManager::Update();
+	mapCollisionManager_->ClearList();
+	mapCollisionManager_->AddCollider(player_.get());
+	mapCollisionManager_->ChackAllCollision();
+
+
+
+	player_->Move();
 
 	viewProjection_.UpdateMatrix();
 	DebugTools::UpdateExecute(0);
