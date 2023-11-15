@@ -37,8 +37,20 @@ void Player::Update()
 	{
 		velocity_.y = -speed;
 	}
+	if (Input::PushKeyPressed(DIK_SPACE) && !isJamp)
+	{
+		JampFrame = 0;
+		jampVelocity = { 0,0.1f };
+		isJamp = true;	
+		velocity_.y = 3;
+	}
 
+	//Jamp();
+
+	velocity_.y = velocity_.y + gravity;
 	Vector2 v = { velocity_.x,velocity_.y };
+
+
 	SetVelocity(v);
 	SetRadious(0.5f);
 	worldTransform_.UpdateMatrix();
@@ -73,6 +85,15 @@ void Player::TopCollision()
 void Player::DownCollision()
 {
 	velocity_.y = 0;
+	isJamp = false;
+}
+
+void Player::Jamp()
+{
+	if (isJamp)
+	{
+		velocity_.y = 1;
+	}
 }
 
 void Player::MapCollision()

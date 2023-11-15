@@ -29,6 +29,8 @@ public:
 
 private:
 
+	void Jamp();
+		 
 	void MapCollision();
 
 	unique_ptr<Model>model_ = nullptr;
@@ -36,6 +38,11 @@ private:
 
 	float speed = 0.1f;
 	Vector3 velocity_ = {};
+	float gravity = -0.1f;
+
+	bool isJamp = false;
+	uint32_t JampFrame = 0;
+	Vector2 jampVelocity = {};
 
 };
 

@@ -18,6 +18,7 @@ void GameScene::Initialize()
 	player_->Initialize();
 
 	mapCollisionManager_ = make_unique<MapCollisionManager>();
+	MapManager::SetSelectMap(2);
 }
 
 void GameScene::Update(GameManager* Scene)
