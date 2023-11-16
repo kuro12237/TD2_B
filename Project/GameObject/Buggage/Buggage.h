@@ -2,8 +2,10 @@
 #include"Model.h"
 #include"VectorTransform.h"
 #include"GameObject/MapCollisionManager/MapCollider.h"
+#include"BoxCollider.h"
+#include"Collider/ColliderConfig.h"
 
-class Buggage:public MapCollider
+class Buggage:public MapCollider,public BoxCollider
 {
 public:
 	Buggage() {};
@@ -17,18 +19,25 @@ public:
 
 	void Move();
 
-	void RightCollision()override { velocity_.x = 0; };
-	void LeftCollision()override { velocity_.x = 0; };
+	void SetPlayerVelocity(Vector3 v) { playerVelocity_ = v; }
 
-	void TopCollision()override { velocity_.y = 0; };
-	void DownCollision()override { velocity_.y = 0; };
+	void RightCollision()override;
+	void LeftCollision()override;
+
+	void TopCollision()override;
+	void DownCollision()override;
 
 	Vector3 GetWorldPosition()override { return worldTransform_.translate; }
+	void OnCollision()override;
+
 
 private:
 
 	unique_ptr<Model>model_ = nullptr;
 	WorldTransform worldTransform_ = {};
 	Vector3 velocity_ = {};
+	Vector3 playerVelocity_ = {};
 	float gravity = -0.1f;
+
+	bool isHitWall = false;
 };

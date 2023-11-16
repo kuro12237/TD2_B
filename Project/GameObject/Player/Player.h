@@ -3,8 +3,10 @@
 #include"VectorTransform.h"
 #include"Input.h"
 #include"GameObject/MapCollisionManager/MapCollider.h"
+#include"BoxCollider.h"
+#include"Collider/ColliderConfig.h"
 
-class Player:public MapCollider
+class Player:public MapCollider,public BoxCollider
 {
 public:
 	Player() {};
@@ -19,7 +21,7 @@ public:
 	void Draw(ViewProjection view);
 
 	Vector3 GetWorldPosition()override { return worldTransform_.translate; }
-
+	Vector3 GetVelocity() { return velocity_; }
 
 	void RightCollision()override;
 	void LeftCollision()override;
@@ -27,11 +29,15 @@ public:
 	void TopCollision()override;
 	void DownCollision()override;
 
+	void OnCollision()override;
+
 private:
 
 	void Jamp();
 		 
 	void MapCollision();
+
+
 
 	unique_ptr<Model>model_ = nullptr;
 	WorldTransform worldTransform_{};

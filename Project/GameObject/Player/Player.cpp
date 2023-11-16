@@ -7,6 +7,10 @@ void Player::Initialize()
 	worldTransform_.Initialize();
 	worldTransform_.translate = { 3,5,0 };
 	model_->SetColor({ 0,0,1,1 });
+
+	SetCollosionAttribute(kCollisionAttributePlayer);
+	SetCollisionMask(kCollisionMaskPlayer);
+	
 }
 
 void Player::Update()
@@ -87,6 +91,10 @@ void Player::DownCollision()
 {
 	velocity_.y = 0;
 	isJamp = false;
+}
+
+void Player::OnCollision()
+{
 }
 
 void Player::Jamp()

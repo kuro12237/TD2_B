@@ -3,6 +3,7 @@
 
 void CollisionManager::CheckAllCollision()
 {
+	//Ball
 	std::list<Collider*>::iterator itrA = colliders_.begin();
 
 	for (; itrA != colliders_.end(); ++itrA) {
@@ -13,20 +14,35 @@ void CollisionManager::CheckAllCollision()
 		itrB++;
 		for (; itrB != colliders_.end(); ++itrB) {
 			Collider* colliderB = *itrB;
-			//�����蔻�菈��
-			CheckCollisionPair(colliderA, colliderB);
+			
+			CheckBallCollisionPair(colliderA, colliderB);
+		}
+	}
+
+	//Box
+	list<BoxCollider*>::iterator itrBoxA = BoxColliders_.begin();
+
+	for (; itrBoxA != BoxColliders_.end(); ++itrBoxA) {
+
+		BoxCollider* colliderA = *itrBoxA;
+
+		list<BoxCollider*>::iterator itrBoxB = itrBoxA;
+		itrBoxB++;
+		for (; itrBoxB != BoxColliders_.end(); ++itrBoxB) {
+			BoxCollider* colliderB = *itrBoxB;
+		
+			CheckBoxCollisionPair(colliderA, colliderB);
 		}
 	}
 }
 
-void CollisionManager::CheckCollisionPair(Collider* cA, Collider* cB) {
+void CollisionManager::CheckBallCollisionPair(Collider* cA, Collider* cB) {
 
-	//�t�B���^�����O
 	if ((cA->GetCollosionAttribute() & cB->GetCollisionMask()) == 0 ||
 		(cA->GetCollisionMask() & cB->GetCollosionAttribute()) == 0) {
 		return;
 	}
-	//�����蔻��̌v�Z�J�n
+
 	Vector3 cApos = cA->GetWorldPosition();
 	Vector3 cBpos = cB->GetWorldPosition();
 
@@ -56,6 +72,38 @@ bool CollisionManager::CheckBallCollosion(Vector3 v1, float vr1, Vector3 v2, flo
 	}
 
 	return Flag;
+}
+
+void CollisionManager::CheckBoxCollisionPair(BoxCollider* cA, BoxCollider* cB)
+{
+	if ((cA->GetCollosionAttribute() & cB->GetCollisionMask()) == 0 ||
+		(cA->GetCollisionMask() & cB->GetCollosionAttribute()) == 0) {
+		return;
+	}
+
+	Vector3 cApos = cA->GetWorldPosition();
+	Vector3 cBpos = cB->GetWorldPosition();
+
+	AABB aabbA = cA->GetAABB();
+	//コライダーBのAABBを取得
+	AABB aabbB = cB->GetAABB();
+
+	if (CheckBoxCollision(cApos, aabbA, cBpos, aabbB)) {
+		cA->OnCollision();
+		cB->OnCollision();
+	}
+
+}
+
+bool CollisionManager::CheckBoxCollision(Vector3 v1, AABB aabb1, Vector3 v2, AABB aabb2)
+{
+	if (v1.x + aabb1.min.x <= v2.x + aabb2.max.x && v1.x + aabb1.max.x >= v2.x + aabb2.min.x &&
+		v1.y + aabb1.min.y <= v2.y + aabb2.max.y && v1.y + aabb1.max.y >= v2.y + aabb2.min.y &&
+		v1.z + aabb1.min.z <= v2.z + aabb2.max.z && v1.z + aabb1.max.z >= v2.z + aabb2.min.z) 
+	{
+		return true;
+	}
+	return false;
 }
 
 

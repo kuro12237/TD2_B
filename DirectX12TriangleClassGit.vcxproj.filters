@@ -521,6 +521,9 @@
     <ClInclude Include="Project\GameObject\Buggage\Buggage.h">
       <Filter>Project\GameObject\Buggage</Filter>
     </ClInclude>
+    <ClInclude Include="CLEYERA\Utility\CollisionManager\Collider\BoxCollider.h">
+      <Filter>CLEYERA\Utility\CollisionManager\Collider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Resources\Shader\ShapeObject3d.PS.hlsl">

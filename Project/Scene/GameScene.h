@@ -8,6 +8,7 @@
 #include"GameObject/MapCollisionManager/MapCollisionManager.h"
 #include"GameObject/Player/Player.h"
 #include"GameObject/Buggage/Buggage.h"
+#include"CollisionManager.h"
 
 class GameScene :public IScene
 {
@@ -31,6 +32,6 @@ private:
 	ViewProjection viewProjection_{};
 	
 
-
+	unique_ptr<CollisionManager> collisionManager_ = nullptr;
 	unique_ptr<MapCollisionManager> mapCollisionManager_ = nullptr;
 };

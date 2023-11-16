@@ -20,6 +20,8 @@ void GameScene::Initialize()
 	mapCollisionManager_ = make_unique<MapCollisionManager>();
 	MapManager::SetSelectMap(2);
 
+	collisionManager_ = make_unique<CollisionManager>();
+
 	buggage_ = make_unique<Buggage>();
 	buggage_->Initialize({ 10,5,0 });
 
@@ -120,12 +122,19 @@ void GameScene::Update(GameManager* Scene)
 
 	player_->Update();
 	buggage_->Update();
+	buggage_->SetPlayerVelocity(player_->GetVelocity());
+
+	collisionManager_->ClliderClear();
+	collisionManager_->BoxColliderPush(player_.get());
+	collisionManager_->BoxColliderPush(buggage_.get());
+	collisionManager_->CheckAllCollision();
 
 	MapManager::Update();
 	mapCollisionManager_->ClearList();
 	mapCollisionManager_->AddCollider(player_.get());
 	mapCollisionManager_->AddCollider(buggage_.get());
 	mapCollisionManager_->ChackAllCollision();
+
 
 
 	buggage_->Move();
