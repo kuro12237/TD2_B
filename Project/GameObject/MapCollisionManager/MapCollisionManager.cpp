@@ -19,13 +19,13 @@ void MapCollisionManager::ChackAllCollision()
 
 void MapCollisionManager::Collision(MapCollider* ob1)
 {
-	const float gap =  0.01f;
+	const float gap =  0.1f;
 
 	SCebeVertex CubeA{};
-	CubeA.top = ob1->GetWorldPosition().y - ob1->GetRadious() + gap ;
-	CubeA.down = ob1->GetWorldPosition().y + ob1->GetRadious()- gap;
-	CubeA.right = ob1->GetWorldPosition().x + (ob1->GetRadious() + ob1->GetRadious() - gap);
-	CubeA.left = ob1->GetWorldPosition().x - (ob1->GetRadious() - ob1->GetRadious() + gap);
+	CubeA.top = ob1->GetWorldPosition().y -ob1->GetRadious() + gap;
+	CubeA.down = ob1->GetWorldPosition().y  +ob1->GetRadious() - gap-0.1f;
+	CubeA.right = ob1->GetWorldPosition().x +(ob1->GetRadious() + ob1->GetRadious() + gap-0.1f);
+	CubeA.left = ob1->GetWorldPosition().x -(ob1->GetRadious() - ob1->GetRadious() - gap);
 
 	Vector2 velocity = ob1->GetVelocity();
 
