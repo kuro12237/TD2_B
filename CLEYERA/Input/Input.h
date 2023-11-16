@@ -14,9 +14,9 @@ public:
 
 	static void BeginFlame();
 
-	bool PushKey(uint8_t keyNum);
+	static bool PushKey(uint8_t keyNum);
 
-	bool PushKeyPressed(uint32_t keyNum);
+	static bool PushKeyPressed(uint32_t keyNum);
 
 	static void NoneJoyState(XINPUT_STATE& state);
 

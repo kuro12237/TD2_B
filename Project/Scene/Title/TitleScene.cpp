@@ -13,7 +13,6 @@ void TitleScene::Initialize()
 
 
 	view.Initialize();
-
 }
 
 void TitleScene::Update(GameManager* Scene)
