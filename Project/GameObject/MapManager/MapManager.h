@@ -31,6 +31,7 @@ private:
 	static void CreateModels();
 
 	static void MapTipFileLoad(const string filePath);
+	static void MapTip1_10();
 
 	uint32_t NowStageNumber_ = 0;
 	uint32_t prevStageNumber_ = 0;
