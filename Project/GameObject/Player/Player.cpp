@@ -44,7 +44,6 @@ void Player::Update()
 		JampFrame = 0;
 		jampVelocity = { 0,0.0f };
 		isJamp = true;	
-		//velocity_.y = 3.0f;
 	}
 
 	Jamp();
@@ -96,10 +95,7 @@ void Player::Jamp()
 	{
 		if (JampFrame < 10)
 		{
-
-			velocity_.y += 0.5f;
-			//velocity_.x = (velocity_.x* JampFrame)*0.5f;
-			//velocity_.y = (0.1f * JampFrame - gravity * JampFrame)*0.5f;
+         	velocity_.y += 0.5f;
 			JampFrame++;
 		}
 		

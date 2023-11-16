@@ -7,6 +7,7 @@ enum BLOCK
 {
 	AIR = 0,
 	DART = 1,
+	LADER = 2,
 	INVERSIONSWICH = 3,
 	START = 10,
 	GOAL = 11,

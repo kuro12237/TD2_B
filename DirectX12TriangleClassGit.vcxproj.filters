@@ -151,6 +151,9 @@
     <Filter Include="Project\GameObject\Player">
       <UniqueIdentifier>{552a071c-fbaa-42d1-beda-77f9346882ee}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\GameObject\Buggage">
+      <UniqueIdentifier>{11ebe54f-9a8d-4a9a-9d5f-3510661f629d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="CLEYERA\Config\.editorconfig">
@@ -311,6 +314,9 @@
     </ClCompile>
     <ClCompile Include="Project\GameObject\MapCollisionManager\MapCollisionManager.cpp">
       <Filter>Project\GameObject\MapManager\MapCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Buggage\Buggage.cpp">
+      <Filter>Project\GameObject\Buggage</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -511,6 +517,9 @@
     </ClInclude>
     <ClInclude Include="Project\GameObject\Player\Player.h">
       <Filter>Project\GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Buggage\Buggage.h">
+      <Filter>Project\GameObject\Buggage</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -19,6 +19,10 @@ void GameScene::Initialize()
 
 	mapCollisionManager_ = make_unique<MapCollisionManager>();
 	MapManager::SetSelectMap(2);
+
+	buggage_ = make_unique<Buggage>();
+	buggage_->Initialize({ 10,5,0 });
+
 }
 
 void GameScene::Update(GameManager* Scene)
@@ -115,14 +119,16 @@ void GameScene::Update(GameManager* Scene)
 
 
 	player_->Update();
-	
+	buggage_->Update();
+
 	MapManager::Update();
 	mapCollisionManager_->ClearList();
 	mapCollisionManager_->AddCollider(player_.get());
+	mapCollisionManager_->AddCollider(buggage_.get());
 	mapCollisionManager_->ChackAllCollision();
 
 
-
+	buggage_->Move();
 	player_->Move();
 
 	viewProjection_.UpdateMatrix();
@@ -139,6 +145,7 @@ void GameScene::Object3dDraw()
 {
 	DebugTools::DrawExecute(0);
 
+	buggage_->Draw(viewProjection_);
 	player_->Draw(viewProjection_);
 	MapManager::GetInstance()->Draw(viewProjection_);
 }
