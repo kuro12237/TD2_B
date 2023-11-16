@@ -9,7 +9,7 @@ SceneChange* SceneChange::GetInstance()
 void SceneChange::Initialize()
 {
 	uint32_t tex =TextureManager::LoadTexture("Resources/uvChecker.png");
-	SceneChange::GetInstance()->texHandle =tex;
+	SceneChange::GetInstance()->texHandle = tex;
 
 	for (int i = 0; i < SCENECHANGE_SPRITE_MAX; i++)
 	{
