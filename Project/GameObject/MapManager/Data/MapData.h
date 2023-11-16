@@ -1,7 +1,7 @@
 #pragma once
 #include"Pch.h"
-#define MapTip_MAX_X 18
 #define MapTip_MAX_Y 14
+#define MapTip_MAX_X 18
 
 enum BLOCK
 {

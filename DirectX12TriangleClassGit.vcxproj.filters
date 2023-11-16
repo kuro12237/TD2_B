@@ -145,6 +145,12 @@
     <Filter Include="Project\GameObject\MapManager\MapData">
       <UniqueIdentifier>{09d0888e-9b16-4c35-abe8-961666c7046e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\GameObject\MapManager\MapCollision">
+      <UniqueIdentifier>{4467e59e-1b32-43b9-8e88-0962da7b380e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\Player">
+      <UniqueIdentifier>{552a071c-fbaa-42d1-beda-77f9346882ee}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="CLEYERA\Config\.editorconfig">
@@ -299,6 +305,12 @@
     </ClCompile>
     <ClCompile Include="Project\GameObject\MapManager\MapManager.cpp">
       <Filter>Project\GameObject\MapManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Player\Player.cpp">
+      <Filter>Project\GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\MapCollisionManager\MapCollisionManager.cpp">
+      <Filter>Project\GameObject\MapManager\MapCollision</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -490,6 +502,15 @@
     </ClInclude>
     <ClInclude Include="Project\GameObject\MapManager\Data\MapData.h">
       <Filter>Project\GameObject\MapManager\MapData</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\MapCollisionManager\MapCollisionManager.h">
+      <Filter>Project\GameObject\MapManager\MapCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\MapCollisionManager\MapCollider.h">
+      <Filter>Project\GameObject\MapManager\MapCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Player\Player.h">
+      <Filter>Project\GameObject\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -36,10 +36,13 @@ void MapManager::Update()
 		for (int x = 0; x < MapTip_MAX_X; x++)
 		{
 			MapManager::GetInstance()->block_[y][x].worldTransform.translate.x = static_cast<float>(x);
-			MapManager::GetInstance()->block_[y][x].worldTransform.translate.y = static_cast<float>(MapTip_MAX_Y - y);
+			MapManager::GetInstance()->block_[y][x].worldTransform.translate.y = static_cast<float>(MapTip_MAX_Y - y-0.5f);
 			MapManager::GetInstance()->block_[y][x].worldTransform.UpdateMatrix();
+			
+
 		}
 	}
+	MapManager::GetInstance()->CenterWorldTransform_.UpdateMatrix();
 }
 
 void MapManager::Draw(ViewProjection view)
@@ -50,10 +53,12 @@ void MapManager::Draw(ViewProjection view)
 		{
 			if (MapManager::GetInstance()->NowMaptip_[y][x] == DART)
 			{
-				MapManager::GetInstance()->block_[y][x].model->Draw(MapManager::GetInstance()->block_[y][x].worldTransform, view);
+				MapManager::GetInstance()->block_[y][x].model->Draw(MapManager::GetInstance()->block_[y][x].worldTransform, view);				
 			}
+		
 		}
 	}
+	MapManager::GetInstance()->WorldCenterModel_->Draw(MapManager::GetInstance()->CenterWorldTransform_, view);
 }
 
 void MapManager::SetSelectMap(uint32_t stageNumber)
@@ -73,6 +78,13 @@ void MapManager::CreateModels()
 			MapManager::GetInstance()->block_[y][x].worldTransform.Initialize();
 		}
 	}
+	MapManager::GetInstance()->WorldCenterModel_ = make_unique<Model>();
+	MapManager::GetInstance()->WorldCenterModel_->Initialize(new ModelSphereState);
+	MapManager::GetInstance()->CenterWorldTransform_.Initialize();
+	MapManager::GetInstance()->CenterWorldTransform_.scale = { 1,1,1 };
+	MapManager::GetInstance()->WorldCenterModel_->SetColor({ 1,0,0,1 });
+	MapManager::GetInstance()->CenterWorldTransform_.UpdateMatrix();
+
 }
 
 
@@ -104,16 +116,31 @@ void MapManager::MapTipFileLoad(const string filePath)
 			stageNumber = (uint32_t)std::atof(word.c_str());
 		}
 	
+		
 		if (word.find("MapTip") == 0)
 		{
+			y++;
 			for (int x = 0; x < 18; x++)
 			{
 				getline(line_stream, word, ',');
 				Maptip[y][x] = (int)atoi(word.c_str());
 			}
 		}
-		y++;
+	
 	}
+
+	int testmap[MapTip_MAX_Y][MapTip_MAX_X]{};
+	
+	for (int i = 0; i < MapTip_MAX_Y; i++)
+	{
+		for (int j = 0; j < MapTip_MAX_X; j++)
+		{
+
+			testmap[i][j] = Maptip[i][j];
+		}
+
+	}
+	testmap;
 
 	SMapData data;
 	data.maptip = Maptip;
