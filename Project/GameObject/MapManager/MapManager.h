@@ -46,6 +46,8 @@ private:
 	unique_ptr<Model>WorldCenterModel_ = nullptr;
 	WorldTransform CenterWorldTransform_{};
 
+	uint32_t StartTexHandle_ = 0;
+
 #pragma region Singleton
 	MapManager() = default;
 	~MapManager() = default;

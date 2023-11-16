@@ -6,7 +6,11 @@
 enum BLOCK
 {
 	AIR = 0,
-	DART = 1
+	DART = 1,
+	INVERSIONSWICH = 3,
+	START = 10,
+	GOAL = 11,
+	BAGGAGESPOWN = 12
 };
 
 struct SMapData {

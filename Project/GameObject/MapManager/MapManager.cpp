@@ -10,6 +10,7 @@ void MapManager::Initialize()
 {
     CreateModels();
 
+	MapManager::GetInstance()->StartTexHandle_ = TextureManager::LoadTexture("Resources/StartTex.png");
 	MapTip1_10();
 }
 
@@ -53,6 +54,7 @@ void MapManager::Draw(ViewProjection view)
 		{
 			if (MapManager::GetInstance()->NowMaptip_[y][x] == DART)
 			{
+				MapManager::GetInstance()->block_[y][x].model->SetTexHandle(MapManager::GetInstance()->StartTexHandle_);
 				MapManager::GetInstance()->block_[y][x].model->Draw(MapManager::GetInstance()->block_[y][x].worldTransform, view);				
 			}
 		
