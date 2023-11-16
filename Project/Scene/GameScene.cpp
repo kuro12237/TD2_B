@@ -14,6 +14,11 @@ void GameScene::Update(GameManager* Scene)
 		{
 			SceneChange::ChangeStart();
 		}
+
+		if (ImGui::Checkbox("StageSlect", &flag))
+		{
+			SlectScene::Updata();
+		}
 		
 		ImGui::TreePop();
 	}

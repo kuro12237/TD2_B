@@ -5,7 +5,7 @@
 #include"../DebugTools/Camera/DebugCamera.h"
 #include"GameScene.h"
 #include"Title/TitleScene.h"
-
+#include"SlectStage/SlectStage.h"
 
 class GameManager
 {

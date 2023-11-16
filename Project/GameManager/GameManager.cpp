@@ -40,6 +40,7 @@ void GameManager::Run()
 		
 		SceneChange::Draw();
 		
+
 		Cleyera::EndFlame();
 	}
 }

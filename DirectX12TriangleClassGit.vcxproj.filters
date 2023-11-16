@@ -291,7 +291,6 @@
     <ClCompile Include="Project\GameObject\SceneChange\SceneChange.cpp">
       <Filter>Project\GameObject\SceneChange</Filter>
     </ClCompile>
-    <ClCompile Include="SlectScene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLEYERA\Utility\Pch\Pch.h">
@@ -477,7 +476,6 @@
     <ClInclude Include="Project\GameObject\SceneChange\SceneChange.h">
       <Filter>Project\GameObject\SceneChange</Filter>
     </ClInclude>
-    <ClInclude Include="SlectScene.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Resources\Shader\ShapeObject3d.PS.hlsl">
