@@ -37,17 +37,19 @@ void Player::Update()
 	{
 		velocity_.y = -speed;
 	}
+	velocity_.y = velocity_.y + gravity;
+
 	if (Input::PushKeyPressed(DIK_SPACE) && !isJamp)
 	{
 		JampFrame = 0;
-		jampVelocity = { 0,0.1f };
+		jampVelocity = { 0,0.0f };
 		isJamp = true;	
-		velocity_.y = 3;
+		//velocity_.y = 3.0f;
 	}
 
-	//Jamp();
+	Jamp();
 
-	velocity_.y = velocity_.y + gravity;
+	
 	Vector2 v = { velocity_.x,velocity_.y };
 
 
@@ -92,7 +94,15 @@ void Player::Jamp()
 {
 	if (isJamp)
 	{
-		velocity_.y = 1;
+		if (JampFrame < 10)
+		{
+
+			velocity_.y += 0.5f;
+			//velocity_.x = (velocity_.x* JampFrame)*0.5f;
+			//velocity_.y = (0.1f * JampFrame - gravity * JampFrame)*0.5f;
+			JampFrame++;
+		}
+		
 	}
 }
 
