@@ -19,7 +19,7 @@ public:
 
 	void Move();
 
-	void SetPlayerVelocity(Vector3 v) { playerVelocity_ = v; }
+	void SetPlayerVelocity(Vector3 v);
 
 	void RightCollision()override;
 	void LeftCollision()override;
@@ -39,5 +39,6 @@ private:
 	Vector3 playerVelocity_ = {};
 	float gravity = -0.1f;
 
-	bool isHitWall = false;
+	bool isHitWall=false;
+	bool isHit_ = false;
 };
