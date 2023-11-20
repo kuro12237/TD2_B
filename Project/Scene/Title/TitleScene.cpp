@@ -25,12 +25,20 @@ void TitleScene::Update(GameManager* Scene)
 		{
 			SceneChange::ChangeStart();
 		}
+
+		if (ImGui::Checkbox("StageSlect",&flag))
+		{
+			slectScene_->Flont2dSpriteDraw();
+		}
+
+
 		ImGui::TreePop();
 	}
 	
 	if (SceneChange::GetScenChangeFlag())
 	{
 		Scene->ChangeState(new GameScene);
+		Scene->ChangeState(new SlectStage);
 		return;
 	}
 

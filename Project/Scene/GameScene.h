@@ -5,7 +5,8 @@
 #include"LogManager.h"
 #include"GameObject/SceneChange/SceneChange.h"
 #include"Scene/Title/TitleScene.h"
-#include"SlectStage/SlectStage.h"
+
+
 class GameScene :public IScene
 {
 public:

@@ -3,6 +3,9 @@
 #include"GameManager.h"
 #include"GameObject/SceneChange/SceneChange.h"
 #include"Model.h"
+#include"SlectScene/SlectScene.h"
+#include "../../../../../../../../../kogakuin/TD_B/Project/SlectScene/SlectScene.h"
+
 
 class TitleScene : public IScene
 {
@@ -25,4 +28,6 @@ private:
 	const string SceneName = "TitleScene";
 	unique_ptr<Model>model_ = nullptr;
 	WorldTransform worldTransform_{};
+
+	SlectStage* slectScene_ = nullptr;
 };

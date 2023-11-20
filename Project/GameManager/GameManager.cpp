@@ -39,7 +39,7 @@ void GameManager::Run()
 		Scene_->Flont2dSpriteDraw();
 		
 		SceneChange::Draw();
-		
+	
 
 		Cleyera::EndFlame();
 	}

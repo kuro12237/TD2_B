@@ -25,6 +25,7 @@
     <None Include="Resources\Shader\SpriteObject3d.hlsli" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\..\..\..\..\kogakuin\TD_B\Project\SlectScene\SlectScene.cpp" />
     <ClCompile Include="CLEYERA\Audio\AudioDataResource.cpp" />
     <ClCompile Include="CLEYERA\Audio\AudioManager.cpp" />
     <ClCompile Include="CLEYERA\base\DX\DirectXCommon.cpp" />
@@ -87,6 +88,7 @@
     <ClCompile Include="Project\Scene\Title\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="..\..\..\..\..\..\kogakuin\TD_B\Project\SlectScene\SlectScene.h" />
     <ClInclude Include="CLEYERA\Audio\AudioDataResource.h" />
     <ClInclude Include="CLEYERA\Audio\AudioManager.h" />
     <ClInclude Include="CLEYERA\base\DX\DirectXCommon.h" />
