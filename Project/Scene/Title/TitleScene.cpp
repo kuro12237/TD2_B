@@ -26,7 +26,7 @@ void TitleScene::Update(GameManager* Scene)
 			SceneChange::ChangeStart();
 		}
 
-		if (ImGui::Checkbox("StageSlect",&flag))
+		if (Input::GetInstance()->PushKey(DIKEYBOARD_SPACE))
 		{
 			slectScene_->Flont2dSpriteDraw();
 		}
@@ -38,8 +38,12 @@ void TitleScene::Update(GameManager* Scene)
 	if (SceneChange::GetScenChangeFlag())
 	{
 		Scene->ChangeState(new GameScene);
-		Scene->ChangeState(new SlectStage);
 		return;
+	}
+
+	if (SceneChange::GetScenChangeFlag())
+	{
+		Scene->ChangeState(new SlectStage);
 	}
 
 	worldTransform_.UpdateMatrix();

@@ -4,7 +4,7 @@
 #include"GameObject/SceneChange/SceneChange.h"
 #include"Model.h"
 #include"SlectScene/SlectScene.h"
-#include "../../../../../../../../../kogakuin/TD_B/Project/SlectScene/SlectScene.h"
+#include "SlectScene/SlectScene.h"
 
 
 class TitleScene : public IScene
