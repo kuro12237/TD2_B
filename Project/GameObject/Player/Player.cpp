@@ -86,6 +86,7 @@ void Player::Move()
 
 	isHit_ = false;
 	
+	
 	worldTransform_.translate = VectorTransform::Add(worldTransform_.translate, velocity_);
 	worldTransform_.UpdateMatrix();
 
@@ -113,18 +114,22 @@ void Player::LeftCollision()
 void Player::TopCollision()
 {
 	velocity_.y = 0;
+
 }
 
 void Player::DownCollision()
 {
 	velocity_.y = 0;
-	isJamp = false;
+	if (velocity_.y == 0.0f)
+	{
+		isJamp = false;
+	}
 }
 
 void Player::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
 	isHit_ = true;
-	isJamp = false;
+	//isJamp = false;
 	position, velocity;
 	overlap;
 	//velocity_.y += overlap.y;
@@ -171,8 +176,13 @@ void Player::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
 
 	overlap, position, velocity;
+	
 
 	velocity_.y += overlap.y;
+	if (velocity_.y < 0.0f)
+	{
+		isJamp = false;
+	}
 	LogManager::Log("TopHit\n");
 	
 
@@ -180,7 +190,9 @@ void Player::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 
 void Player::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
-
+	
+	
+	
 	velocity_.y -= overlap.y;
 	overlap, position, velocity;
 
