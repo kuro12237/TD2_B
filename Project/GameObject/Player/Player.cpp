@@ -18,9 +18,6 @@ void Player::GravityUpdate()
 	velocity_ = {};
 	velocity_.y = velocity_.y + gravity;
 
-	Vector2 v = { velocity_.x,velocity_.y };
-
-	
 }
 
 void Player::Update()
@@ -119,8 +116,15 @@ void Player::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
 	overlap, position, velocity;
-
 	velocity_.x += overlap.x;
+	if (velocity.x > 0)
+	{
+		
+		velocity_.x = 0;
+		return;
+		
+	}
+
 	
 	LogManager::Log("HitLeft!!\n");
 }
@@ -128,8 +132,16 @@ void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity
 void Player::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
 	overlap, position, velocity;
-
 	velocity_.x -= overlap.x;
+
+	if (velocity.x > 0)
+	{
+
+		//velocity_.x = 0;
+		return;
+
+	}
+	
 		
 	LogManager::Log("HitRight!!\n");
 }
@@ -137,7 +149,7 @@ void Player::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocit
 void Player::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
 	overlap, position, velocity;
-	
+
 	velocity_.y += overlap.y;
 	LogManager::Log("TopHit\n");
 	
@@ -145,6 +157,7 @@ void Player::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 
 void Player::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
+	velocity_.y -= overlap.y;
 	overlap, position, velocity;
 }
 

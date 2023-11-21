@@ -116,12 +116,16 @@ void CollisionManager::CheckBoxCollisionPair(BoxCollider* cA, BoxCollider* cB)
 			//return;
 		}
 	
-
-		if (chackABoxTopCollision(cA->GetWorldPosition(), aabbA, cB->GetWorldPosition(), aabbB))
+		//上
+		if (checkABoxTopCollision(cA->GetWorldPosition(), aabbA, cB->GetWorldPosition(), aabbB))
 		{
 			cA->OnTopCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity());
 			cB->OnTopCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity());
-
+		}
+		else if(checkABoxDownCollision(cA->GetWorldPosition(),aabbA,cB->GetWorldPosition(),aabbB))
+		{
+			cA->OnDownCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity());
+			cB->OnDownCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity());
 		}
 		
 
@@ -161,11 +165,22 @@ bool CollisionManager::checkABoxLeftCoollision(Vector3 v1,AABB aabb1, Vector3 v2
 	return false;
 }
 
-bool CollisionManager::chackABoxTopCollision(Vector3 v1,AABB aabb1, Vector3 v2,AABB aabb2)
+bool CollisionManager::checkABoxTopCollision(Vector3 v1,AABB aabb1, Vector3 v2,AABB aabb2)
 {
 	v1, v2;
 	aabb1, aabb2;
 	if (v1.y + aabb1.min.y  < v2.y + aabb2.max.y && v1.x > v2.x - 0.9f && v1.x < v2.x + 0.9f)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool CollisionManager::checkABoxDownCollision(Vector3 v1, AABB aabb1, Vector3 v2, AABB aabb2)
+{
+	v1, v2;
+	aabb1, aabb2;
+	if (v1.y + aabb1.max.y  < v2.y + aabb2.min.y && v1.x > v2.x - 0.9f && v1.x < v2.x + 0.9f)
 	{
 		return true;
 	}

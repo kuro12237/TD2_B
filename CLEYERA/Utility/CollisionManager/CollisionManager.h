@@ -25,8 +25,8 @@ private:
 	bool checkABoxRightCollision(Vector3 v1,AABB aabb1,Vector3 v2 , AABB aabb2);
 	bool checkABoxLeftCoollision(Vector3 v1, AABB aabb1, Vector3 v2, AABB aabb2);
 
-	bool chackABoxTopCollision(Vector3 v1,AABB aabb1,Vector3 v2, AABB aabb2);
-
+	bool checkABoxTopCollision(Vector3 v1,AABB aabb1,Vector3 v2, AABB aabb2);
+	bool checkABoxDownCollision(Vector3 v1, AABB aabb1, Vector3 v2, AABB aabb2);
 
 	Vector3 calculateBoxOverlap(Vector3& v1, AABB& aabb1, Vector3& v2, AABB& aabb2);
 
