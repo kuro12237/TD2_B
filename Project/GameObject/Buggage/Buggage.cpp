@@ -1,6 +1,6 @@
 #include "Buggage.h"
 
-void Buggage::Initialize(Vector3 position)
+void Buggage::Initialize(Vector3 position, uint32_t Attubte, uint32_t Mask)
 {
 	model_ = make_unique<Model>();
 	uint32_t tex = TextureManager::LoadTexture("Resources/uvChecker.png");
@@ -10,8 +10,8 @@ void Buggage::Initialize(Vector3 position)
 	worldTransform_.translate = position;
 	worldTransform_.UpdateMatrix();
 
-	SetCollosionAttribute(kCollisionAttributeEnemy);
-	SetCollisionMask(kCollisionMaskEnemy);
+	SetCollosionAttribute(Attubte);
+	SetCollisionMask(Mask);
 }
 
 void Buggage::Update()
@@ -23,13 +23,11 @@ void Buggage::Update()
 		ImGui::TreePop();
 	}
 
-
+	
 	if (!isHit_)
 	{
 		velocity_.x = 0;
 	}
-	isHitWall = false;
-	isHit_ = false;
 	
 	velocity_.y = velocity_.y + gravity;
 
@@ -38,8 +36,9 @@ void Buggage::Update()
 	v.y = velocity_.y;
 
 	SetVelocity(v);
+	SetBoxVelocity(velocity_);
 	SetRadious(0.5f);
-	worldTransform_.UpdateMatrix();
+
 }
 
 void Buggage::Draw(ViewProjection view)
@@ -49,7 +48,9 @@ void Buggage::Draw(ViewProjection view)
 
 void Buggage::Move()
 {
+	isHit_ = false;
 	worldTransform_.translate = VectorTransform::Add(worldTransform_.translate, velocity_);
+	worldTransform_.UpdateMatrix();
 }
 
 void Buggage::SetPlayerVelocity(Vector3 v)
@@ -58,6 +59,11 @@ void Buggage::SetPlayerVelocity(Vector3 v)
 	{
 		playerVelocity_ = v;
 	}
+}
+
+void Buggage::SetPlayerPosition(Vector3 v)
+{
+	playerPos_ = v;
 }
 
 void Buggage::RightCollision()
@@ -85,15 +91,22 @@ void Buggage::DownCollision()
 	velocity_.y = 0;
 	playerVelocity_.y = 0;
 	//isHitWall = false;
+
 };
 
-void Buggage::OnCollision()
+void Buggage::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
 	isHit_ = true;
 
-	if (!isHitWall)
+	if (position.y + 0.3f >= worldTransform_.translate.y &&
+		position.y - 0.3f <= worldTransform_.translate.y)
 	{
-		velocity_ = playerVelocity_;
+
+		velocity_.x = velocity.x;
+
+		velocity_.x += overlap.x;
+
+
 	}
-	
+
 }

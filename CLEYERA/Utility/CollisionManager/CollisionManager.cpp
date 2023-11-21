@@ -89,8 +89,14 @@ void CollisionManager::CheckBoxCollisionPair(BoxCollider* cA, BoxCollider* cB)
 	AABB aabbB = cB->GetAABB();
 
 	if (CheckBoxCollision(cApos, aabbA, cBpos, aabbB)) {
-		cA->OnCollision();
-		cB->OnCollision();
+
+		Vector3 oA{}, oB{};
+
+		oA = calculateBoxOverlap(cApos, aabbA,cBpos,aabbB);
+		oB = calculateBoxOverlap(cBpos, aabbB, cApos, aabbA);
+
+		cA->OnCollision(oB,cB->GetWorldPosition(), cB->GetBoxVelocity());
+		cB->OnCollision(oA,cA->GetWorldPosition(), cA->GetBoxVelocity());
 	}
 
 }
@@ -106,4 +112,14 @@ bool CollisionManager::CheckBoxCollision(Vector3 v1, AABB aabb1, Vector3 v2, AAB
 	return false;
 }
 
-
+Vector3 CollisionManager::calculateBoxOverlap(Vector3& v1, AABB& aabb1, Vector3& v2, AABB& aabb2)
+{
+	Vector3 overlap;
+    overlap.x = min<float>(v1.x + aabb1.max.x - v2.x - aabb2.min.x, v2.x + aabb2.max.x - v1.x - aabb1.min.x);
+    overlap.y = min<float>(v1.y + aabb1.max.y - v2.y - aabb2.min.y, v2.y + aabb2.max.y - v1.y - aabb1.min.y);
+    overlap.z = min<float>(v1.z + aabb1.max.z - v2.z - aabb2.min.z, v2.z + aabb2.max.z - v1.z - aabb1.min.z);
+   	overlap.x = max<float>(overlap.x, 0.0);
+    overlap.y = max<float>(overlap.y, 0.0);
+    overlap.z = max<float>(overlap.z, 0.0);
+    return overlap;
+}

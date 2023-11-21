@@ -11,7 +11,7 @@ public:
 	Buggage() {};
 	~Buggage() {};
 
-	void Initialize(Vector3 position);
+	void Initialize(Vector3 position,uint32_t Attubte,uint32_t Mask);
 
 	void Update();
 
@@ -20,6 +20,7 @@ public:
 	void Move();
 
 	void SetPlayerVelocity(Vector3 v);
+	void SetPlayerPosition(Vector3 v);
 
 	void RightCollision()override;
 	void LeftCollision()override;
@@ -28,7 +29,7 @@ public:
 	void DownCollision()override;
 
 	Vector3 GetWorldPosition()override { return worldTransform_.translate; }
-	void OnCollision()override;
+	void OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
 
 
 private:
@@ -36,7 +37,10 @@ private:
 	unique_ptr<Model>model_ = nullptr;
 	WorldTransform worldTransform_ = {};
 	Vector3 velocity_ = {};
+	
 	Vector3 playerVelocity_ = {};
+	Vector3 playerPos_ = {};
+
 	float gravity = -0.1f;
 
 	bool isHitWall=false;

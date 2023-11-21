@@ -29,7 +29,8 @@ public:
 	void TopCollision()override;
 	void DownCollision()override;
 
-	void OnCollision()override;
+	void OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
+	
 
 private:
 
@@ -50,5 +51,6 @@ private:
 	uint32_t JampFrame = 0;
 	Vector2 jampVelocity = {};
 
+	bool isHit_ = false;
 };
 

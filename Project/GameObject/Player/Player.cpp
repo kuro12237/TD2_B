@@ -23,12 +23,12 @@ void Player::Update()
 		ImGui::TreePop();
 	}
 	velocity_ = {};
-
+	
 	if (Input::PushKey(DIK_A))
 	{
 		velocity_.x = -speed;
 	}
-	if (Input::PushKey(DIK_D))
+	else if (Input::PushKey(DIK_D))
 	{
 		velocity_.x = speed;
 	}
@@ -55,16 +55,21 @@ void Player::Update()
 	
 	Vector2 v = { velocity_.x,velocity_.y };
 
-
+	SetBoxVelocity(velocity_);
 	SetVelocity(v);
 	SetRadious(0.5f);
-	worldTransform_.UpdateMatrix();
+
 
 }
 
 void Player::Move()
 {
+
+	isHit_ = false;
+	
 	worldTransform_.translate = VectorTransform::Add(worldTransform_.translate, velocity_);
+	worldTransform_.UpdateMatrix();
+
 }
 
 void Player::Draw(ViewProjection view)
@@ -93,20 +98,24 @@ void Player::DownCollision()
 	isJamp = false;
 }
 
-void Player::OnCollision()
+void Player::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
+	isHit_ = true;
+	isJamp = false;
+	position, velocity;
+	
+	velocity_.y += overlap.y;
+
+	velocity_.x += overlap.x;
+	
 }
 
 void Player::Jamp()
 {
-	if (isJamp)
+	if (JampFrame < 10)
 	{
-		if (JampFrame < 10)
-		{
-         	velocity_.y += 0.5f;
-			JampFrame++;
-		}
-		
+         velocity_.y += 0.5f;
+		JampFrame++;
 	}
 }
 

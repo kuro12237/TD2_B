@@ -26,7 +26,7 @@ public:
 private:
 	
 	unique_ptr<Player>player_ = nullptr;
-	unique_ptr<Buggage>buggage_ = nullptr;
+	list<shared_ptr<Buggage>>buggages_ ;
 
 
 	ViewProjection viewProjection_{};
