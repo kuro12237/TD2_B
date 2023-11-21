@@ -26,12 +26,6 @@ void TitleScene::Update(GameManager* Scene)
 			SceneChange::ChangeStart();
 		}
 
-		if (Input::GetInstance()->PushKey(DIKEYBOARD_SPACE))
-		{
-			slectScene_->Flont2dSpriteDraw();
-		}
-
-
 		ImGui::TreePop();
 	}
 	
@@ -41,10 +35,13 @@ void TitleScene::Update(GameManager* Scene)
 		return;
 	}
 
-	if (SceneChange::GetScenChangeFlag())
+	if (Input::GetInstance()->PushKeyPressed(DIK_SPACE))
 	{
 		Scene->ChangeState(new SlectStage);
+		return;
 	}
+		
+
 
 	worldTransform_.UpdateMatrix();
 
