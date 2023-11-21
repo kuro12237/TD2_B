@@ -113,16 +113,29 @@ void Buggage::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 
 void Buggage::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
+	overlap;
+	position;
+	velocity;
+
 }
 
 void Buggage::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
+	overlap;
+	position;
+	velocity;
 }
 
 void Buggage::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
+	overlap;
+	position;
+	velocity;
 }
 
 void Buggage::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
+	overlap;
+	position;
+	velocity;
 }
