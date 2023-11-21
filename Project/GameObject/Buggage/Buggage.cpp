@@ -97,32 +97,39 @@ void Buggage::DownCollision()
 void Buggage::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
 	isHit_ = true;
+	velocity;
+	position;
+	overlap;
 
 	if (position.y + 0.3f >= worldTransform_.translate.y &&
 		position.y - 0.3f <= worldTransform_.translate.y)
 	{
-
-		velocity_.x = velocity.x;
-
-		velocity_.x -= overlap.x;
-
-
 	}
 
 }
 
-void Buggage::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
-{
-}
-
 void Buggage::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
+	overlap, position, velocity;
+
+	velocity_.x += overlap.x;
+	
+}
+
+void Buggage::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+{
+	overlap, position, velocity;
+	
+	velocity_.x -= overlap.x;
+	
 }
 
 void Buggage::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
+	overlap, position, velocity;
 }
 
 void Buggage::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
+	overlap, position, velocity;
 }

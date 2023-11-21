@@ -90,13 +90,42 @@ void CollisionManager::CheckBoxCollisionPair(BoxCollider* cA, BoxCollider* cB)
 
 	if (CheckBoxCollision(cApos, aabbA, cBpos, aabbB)) {
 
-		Vector3 oA{}, oB{};
+		Vector3 oAoverlap{}, oBoverlap{};
 
-		oA = calculateBoxOverlap(cApos, aabbA,cBpos,aabbB);
-		oB = calculateBoxOverlap(cBpos, aabbB, cApos, aabbA);
+		//めり込み計算
+		oAoverlap = calculateBoxOverlap(cApos, aabbA,cBpos,aabbB);
+		oBoverlap = calculateBoxOverlap(cBpos, aabbB, cApos, aabbA);
 
-		cA->OnCollision(oB,cB->GetWorldPosition(), cB->GetBoxVelocity());
-		cB->OnCollision(oA,cA->GetWorldPosition(), cA->GetBoxVelocity());
+
+		cA->OnCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity());
+		cB->OnCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity());
+
+		//右
+	    //Aの右に当たった時Bの左の関数を使う
+		if (checkABoxRightCollision(cA->GetWorldPosition(), aabbA, cB->GetWorldPosition(), aabbB))
+		{
+			cA->OnLeftCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity());
+			cB->OnRightCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity());
+		}
+
+		//左
+		else if (checkABoxLeftCoollision(cA->GetWorldPosition(),aabbA,cB->GetWorldPosition(), aabbB))
+		{
+			cA->OnRightCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity());
+			cB->OnLeftCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity());
+			//return;
+		}
+	
+
+		if (chackABoxTopCollision(cA->GetWorldPosition(), aabbA, cB->GetWorldPosition(), aabbB))
+		{
+			cA->OnTopCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity());
+			cB->OnTopCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity());
+
+		}
+		
+
+
 	}
 
 }
@@ -112,15 +141,34 @@ bool CollisionManager::CheckBoxCollision(Vector3 v1, AABB aabb1, Vector3 v2, AAB
 	return false;
 }
 
-bool CollisionManager::chackBoxLeftCollision(Vector3 v1, AABB aabb1, Vector3 v2, AABB aabb2)
+bool CollisionManager::checkABoxRightCollision(Vector3 v1, AABB aabb1, Vector3 v2, AABB aabb2)
 {
-	if (aabb1.max.x >= aabb2.min.x && aabb1.min.x <= aabb2.max.x && // x軸方向のチェック
-		aabb1.max.y >= aabb2.min.y && aabb1.min.y <= aabb2.max.y && // y軸方向のチェック
-		aabb1.max.z >= aabb2.min.z && aabb1.min.z <= aabb2.max.z)
+	v1, v2;
+	if (v1.x + aabb1.max.x-0.2f > v2.x + aabb2.min.x && v1.y > v2.y - 0.1f&& v1.y < v2.y + 0.1f)
 	{
 		return true;
 	}
+	return false;
+}
 
+bool CollisionManager::checkABoxLeftCoollision(Vector3 v1,AABB aabb1, Vector3 v2,AABB aabb2)
+{
+	v1, v2;
+	if (v1.x + aabb1.min.x +0.2f< v2.x + aabb2.max.x && v1.y > v2.y - 0.1f && v1.y < v2.y + 0.1f)
+	{
+		return true;
+	}
+	return false;
+}
+
+bool CollisionManager::chackABoxTopCollision(Vector3 v1,AABB aabb1, Vector3 v2,AABB aabb2)
+{
+	v1, v2;
+	aabb1, aabb2;
+	if (v1.y + aabb1.min.y  < v2.y + aabb2.max.y && v1.x > v2.x - 0.9f && v1.x < v2.x + 0.9f)
+	{
+		return true;
+	}
 	return false;
 }
 
