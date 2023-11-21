@@ -3,9 +3,9 @@
 void Buggage::Initialize(Vector3 position, uint32_t Attubte, uint32_t Mask)
 {
 	model_ = make_unique<Model>();
-	uint32_t tex = TextureManager::LoadTexture("Resources/uvChecker.png");
-	model_->SetTexHandle(tex);
-	model_->Initialize(new ModelSphereState);
+	//uint32_t tex = TextureManager::LoadTexture("Resources/uvChecker.png");
+	//model_->SetTexHandle(tex);
+	model_->CreateFromObj("Luggage");
 	worldTransform_.Initialize();
 	worldTransform_.translate = position;
 	worldTransform_.UpdateMatrix();
@@ -113,16 +113,28 @@ void Buggage::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 
 void Buggage::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
+	overlap;
+	position;
+	velocity;
 }
 
 void Buggage::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
+	overlap;
+	position;
+	velocity;
 }
 
 void Buggage::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
+	overlap;
+	position;
+	velocity;
 }
 
 void Buggage::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
+	overlap;
+	position;
+	velocity;
 }
