@@ -24,9 +24,16 @@ void Buggage::Update()
 	{
 		ImGui::Text("position %f %f %f", worldTransform_.translate.x, worldTransform_.translate.y, worldTransform_.translate.z);
 		ImGui::Text("Velocity %f %f %f", velocity_.x, velocity_.y, velocity_.z);
+		
 		ImGui::TreePop();
 	}
-
+	
+	if (ImGui::TreeNode("BaggageSelect"))
+	{
+		ImGui::Text("G Select");
+		ImGui::Text("J warp");
+		ImGui::TreePop();
+	}
 	
 
 	if (!isHit_)
