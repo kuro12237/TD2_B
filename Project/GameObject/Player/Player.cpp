@@ -24,6 +24,13 @@ void Player::Initialize()
 	
 }
 
+void Player::GravityUpdate()
+{
+	velocity_ = {};
+	velocity_.y = velocity_.y + gravity;
+
+}
+
 void Player::Update()
 {
 
@@ -33,7 +40,7 @@ void Player::Update()
 		ImGui::SliderFloat("speed", &speed,-1.0f,1.0f);
 		ImGui::TreePop();
 	}
-	velocity_ = {};
+	
 	
 	if (Input::PushKey(DIK_A))
 	{
@@ -54,8 +61,7 @@ void Player::Update()
 	{
 		velocity_.y = -speed;
 	}
-	velocity_.y = velocity_.y + gravity;
-
+	
 	if (Input::PushKeyPressed(DIK_SPACE) && !isJamp)
 	{
 		JampFrame = 0;
@@ -65,7 +71,7 @@ void Player::Update()
 
 	Jamp();
 
-	
+
 	Vector2 v = { velocity_.x,velocity_.y };
 
 	SetBoxVelocity(velocity_);
@@ -120,19 +126,42 @@ void Player::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 	isHit_ = true;
 	isJamp = false;
 	position, velocity;
-	
-	velocity_.y += overlap.y;
+	overlap;
+	//velocity_.y += overlap.y;
+}
 
+void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+{
+	overlap, position, velocity;
 	velocity_.x += overlap.x;
+	if (velocity.x > 0)
+	{
+		
+		velocity_.x = 0;
+		return;
+		
+	}
+
 	
+	LogManager::Log("HitLeft!!\n");
 }
 
 void Player::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
 
-	overlap;
-	position;
-	velocity;
+	overlap, position, velocity;
+	velocity_.x -= overlap.x;
+
+	if (velocity.x > 0)
+	{
+
+		//velocity_.x = 0;
+		return;
+
+	}
+	
+		
+	LogManager::Log("HitRight!!\n");
 
 }
 
@@ -141,20 +170,26 @@ void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity
 	overlap;
 	position;
 	velocity;
+
 }
 
 void Player::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
-	overlap;
-	position;
-	velocity;
+
+	overlap, position, velocity;
+
+	velocity_.y += overlap.y;
+	LogManager::Log("TopHit\n");
+	
+
 }
 
 void Player::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
-	overlap;
-	position;
-	velocity;
+
+	velocity_.y -= overlap.y;
+	overlap, position, velocity;
+
 }
 
 void Player::Jamp()

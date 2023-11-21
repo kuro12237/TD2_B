@@ -14,6 +14,8 @@ public:
 
 	void Initialize();
 
+	void GravityUpdate();
+
 	void Update();
 
 	void Move();

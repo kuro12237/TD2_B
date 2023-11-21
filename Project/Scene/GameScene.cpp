@@ -29,9 +29,9 @@ void GameScene::Initialize()
 	buggages_.push_back(buggageA);
 
 	shared_ptr<Buggage> buggageB = make_shared<Buggage>();
-	buggageB->Initialize({ 5,7,0 },kCollisionAttributeEnemy2,kCollisionMaskEnemy2);
+	buggageB->Initialize({ 7,7,0 },kCollisionAttributeEnemy2,kCollisionMaskEnemy2);
 
-	//buggages_.push_back(buggageB);
+	buggages_.push_back(buggageB);
 }
 
 void GameScene::Update(GameManager* Scene)
@@ -126,24 +126,28 @@ void GameScene::Update(GameManager* Scene)
 		return;
 	}
 
-	player_->Update();
+	player_->GravityUpdate();
 
+	//objectの当たり判定
 	collisionManager_->ClliderClear();
-	
 	collisionManager_->BoxColliderPush(player_.get());
-
-	for(shared_ptr<Buggage> &buggage : buggages_)
+	for (shared_ptr<Buggage>& buggage : buggages_)
 	{
 		collisionManager_->BoxColliderPush(buggage.get());
 	}
-
 	collisionManager_->CheckAllCollision();
+
+
+	player_->Update();
+
 
 	for (shared_ptr<Buggage>& buggage : buggages_)
 	{
 		buggage->Update();
 	}
 	
+
+	//Mapの当たり判定
 	MapManager::Update();
 	mapCollisionManager_->ClearList();
 	mapCollisionManager_->AddCollider(player_.get());
