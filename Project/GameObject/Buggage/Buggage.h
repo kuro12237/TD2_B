@@ -5,7 +5,7 @@
 #include"BoxCollider.h"
 #include"Collider/ColliderConfig.h"
 #include"Input.h"
-
+#include"GameObject/MapManager/MapManager.h"
 class Buggage:public MapCollider,public BoxCollider
 {
 public:

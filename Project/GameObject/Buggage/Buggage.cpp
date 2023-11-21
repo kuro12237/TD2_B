@@ -50,12 +50,28 @@ void Buggage::Update()
 	{
 		if (Input::PushKeyPressed(DIK_J))
 		{
-			worldTransform_.translate = playerPos_;
-			worldTransform_.translate.x += 1;
-			isHitWall = false;
-			isBuggageSelect = false;
-			isSelect = false;
-			model_->SetColor({ 1,1,1,1 });
+
+			array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map = MapManager::GetNowMapTip();
+
+			//マップチップ反転Y
+			for (int i = 0; i < MapTip_MAX_Y; i++)
+			{
+				for (int j = 0; j < MapTip_MAX_X; j++)
+				{
+					i,j;
+					map[MapTip_MAX_Y - i - 1][j] = MapManager::GetNowMapTip()[i][j];
+				}
+			}
+			if (map[(int)(playerPos_.y)][(int)(playerPos_.x)+2] == AIR)
+			{
+				worldTransform_.translate = playerPos_;
+				worldTransform_.translate.x += 1;
+
+				isHitWall = false;
+				isBuggageSelect = false;
+				isSelect = false;
+				model_->SetColor({ 1,1,1,1 });
+			}
 		}
 	}
 
@@ -128,10 +144,6 @@ void Buggage::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 	position;
 	overlap;
 
-	if (position.y + 0.3f >= worldTransform_.translate.y &&
-		position.y - 0.3f <= worldTransform_.translate.y)
-	{
-	}
 
 }
 
