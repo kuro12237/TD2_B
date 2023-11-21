@@ -19,6 +19,19 @@ void GameScene::Initialize()
 
 	mapCollisionManager_ = make_unique<MapCollisionManager>();
 	MapManager::SetSelectMap(2);
+
+	collisionManager_ = make_unique<CollisionManager>();
+
+	
+	shared_ptr<Buggage> buggageA = make_shared<Buggage>();
+	buggageA->Initialize({ 10,5,0 },kCollisionAttributeEnemy,kCollisionMaskEnemy);
+
+	buggages_.push_back(buggageA);
+
+	shared_ptr<Buggage> buggageB = make_shared<Buggage>();
+	buggageB->Initialize({ 5,7,0 },kCollisionAttributeEnemy2,kCollisionMaskEnemy2);
+
+	//buggages_.push_back(buggageB);
 }
 
 void GameScene::Update(GameManager* Scene)
@@ -113,15 +126,38 @@ void GameScene::Update(GameManager* Scene)
 		return;
 	}
 
-
 	player_->Update();
+
+	collisionManager_->ClliderClear();
+	
+	collisionManager_->BoxColliderPush(player_.get());
+
+	for(shared_ptr<Buggage> &buggage : buggages_)
+	{
+		collisionManager_->BoxColliderPush(buggage.get());
+	}
+
+	collisionManager_->CheckAllCollision();
+
+	for (shared_ptr<Buggage>& buggage : buggages_)
+	{
+		buggage->Update();
+	}
 	
 	MapManager::Update();
 	mapCollisionManager_->ClearList();
 	mapCollisionManager_->AddCollider(player_.get());
+
+	for (shared_ptr<Buggage>& buggage : buggages_)
+	{
+		mapCollisionManager_->AddCollider(buggage.get());
+	}
 	mapCollisionManager_->ChackAllCollision();
 
-
+	for (shared_ptr<Buggage>& buggage : buggages_)
+	{
+		buggage->Move();
+	}
 
 	player_->Move();
 
@@ -139,6 +175,11 @@ void GameScene::Object3dDraw()
 {
 	DebugTools::DrawExecute(0);
 
+
+	for (shared_ptr<Buggage>& buggage : buggages_)
+	{
+		buggage->Draw(viewProjection_);
+	}
 	player_->Draw(viewProjection_);
 	MapManager::GetInstance()->Draw(viewProjection_);
 }

@@ -47,6 +47,10 @@ private:
 	WorldTransform CenterWorldTransform_{};
 
 	uint32_t StartTexHandle_ = 0;
+	uint32_t GoalTexHandle_ = 0;
+	uint32_t BaggageTexHandle_ = 0;
+	uint32_t BlockDartTex_ = 0;
+	uint32_t LadderTex_ = 0;
 
 #pragma region Singleton
 	MapManager() = default;

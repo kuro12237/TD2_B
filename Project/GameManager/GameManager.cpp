@@ -3,7 +3,7 @@
 GameManager::GameManager()
 {
 	Cleyera::Initialize();
-	Scene_ = new TitleScene();
+	Scene_ = new GameScene();
 	Scene_->Initialize();
 	SceneChange::Initialize();
 }

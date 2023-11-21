@@ -7,6 +7,8 @@
 #include"GameObject/MapManager/MapManager.h"
 #include"GameObject/MapCollisionManager/MapCollisionManager.h"
 #include"GameObject/Player/Player.h"
+#include"GameObject/Buggage/Buggage.h"
+#include"CollisionManager.h"
 
 class GameScene :public IScene
 {
@@ -24,8 +26,12 @@ public:
 private:
 	
 	unique_ptr<Player>player_ = nullptr;
+	list<shared_ptr<Buggage>>buggages_ ;
+
 
 	ViewProjection viewProjection_{};
 	
+
+	unique_ptr<CollisionManager> collisionManager_ = nullptr;
 	unique_ptr<MapCollisionManager> mapCollisionManager_ = nullptr;
 };

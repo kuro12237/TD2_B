@@ -1,27 +1,26 @@
 #pragma once
 #include"Model.h"
 #include"VectorTransform.h"
-#include"Input.h"
 #include"GameObject/MapCollisionManager/MapCollider.h"
 #include"BoxCollider.h"
 #include"Collider/ColliderConfig.h"
 
-class Player:public MapCollider,public BoxCollider
+class Buggage:public MapCollider,public BoxCollider
 {
 public:
-	Player() {};
-	~Player() {};
+	Buggage() {};
+	~Buggage() {};
 
-	void Initialize();
+	void Initialize(Vector3 position,uint32_t Attubte,uint32_t Mask);
 
 	void Update();
 
-	void Move();
-
 	void Draw(ViewProjection view);
 
-	Vector3 GetWorldPosition()override { return worldTransform_.translate; }
-	Vector3 GetVelocity() { return velocity_; }
+	void Move();
+
+	void SetPlayerVelocity(Vector3 v);
+	void SetPlayerPosition(Vector3 v);
 
 	void RightCollision()override;
 	void LeftCollision()override;
@@ -29,34 +28,26 @@ public:
 	void TopCollision()override;
 	void DownCollision()override;
 
+	Vector3 GetWorldPosition()override { return worldTransform_.translate; }
 	void OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
-	
+
 	void OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
 	void OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
 
 	void OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
 	void OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
 
-
 private:
 
-	void Jamp();
-		 
-	void MapCollision();
-
-
-
 	unique_ptr<Model>model_ = nullptr;
-	WorldTransform worldTransform_{};
-
-	float speed = 0.1f;
+	WorldTransform worldTransform_ = {};
 	Vector3 velocity_ = {};
+	
+	Vector3 playerVelocity_ = {};
+	Vector3 playerPos_ = {};
+
 	float gravity = -0.1f;
 
-	bool isJamp = false;
-	uint32_t JampFrame = 0;
-	Vector2 jampVelocity = {};
-
+	bool isHitWall=false;
 	bool isHit_ = false;
 };
-
