@@ -48,7 +48,11 @@ private:
 
 
 
-	unique_ptr<Model>model_ = nullptr;
+	unique_ptr<Model>modelPlayerFace_ = nullptr;
+	unique_ptr<Model>modelPlayerBody_ = nullptr;
+	unique_ptr<Model>modelPlayerHat_ = nullptr;
+	unique_ptr<Model>modelPlayerLeftHand_ = nullptr;
+	unique_ptr<Model>modelPlayerRightHand_ = nullptr;
 	WorldTransform worldTransform_{};
 
 	float speed = 0.1f;

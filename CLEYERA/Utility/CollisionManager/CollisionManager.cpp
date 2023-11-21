@@ -157,6 +157,7 @@ bool CollisionManager::checkABoxRightCollision(Vector3 v1, AABB aabb1, Vector3 v
 
 bool CollisionManager::checkABoxLeftCoollision(Vector3 v1,AABB aabb1, Vector3 v2,AABB aabb2)
 {
+
 	v1, v2;
 	if (v1.x + aabb1.min.x +0.2f< v2.x + aabb2.max.x && v1.y > v2.y - 0.1f && v1.y < v2.y + 0.1f)
 	{
