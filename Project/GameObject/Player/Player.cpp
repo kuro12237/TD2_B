@@ -165,13 +165,7 @@ void Player::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocit
 
 }
 
-void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
-{
-	overlap;
-	position;
-	velocity;
 
-}
 
 void Player::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
