@@ -62,6 +62,7 @@ void Buggage::Update()
 					map[MapTip_MAX_Y - i - 1][j] = MapManager::GetNowMapTip()[i][j];
 				}
 			}
+			//右
 			if (map[(int)(playerPos_.y)][(int)(playerPos_.x)+2] == AIR)
 			{
 				worldTransform_.translate = playerPos_;
