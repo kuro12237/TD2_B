@@ -112,6 +112,18 @@ bool CollisionManager::CheckBoxCollision(Vector3 v1, AABB aabb1, Vector3 v2, AAB
 	return false;
 }
 
+bool CollisionManager::chackBoxLeftCollision(Vector3 v1, AABB aabb1, Vector3 v2, AABB aabb2)
+{
+	if (aabb1.max.x >= aabb2.min.x && aabb1.min.x <= aabb2.max.x && // x軸方向のチェック
+		aabb1.max.y >= aabb2.min.y && aabb1.min.y <= aabb2.max.y && // y軸方向のチェック
+		aabb1.max.z >= aabb2.min.z && aabb1.min.z <= aabb2.max.z)
+	{
+		return true;
+	}
+
+	return false;
+}
+
 Vector3 CollisionManager::calculateBoxOverlap(Vector3& v1, AABB& aabb1, Vector3& v2, AABB& aabb2)
 {
 	Vector3 overlap;

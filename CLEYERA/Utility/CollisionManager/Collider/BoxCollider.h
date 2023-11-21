@@ -23,6 +23,13 @@ public:
 
 	virtual void OnCollision(Vector3 overlap,Vector3 position,Vector3 velocity) = 0;
 
+	virtual void OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity) = 0;
+	virtual void OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity) = 0;
+
+	virtual void OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity) = 0;
+
+	virtual void OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity) = 0;
+
 	virtual Vector3 GetWorldPosition() = 0;
 
 	AABB GetAABB() { return aabb_; };

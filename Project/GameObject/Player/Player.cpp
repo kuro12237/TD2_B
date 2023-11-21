@@ -110,6 +110,22 @@ void Player::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 	
 }
 
+void Player::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+{
+}
+
+void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+{
+}
+
+void Player::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+{
+}
+
+void Player::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+{
+}
+
 void Player::Jamp()
 {
 	if (JampFrame < 10)

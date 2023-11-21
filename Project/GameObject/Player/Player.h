@@ -31,6 +31,12 @@ public:
 
 	void OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
 	
+	void OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
+	void OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
+
+	void OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
+	void OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
+
 
 private:
 
