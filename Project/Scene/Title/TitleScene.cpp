@@ -37,7 +37,9 @@ void TitleScene::Update(GameManager* Scene)
 
 	if (Input::GetInstance()->PushKeyPressed(DIK_SPACE))
 	{
+		SceneChange::ChangeStart();
 		Scene->ChangeState(new SlectStage);
+		
 		return;
 	}
 		

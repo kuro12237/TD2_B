@@ -4,6 +4,10 @@
 #include"VectorTransform.h"
 #include"IScene.h"
 #include"GameObject/SceneChange/SceneChange.h"
+#include"MatrixTransform.h"
+#include"Input/Input.h"
+#define SLECTSTAGE_SPRITE_MAX 40
+
 
 class SlectStage :public IScene
 {
@@ -20,15 +24,26 @@ private:
 
 	uint32_t SpritetexHandle = 0;
 
-	unique_ptr<Sprite>sprite_ = {};
+	uint32_t SlecttexHandle = 0;
 
-	bool DrawFlag = false;
+	bool DrawFlag = true;
 
 	bool isUpdate = false;
 
+	unique_ptr<Sprite>sprite_[SLECTSTAGE_SPRITE_MAX] = {};
+	WorldTransform worldTransform_[SLECTSTAGE_SPRITE_MAX]{};
+
+	unique_ptr<Sprite>Slectsprite_ = nullptr;
+
+	WorldTransform SlectTransform_;
+
 	ViewProjection view{};
 
-	WorldTransform worldTransform_{};
+	bool isStart_ = false;
+
+	bool isEnd_ = false;
 
 	bool SceneChangeFlag = false;
+
+
 };

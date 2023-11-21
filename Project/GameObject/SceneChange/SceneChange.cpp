@@ -15,7 +15,7 @@ void SceneChange::Initialize()
 	{
 		SceneChange::GetInstance()->sprite_[i] = make_unique<Sprite>();
 		SceneChange::GetInstance()->sprite_[i]->SetTexHandle(tex);
-		SceneChange::GetInstance()->sprite_[i]->Initialize(new SpriteBoxState, { 0,0 }, { 128,128 });
+		SceneChange::GetInstance()->sprite_[i]->Initialize(new SpriteBoxState,{ 0,0 }, { 128,128 });
 	}
 
 	int width = 1;
@@ -28,6 +28,7 @@ void SceneChange::Initialize()
 		SceneChange::GetInstance()->worldTransform_[i].scale = { 0,0,0 };
 		SceneChange::GetInstance()->worldTransform_[i].translate = { 128.0f * width-64.0f,128.0f * height-64.0f,0 };
 		SceneChange::GetInstance()->worldTransform_[i].UpdateMatrix();
+
 		width++;
 		if (width % 11 == 0)
 		{
@@ -83,6 +84,7 @@ void SceneChange::Draw()
 		}
     }
 }
+
 
 void SceneChange::ChangeStart()
 {
