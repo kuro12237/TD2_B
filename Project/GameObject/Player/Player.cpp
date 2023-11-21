@@ -2,11 +2,22 @@
 
 void Player::Initialize()
 {
-	model_ = make_unique<Model>();
-	model_->CreateFromObj("TestBox");
+	modelPlayerFace_ = make_unique<Model>();
+	modelPlayerFace_->CreateFromObj("PlayerFace");
+	modelPlayerBody_ = make_unique<Model>();
+	modelPlayerBody_->CreateFromObj("PlayerBody");
+	modelPlayerHat_ = make_unique<Model>();
+	modelPlayerHat_->CreateFromObj("PlayerHat");
+	modelPlayerLeftHand_ = make_unique<Model>();
+	modelPlayerLeftHand_->CreateFromObj("PlayerLeft");
+	modelPlayerRightHand_ = make_unique<Model>();
+	modelPlayerRightHand_->CreateFromObj("PlayerRight");
+	
 	worldTransform_.Initialize();
 	worldTransform_.translate = { 3,5,0 };
-	model_->SetColor({ 0,0,1,1 });
+	worldTransform_.scale = { 0.2f,0.2f,0.2f };
+	worldTransform_.rotation = { 0.0f,-2.0f,0.0f };
+	//model_->SetColor({ 0,0,1,1 });
 
 	SetCollosionAttribute(kCollisionAttributePlayer);
 	SetCollisionMask(kCollisionMaskPlayer);
@@ -27,10 +38,12 @@ void Player::Update()
 	if (Input::PushKey(DIK_A))
 	{
 		velocity_.x = -speed;
+		worldTransform_.rotation.y = 2.0f;
 	}
 	else if (Input::PushKey(DIK_D))
 	{
 		velocity_.x = speed;
+		worldTransform_.rotation.y = -2.0f;
 	}
 
 	if (Input::PushKey(DIK_W))
@@ -74,7 +87,11 @@ void Player::Move()
 
 void Player::Draw(ViewProjection view)
 {
-	model_->Draw(worldTransform_, view);
+	modelPlayerFace_->Draw(worldTransform_, view);
+	modelPlayerBody_->Draw(worldTransform_, view);
+	modelPlayerHat_->Draw(worldTransform_, view);
+	modelPlayerLeftHand_->Draw(worldTransform_, view);
+	modelPlayerRightHand_->Draw(worldTransform_, view);
 }
 
 void Player::RightCollision()
@@ -112,9 +129,11 @@ void Player::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 
 void Player::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
-	 overlap;
-	 position;
-	 velocity;
+
+	overlap;
+	position;
+	velocity;
+
 }
 
 void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
