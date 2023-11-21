@@ -4,6 +4,7 @@
 #include"GameObject/MapCollisionManager/MapCollider.h"
 #include"BoxCollider.h"
 #include"Collider/ColliderConfig.h"
+#include"Input.h"
 
 class Buggage:public MapCollider,public BoxCollider
 {
@@ -20,8 +21,7 @@ public:
 	void Move();
 
 	void SetPlayerVelocity(Vector3 v);
-	void SetPlayerPosition(Vector3 v);
-
+	
 	void RightCollision()override;
 	void LeftCollision()override;
 
@@ -37,7 +37,14 @@ public:
 	void OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
 	void OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
 
+	void SetPlayerPosition(Vector3 pos) { playerPos_ = pos; }
+
 private:
+
+	/// <summary>
+	/// 選択関数
+	/// </summary>
+	void SelectBox();
 
 	unique_ptr<Model>model_ = nullptr;
 	WorldTransform worldTransform_ = {};
@@ -50,4 +57,6 @@ private:
 
 	bool isHitWall=false;
 	bool isHit_ = false;
+
+	bool isSelect = false;
 };

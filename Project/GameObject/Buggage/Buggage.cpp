@@ -1,5 +1,8 @@
 #include "Buggage.h"
 
+
+static bool isBuggageSelect = false;
+
 void Buggage::Initialize(Vector3 position, uint32_t Attubte, uint32_t Mask)
 {
 	model_ = make_unique<Model>();
@@ -16,6 +19,7 @@ void Buggage::Initialize(Vector3 position, uint32_t Attubte, uint32_t Mask)
 
 void Buggage::Update()
 {
+
 	if (ImGui::TreeNode("Baggage"))
 	{
 		ImGui::Text("position %f %f %f", worldTransform_.translate.x, worldTransform_.translate.y, worldTransform_.translate.z);
@@ -24,11 +28,30 @@ void Buggage::Update()
 	}
 
 	
+
 	if (!isHit_)
 	{
 		velocity_.x = 0;
 	}
 	
+	if (isHit_)
+	{
+		SelectBox();
+	}
+
+	if (isSelect)
+	{
+		if (Input::PushKeyPressed(DIK_J))
+		{
+			worldTransform_.translate = playerPos_;
+			worldTransform_.translate.x += 1;
+			isHitWall = false;
+			isBuggageSelect = false;
+			isSelect = false;
+			model_->SetColor({ 1,1,1,1 });
+		}
+	}
+
 	velocity_.y = velocity_.y + gravity;
 
 	Vector2 v{};
@@ -48,6 +71,7 @@ void Buggage::Draw(ViewProjection view)
 
 void Buggage::Move()
 {
+	
 	isHit_ = false;
 	worldTransform_.translate = VectorTransform::Add(worldTransform_.translate, velocity_);
 	worldTransform_.UpdateMatrix();
@@ -61,10 +85,6 @@ void Buggage::SetPlayerVelocity(Vector3 v)
 	}
 }
 
-void Buggage::SetPlayerPosition(Vector3 v)
-{
-	playerPos_ = v;
-}
 
 void Buggage::RightCollision()
 {
@@ -112,22 +132,34 @@ void Buggage::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocit
 {
 
 	overlap, position, velocity;
-	//if (velocity.x > 0)
+	if ( !isHitWall)
 	{
-	//	return;
+		velocity_.x += overlap.x;
 	}
-	velocity_.x += overlap.x;
+	
+	if (isHitWall)
+	{
+		velocity_.x = 0;
+		//isHitWall = false;
+	}
 
 }
 
 void Buggage::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
 	overlap, position, velocity;
-	//if (velocity.x < 0)
+	
+	if (!isHitWall)
 	{
-	//	return;
+		velocity_.x -= overlap.x;
 	}
-	velocity_.x -= overlap.x;
+	
+	if (isHitWall)
+	{
+		velocity_.x = 0;
+		//isHitWall = false;
+	}
+
 }
 
 void Buggage::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
@@ -142,4 +174,17 @@ void Buggage::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocit
 
 	overlap, position, velocity;
 
+}
+
+void Buggage::SelectBox()
+{
+	if (!isSelect&&!isBuggageSelect)
+	{
+		if (Input::PushKeyPressed(DIK_G))
+		{
+			isBuggageSelect = true;
+			isSelect = true;
+			model_->SetColor({ 1,0,0,1 });
+		}
+	}
 }

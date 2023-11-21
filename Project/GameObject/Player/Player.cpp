@@ -132,13 +132,22 @@ void Player::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 	//isJamp = false;
 	position, velocity;
 	overlap;
+
+
 	//velocity_.y += overlap.y;
 }
 
 void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
 	overlap, position, velocity;
-	velocity_.x += overlap.x;
+	if (overlap.x < 0.0f)
+	{
+
+
+
+		velocity_.x += overlap.x;
+	}
+	
 	if (velocity.x > 0)
 	{
 		
@@ -155,8 +164,10 @@ void Player::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocit
 {
 
 	overlap, position, velocity;
-	velocity_.x -= overlap.x;
-
+	if (overlap.x > 0.0f)
+	{
+		velocity_.x -= overlap.x;
+	}
 	if (velocity.x > 0)
 	{
 
@@ -177,8 +188,9 @@ void Player::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 
 	overlap, position, velocity;
 	
-
+	
 	velocity_.y += overlap.y;
+	
 	if (velocity_.y < 0.0f)
 	{
 		isJamp = false;
@@ -207,7 +219,7 @@ void Player::Jamp()
 	}
 }
 
-void Player::MapCollision()
+void Player::SelectBox()
 {
-
+	
 }

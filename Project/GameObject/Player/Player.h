@@ -46,7 +46,7 @@ private:
 		 
 	void MapCollision();
 
-
+	void SelectBox();
 
 	unique_ptr<Model>modelPlayerFace_ = nullptr;
 	unique_ptr<Model>modelPlayerBody_ = nullptr;

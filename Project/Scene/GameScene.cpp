@@ -143,6 +143,7 @@ void GameScene::Update(GameManager* Scene)
 
 	for (shared_ptr<Buggage>& buggage : buggages_)
 	{
+		buggage->SetPlayerPosition(player_->GetWorldPosition());
 		buggage->Update();
 	}
 	
