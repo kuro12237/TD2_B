@@ -10,6 +10,9 @@
 #include"GameObject/Buggage/Buggage.h"
 #include"CollisionManager.h"
 
+#include"GameObject/SkyBox/SkyBox.h"
+#include"GameObject/Ground/Ground.h"
+
 class GameScene :public IScene
 {
 public:

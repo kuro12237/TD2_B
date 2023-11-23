@@ -172,6 +172,9 @@ void GameScene::Update(GameManager* Scene)
 	viewProjection_.UpdateMatrix();
 	DebugTools::UpdateExecute(0);
 
+	SkyBox::Update();
+	Ground::Update();
+
 	viewProjection_ = DebugTools::ConvertViewProjection(viewProjection_);
 }
 
@@ -190,6 +193,9 @@ void GameScene::Object3dDraw()
 	}
 	player_->Draw(viewProjection_);
 	MapManager::GetInstance()->Draw(viewProjection_);
+
+	SkyBox::Draw(viewProjection_);
+	Ground::Draw(viewProjection_);
 }
 
 void GameScene::Flont2dSpriteDraw()

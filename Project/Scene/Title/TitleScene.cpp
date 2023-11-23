@@ -2,6 +2,10 @@
 
 void TitleScene::Initialize()
 {
+	DebugCamera* Camera;
+	Camera= new DebugCamera();
+	Camera->Initialize();
+	DebugTools::addCommand(Camera, "f");
 
 	LogManager::Log(SceneName+"\n");
 	model_ = make_unique<Model>();
@@ -13,6 +17,8 @@ void TitleScene::Initialize()
 
 
 	view.Initialize();
+	view.translation_ = { 0,3,-10 };
+	view.UpdateMatrix();
 }
 
 void TitleScene::Update(GameManager* Scene)
@@ -33,9 +39,15 @@ void TitleScene::Update(GameManager* Scene)
 		return;
 	}
 
+	DebugTools::UpdateExecute(0);
 	worldTransform_.UpdateMatrix();
 
+	SkyBox::Update();
+	Ground::Update();
+	TruckManager::Update();
+
 	view.UpdateMatrix();
+	view = DebugTools::ConvertViewProjection(view);
 }
 
 void TitleScene::Back2dSpriteDraw()
@@ -45,7 +57,12 @@ void TitleScene::Back2dSpriteDraw()
 
 void TitleScene::Object3dDraw()
 {
-	model_->Draw(worldTransform_, view);
+	DebugTools::DrawExecute(0);
+	//model_->Draw(worldTransform_, view);
+	TruckManager::Draw(view);
+
+	SkyBox::Draw(view);
+	Ground::Draw(view);
 }
 
 void TitleScene::Flont2dSpriteDraw()

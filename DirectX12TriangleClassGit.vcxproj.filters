@@ -154,6 +154,15 @@
     <Filter Include="Project\GameObject\Buggage">
       <UniqueIdentifier>{11ebe54f-9a8d-4a9a-9d5f-3510661f629d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\GameObject\SkyDome">
+      <UniqueIdentifier>{decb7369-e369-4435-bd41-34806b7635f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\Ground">
+      <UniqueIdentifier>{7945d6cc-9f6e-491f-a71d-a67ddbf6d230}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\Truck">
+      <UniqueIdentifier>{2f06c32a-cf3d-45f8-865d-ffd7da0ab974}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="CLEYERA\Config\.editorconfig">
@@ -317,6 +326,18 @@
     </ClCompile>
     <ClCompile Include="Project\GameObject\Buggage\Buggage.cpp">
       <Filter>Project\GameObject\Buggage</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\SkyBox\SkyBox.cpp">
+      <Filter>Project\GameObject\SkyDome</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Ground\Ground.cpp">
+      <Filter>Project\GameObject\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Truck\Truck.cpp">
+      <Filter>Project\GameObject\Truck</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Truck\TruckManager.cpp">
+      <Filter>Project\GameObject\Truck</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -523,6 +544,18 @@
     </ClInclude>
     <ClInclude Include="CLEYERA\Utility\CollisionManager\Collider\BoxCollider.h">
       <Filter>CLEYERA\Utility\CollisionManager\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\SkyBox\SkyBox.h">
+      <Filter>Project\GameObject\SkyDome</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Ground\Ground.h">
+      <Filter>Project\GameObject\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Truck\Truck.h">
+      <Filter>Project\GameObject\Truck</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Truck\TruckManager.h">
+      <Filter>Project\GameObject\Truck</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

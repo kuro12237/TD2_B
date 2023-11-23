@@ -3,9 +3,13 @@
 GameManager::GameManager()
 {
 	Cleyera::Initialize();
-	Scene_ = new GameScene();
+	Scene_ = new TitleScene();
 	Scene_->Initialize();
+
 	SceneChange::Initialize();
+	SkyBox::Initialize();
+	Ground::Initialize();
+	TruckManager::Initialize();
 }
 
 GameManager::~GameManager()
