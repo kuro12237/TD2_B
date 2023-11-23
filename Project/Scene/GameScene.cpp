@@ -174,6 +174,7 @@ void GameScene::Update(GameManager* Scene)
 
 	SkyBox::Update();
 	Ground::Update();
+	TruckManager::Update();
 
 	viewProjection_ = DebugTools::ConvertViewProjection(viewProjection_);
 }
@@ -193,6 +194,8 @@ void GameScene::Object3dDraw()
 	}
 	player_->Draw(viewProjection_);
 	MapManager::GetInstance()->Draw(viewProjection_);
+
+	TruckManager::Draw(viewProjection_);
 
 	SkyBox::Draw(viewProjection_);
 	Ground::Draw(viewProjection_);

@@ -12,6 +12,7 @@
 
 #include"GameObject/SkyBox/SkyBox.h"
 #include"GameObject/Ground/Ground.h"
+#include"GameObject/Truck/TruckManager.h"
 
 class GameScene :public IScene
 {
