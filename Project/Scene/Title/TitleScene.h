@@ -3,6 +3,8 @@
 #include"GameManager.h"
 #include"GameObject/SceneChange/SceneChange.h"
 #include"Model.h"
+#include"DebugTools/DebugTools.h"
+
 
 class TitleScene : public IScene
 {

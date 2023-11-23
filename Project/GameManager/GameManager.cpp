@@ -5,7 +5,10 @@ GameManager::GameManager()
 	Cleyera::Initialize();
 	Scene_ = new GameScene();
 	Scene_->Initialize();
+
 	SceneChange::Initialize();
+	SkyBox::Initialize();
+	Ground::Initialize();
 }
 
 GameManager::~GameManager()

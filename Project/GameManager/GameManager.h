@@ -6,6 +6,8 @@
 #include"GameScene.h"
 #include"Title/TitleScene.h"
 
+#include"GameObject/SkyBox/SkyBox.h"
+#include"GameObject/Ground/Ground.h"
 
 class GameManager
 {
