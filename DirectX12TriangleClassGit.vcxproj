@@ -88,6 +88,8 @@
     <ClCompile Include="Project\GameObject\Player\Player.cpp" />
     <ClCompile Include="Project\GameObject\SceneChange\SceneChange.cpp" />
     <ClCompile Include="Project\GameObject\SkyBox\SkyBox.cpp" />
+    <ClCompile Include="Project\GameObject\Truck\Truck.cpp" />
+    <ClCompile Include="Project\GameObject\Truck\TruckManager.cpp" />
     <ClCompile Include="Project\Scene\DebugScene.cpp" />
     <ClCompile Include="Project\Scene\GameScene.cpp" />
     <ClCompile Include="Project\Scene\Title\TitleScene.cpp" />
@@ -159,6 +161,8 @@
     <ClInclude Include="Project\GameObject\Player\Player.h" />
     <ClInclude Include="Project\GameObject\SceneChange\SceneChange.h" />
     <ClInclude Include="Project\GameObject\SkyBox\SkyBox.h" />
+    <ClInclude Include="Project\GameObject\Truck\Truck.h" />
+    <ClInclude Include="Project\GameObject\Truck\TruckManager.h" />
     <ClInclude Include="Project\Scene\DebugScene.h" />
     <ClInclude Include="Project\Scene\GameScene.h" />
     <ClInclude Include="Project\Scene\IScene.h" />

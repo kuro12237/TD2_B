@@ -44,6 +44,8 @@ void TitleScene::Update(GameManager* Scene)
 
 	SkyBox::Update();
 	Ground::Update();
+	TruckManager::Update();
+
 	view.UpdateMatrix();
 	view = DebugTools::ConvertViewProjection(view);
 }
@@ -57,6 +59,8 @@ void TitleScene::Object3dDraw()
 {
 	DebugTools::DrawExecute(0);
 	//model_->Draw(worldTransform_, view);
+	TruckManager::Draw(view);
+
 	SkyBox::Draw(view);
 	Ground::Draw(view);
 }

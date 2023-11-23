@@ -160,6 +160,9 @@
     <Filter Include="Project\GameObject\Ground">
       <UniqueIdentifier>{7945d6cc-9f6e-491f-a71d-a67ddbf6d230}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\GameObject\Truck">
+      <UniqueIdentifier>{2f06c32a-cf3d-45f8-865d-ffd7da0ab974}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="CLEYERA\Config\.editorconfig">
@@ -329,6 +332,12 @@
     </ClCompile>
     <ClCompile Include="Project\GameObject\Ground\Ground.cpp">
       <Filter>Project\GameObject\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Truck\Truck.cpp">
+      <Filter>Project\GameObject\Truck</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Truck\TruckManager.cpp">
+      <Filter>Project\GameObject\Truck</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -541,6 +550,12 @@
     </ClInclude>
     <ClInclude Include="Project\GameObject\Ground\Ground.h">
       <Filter>Project\GameObject\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Truck\Truck.h">
+      <Filter>Project\GameObject\Truck</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Truck\TruckManager.h">
+      <Filter>Project\GameObject\Truck</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
