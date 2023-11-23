@@ -6,6 +6,8 @@
 #include"GameObject/SceneChange/SceneChange.h"
 #include"MatrixTransform.h"
 #include"Input/Input.h"
+#include"GameManager/GameManager.h"
+
 #define SLECTSTAGE_SPRITE_MAX 40
 
 

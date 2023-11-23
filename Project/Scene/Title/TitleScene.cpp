@@ -39,7 +39,6 @@ void TitleScene::Update(GameManager* Scene)
 	{
 		SceneChange::ChangeStart();
 		Scene->ChangeState(new SlectStage);
-		
 		return;
 	}
 		

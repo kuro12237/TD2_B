@@ -4,7 +4,6 @@
 #include"GameObject/SceneChange/SceneChange.h"
 #include"Model.h"
 #include"SlectScene/SlectScene.h"
-#include "SlectScene/SlectScene.h"
 
 
 class TitleScene : public IScene
@@ -29,5 +28,5 @@ private:
 	unique_ptr<Model>model_ = nullptr;
 	WorldTransform worldTransform_{};
 
-	SlectStage* slectScene_ = nullptr;
+	
 };
