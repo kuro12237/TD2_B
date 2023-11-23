@@ -13,11 +13,11 @@ public:
 	Vector2 GetVelocity() { return velocity_; }
 	void SetVelocity(Vector2 v) { velocity_ = v; }
 
-	virtual void RightCollision() = 0;
-	virtual void LeftCollision() = 0;
+	virtual void RightCollision(uint32_t nowMapPos) = 0;
+	virtual void LeftCollision(uint32_t nowMapPos) = 0;
 
-	virtual void TopCollision() = 0;
-	virtual void DownCollision() = 0;
+	virtual void TopCollision(uint32_t nowMapPos) = 0;
+	virtual void DownCollision(uint32_t nowMapPos) = 0;
 
 private:
 

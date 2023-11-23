@@ -114,6 +114,7 @@ void MapManager::CreateModels()
 	MapManager::GetInstance()->WorldCenterModel_->Initialize(new ModelSphereState);
 	MapManager::GetInstance()->CenterWorldTransform_.Initialize();
 	MapManager::GetInstance()->CenterWorldTransform_.scale = { 1,1,1 };
+	MapManager::GetInstance()->CenterWorldTransform_.translate = { 0,0,0 };
 	MapManager::GetInstance()->WorldCenterModel_->SetColor({ 1,0,0,1 });
 	MapManager::GetInstance()->CenterWorldTransform_.UpdateMatrix();
 
@@ -152,7 +153,7 @@ void MapManager::MapTipFileLoad(const string filePath)
 		if (word.find("MapTip") == 0)
 		{
 			y++;
-			for (int x = 0; x < 18; x++)
+			for (int x = 0; x < MapTip_MAX_X; x++)
 			{
 				getline(line_stream, word, ',');
 				Maptip[y][x] = (int)atoi(word.c_str());
@@ -160,20 +161,6 @@ void MapManager::MapTipFileLoad(const string filePath)
 		}
 	
 	}
-
-	int testmap[MapTip_MAX_Y][MapTip_MAX_X]{};
-	
-	for (int i = 0; i < MapTip_MAX_Y; i++)
-	{
-		for (int j = 0; j < MapTip_MAX_X; j++)
-		{
-
-			testmap[i][j] = Maptip[i][j];
-		}
-
-	}
-	testmap;
-
 	SMapData data;
 	data.maptip = Maptip;
 	data.stageNumber = stageNumber;

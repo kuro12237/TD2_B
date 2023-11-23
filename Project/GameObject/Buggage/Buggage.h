@@ -6,6 +6,7 @@
 #include"Collider/ColliderConfig.h"
 #include"Input.h"
 #include"GameObject/MapManager/MapManager.h"
+
 class Buggage:public MapCollider,public BoxCollider
 {
 public:
@@ -22,13 +23,17 @@ public:
 
 	void SetPlayerVelocity(Vector3 v);
 	
-	void RightCollision()override;
-	void LeftCollision()override;
+	void RightCollision(uint32_t nowMapPos)override;
+	void LeftCollision(uint32_t nowMapPos)override;
 
-	void TopCollision()override;
-	void DownCollision()override;
+	void TopCollision(uint32_t nowMapPos)override;
+	void DownCollision(uint32_t nowMapPos)override;
 
 	Vector3 GetWorldPosition()override { return worldTransform_.translate; }
+	void SetIsSelect(bool Selecr);
+	
+	void SetSelectDirection(uint32_t direction) { SelectDirection_ = direction; }
+
 	void OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
 
 	void OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
@@ -38,6 +43,7 @@ public:
 	void OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
 
 	void SetPlayerPosition(Vector3 pos) { playerPos_ = pos; }
+	void SetPlayerWorldTransform(WorldTransform worldTransform) { PlayerWorldTransform_ = worldTransform; }
 
 private:
 
@@ -52,6 +58,7 @@ private:
 	
 	Vector3 playerVelocity_ = {};
 	Vector3 playerPos_ = {};
+	WorldTransform PlayerWorldTransform_ = {};
 
 	float gravity = -0.1f;
 
@@ -59,4 +66,6 @@ private:
 	bool isHit_ = false;
 
 	bool isSelect = false;
+
+	uint32_t SelectDirection_ = Left;
 };

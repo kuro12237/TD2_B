@@ -43,21 +43,26 @@ void MapCollisionManager::Collision(MapCollider* ob1)
 	//左右移動チェック
 	if (CheckLehtRight(map, CubeA, velocity))
 	{
+		uint32_t nowPos = CheckNowPosMapData(map, ob1->GetWorldPosition());
+		nowPos;
 		//右に動いているときのチェック
 		if (velocity.x > 0)
 		{
+			uint32_t p = map[(int)(ob1->GetWorldPosition().y)][(int)(ob1->GetWorldPosition().x + 1.0f+0.1f)];
+			p; 
 			if (!CheckIsRightMove(map, CubeA))
 			{
-				ob1->RightCollision();
-
+				ob1->RightCollision(p);
 			}
 		}
 		//左に動いているときのチェック
 		if (velocity.x < 0)
 		{
+			uint32_t p = map[(int)(ob1->GetWorldPosition().y)][(int)(ob1->GetWorldPosition().x - 1.0f-0.2f)];
+			p;
 			if (!CheckIsLeftMove(map, CubeA))
 			{
-				ob1->LeftCollision();
+				ob1->LeftCollision(p);
 			}
 		}
 	}
@@ -65,20 +70,26 @@ void MapCollisionManager::Collision(MapCollider* ob1)
 	//上下移動チェック
 	if (CheckTopDown(map, CubeA, velocity))
 	{
+		uint32_t nowPos = CheckNowPosMapData(map, ob1->GetWorldPosition());
+		nowPos;
 		//上
 		if (velocity.y > 0)
 		{
+			uint32_t p = map[(int)(ob1->GetWorldPosition().y + 1.0f+0.1f)][(int)(ob1->GetWorldPosition().x)];
 			if (!CheckIsTopMove(map, CubeA))
 			{
-				ob1->TopCollision();
+				//uint32_t p =map[(int)(CubeA.top)][(int)(CubeA.right) + 1];
+				ob1->TopCollision(p);
 			}
 		}
 		//下
 		if (velocity.y < 0)
 		{
+			//uint32_t p = map[(int)(CubeA.down)][(int)(CubeA.right) + 1];
+			uint32_t p = map[(int)(ob1->GetWorldPosition().y - 1.0f-0.2f)][(int)(ob1->GetWorldPosition().x)];
 			if (!CheckIsDownMove(map, CubeA))
 			{
-				ob1->DownCollision();
+				ob1->DownCollision(p);
 			}
 		}
 	}
@@ -88,7 +99,9 @@ void MapCollisionManager::Collision(MapCollider* ob1)
 bool MapCollisionManager::CheckLehtRight(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map,SCebeVertex c, Vector2 velocity)
 {
 	if(map[(int)(c.top)][(int)(c.left + velocity.x)] != 0 || map[(int)(c.top)][(int)(c.right+ velocity.x)] != 0 ||
-	   map[(int)(c.down)][(int)(c.left + velocity.x)] != 0 || map[(int)(c.down)][(int)(c.right+velocity.x)] != 0 )
+	   map[(int)(c.down)][(int)(c.left + velocity.x)] != 0 || map[(int)(c.down)][(int)(c.right+velocity.x)] != 0 
+	
+		)
 	{
 		return true;
 	}
@@ -98,7 +111,8 @@ bool MapCollisionManager::CheckLehtRight(array<array<int, MapTip_MAX_X>, MapTip_
 bool MapCollisionManager::CheckIsRightMove(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map, SCebeVertex c)
 {
 	while (map[(int)(c.top)][(int)(c.left) + 1] == 0 && map[(int)(c.top)][(int)(c.right) + 1] == 0 &&
-		map[(int)c.down][(int)(c.left) + 1] == 0 && map[(int)c.down][(int)(c.right) + 1] == 0)
+		map[(int)c.down][(int)(c.left) + 1] == 0 && map[(int)c.down][(int)(c.right) + 1] == 0
+		)
 	{
 		return true;
 	}
@@ -107,8 +121,9 @@ bool MapCollisionManager::CheckIsRightMove(array<array<int, MapTip_MAX_X>, MapTi
 
 bool MapCollisionManager::CheckIsLeftMove(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map, SCebeVertex c)
 {
-	while (map[(int)(c.top)][(int)(c.left)-1] == 0 && map[(int)(c.top)][(int)(c.right)-1] == 0 && 0 &&
-		map[(int)c.down][(int)(c.left)-1] == 0 && map[(int)c.down][(int)(c.right)-1] == 0)
+	while (map[(int)(c.top)][(int)(c.left)-1] == 0 && map[(int)(c.top)][(int)(c.right)-1] == 0 && 
+		map[(int)c.down][(int)(c.left)-1] == 0 && map[(int)c.down][(int)(c.right)-1] == 0
+		)
 	{
 		return true;
 	}
@@ -118,7 +133,8 @@ bool MapCollisionManager::CheckIsLeftMove(array<array<int, MapTip_MAX_X>, MapTip
 bool MapCollisionManager::CheckTopDown(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map, SCebeVertex c, Vector2 velocity)
 {
 	if (map[(int)(c.top + velocity.y)][(int)(c.left )] != 0 || map[(int)(c.top + velocity.y)][(int)(c.right)] != 0 ||
-		map[(int)(c.down + velocity.y)][(int)(c.left)] != 0 || map[(int)(c.down + velocity.y)][(int)(c.right)] != 0)
+		map[(int)(c.down + velocity.y)][(int)(c.left)] != 0 || map[(int)(c.down + velocity.y)][(int)(c.right)] != 0
+		)
 	{
 		return true;
 	}
@@ -128,7 +144,8 @@ bool MapCollisionManager::CheckTopDown(array<array<int, MapTip_MAX_X>, MapTip_MA
 bool MapCollisionManager::CheckIsTopMove(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map, SCebeVertex c)
 {
 	while (map[(int)(c.top + 1)][(int)(c.left)] == 0 && map[(int)(c.top + 1)][(int)(c.right)] == 0 &&
-		map[(int)(c.down + 1)][(int)(c.left)] == 0 && map[(int)(c.down + 1)][(int)(c.right)] == 0)
+		map[(int)(c.down + 1)][(int)(c.left)] == 0 && map[(int)(c.down + 1)][(int)(c.right)] == 0
+	)
 	{
 		return true;
 	}
@@ -138,9 +155,15 @@ bool MapCollisionManager::CheckIsTopMove(array<array<int, MapTip_MAX_X>, MapTip_
 bool MapCollisionManager::CheckIsDownMove(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map, SCebeVertex c)
 {
 	while (map[(int)(c.top - 1)][(int)(c.left)] == 0 && map[(int)(c.top - 1)][(int)(c.right)] == 0 &&
-		map[(int)(c.down - 1)][(int)(c.left)] == 0 && map[(int)(c.down - 1)][(int)(c.right)] == 0)
+		map[(int)(c.down - 1)][(int)(c.left)] == 0 && map[(int)(c.down - 1)][(int)(c.right)] == 0
+		)
 	{
 		return true;
 	}
 	return false;
+}
+
+uint32_t MapCollisionManager::CheckNowPosMapData(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map,Vector3 pos)
+{
+	return map[(int)(pos.y)][(int)pos.x];
 }

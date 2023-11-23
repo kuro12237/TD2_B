@@ -1,7 +1,8 @@
 #include "Buggage.h"
 
 
-static bool isBuggageSelect = false;
+static bool isBuggagesSelect = false;
+
 
 void Buggage::Initialize(Vector3 position, uint32_t Attubte, uint32_t Mask)
 {
@@ -12,6 +13,7 @@ void Buggage::Initialize(Vector3 position, uint32_t Attubte, uint32_t Mask)
 	worldTransform_.Initialize();
 	worldTransform_.translate = position;
 	worldTransform_.UpdateMatrix();
+
 
 	SetCollosionAttribute(Attubte);
 	SetCollisionMask(Mask);
@@ -58,20 +60,37 @@ void Buggage::Update()
 			{
 				for (int j = 0; j < MapTip_MAX_X; j++)
 				{
-					i,j;
 					map[MapTip_MAX_Y - i - 1][j] = MapManager::GetNowMapTip()[i][j];
 				}
 			}
 			//右
-			if (map[(int)(playerPos_.y)][(int)(playerPos_.x)+2] == AIR)
+			if (SelectDirection_ == Right)
 			{
-				worldTransform_.translate = playerPos_;
-				worldTransform_.translate.x += 1;
+			    if (map[(int)(playerPos_.y)][(int)(playerPos_.x)+2] == AIR)
+				{
+					worldTransform_.translate = playerPos_;
+					worldTransform_.translate.x+=1;
 
-				isHitWall = false;
-				isBuggageSelect = false;
-				isSelect = false;
-				model_->SetColor({ 1,1,1,1 });
+					isHitWall = false;
+					isBuggagesSelect = false;
+					isSelect = false;
+					model_->SetColor({ 1,1,1,1 });
+				}
+			}
+			//左
+			if (SelectDirection_ == Left)
+			{
+				if (map[(int)(playerPos_.y)][(int)(playerPos_.x - 1.1f)] != DART)
+				{
+
+					worldTransform_.translate = playerPos_;
+					worldTransform_.translate.x = playerPos_.x - 1.0f;
+					isHitWall = false;
+					isBuggagesSelect = false;
+					isSelect = false;
+					model_->SetColor({ 1,1,1,1 });
+
+				}
 			}
 		}
 	}
@@ -85,12 +104,12 @@ void Buggage::Update()
 	SetVelocity(v);
 	SetBoxVelocity(velocity_);
 	SetRadious(0.5f);
-
 }
 
 void Buggage::Draw(ViewProjection view)
 {
 	model_->Draw(worldTransform_, view);
+	isHitWall = false;
 }
 
 void Buggage::Move()
@@ -99,6 +118,7 @@ void Buggage::Move()
 	isHit_ = false;
 	worldTransform_.translate = VectorTransform::Add(worldTransform_.translate, velocity_);
 	worldTransform_.UpdateMatrix();
+
 }
 
 void Buggage::SetPlayerVelocity(Vector3 v)
@@ -109,34 +129,48 @@ void Buggage::SetPlayerVelocity(Vector3 v)
 	}
 }
 
-
-void Buggage::RightCollision()
+void Buggage::RightCollision(uint32_t nowMapPos)
 {
+	nowMapPos;
 	velocity_.x = 0;
 	playerVelocity_.x = 0;
 	isHitWall = true;
 };
 
-void Buggage::LeftCollision()
+void Buggage::LeftCollision(uint32_t nowMapPos)
 {
+	nowMapPos;
    velocity_.x = 0; 
    playerVelocity_.x = 0;
    isHitWall = true;
 }
 
-void Buggage::TopCollision()
+void Buggage::TopCollision(uint32_t nowMapPos)
 {
+	nowMapPos;
 	velocity_.y = 0;
 	playerVelocity_.y = 0;
 	//isHitWall = false;
 };
-void Buggage::DownCollision()
+void Buggage::DownCollision(uint32_t nowMapPos)
 {
+	nowMapPos;
 	velocity_.y = 0;
 	playerVelocity_.y = 0;
 	//isHitWall = false;
 
 };
+
+void Buggage::SetIsSelect(bool Selecr)
+{
+	if (Selecr && !isBuggagesSelect&&isHit_)
+	{
+		isSelect = Selecr;
+		isBuggagesSelect = true;
+		model_->SetColor({ 1,0,0,1 });
+
+	}
+}
 
 void Buggage::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
@@ -144,8 +178,6 @@ void Buggage::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 	velocity;
 	position;
 	overlap;
-
-
 }
 
 void Buggage::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
@@ -198,13 +230,5 @@ void Buggage::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocit
 
 void Buggage::SelectBox()
 {
-	if (!isSelect&&!isBuggageSelect)
-	{
-		if (Input::PushKeyPressed(DIK_G))
-		{
-			isBuggageSelect = true;
-			isSelect = true;
-			model_->SetColor({ 1,0,0,1 });
-		}
-	}
+	
 }
