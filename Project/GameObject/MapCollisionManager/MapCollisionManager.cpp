@@ -43,26 +43,26 @@ void MapCollisionManager::Collision(MapCollider* ob1)
 	//左右移動チェック
 	if (CheckLehtRight(map, CubeA, velocity))
 	{
-		uint32_t nowPos = CheckNowPosMapData(map, ob1->GetWorldPosition());
-		nowPos;
+		//uint32_t nowPos = CheckNowPosMapData(map, ob1->GetWorldPosition());
+		//nowPos;
 		//右に動いているときのチェック
 		if (velocity.x > 0)
 		{
-			uint32_t p = map[(int)(ob1->GetWorldPosition().y)][(int)(ob1->GetWorldPosition().x + 1.0f+0.1f)];
-			p; 
+			//uint32_t p = map[(int)(ob1->GetWorldPosition().y)][(int)(ob1->GetWorldPosition().x + 1.0f+0.1f)];
+			//p; 
 			if (!CheckIsRightMove(map, CubeA))
 			{
-				ob1->RightCollision(p);
+				ob1->RightCollision(0);
 			}
 		}
 		//左に動いているときのチェック
 		if (velocity.x < 0)
 		{
-			uint32_t p = map[(int)(ob1->GetWorldPosition().y)][(int)(ob1->GetWorldPosition().x - 1.0f-0.2f)];
-			p;
+			//uint32_t p = map[(int)(ob1->GetWorldPosition().y)][(int)(ob1->GetWorldPosition().x - 1.0f-0.2f)];
+			//p;
 			if (!CheckIsLeftMove(map, CubeA))
 			{
-				ob1->LeftCollision(p);
+				ob1->LeftCollision(0);
 			}
 		}
 	}
@@ -70,26 +70,25 @@ void MapCollisionManager::Collision(MapCollider* ob1)
 	//上下移動チェック
 	if (CheckTopDown(map, CubeA, velocity))
 	{
-		uint32_t nowPos = CheckNowPosMapData(map, ob1->GetWorldPosition());
-		nowPos;
+		//uint32_t nowPos = CheckNowPosMapData(map, ob1->GetWorldPosition());
+		//nowPos;
 		//上
 		if (velocity.y > 0)
 		{
-			uint32_t p = map[(int)(ob1->GetWorldPosition().y + 1.0f+0.1f)][(int)(ob1->GetWorldPosition().x)];
+			
 			if (!CheckIsTopMove(map, CubeA))
 			{
 				//uint32_t p =map[(int)(CubeA.top)][(int)(CubeA.right) + 1];
-				ob1->TopCollision(p);
+				ob1->TopCollision(0);
 			}
 		}
 		//下
 		if (velocity.y < 0)
 		{
-			//uint32_t p = map[(int)(CubeA.down)][(int)(CubeA.right) + 1];
-			uint32_t p = map[(int)(ob1->GetWorldPosition().y - 1.0f-0.2f)][(int)(ob1->GetWorldPosition().x)];
+		
 			if (!CheckIsDownMove(map, CubeA))
 			{
-				ob1->DownCollision(p);
+				ob1->DownCollision(0);
 			}
 		}
 	}
@@ -163,7 +162,10 @@ bool MapCollisionManager::CheckIsDownMove(array<array<int, MapTip_MAX_X>, MapTip
 	return false;
 }
 
-uint32_t MapCollisionManager::CheckNowPosMapData(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map,Vector3 pos)
+SCebeVertex MapCollisionManager::CheckNowPosMapData(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map, SCebeVertex pos)
 {
-	return map[(int)(pos.y)][(int)pos.x];
+	SCebeVertex result;
+	
+
+	return result;
 }
