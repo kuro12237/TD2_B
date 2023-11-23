@@ -22,5 +22,7 @@ private:
 	list<shared_ptr<Truck>>Trucks_;
 
 	uint32_t spownTimer = 0;
-	const uint32_t SpownTimerMax_ = 300;
+	const uint32_t SpownTimerMax_ = 480;
+
+	random_device seedGenerator;
 };

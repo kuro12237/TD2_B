@@ -11,6 +11,7 @@ void TruckManager::Initialize()
 	shared_ptr<Truck>truck = make_shared<Truck>();
 	truck->Initialize();
 	TruckManager::GetInstance()->Trucks_.push_back(truck);
+	
 }
 
 void TruckManager::Update()

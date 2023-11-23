@@ -55,7 +55,7 @@ void Truck::Initialize()
 
 void Truck::Update()
 {
-	if (bodyWorldTransform_.translate.x>=20)
+	if (bodyWorldTransform_.translate.x >= 40)
 	{
 		isAlive = false;
 	}
