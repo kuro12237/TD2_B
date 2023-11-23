@@ -164,8 +164,8 @@ bool MapCollisionManager::CheckIsDownMove(array<array<int, MapTip_MAX_X>, MapTip
 
 SCebeVertex MapCollisionManager::CheckNowPosMapData(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map, SCebeVertex pos)
 {
-	SCebeVertex result;
-	
-
+	SCebeVertex result{};
+	map;
+	pos;
 	return result;
 }
