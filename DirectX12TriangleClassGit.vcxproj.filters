@@ -291,6 +291,9 @@
     <ClCompile Include="Project\GameObject\SceneChange\SceneChange.cpp">
       <Filter>Project\GameObject\SceneChange</Filter>
     </ClCompile>
+    <ClCompile Include="Project\Scene\SlectScene.cpp">
+      <Filter>Project\Scene</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLEYERA\Utility\Pch\Pch.h">
@@ -476,8 +479,8 @@
     <ClInclude Include="Project\GameObject\SceneChange\SceneChange.h">
       <Filter>Project\GameObject\SceneChange</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\..\..\kogakuin\TD_B\Project\SlectScene\SlectScene.h">
-      <Filter>Project</Filter>
+    <ClInclude Include="Project\Scene\SlectScene.h">
+      <Filter>Project\Scene</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

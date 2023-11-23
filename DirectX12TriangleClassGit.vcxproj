@@ -84,10 +84,10 @@
     <ClCompile Include="Project\GameObject\SceneChange\SceneChange.cpp" />
     <ClCompile Include="Project\Scene\DebugScene.cpp" />
     <ClCompile Include="Project\Scene\GameScene.cpp" />
+    <ClCompile Include="Project\Scene\SlectScene.cpp" />
     <ClCompile Include="Project\Scene\Title\TitleScene.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\..\..\kogakuin\TD_B\Project\SlectScene\SlectScene.h" />
     <ClInclude Include="CLEYERA\Audio\AudioDataResource.h" />
     <ClInclude Include="CLEYERA\Audio\AudioManager.h" />
     <ClInclude Include="CLEYERA\base\DX\DirectXCommon.h" />
@@ -148,6 +148,7 @@
     <ClInclude Include="Project\Scene\DebugScene.h" />
     <ClInclude Include="Project\Scene\GameScene.h" />
     <ClInclude Include="Project\Scene\IScene.h" />
+    <ClInclude Include="Project\Scene\SlectScene.h" />
     <ClInclude Include="Project\Scene\Title\TitleScene.h" />
   </ItemGroup>
   <ItemGroup>

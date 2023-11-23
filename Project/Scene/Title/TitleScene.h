@@ -3,7 +3,7 @@
 #include"GameManager.h"
 #include"GameObject/SceneChange/SceneChange.h"
 #include"Model.h"
-#include"SlectScene/SlectScene.h"
+#include"SlectScene.h"
 
 
 class TitleScene : public IScene
