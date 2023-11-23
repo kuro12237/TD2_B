@@ -21,7 +21,19 @@ void Player::Initialize()
 
 	SetCollosionAttribute(kCollisionAttributePlayer);
 	SetCollisionMask(kCollisionMaskPlayer);
+	//Select用
+	for (int i = 0; i < SELECT_MODEL_MAX; i++)
+	{
+		SelectModel_[i] = make_unique<Model>();
+		SelectModel_[i]->CreateFromObj("SelectModel");
+		SelectWorldTransform[i].Initialize();
+		SelectWorldTransform[i].scale = { 0.5f,0.5f,1 };
+
 	
+	}
+	
+	SelectWorldTransform[0].UpdateMatrix();
+	SelectWorldTransform[1].UpdateMatrix();
 }
 
 void Player::GravityUpdate()
@@ -37,6 +49,8 @@ void Player::Update()
 	if (ImGui::TreeNode("Player"))
 	{
 		ImGui::Text("position %f %f %f", worldTransform_.translate.x, worldTransform_.translate.y, worldTransform_.translate.z);
+		ImGui::Text("SelectSet key::left,Right ");
+
 		ImGui::SliderFloat("speed", &speed,-1.0f,1.0f);
 		ImGui::TreePop();
 	}
@@ -62,14 +76,18 @@ void Player::Update()
 		velocity_.y = -speed;
 	}
 	
-	if (Input::PushKeyPressed(DIK_SPACE) && !isJamp)
+	if (nowMapPos_ != LADER)
 	{
-		JampFrame = 0;
-		jampVelocity = { 0,0.0f };
-		isJamp = true;	
+		if (Input::PushKeyPressed(DIK_SPACE) && !isJamp)
+		{
+			JampFrame = 0;
+			jampVelocity = { 0,0.0f };
+			isJamp = true;
+		}
 	}
-
 	Jamp();
+	SelectBox();
+
 
 
 	Vector2 v = { velocity_.x,velocity_.y };
@@ -90,6 +108,16 @@ void Player::Move()
 	worldTransform_.translate = VectorTransform::Add(worldTransform_.translate, velocity_);
 	worldTransform_.UpdateMatrix();
 
+	SelectWorldTransform[0].translate = worldTransform_.translate;
+	SelectWorldTransform[0].translate.x = worldTransform_.translate.x-1;
+
+	SelectWorldTransform[1].translate = worldTransform_.translate;
+	SelectWorldTransform[1].translate.x = worldTransform_.translate.x+1;
+
+
+	SelectWorldTransform[0].UpdateMatrix();
+	SelectWorldTransform[1].UpdateMatrix();
+
 }
 
 void Player::Draw(ViewProjection view)
@@ -99,27 +127,52 @@ void Player::Draw(ViewProjection view)
 	modelPlayerHat_->Draw(worldTransform_, view);
 	modelPlayerLeftHand_->Draw(worldTransform_, view);
 	modelPlayerRightHand_->Draw(worldTransform_, view);
+	if (isBuggagesSelect)
+	{
+		for (int i = 0; i < SELECT_MODEL_MAX; i++)
+		{
+			SelectModel_[i]->Draw(SelectWorldTransform[i], view);
+		}
+	}
 }
 
-void Player::RightCollision()
+void Player::RightCollision(uint32_t nowMapPos)
 {
-	velocity_.x = 0;
+	nowMapPos_ = nowMapPos;
+	if (nowMapPos_ != LADER)
+	{
+		velocity_.x = 0;
+	}
 }
 
-void Player::LeftCollision()
+void Player::LeftCollision(uint32_t nowMapPos)
 {
-	velocity_.x = 0;
+	nowMapPos_ = nowMapPos;
+	if (nowMapPos_ != LADER)
+	{ 
+	    velocity_.x = 0;
+    }
 }
 
-void Player::TopCollision()
+void Player::TopCollision(uint32_t nowMapPos)
 {
-	velocity_.y = 0;
+	nowMapPos_ = nowMapPos;
+	if (nowMapPos_ != LADER)
+	{
+		velocity_.y = 0;
+	}
 
 }
 
-void Player::DownCollision()
+void Player::DownCollision(uint32_t nowMapPos)
 {
-	velocity_.y = 0;
+	nowMapPos_ = nowMapPos;
+
+	if (nowMapPos_ != LADER)
+	{
+		velocity_.y = 0;
+	}
+
 	if (velocity_.y == 0.0f)
 	{
 		isJamp = false;
@@ -132,22 +185,25 @@ void Player::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 	//isJamp = false;
 	position, velocity;
 	overlap;
+
+
 	//velocity_.y += overlap.y;
 }
 
 void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
 	overlap, position, velocity;
-	velocity_.x += overlap.x;
-	if (velocity.x > 0)
+	if (overlap.x < 0.0f)
 	{
-		
+		velocity_.x += overlap.x;
+	}
+	
+	if (velocity.x > 0)
+	{	
 		velocity_.x = 0;
-		return;
-		
+		return;	
 	}
 
-	
 	LogManager::Log("HitLeft!!\n");
 }
 
@@ -155,8 +211,10 @@ void Player::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocit
 {
 
 	overlap, position, velocity;
-	velocity_.x -= overlap.x;
-
+	if (overlap.x > 0.0f)
+	{
+		velocity_.x -= overlap.x;
+	}
 	if (velocity.x > 0)
 	{
 
@@ -177,8 +235,9 @@ void Player::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 
 	overlap, position, velocity;
 	
-
+	
 	velocity_.y += overlap.y;
+	
 	if (velocity_.y < 0.0f)
 	{
 		isJamp = false;
@@ -190,9 +249,6 @@ void Player::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 
 void Player::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 {
-	
-	
-	
 	velocity_.y -= overlap.y;
 	overlap, position, velocity;
 
@@ -207,7 +263,69 @@ void Player::Jamp()
 	}
 }
 
-void Player::MapCollision()
+void Player::SelectBox()
 {
+	//選択
+	if (Input::PushKeyPressed(DIK_G))
+	{
+		if (isHit_)
+		{
+			isBuggagesSelect = true;
+		}
+	}
+	//切り替え
+	if (Input::PushKeyPressed(DIK_LEFT))
+	{
+		BuggageSelectDirection=Left;
+	}
+	
+	if (Input::PushKeyPressed(DIK_RIGHT))
+	{
+		BuggageSelectDirection = Right;
+	}
 
+	for (int i = 0; i < 2; i++)
+	{
+		SelectModel_[i]->SetColor({ 1,1,1,1 });
+	}
+	if (BuggageSelectDirection == Left)
+	{
+		SelectModel_[0]->SetColor({ 1,0,0,1 });
+	}
+	if (BuggageSelectDirection == Right)
+	{
+		SelectModel_[1]->SetColor({ 1,0,0,1 });
+	}
+
+	//設置
+	if (Input::PushKeyPressed(DIK_J))
+	{
+		array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map = MapManager::GetNowMapTip();
+
+		//マップチップ反転Y
+		for (int i = 0; i < MapTip_MAX_Y; i++)
+		{
+			for (int j = 0; j < MapTip_MAX_X; j++)
+			{
+				map[MapTip_MAX_Y - i - 1][j] = MapManager::GetNowMapTip()[i][j];
+			}
+		}
+
+		if (BuggageSelectDirection == Left)
+		{
+			if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 1.1f)] != DART)
+			{
+				isBuggagesSelect = false;
+			}
+		}
+
+		if (BuggageSelectDirection==Right)
+		{
+			if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x) + 2] == AIR)
+			{
+				isBuggagesSelect = false;
+			}
+		}
+
+	}
 }

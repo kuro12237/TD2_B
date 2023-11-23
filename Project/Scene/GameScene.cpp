@@ -24,11 +24,13 @@ void GameScene::Initialize()
 
 	
 	shared_ptr<Buggage> buggageA = make_shared<Buggage>();
+	buggageA->SetPlayerWorldTransform(player_->GetWorldTransform());
 	buggageA->Initialize({ 10,5,0 },kCollisionAttributeEnemy,kCollisionMaskEnemy);
 
 	buggages_.push_back(buggageA);
 
 	shared_ptr<Buggage> buggageB = make_shared<Buggage>();
+	buggageB->SetPlayerWorldTransform(player_->GetWorldTransform());
 	buggageB->Initialize({ 7,7,0 },kCollisionAttributeEnemy2,kCollisionMaskEnemy2);
 
 	buggages_.push_back(buggageB);
@@ -140,12 +142,14 @@ void GameScene::Update(GameManager* Scene)
 
 	player_->Update();
 
-
 	for (shared_ptr<Buggage>& buggage : buggages_)
 	{
+		buggage->SetIsSelect(player_->GetIsBuggageSelect());
+		buggage->SetSelectDirection(player_->GetIsBuggageSelectDirection());
+		buggage->SetPlayerPosition(player_->GetWorldPosition());
+		buggage->SetPlayerWorldTransform(player_->GetWorldTransform());
 		buggage->Update();
 	}
-	
 
 	//Mapの当たり判定
 	MapManager::Update();

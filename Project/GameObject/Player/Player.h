@@ -5,6 +5,9 @@
 #include"GameObject/MapCollisionManager/MapCollider.h"
 #include"BoxCollider.h"
 #include"Collider/ColliderConfig.h"
+#include"GameObject/MapManager/MapManager.h"
+#define SELECT_MODEL_MAX 2
+
 
 class Player:public MapCollider,public BoxCollider
 {
@@ -24,12 +27,16 @@ public:
 
 	Vector3 GetWorldPosition()override { return worldTransform_.translate; }
 	Vector3 GetVelocity() { return velocity_; }
+	WorldTransform GetWorldTransform() { return worldTransform_; }
 
-	void RightCollision()override;
-	void LeftCollision()override;
+	bool GetIsBuggageSelect() { return isBuggagesSelect; }
+	uint32_t GetIsBuggageSelectDirection() { return BuggageSelectDirection; }
 
-	void TopCollision()override;
-	void DownCollision()override;
+	void RightCollision(uint32_t nowMapPos)override;
+	void LeftCollision(uint32_t nowMapPos)override;
+
+	void TopCollision(uint32_t nowMapPos)override;
+	void DownCollision(uint32_t nowMapPos)override;
 
 	void OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
 	
@@ -44,9 +51,7 @@ private:
 
 	void Jamp();
 		 
-	void MapCollision();
-
-
+	void SelectBox();
 
 	unique_ptr<Model>modelPlayerFace_ = nullptr;
 	unique_ptr<Model>modelPlayerBody_ = nullptr;
@@ -64,5 +69,13 @@ private:
 	Vector2 jampVelocity = {};
 
 	bool isHit_ = false;
+
+	uint32_t nowMapPos_ = {};
+
+	bool isBuggagesSelect = false;
+	uint32_t BuggageSelectDirection = Left;
+
+	array<unique_ptr<Model>,SELECT_MODEL_MAX>SelectModel_ = {};
+	array<WorldTransform, SELECT_MODEL_MAX > SelectWorldTransform = {};
 };
 

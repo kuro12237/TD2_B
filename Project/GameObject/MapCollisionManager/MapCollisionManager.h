@@ -33,6 +33,7 @@ private:
 	bool CheckIsTopMove(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map, SCebeVertex c);
 	bool CheckIsDownMove(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map, SCebeVertex c);
 
+	SCebeVertex CheckNowPosMapData(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map, SCebeVertex pos);
 
 	list<MapCollider*>colliders_{};
 };
