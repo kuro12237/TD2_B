@@ -80,16 +80,16 @@ void Buggage::Update()
 			//左
 			if (SelectDirection_ == Left)
 			{
-				if (map[(int)(playerPos_.y)][(int)(playerPos_.x - 1.1f)] != DART)
+				if (map[(int)(playerPos_.y)][(int)(playerPos_.x - 0.9f)] != DART)
 				{
-
+				
 					worldTransform_.translate = playerPos_;
 					worldTransform_.translate.x = playerPos_.x - 1.0f;
 					isHitWall = false;
 					isBuggagesSelect = false;
 					isSelect = false;
 					model_->SetColor({ 1,1,1,1 });
-
+				
 				}
 			}
 		}

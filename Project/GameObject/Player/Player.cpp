@@ -313,9 +313,11 @@ void Player::SelectBox()
 
 		if (BuggageSelectDirection == Left)
 		{
-			if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 1.1f)] != DART)
+			if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 0.9f)] != DART)
 			{
+				
 				isBuggagesSelect = false;
+				
 			}
 		}
 
