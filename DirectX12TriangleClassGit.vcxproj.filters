@@ -166,6 +166,12 @@
     <Filter Include="Project\GameObject\OffSide">
       <UniqueIdentifier>{f112c3e9-c4f9-4fcb-9e0a-99c20cc68e2c}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\Scene\SelectScene">
+      <UniqueIdentifier>{0afdf98a-fac1-4bc3-8999-e75850ee2e20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Scene\0-10">
+      <UniqueIdentifier>{2c9cd2eb-d4a9-4da5-8ab8-cbb0d2f06f91}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="CLEYERA\Config\.editorconfig">
@@ -345,6 +351,10 @@
     <ClCompile Include="Project\GameObject\Offside\OffSideManager.cpp">
       <Filter>Project\GameObject\OffSide</Filter>
     </ClCompile>
+    <ClCompile Include="Project\Scene\SelectScene\SelectScene.cpp">
+      <Filter>Project\Scene\SelectScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\Scene\1_10Stage\Stage1.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLEYERA\Utility\Pch\Pch.h">
@@ -568,6 +578,12 @@
     </ClInclude>
     <ClInclude Include="Project\GameObject\Offside\IOffside.h">
       <Filter>Project\GameObject\OffSide</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\Scene\SelectScene\SelectScene.h">
+      <Filter>Project\Scene\SelectScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\Scene\1_10Stage\Stage1.h">
+      <Filter>Project\Scene\0-10</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

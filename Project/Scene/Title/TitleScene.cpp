@@ -28,14 +28,19 @@ void TitleScene::Update(GameManager* Scene)
 		bool flag = false;
 		if (ImGui::Checkbox("changeSecne", &flag))
 		{
-			SceneChange::ChangeStart();
+			
 		}
 		ImGui::TreePop();
 	}
 	
+	if (Input::PushKeyPressed(DIK_SPACE) && !SceneChange::GetScenChangeFlag())
+	{
+		SceneChange::ChangeStart();
+	}
+
 	if (SceneChange::GetScenChangeFlag())
 	{
-		Scene->ChangeState(new GameScene);
+		Scene->ChangeState(new SelectScene);
 		return;
 	}
 

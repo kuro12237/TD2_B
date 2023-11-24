@@ -4,6 +4,7 @@
 #include"GameObject/SceneChange/SceneChange.h"
 #include"Model.h"
 #include"DebugTools/DebugTools.h"
+#include"Scene/SelectScene/SelectScene.h"
 
 
 class TitleScene : public IScene
