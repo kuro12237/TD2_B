@@ -1,6 +1,19 @@
 #pragma once
-#include"GameManager.h"
 #include"IScene.h"
+#include"Pch.h"
+#include"LogManager.h"
+#include"GameObject/SceneChange/SceneChange.h"
+#include"Scene/Title/TitleScene.h"
+#include"GameObject/MapManager/MapManager.h"
+#include"GameObject/MapCollisionManager/MapCollisionManager.h"
+#include"GameObject/Player/Player.h"
+#include"GameObject/Buggage/Buggage.h"
+#include"CollisionManager.h"
+
+#include"GameObject/SkyBox/SkyBox.h"
+#include"GameObject/Ground/Ground.h"
+#include"GameObject/Truck/TruckManager.h"
+#include"GameObject/Offside/OffSideManager.h"
 
 class Stage1Scene :public IScene
 {
@@ -20,6 +33,11 @@ private:
 
 	ViewProjection viewProjection_{};
 
+	unique_ptr<Player>player_ = nullptr;
+	list<shared_ptr<Buggage>>buggages_;
+
+	unique_ptr<CollisionManager> collisionManager_ = nullptr;
+	unique_ptr<MapCollisionManager> mapCollisionManager_ = nullptr;
 
 };
 

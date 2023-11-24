@@ -3,9 +3,10 @@
 GameManager::GameManager()
 {
 	Cleyera::Initialize();
-	Scene_ = new TitleScene();
+	Scene_ = new GameScene();
 	Scene_->Initialize();
 
+	MapManager::Initialize();
 	SceneChange::Initialize();
 	SkyBox::Initialize();
 	Ground::Initialize();
@@ -56,5 +57,5 @@ void GameManager::ChangeState(IScene *newScene)
 	delete Scene_;
 	Scene_ = newScene;
 	Scene_->Initialize();
-	return;
+	return ;
 }

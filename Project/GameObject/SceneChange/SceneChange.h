@@ -24,6 +24,8 @@ public:
 
 
 	static bool GetScenChangeFlag();
+
+	static bool GetEndChandeFlag();
 private:
 
 	/// <summary>

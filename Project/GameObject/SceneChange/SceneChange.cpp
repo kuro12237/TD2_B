@@ -110,6 +110,18 @@ bool SceneChange::GetScenChangeFlag()
 	return result;
 }
 
+bool SceneChange::GetEndChandeFlag()
+{
+	if (!SceneChange::GetInstance()->isEnd_&&
+		!SceneChange::GetInstance()->isUpdate)
+	{
+		return true;
+	}
+
+	
+	return false;
+}
+
 bool SceneChange::Spown()
 {
 	const float ScaleAddSpeed = 0.01f;

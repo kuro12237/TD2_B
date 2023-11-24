@@ -17,6 +17,7 @@ void Player::Initialize()
 	worldTransform_.translate = { 3,5,0 };
 	worldTransform_.scale = { 0.2f,0.2f,0.2f };
 	worldTransform_.rotation = { 0.0f,-2.0f,0.0f };
+	worldTransform_.UpdateMatrix();
 	//model_->SetColor({ 0,0,1,1 });
 
 	SetCollosionAttribute(kCollisionAttributePlayer);

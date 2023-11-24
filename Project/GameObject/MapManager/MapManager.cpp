@@ -13,7 +13,7 @@ void MapManager::Initialize()
 	MapManager::GetInstance()->StartTexHandle_ = TextureManager::LoadTexture("Resources/BlockTex/StartTex.png");
 	MapManager::GetInstance()->GoalTexHandle_ = TextureManager::LoadTexture("Resources/BlockTex/GoalTex.png");
 	MapManager::GetInstance()->BaggageTexHandle_ = TextureManager::LoadTexture("Resources/BlockTex/BaggageSpownTex.png");
-	MapManager::GetInstance()->BlockDartTex_ = TextureManager::LoadTexture("Resources/BlockTex/TestBoxTex.png");
+	MapManager::GetInstance()->BlockDartTex_ = TextureManager::LoadTexture("Resources/BlockTex/Box.png");
 	MapManager::GetInstance()->LadderTex_ = TextureManager::LoadTexture("Resources/BlockTex/LadderTex.png");
 	MapTip1_10();
 }
@@ -58,7 +58,7 @@ void MapManager::Draw(ViewProjection view)
 		{
 			if (MapManager::GetInstance()->NowMaptip_[y][x] == DART)
 			{
-				MapManager::GetInstance()->block_[y][x].model->SetColor({ 1,1,1,0.5f });
+				//MapManager::GetInstance()->block_[y][x].model->SetColor({ 1,1,1,0.5f });
 			
 				MapManager::GetInstance()->block_[y][x].model->SetTexHandle(MapManager::GetInstance()->BlockDartTex_);
 				MapManager::GetInstance()->block_[y][x].model->Draw(MapManager::GetInstance()->block_[y][x].worldTransform, view);				
@@ -115,7 +115,7 @@ void MapManager::CreateModels()
 	MapManager::GetInstance()->CenterWorldTransform_.Initialize();
 	MapManager::GetInstance()->CenterWorldTransform_.scale = { 1,1,1 };
 	MapManager::GetInstance()->CenterWorldTransform_.translate = { 0,0,0 };
-	MapManager::GetInstance()->WorldCenterModel_->SetColor({ 1,0,0,1 });
+	//MapManager::GetInstance()->WorldCenterModel_->SetColor({ 1,0,0,1 });
 	MapManager::GetInstance()->CenterWorldTransform_.UpdateMatrix();
 
 }

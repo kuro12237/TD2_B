@@ -354,7 +354,9 @@
     <ClCompile Include="Project\Scene\SelectScene\SelectScene.cpp">
       <Filter>Project\Scene\SelectScene</Filter>
     </ClCompile>
-    <ClCompile Include="Project\Scene\1_10Stage\Stage1.cpp" />
+    <ClCompile Include="Project\Scene\1_10Stage\Stage1.cpp">
+      <Filter>Project\Scene\0-10</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLEYERA\Utility\Pch\Pch.h">

@@ -7,7 +7,7 @@ void GameScene::Initialize()
 	DebugTools::addCommand(debugCamera,"d");
 
 	LogManager::Log("GameScene_1\n");
-	MapManager::Initialize();
+	//MapManager::Initialize();
 	viewProjection_.Initialize();
 	viewProjection_.translation_.x = 7;
 	viewProjection_.translation_.y = 7;

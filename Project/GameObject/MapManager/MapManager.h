@@ -53,10 +53,7 @@ private:
 	uint32_t LadderTex_ = 0;
 
 #pragma region Singleton
-	MapManager() = default;
-	~MapManager() = default;
-	MapManager(const MapManager&) = delete;
-	const MapManager& operator=(const MapManager&) = delete;
+
 #pragma endregion 
 };
 

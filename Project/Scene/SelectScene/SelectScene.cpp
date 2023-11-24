@@ -41,7 +41,7 @@ void SelectScene::Update(GameManager* Scene)
 	}
 
 	Contorol();
-	stage0_10(Scene);
+
 
 	SelectParam_[SelectNumber].IsSelect = true;
 	model_[SelectNumber]->SetColor({ 1,0,0,1 });
@@ -58,6 +58,26 @@ void SelectScene::Update(GameManager* Scene)
 	TruckManager::Update();
 
 	viewProjection_.UpdateMatrix();
+	stage0_10(Scene);
+
+	//0
+	if (SelectNumber == 0 && !SelectLock)
+	{
+
+		if (Input::PushKeyPressed(DIK_SPACE))
+		{
+			SceneChange::ChangeStart();
+
+		}
+	}
+	if (SelectNumber == 0)
+	{
+		if (SceneChange::GetScenChangeFlag())
+		{
+			Scene->ChangeState(new Stage1Scene);
+			return;
+		}
+	}
 }
 
 void SelectScene::Back2dSpriteDraw()
@@ -66,15 +86,17 @@ void SelectScene::Back2dSpriteDraw()
 
 void SelectScene::Object3dDraw()
 {
-
-	TruckManager::Draw(viewProjection_);
-
-	SkyBox::Draw(viewProjection_);
-	Ground::Draw(viewProjection_);
+	if (!SelectLock)
+	{
+		TruckManager::Draw(viewProjection_);
+		SkyBox::Draw(viewProjection_);
+		Ground::Draw(viewProjection_);
+	}
 }
 
 void SelectScene::Flont2dSpriteDraw()
 {
+
 	for (int i = 0; i < STAGE_MAX; i++)
 	{
 		model_[i]->Draw(worldTransform_[i]);
@@ -110,22 +132,8 @@ void SelectScene::Contorol()
 
 void SelectScene::stage0_10(GameManager* Scene)
 {
-	//0
-	if (SelectNumber == 0&&!SelectLock)
-	{
-		if (Input::PushKeyPressed(DIK_SPACE) && !SceneChange::GetScenChangeFlag())
-		{
-			SelectLock = true;
-			SceneChange::ChangeStart();
-		}
-	}
-	if (SelectNumber == 0)
-	{
-		if (SceneChange::GetScenChangeFlag())
-		{
-			Scene->ChangeState(new Stage1Scene);
-			return;
-		}
-	}
-
+	
+	Scene;
+	
+	
 }
