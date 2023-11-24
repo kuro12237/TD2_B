@@ -67,15 +67,6 @@ void Player::Update()
 		worldTransform_.rotation.y = -2.0f;
 	}
 
-	if (Input::PushKey(DIK_W))
-	{
-		velocity_.y = speed;
-	}
-	if (Input::PushKey(DIK_S))
-	{
-		velocity_.y = -speed;
-	}
-	
 	if (nowMapPos_ != LADER)
 	{
 		if (Input::PushKeyPressed(DIK_SPACE) && !isJamp)
@@ -313,7 +304,7 @@ void Player::SelectBox()
 
 		if (BuggageSelectDirection == Left)
 		{
-			if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 0.9f)] != DART)
+			if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 0.8f)] == AIR)
 			{
 				
 				isBuggagesSelect = false;

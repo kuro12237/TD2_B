@@ -22,6 +22,7 @@ void GameScene::Initialize()
 
 	collisionManager_ = make_unique<CollisionManager>();
 
+	OffsideManager::Initialize();
 	
 	shared_ptr<Buggage> buggageA = make_shared<Buggage>();
 	buggageA->SetPlayerWorldTransform(player_->GetWorldTransform());
@@ -162,6 +163,15 @@ void GameScene::Update(GameManager* Scene)
 	}
 	mapCollisionManager_->ChackAllCollision();
 
+	OffsideManager::ClearList();
+	
+	for (shared_ptr<Buggage>& buggage : buggages_)
+	{
+		OffsideManager::AddList(buggage.get());
+	}
+	OffsideManager::CheckAllOffside();
+
+
 	for (shared_ptr<Buggage>& buggage : buggages_)
 	{
 		buggage->Move();
@@ -169,12 +179,16 @@ void GameScene::Update(GameManager* Scene)
 
 	player_->Move();
 
-	viewProjection_.UpdateMatrix();
-	DebugTools::UpdateExecute(0);
-
 	SkyBox::Update();
 	Ground::Update();
 	TruckManager::Update();
+	//OffsideManager::SetPlayerPos(player_->GetWorldPosition());
+	OffsideManager::Update();
+
+	viewProjection_.UpdateMatrix();
+	DebugTools::UpdateExecute(0);
+
+
 
 	viewProjection_ = DebugTools::ConvertViewProjection(viewProjection_);
 }
@@ -196,9 +210,10 @@ void GameScene::Object3dDraw()
 	MapManager::GetInstance()->Draw(viewProjection_);
 
 	TruckManager::Draw(viewProjection_);
-
+	
 	SkyBox::Draw(viewProjection_);
 	Ground::Draw(viewProjection_);
+	OffsideManager::Draw(viewProjection_);
 }
 
 void GameScene::Flont2dSpriteDraw()

@@ -10,6 +10,7 @@ GameManager::GameManager()
 	SkyBox::Initialize();
 	Ground::Initialize();
 	TruckManager::Initialize();
+	OffsideManager::Initialize();
 }
 
 GameManager::~GameManager()
