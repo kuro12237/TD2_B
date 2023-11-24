@@ -13,7 +13,6 @@ void OffsideManager::CheckAllOffside()
 
 	for (IOffside *offsideA : OffsideManager::GetInstance()-> offsides_)
 	{
-
 		if (OffsideManager::GetInstance()->Direction_ == Left)
 		{
 			if (maxpos >= offsideA->GetPosition().x)
@@ -21,20 +20,18 @@ void OffsideManager::CheckAllOffside()
 				maxpos = offsideA->GetPosition().x;
 				offside = offsideA;
 				offside->SetPosition({ maxpos,offsideA->GetPosition().y,offsideA->GetPosition().z });
-
 			}
 		}
 
-	     if(OffsideManager::GetInstance()->Direction_==Right)
-	     {	 
+	    if(OffsideManager::GetInstance()->Direction_ == Right)
+	    {	 
 	     	if ( maxpos<= offsideA->GetPosition().x)
 	     	{
 				maxpos = offsideA->GetPosition().x;
 				offside = offsideA;
 				offside->SetPosition({maxpos,offsideA->GetPosition().y,offsideA->GetPosition().z});
-	     	
 	     	}
-	     }
+	    }
 	}
 	OffsideManager::GetInstance()->offsidePos_ = offside->GetPosition();
 
@@ -96,7 +93,6 @@ void OffsideManager::Draw(ViewProjection view)
 
 	if (OffsideManager::GetInstance()->Direction_ == Right)
 	{
-
 		OffsideManager::GetInstance()->rightModel_->Draw(OffsideManager::GetInstance()->rightWorldTransform_, view);
 	}
 }
