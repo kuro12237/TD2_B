@@ -30,11 +30,11 @@ void GameScene::Initialize()
 
 	buggages_.push_back(buggageA);
 
-	shared_ptr<Buggage> buggageB = make_shared<Buggage>();
-	buggageB->SetPlayerWorldTransform(player_->GetWorldTransform());
-	buggageB->Initialize({ 7,7,0 },kCollisionAttributeEnemy2,kCollisionMaskEnemy2);
+	//shared_ptr<Buggage> buggageB = make_shared<Buggage>();
+	//buggageB->SetPlayerWorldTransform(player_->GetWorldTransform());
+	//buggageB->Initialize({ 7,7,0 },kCollisionAttributeEnemy2,kCollisionMaskEnemy2);
 
-	buggages_.push_back(buggageB);
+	//buggages_.push_back(buggageB);
 }
 
 void GameScene::Update(GameManager* Scene)
@@ -142,6 +142,7 @@ void GameScene::Update(GameManager* Scene)
 
 
 	player_->Update();
+	OffsideManager::Update();
 
 	for (shared_ptr<Buggage>& buggage : buggages_)
 	{
@@ -183,8 +184,7 @@ void GameScene::Update(GameManager* Scene)
 	Ground::Update();
 	TruckManager::Update();
 	//OffsideManager::SetPlayerPos(player_->GetWorldPosition());
-	OffsideManager::Update();
-
+	
 	viewProjection_.UpdateMatrix();
 	DebugTools::UpdateExecute(0);
 

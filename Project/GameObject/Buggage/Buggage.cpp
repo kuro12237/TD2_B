@@ -48,7 +48,7 @@ void Buggage::Update()
 		SelectBox();
 	}
 
-	if (isSelect)
+	if (isSelect&&playerPos_.x<=OffsideManager::GetOffsidePos().x)
 	{
 		if (Input::PushKeyPressed(DIK_J))
 		{
@@ -78,7 +78,7 @@ void Buggage::Update()
 				}
 			}
 			//左
-			if (SelectDirection_ == Left)
+			if (SelectDirection_ == Left )
 			{
 				if (map[(int)(playerPos_.y)][(int)(playerPos_.x - 0.8f)] == AIR)
 				{
@@ -226,6 +226,13 @@ void Buggage::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocit
 {
 
 	overlap, position, velocity;
+
+}
+
+void Buggage::SetOpenPortal(Vector3 pos)
+{
+	//isOpenPortal_ = false;
+	pos;
 
 }
 

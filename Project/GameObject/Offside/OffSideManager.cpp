@@ -68,7 +68,7 @@ void OffsideManager::Update()
 {
 	if (ImGui::TreeNode("Offside"))
 	{
-
+		ImGui::Text("t::%f,%f,%f", OffsideManager::GetInstance()->offsidePos_.x, OffsideManager::GetInstance()->offsidePos_.y, OffsideManager::GetInstance()->offsidePos_.z);
 		ImGui::ColorPicker4("color", &OffsideManager::GetInstance()->color_.x);
 		ImGui::TreePop();
 	}
@@ -81,7 +81,7 @@ void OffsideManager::Update()
 	if (OffsideManager::GetInstance()->Direction_ == Right)
 	{
 		OffsideManager::GetInstance()->rightModel_->SetColor(OffsideManager::GetInstance()->color_);
-		OffsideManager::GetInstance()->rightWorldTransform_.scale = { 17-OffsideManager::GetInstance()->offsidePos_.x,7,1 };
+		OffsideManager::GetInstance()->rightWorldTransform_.scale = { 17 - OffsideManager::GetInstance()->offsidePos_.x,7,1 };
 		OffsideManager::GetInstance()->rightWorldTransform_.UpdateMatrix();
 
 	}

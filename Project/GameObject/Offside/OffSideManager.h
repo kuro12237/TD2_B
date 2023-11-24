@@ -26,6 +26,8 @@ public:
 
 	static void Draw(ViewProjection view);
 
+	static Vector3 GetOffsidePos() { return OffsideManager::GetInstance()->offsidePos_; }
+	static bool GetOffsideDirection() { return OffsideManager::GetInstance()->Direction_; }
 private:
 
 	bool ChackRightOffside();
