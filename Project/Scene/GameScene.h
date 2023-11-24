@@ -13,6 +13,7 @@
 #include"GameObject/SkyBox/SkyBox.h"
 #include"GameObject/Ground/Ground.h"
 #include"GameObject/Truck/TruckManager.h"
+#include"GameObject/Offside/OffSideManager.h"
 
 class GameScene :public IScene
 {

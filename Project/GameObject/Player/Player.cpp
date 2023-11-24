@@ -71,11 +71,7 @@ void Player::Update()
 	{
 		velocity_.y = speed;
 	}
-	if (Input::PushKey(DIK_S))
-	{
-		velocity_.y = -speed;
-	}
-	
+
 	if (nowMapPos_ != LADER)
 	{
 		if (Input::PushKeyPressed(DIK_SPACE) && !isJamp)
@@ -298,7 +294,7 @@ void Player::SelectBox()
 	}
 
 	//設置
-	if (Input::PushKeyPressed(DIK_J))
+	if (Input::PushKeyPressed(DIK_J) && worldTransform_.translate.x <= OffsideManager::GetOffsidePos().x)
 	{
 		array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map = MapManager::GetNowMapTip();
 
@@ -313,11 +309,9 @@ void Player::SelectBox()
 
 		if (BuggageSelectDirection == Left)
 		{
-			if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 0.9f)] != DART)
+			if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 0.8f)] == AIR)
 			{
-				
-				isBuggagesSelect = false;
-				
+				isBuggagesSelect = false;	
 			}
 		}
 

@@ -22,6 +22,7 @@ void GameScene::Initialize()
 
 	collisionManager_ = make_unique<CollisionManager>();
 
+	OffsideManager::Initialize();
 	
 	shared_ptr<Buggage> buggageA = make_shared<Buggage>();
 	buggageA->SetPlayerWorldTransform(player_->GetWorldTransform());
@@ -29,11 +30,11 @@ void GameScene::Initialize()
 
 	buggages_.push_back(buggageA);
 
-	shared_ptr<Buggage> buggageB = make_shared<Buggage>();
-	buggageB->SetPlayerWorldTransform(player_->GetWorldTransform());
-	buggageB->Initialize({ 7,7,0 },kCollisionAttributeEnemy2,kCollisionMaskEnemy2);
+	//shared_ptr<Buggage> buggageB = make_shared<Buggage>();
+	//buggageB->SetPlayerWorldTransform(player_->GetWorldTransform());
+	//buggageB->Initialize({ 7,7,0 },kCollisionAttributeEnemy2,kCollisionMaskEnemy2);
 
-	buggages_.push_back(buggageB);
+	//buggages_.push_back(buggageB);
 }
 
 void GameScene::Update(GameManager* Scene)
@@ -141,6 +142,7 @@ void GameScene::Update(GameManager* Scene)
 
 
 	player_->Update();
+	OffsideManager::Update();
 
 	for (shared_ptr<Buggage>& buggage : buggages_)
 	{
@@ -162,6 +164,15 @@ void GameScene::Update(GameManager* Scene)
 	}
 	mapCollisionManager_->ChackAllCollision();
 
+	OffsideManager::ClearList();
+	
+	for (shared_ptr<Buggage>& buggage : buggages_)
+	{
+		OffsideManager::AddList(buggage.get());
+	}
+	OffsideManager::CheckAllOffside();
+
+
 	for (shared_ptr<Buggage>& buggage : buggages_)
 	{
 		buggage->Move();
@@ -169,12 +180,15 @@ void GameScene::Update(GameManager* Scene)
 
 	player_->Move();
 
-	viewProjection_.UpdateMatrix();
-	DebugTools::UpdateExecute(0);
-
 	SkyBox::Update();
 	Ground::Update();
 	TruckManager::Update();
+	//OffsideManager::SetPlayerPos(player_->GetWorldPosition());
+	
+	viewProjection_.UpdateMatrix();
+	DebugTools::UpdateExecute(0);
+
+
 
 	viewProjection_ = DebugTools::ConvertViewProjection(viewProjection_);
 }
@@ -196,9 +210,10 @@ void GameScene::Object3dDraw()
 	MapManager::GetInstance()->Draw(viewProjection_);
 
 	TruckManager::Draw(viewProjection_);
-
+	
 	SkyBox::Draw(viewProjection_);
 	Ground::Draw(viewProjection_);
+	OffsideManager::Draw(viewProjection_);
 }
 
 void GameScene::Flont2dSpriteDraw()

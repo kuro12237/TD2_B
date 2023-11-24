@@ -163,6 +163,9 @@
     <Filter Include="Project\GameObject\Truck">
       <UniqueIdentifier>{2f06c32a-cf3d-45f8-865d-ffd7da0ab974}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\GameObject\OffSide">
+      <UniqueIdentifier>{f112c3e9-c4f9-4fcb-9e0a-99c20cc68e2c}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="CLEYERA\Config\.editorconfig">
@@ -338,6 +341,9 @@
     </ClCompile>
     <ClCompile Include="Project\GameObject\Truck\TruckManager.cpp">
       <Filter>Project\GameObject\Truck</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Offside\OffSideManager.cpp">
+      <Filter>Project\GameObject\OffSide</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -556,6 +562,12 @@
     </ClInclude>
     <ClInclude Include="Project\GameObject\Truck\TruckManager.h">
       <Filter>Project\GameObject\Truck</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Offside\OffSideManager.h">
+      <Filter>Project\GameObject\OffSide</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Offside\IOffside.h">
+      <Filter>Project\GameObject\OffSide</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

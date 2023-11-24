@@ -6,6 +6,7 @@
 #include"BoxCollider.h"
 #include"Collider/ColliderConfig.h"
 #include"GameObject/MapManager/MapManager.h"
+#include"GameObject/Offside/OffSideManager.h"
 #define SELECT_MODEL_MAX 2
 
 

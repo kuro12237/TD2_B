@@ -6,8 +6,10 @@
 #include"Collider/ColliderConfig.h"
 #include"Input.h"
 #include"GameObject/MapManager/MapManager.h"
+#include"GameObject/Offside/IOffside.h"
+#include"GameObject/Offside/OffSideManager.h"
 
-class Buggage:public MapCollider,public BoxCollider
+class Buggage:public MapCollider,public BoxCollider,public IOffside
 {
 public:
 	Buggage() {};
@@ -45,6 +47,8 @@ public:
 	void SetPlayerPosition(Vector3 pos) { playerPos_ = pos; }
 	void SetPlayerWorldTransform(WorldTransform worldTransform) { PlayerWorldTransform_ = worldTransform; }
 
+	void SetOpenPortal(Vector3 pos);
+
 private:
 
 	/// <summary>
@@ -68,4 +72,6 @@ private:
 	bool isSelect = false;
 
 	uint32_t SelectDirection_ = Left;
+
+	bool isOpenPortal_ = false;
 };
