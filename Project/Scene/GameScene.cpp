@@ -130,8 +130,6 @@ void GameScene::Update(GameManager* Scene)
 		}
 	}
 
-
-
 	for (shared_ptr<Buggage>& buggage : buggages_)
 	{
 		buggage->SetIsSelect(player_->GetIsBuggageSelect());
