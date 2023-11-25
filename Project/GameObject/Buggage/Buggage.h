@@ -36,7 +36,7 @@ public:
 	
 	void SetSelectDirection(uint32_t direction) { SelectDirection_ = direction; }
 
-	void OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
+	void OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)override;
 
 	void OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
 	void OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;

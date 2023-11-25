@@ -9,32 +9,37 @@ OffsideManager* OffsideManager::GetInstance()
 void OffsideManager::CheckAllOffside()
 {
 	IOffside* offside = nullptr;
-	float maxpos = OffsideManager::GetInstance()->offsides_.front()->GetPosition().x;
 
-	for (IOffside *offsideA : OffsideManager::GetInstance()-> offsides_)
+	if (!OffsideManager::GetInstance()->offsides_.empty())
 	{
-		if (OffsideManager::GetInstance()->Direction_ == Left)
+		float maxpos = OffsideManager::GetInstance()->offsides_.front()->GetPosition().x;
+
+
+
+		for (IOffside* offsideA : OffsideManager::GetInstance()->offsides_)
 		{
-			if (maxpos >= offsideA->GetPosition().x)
+			if (OffsideManager::GetInstance()->Direction_ == Left)
 			{
-				maxpos = offsideA->GetPosition().x;
-				offside = offsideA;
-				offside->SetPosition({ maxpos,offsideA->GetPosition().y,offsideA->GetPosition().z });
+				if (maxpos >= offsideA->GetPosition().x)
+				{
+					maxpos = offsideA->GetPosition().x;
+					offside = offsideA;
+					offside->SetPosition({ maxpos,offsideA->GetPosition().y,offsideA->GetPosition().z });
+				}
+			}
+
+			if (OffsideManager::GetInstance()->Direction_ == Right)
+			{
+				if (maxpos <= offsideA->GetPosition().x)
+				{
+					maxpos = offsideA->GetPosition().x;
+					offside = offsideA;
+					offside->SetPosition({ maxpos,offsideA->GetPosition().y,offsideA->GetPosition().z });
+				}
 			}
 		}
-
-	    if(OffsideManager::GetInstance()->Direction_ == Right)
-	    {	 
-	     	if ( maxpos<= offsideA->GetPosition().x)
-	     	{
-				maxpos = offsideA->GetPosition().x;
-				offside = offsideA;
-				offside->SetPosition({maxpos,offsideA->GetPosition().y,offsideA->GetPosition().z});
-	     	}
-	    }
+		OffsideManager::GetInstance()->offsidePos_ = offside->GetPosition();
 	}
-	OffsideManager::GetInstance()->offsidePos_ = offside->GetPosition();
-
 }
 
 void OffsideManager::Initialize()

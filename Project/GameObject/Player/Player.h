@@ -16,7 +16,7 @@ public:
 	Player() {};
 	~Player() {};
 
-	void Initialize();
+	void Initialize(Vector3 pos);
 
 	void GravityUpdate();
 
@@ -39,7 +39,7 @@ public:
 	void TopCollision(uint32_t nowMapPos)override;
 	void DownCollision(uint32_t nowMapPos)override;
 
-	void OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
+	void OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)override;
 	
 	void OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
 	void OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;

@@ -4,6 +4,7 @@
 #include"GameObject/SceneChange/SceneChange.h"
 #include"Model.h"
 #include"DebugTools/DebugTools.h"
+#include"Scene/SelectScene/SelectScene.h"
 
 
 class TitleScene : public IScene
@@ -25,6 +26,8 @@ private:
 	ViewProjection view{};
 
 	const string SceneName = "TitleScene";
-	unique_ptr<Model>model_ = nullptr;
-	WorldTransform worldTransform_{};
+	unique_ptr<Sprite>titleSprite_ = nullptr;
+	WorldTransform titleWorldTransform_ = {};
+	Vector3 uvScele_ = { 1,1,1 };
+
 };

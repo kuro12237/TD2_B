@@ -17,6 +17,8 @@ void Buggage::Initialize(Vector3 position, uint32_t Attubte, uint32_t Mask)
 
 	SetCollosionAttribute(Attubte);
 	SetCollisionMask(Mask);
+
+
 }
 
 void Buggage::Update()
@@ -173,12 +175,13 @@ void Buggage::SetIsSelect(bool Selecr)
 	}
 }
 
-void Buggage::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+void Buggage::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
 	isHit_ = true;
 	velocity;
 	position;
 	overlap;
+	id;
 }
 
 void Buggage::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)

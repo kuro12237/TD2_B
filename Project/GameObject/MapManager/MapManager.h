@@ -32,6 +32,7 @@ private:
 
 	static void MapTipFileLoad(const string filePath);
 	static void MapTip1_10();
+	static void MapTipLoad11_20();
 
 	uint32_t NowStageNumber_ = 0;
 	uint32_t prevStageNumber_ = 0;
@@ -53,10 +54,7 @@ private:
 	uint32_t LadderTex_ = 0;
 
 #pragma region Singleton
-	MapManager() = default;
-	~MapManager() = default;
-	MapManager(const MapManager&) = delete;
-	const MapManager& operator=(const MapManager&) = delete;
+
 #pragma endregion 
 };
 

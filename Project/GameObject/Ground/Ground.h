@@ -21,4 +21,6 @@ private:
 	WorldTransform worldTransform_ = {};
 
 	bool InitializeLock = false;
+
+	Vector3 uvScale_ = { 1,1,1 };
 };

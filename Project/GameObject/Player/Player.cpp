@@ -1,6 +1,6 @@
 #include "Player.h"
 
-void Player::Initialize()
+void Player::Initialize(Vector3 pos)
 {
 	modelPlayerFace_ = make_unique<Model>();
 	modelPlayerFace_->CreateFromObj("PlayerFace");
@@ -14,9 +14,10 @@ void Player::Initialize()
 	modelPlayerRightHand_->CreateFromObj("PlayerRight");
 	
 	worldTransform_.Initialize();
-	worldTransform_.translate = { 3,5,0 };
+	worldTransform_.translate = pos;
 	worldTransform_.scale = { 0.2f,0.2f,0.2f };
 	worldTransform_.rotation = { 0.0f,-2.0f,0.0f };
+	worldTransform_.UpdateMatrix();
 	//model_->SetColor({ 0,0,1,1 });
 
 	SetCollosionAttribute(kCollisionAttributePlayer);
@@ -175,13 +176,13 @@ void Player::DownCollision(uint32_t nowMapPos)
 	}
 }
 
-void Player::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+void Player::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
 	isHit_ = true;
 	//isJamp = false;
 	position, velocity;
 	overlap;
-
+	id;
 
 	//velocity_.y += overlap.y;
 }

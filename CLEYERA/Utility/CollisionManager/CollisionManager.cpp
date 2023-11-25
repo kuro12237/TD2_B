@@ -97,8 +97,8 @@ void CollisionManager::CheckBoxCollisionPair(BoxCollider* cA, BoxCollider* cB)
 		oBoverlap = calculateBoxOverlap(cBpos, aabbB, cApos, aabbA);
 
 
-		cA->OnCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity());
-		cB->OnCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity());
+		cA->OnCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity(),cB->GetObjectId());
+		cB->OnCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity(),cA->GetObjectId());
 
 		//右
 	    //Aの右に当たった時Bの左の関数を使う

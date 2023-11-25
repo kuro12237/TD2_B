@@ -8,7 +8,7 @@ SceneChange* SceneChange::GetInstance()
 
 void SceneChange::Initialize()
 {
-	uint32_t tex =TextureManager::LoadTexture("Resources/uvChecker.png");
+	uint32_t tex =TextureManager::LoadTexture("Resources/SceneChangeTex.png");
 	SceneChange::GetInstance()->texHandle =tex;
 
 	for (int i = 0; i < SCENECHANGE_SPRITE_MAX; i++)
@@ -108,6 +108,18 @@ bool SceneChange::GetScenChangeFlag()
 	bool result = SceneChange::GetInstance()->SceneChangeFlag;
 	SceneChange::GetInstance()->SceneChangeFlag = false;
 	return result;
+}
+
+bool SceneChange::GetEndChandeFlag()
+{
+	if (!SceneChange::GetInstance()->isEnd_&&
+		!SceneChange::GetInstance()->isUpdate)
+	{
+		return true;
+	}
+
+	
+	return false;
 }
 
 bool SceneChange::Spown()
