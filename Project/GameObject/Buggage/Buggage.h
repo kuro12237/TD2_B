@@ -58,6 +58,10 @@ private:
 	/// </summary>
 	void SelectBox();
 
+	void SetBoxR(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map);
+	void SetBoxL(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map);
+
+
 	unique_ptr<Model>model_ = nullptr;
 	WorldTransform worldTransform_ = {};
 	Vector3 velocity_ = {};

@@ -28,6 +28,10 @@ public:
 
 	static Vector3 GetOffsidePos() { return OffsideManager::GetInstance()->offsidePos_; }
 	static bool GetOffsideDirection() { return OffsideManager::GetInstance()->Direction_; }
+
+	static void SetDirection(uint32_t d) { OffsideManager::GetInstance()->Direction_ = d; }
+	static uint32_t GetDirection() { return OffsideManager::GetInstance()->Direction_; }
+
 private:
 
 	bool ChackRightOffside();
@@ -46,5 +50,6 @@ private:
 	bool InitialiseLock_ = false;
 
 	Vector4 color_ = { 1,1,1,1 };
+	bool testDirectionFlag_ = false;
 };
 

@@ -172,6 +172,9 @@
     <Filter Include="Project\GameObject\GorlObject">
       <UniqueIdentifier>{2f871547-abd7-456b-9bcb-d43cbcbcab10}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\GameObject\InvertionSwich">
+      <UniqueIdentifier>{6a80b6be-7708-43ed-9441-53159ddd4c55}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="CLEYERA\Config\.editorconfig">
@@ -356,6 +359,9 @@
     </ClCompile>
     <ClCompile Include="Project\GameObject\GoalHouse\GoalHouse.cpp">
       <Filter>Project\GameObject\GorlObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\InvertionSwich\InvertionSwich.cpp">
+      <Filter>Project\GameObject\InvertionSwich</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -586,6 +592,9 @@
     </ClInclude>
     <ClInclude Include="Project\GameObject\GoalHouse\GoalHouse.h">
       <Filter>Project\GameObject\GorlObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\InvertionSwich\InvertionSwich.h">
+      <Filter>Project\GameObject\InvertionSwich</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

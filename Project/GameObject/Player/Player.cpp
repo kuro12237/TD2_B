@@ -68,11 +68,6 @@ void Player::Update()
 		worldTransform_.rotation.y = -2.0f;
 	}
 
-	if (Input::PushKey(DIK_W))
-	{
-		velocity_.y = speed;
-	}
-
 	if (nowMapPos_ != LADER)
 	{
 		if (Input::PushKeyPressed(DIK_SPACE) && !isJamp)
@@ -294,35 +289,62 @@ void Player::SelectBox()
 		SelectModel_[1]->SetColor({ 1,0,0,1 });
 	}
 
-	//設置
-	if (Input::PushKeyPressed(DIK_J) && worldTransform_.translate.x <= OffsideManager::GetOffsidePos().x)
+	array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map = MapManager::GetNowMapTip();
+
+	//マップチップ反転Y
+	for (int i = 0; i < MapTip_MAX_Y; i++)
 	{
-		array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map = MapManager::GetNowMapTip();
-
-		//マップチップ反転Y
-		for (int i = 0; i < MapTip_MAX_Y; i++)
+		for (int j = 0; j < MapTip_MAX_X; j++)
 		{
-			for (int j = 0; j < MapTip_MAX_X; j++)
-			{
-				map[MapTip_MAX_Y - i - 1][j] = MapManager::GetNowMapTip()[i][j];
-			}
+			map[MapTip_MAX_Y - i - 1][j] = MapManager::GetNowMapTip()[i][j];
 		}
+	}
 
-		if (BuggageSelectDirection == Left)
+	//設置
+
+	if (OffsideManager::GetDirection() == Right)
+	{
+		if (Input::PushKeyPressed(DIK_J) && worldTransform_.translate.x <= OffsideManager::GetOffsidePos().x)
 		{
-			if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 0.8f)] == AIR)
+			if (BuggageSelectDirection == Left)
 			{
-				isBuggagesSelect = false;	
+				if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 0.8f)] == AIR)
+				{
+					isBuggagesSelect = false;
+				}
 			}
-		}
 
-		if (BuggageSelectDirection==Right)
+			if (BuggageSelectDirection == Right)
+			{
+				if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x) + 2] == AIR)
+				{
+					isBuggagesSelect = false;
+				}
+			}
+
+		}
+	}
+
+	if (OffsideManager::GetDirection() == Left)
+	{
+		if (Input::PushKeyPressed(DIK_J) && worldTransform_.translate.x >= OffsideManager::GetOffsidePos().x)
 		{
-			if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x) + 2] == AIR)
+			if (BuggageSelectDirection == Left)
 			{
-				isBuggagesSelect = false;
+				if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 0.8f)] == AIR)
+				{
+					isBuggagesSelect = false;
+				}
 			}
-		}
 
+			if (BuggageSelectDirection == Right)
+			{
+				if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x) + 2] == AIR)
+				{
+					isBuggagesSelect = false;
+				}
+			}
+
+		}
 	}
 }

@@ -50,53 +50,19 @@ void Buggage::Update()
 		SelectBox();
 	}
 
-	if (isSelect&&playerPos_.x<=OffsideManager::GetOffsidePos().x)
+	array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map = MapManager::GetNowMapTip();
+
+	//マップチップ反転Y
+	for (int i = 0; i < MapTip_MAX_Y; i++)
 	{
-		if (Input::PushKeyPressed(DIK_J))
+		for (int j = 0; j < MapTip_MAX_X; j++)
 		{
-
-			array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map = MapManager::GetNowMapTip();
-
-			//マップチップ反転Y
-			for (int i = 0; i < MapTip_MAX_Y; i++)
-			{
-				for (int j = 0; j < MapTip_MAX_X; j++)
-				{
-					map[MapTip_MAX_Y - i - 1][j] = MapManager::GetNowMapTip()[i][j];
-				}
-			}
-			//右
-			if (SelectDirection_ == Right)
-			{
-			    if (map[(int)(playerPos_.y)][(int)(playerPos_.x)+2] == AIR)
-				{
-					worldTransform_.translate = playerPos_;
-					worldTransform_.translate.x+=1;
-
-					isHitWall = false;
-					isBuggagesSelect = false;
-					isSelect = false;
-					model_->SetColor({ 1,1,1,1 });
-				}
-			}
-			//左
-			if (SelectDirection_ == Left )
-			{
-				if (map[(int)(playerPos_.y)][(int)(playerPos_.x - 0.8f)] == AIR)
-				{
-				
-					worldTransform_.translate = playerPos_;
-					worldTransform_.translate.x = playerPos_.x - 1.0f;
-					isHitWall = false;
-					isBuggagesSelect = false;
-					isSelect = false;
-					model_->SetColor({ 1,1,1,1 });
-				
-				}
-			}
+			map[MapTip_MAX_Y - i - 1][j] = MapManager::GetNowMapTip()[i][j];
 		}
 	}
 
+	SetBoxR(map);
+	SetBoxL(map);
 	velocity_.y = velocity_.y + gravity;
 
 	Vector2 v{};
@@ -249,4 +215,88 @@ void Buggage::SetOpenPortal(Vector3 pos)
 void Buggage::SelectBox()
 {
 	
+}
+
+void Buggage::SetBoxR(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map)
+{
+	if (OffsideManager::GetDirection() == Right)
+	{
+		if (isSelect && playerPos_.x <= OffsideManager::GetOffsidePos().x)
+		{
+			if (Input::PushKeyPressed(DIK_J))
+			{
+				//右
+				if (SelectDirection_ == Right)
+				{
+					if (map[(int)(playerPos_.y)][(int)(playerPos_.x) + 2] == AIR)
+					{
+						worldTransform_.translate = playerPos_;
+						worldTransform_.translate.x += 1;
+
+						isHitWall = false;
+						isBuggagesSelect = false;
+						isSelect = false;
+						model_->SetColor({ 1,1,1,1 });
+					}
+				}
+				//左
+				if (SelectDirection_ == Left)
+				{
+					if (map[(int)(playerPos_.y)][(int)(playerPos_.x - 0.8f)] == AIR)
+					{
+
+						worldTransform_.translate = playerPos_;
+						worldTransform_.translate.x = playerPos_.x - 1.0f;
+						isHitWall = false;
+						isBuggagesSelect = false;
+						isSelect = false;
+						model_->SetColor({ 1,1,1,1 });
+
+					}
+				}
+			}
+		}
+	}
+}
+
+void Buggage::SetBoxL(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map)
+{
+	if (OffsideManager::GetDirection() == Left)
+	{
+		if (isSelect && playerPos_.x >= OffsideManager::GetOffsidePos().x)
+		{
+			if (Input::PushKeyPressed(DIK_J))
+			{
+				//右
+				if (SelectDirection_ == Right)
+				{
+					if (map[(int)(playerPos_.y)][(int)(playerPos_.x) + 2] == AIR)
+					{
+						worldTransform_.translate = playerPos_;
+						worldTransform_.translate.x += 1;
+
+						isHitWall = false;
+						isBuggagesSelect = false;
+						isSelect = false;
+						model_->SetColor({ 1,1,1,1 });
+					}
+				}
+				//左
+				if (SelectDirection_ == Left)
+				{
+					if (map[(int)(playerPos_.y)][(int)(playerPos_.x - 0.8f)] == AIR)
+					{
+
+						worldTransform_.translate = playerPos_;
+						worldTransform_.translate.x = playerPos_.x - 1.0f;
+						isHitWall = false;
+						isBuggagesSelect = false;
+						isSelect = false;
+						model_->SetColor({ 1,1,1,1 });
+
+					}
+				}
+			}
+		}
+	}
 }

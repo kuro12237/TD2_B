@@ -84,6 +84,7 @@
     <ClCompile Include="Project\GameObject\Buggage\Buggage.cpp" />
     <ClCompile Include="Project\GameObject\GoalHouse\GoalHouse.cpp" />
     <ClCompile Include="Project\GameObject\Ground\Ground.cpp" />
+    <ClCompile Include="Project\GameObject\InvertionSwich\InvertionSwich.cpp" />
     <ClCompile Include="Project\GameObject\MapCollisionManager\MapCollisionManager.cpp" />
     <ClCompile Include="Project\GameObject\MapManager\MapManager.cpp" />
     <ClCompile Include="Project\GameObject\Offside\OffSideManager.cpp" />
@@ -158,6 +159,7 @@
     <ClInclude Include="Project\GameObject\Buggage\Buggage.h" />
     <ClInclude Include="Project\GameObject\GoalHouse\GoalHouse.h" />
     <ClInclude Include="Project\GameObject\Ground\Ground.h" />
+    <ClInclude Include="Project\GameObject\InvertionSwich\InvertionSwich.h" />
     <ClInclude Include="Project\GameObject\MapCollisionManager\MapCollider.h" />
     <ClInclude Include="Project\GameObject\MapCollisionManager\MapCollisionManager.h" />
     <ClInclude Include="Project\GameObject\MapManager\Data\MapData.h" />
