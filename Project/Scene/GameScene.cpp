@@ -51,6 +51,19 @@ void GameScene::Initialize()
 				buggages_.push_back(buggageA);
 				BaggageCount++;
 			}
+			if (map[i][j]==GOAL)
+			{
+				Vector3 goalPos = {};
+				goal_ = make_unique<GoalHouse>();
+				
+				goalPos.x = float(j);
+				goalPos.y = float(i + 1.5f                            );
+
+				goal_->Initialize(goalPos);
+
+
+			}
+
 		}
 	}
 
@@ -85,6 +98,7 @@ void GameScene::Update(GameManager* Scene)
 
 	player_->Update();
 	OffsideManager::Update();
+	goal_->Update();
 
 	for (shared_ptr<Buggage>& buggage : buggages_)
 	{
@@ -139,6 +153,9 @@ void GameScene::Object3dDraw()
 		buggage->Draw(viewProjection_);
 	}
 	player_->Draw(viewProjection_);
+
+	goal_->Draw(viewProjection_);
+
 	MapManager::Draw(viewProjection_);
 
 	TruckManager::Draw(viewProjection_);

@@ -14,6 +14,7 @@
 #include"GameObject/Ground/Ground.h"
 #include"GameObject/Truck/TruckManager.h"
 #include"GameObject/Offside/OffSideManager.h"
+#include"GameObject/GoalHouse/GoalHouse.h"
 
 class GameScene :public IScene
 {
@@ -30,7 +31,10 @@ public:
 	void Flont2dSpriteDraw()override;
 private:
 	
+	
 	unique_ptr<Player>player_ = nullptr;
+	unique_ptr<GoalHouse>goal_ = nullptr;
+	
 	list<shared_ptr<Buggage>>buggages_ ;
 
 

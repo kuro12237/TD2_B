@@ -61,7 +61,7 @@ void SelectScene::Update(GameManager* Scene)
 
 	viewProjection_.UpdateMatrix();
 	//0
-	if (!SelectLock)
+	if (!SelectLock&&SceneChange::GetEndChandeFlag())
 	{
 		if (Input::PushKeyPressed(DIK_SPACE))
 		{

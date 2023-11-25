@@ -172,6 +172,9 @@
     <Filter Include="Project\Scene\0-10">
       <UniqueIdentifier>{2c9cd2eb-d4a9-4da5-8ab8-cbb0d2f06f91}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\GameObject\GorlObject">
+      <UniqueIdentifier>{2f871547-abd7-456b-9bcb-d43cbcbcab10}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="CLEYERA\Config\.editorconfig">
@@ -353,6 +356,9 @@
     </ClCompile>
     <ClCompile Include="Project\Scene\SelectScene\SelectScene.cpp">
       <Filter>Project\Scene\SelectScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\GoalHouse\GoalHouse.cpp">
+      <Filter>Project\GameObject\GorlObject</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -580,6 +586,9 @@
     </ClInclude>
     <ClInclude Include="Project\Scene\SelectScene\SelectScene.h">
       <Filter>Project\Scene\SelectScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\GoalHouse\GoalHouse.h">
+      <Filter>Project\GameObject\GorlObject</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
