@@ -24,13 +24,20 @@ void GameScene::Initialize()
 		{
 			if (map[i][j] == START)
 			{
-				PlayerPos.y = float(i + 1);
+				PlayerPos.y = float(i + 1.5f);
 				PlayerPos.x = float(j);
 				player_ = make_unique<Player>();
 				player_->Initialize(PlayerPos);
 
 
 			}
+		}
+	}
+
+	for (int i = 0; i < MapTip_MAX_Y; i++)
+	{
+		for (int j = 0; j < MapTip_MAX_X; j++)
+		{
 
 			if (map[i][j] == BAGGAGESPOWN)
 			{
@@ -51,19 +58,25 @@ void GameScene::Initialize()
 				buggages_.push_back(buggageA);
 				BaggageCount++;
 			}
-			if (map[i][j]==GOAL)
+		}
+	}
+
+	for (int i = 0; i < MapTip_MAX_Y; i++)
+	{
+		for (int j = 0; j < MapTip_MAX_X; j++)
+		{
+			if (map[i][j] == GOAL)
 			{
 				Vector3 goalPos = {};
 				goal_ = make_unique<GoalHouse>();
-				
+
 				goalPos.x = float(j);
-				goalPos.y = float(i + 1.5f                            );
+				goalPos.y = float(i + 1.5f);
 
 				goal_->Initialize(goalPos);
 
 
 			}
-
 		}
 	}
 
@@ -82,7 +95,8 @@ void GameScene::Update(GameManager* Scene)
 {
 	if (Input::PushKeyPressed(DIK_R))
 	{
-		Scene->ChangeState(new GameScene); return;
+		isReset_ = true;
+		SceneChange::ChangeStart();
 	}
 
 	player_->GravityUpdate();
@@ -140,6 +154,24 @@ void GameScene::Update(GameManager* Scene)
 	TruckManager::Update();
 
 	viewProjection_.UpdateMatrix();
+
+	if (buggages_.size() == 0)
+	{
+		if (SceneChange::GetScenChangeFlag() && buggages_.size() == 0)
+		{
+			Scene->ChangeState(new SelectScene);
+			return;
+		}
+	}
+
+	if (isReset_)
+	{
+		if (SceneChange::GetScenChangeFlag())
+		{
+			Scene->ChangeState(new SelectScene);
+			return;
+		}
+	}
 }
 
 void GameScene::Back2dSpriteDraw()

@@ -15,6 +15,7 @@
 #include"GameObject/Truck/TruckManager.h"
 #include"GameObject/Offside/OffSideManager.h"
 #include"GameObject/GoalHouse/GoalHouse.h"
+#include"GameManager.h"
 
 class GameScene :public IScene
 {
@@ -43,4 +44,7 @@ private:
 
 	unique_ptr<CollisionManager> collisionManager_ = nullptr;
 	unique_ptr<MapCollisionManager> mapCollisionManager_ = nullptr;
+
+	bool isReset_ = false;
+
 };
