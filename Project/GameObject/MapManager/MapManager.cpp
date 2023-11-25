@@ -16,6 +16,7 @@ void MapManager::Initialize()
 	MapManager::GetInstance()->BlockDartTex_ = TextureManager::LoadTexture("Resources/BlockTex/Box.png");
 	MapManager::GetInstance()->LadderTex_ = TextureManager::LoadTexture("Resources/BlockTex/LadderTex.png");
 	MapTip1_10();
+	MapTipLoad11_20();
 }
 
 void MapManager::Update()
@@ -179,4 +180,13 @@ void MapManager::MapTip1_10()
 	MapTipFileLoad("Resources/MapData/stage8.csv");
 	MapTipFileLoad("Resources/MapData/stage9.csv");
 	MapTipFileLoad("Resources/MapData/stage10.csv");
+}
+
+void MapManager::MapTipLoad11_20()
+{
+	MapTipFileLoad("Resources/MapData/stage11.csv");
+	MapTipFileLoad("Resources/MapData/stage12.csv");
+	MapTipFileLoad("Resources/MapData/stage13.csv");
+	MapTipFileLoad("Resources/MapData/stage14.csv");
+	MapTipFileLoad("Resources/MapData/stage15.csv");
 }

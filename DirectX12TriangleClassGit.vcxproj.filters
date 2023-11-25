@@ -354,9 +354,6 @@
     <ClCompile Include="Project\Scene\SelectScene\SelectScene.cpp">
       <Filter>Project\Scene\SelectScene</Filter>
     </ClCompile>
-    <ClCompile Include="Project\Scene\1_10Stage\Stage1.cpp">
-      <Filter>Project\Scene\0-10</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLEYERA\Utility\Pch\Pch.h">
@@ -583,9 +580,6 @@
     </ClInclude>
     <ClInclude Include="Project\Scene\SelectScene\SelectScene.h">
       <Filter>Project\Scene\SelectScene</Filter>
-    </ClInclude>
-    <ClInclude Include="Project\Scene\1_10Stage\Stage1.h">
-      <Filter>Project\Scene\0-10</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

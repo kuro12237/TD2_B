@@ -91,7 +91,6 @@
     <ClCompile Include="Project\GameObject\SkyBox\SkyBox.cpp" />
     <ClCompile Include="Project\GameObject\Truck\Truck.cpp" />
     <ClCompile Include="Project\GameObject\Truck\TruckManager.cpp" />
-    <ClCompile Include="Project\Scene\1_10Stage\Stage1.cpp" />
     <ClCompile Include="Project\Scene\DebugScene.cpp" />
     <ClCompile Include="Project\Scene\GameScene.cpp" />
     <ClCompile Include="Project\Scene\SelectScene\SelectScene.cpp" />
@@ -168,7 +167,6 @@
     <ClInclude Include="Project\GameObject\SkyBox\SkyBox.h" />
     <ClInclude Include="Project\GameObject\Truck\Truck.h" />
     <ClInclude Include="Project\GameObject\Truck\TruckManager.h" />
-    <ClInclude Include="Project\Scene\1_10Stage\Stage1.h" />
     <ClInclude Include="Project\Scene\DebugScene.h" />
     <ClInclude Include="Project\Scene\GameScene.h" />
     <ClInclude Include="Project\Scene\IScene.h" />

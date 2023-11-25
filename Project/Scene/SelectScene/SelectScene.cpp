@@ -7,9 +7,10 @@ void SelectScene::Initialize()
 	for (int i = 0; i < STAGE_MAX; i++)
 	{
 		model_[i] = make_unique<Sprite>();
-		uint32_t tex = TextureManager::LoadTexture("Resources/uvChecker.png");
+		uint32_t tex = TextureManager::LoadTexture("Resources/SelectTex/SelectNumber.png");
 		model_[i]->SetTexHandle(tex);
 		model_[i]->Initialize(new SpriteBoxState,{0,0},{128,128});
+		model_[i]->SetSrc({ 0.20f,0.0f }, { 0.20f,0.20f }, { 0,0 }, { 0,0.20f });
 
 		worldTransform_[i].Initialize();
 		worldTransform_[i].translate.x += (Height * 128 + 320 +32 * Height);
@@ -38,13 +39,14 @@ void SelectScene::Update(GameManager* Scene)
 	{
 		SelectParam_[i].IsSelect = false;
 		model_[i]->SetColor({ 1,1,1,1 });
+		worldTransform_[i].scale = { 1,1,1 };
 	}
 
 	Contorol();
 
 
 	SelectParam_[SelectNumber].IsSelect = true;
-	model_[SelectNumber]->SetColor({ 1,0,0,1 });
+	worldTransform_[SelectNumber].scale = { 1.2f,1.2f,1.0f };
 
 	ImGui::Begin("camera");
 	ImGui::SliderFloat3("r", &viewProjection_.rotation_.x,-2.0f,2.0f);
@@ -58,26 +60,23 @@ void SelectScene::Update(GameManager* Scene)
 	TruckManager::Update();
 
 	viewProjection_.UpdateMatrix();
-	stage0_10(Scene);
-
 	//0
-	if (SelectNumber == 0 && !SelectLock)
+	if (!SelectLock)
 	{
-
 		if (Input::PushKeyPressed(DIK_SPACE))
 		{
 			SceneChange::ChangeStart();
-
+			SelectLock = true;
 		}
 	}
-	if (SelectNumber == 0)
+	if (SceneChange::GetScenChangeFlag())
 	{
-		if (SceneChange::GetScenChangeFlag())
-		{
-			Scene->ChangeState(new Stage1Scene);
-			return;
-		}
+		MapManager::SetSelectMap(SelectNumber + 1);
+		Scene->ChangeState(new GameScene);
+
+		return;
 	}
+
 }
 
 void SelectScene::Back2dSpriteDraw()
@@ -86,12 +85,11 @@ void SelectScene::Back2dSpriteDraw()
 
 void SelectScene::Object3dDraw()
 {
-	if (!SelectLock)
-	{
-		TruckManager::Draw(viewProjection_);
-		SkyBox::Draw(viewProjection_);
-		Ground::Draw(viewProjection_);
-	}
+	
+	TruckManager::Draw(viewProjection_);
+	SkyBox::Draw(viewProjection_);
+	Ground::Draw(viewProjection_);
+	
 }
 
 void SelectScene::Flont2dSpriteDraw()
@@ -132,8 +130,8 @@ void SelectScene::Contorol()
 
 void SelectScene::stage0_10(GameManager* Scene)
 {
-	
 	Scene;
+
 	
-	
+
 }

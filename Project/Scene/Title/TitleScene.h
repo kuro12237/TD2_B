@@ -26,6 +26,8 @@ private:
 	ViewProjection view{};
 
 	const string SceneName = "TitleScene";
-	unique_ptr<Model>model_ = nullptr;
-	WorldTransform worldTransform_{};
+	unique_ptr<Sprite>titleSprite_ = nullptr;
+	WorldTransform titleWorldTransform_ = {};
+	Vector3 uvScele_ = { 1,1,1 };
+
 };

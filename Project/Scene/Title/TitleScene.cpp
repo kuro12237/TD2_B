@@ -3,18 +3,21 @@
 void TitleScene::Initialize()
 {
 	DebugCamera* Camera;
-	Camera= new DebugCamera();
+	Camera = new DebugCamera();
 	Camera->Initialize();
 	DebugTools::addCommand(Camera, "f");
 
-	LogManager::Log(SceneName+"\n");
-	model_ = make_unique<Model>();
-	uint32_t tex = TextureManager::LoadTexture("Resources/uvChecker.png");
+	LogManager::Log(SceneName + "\n");
 
-	model_->SetTexHandle(tex);
-	model_->Initialize(new ModelSphereState);
-	worldTransform_.Initialize();
-
+	titleSprite_ = make_unique<Sprite>();
+	uint32_t tex = TextureManager::LoadTexture("Resources/OffSideLogisticsLogo.png");
+	titleSprite_->SetTexHandle(tex);
+	titleSprite_->Initialize(new SpriteBoxState, { 0,0 }, { 1383, 285 });
+	
+	titleWorldTransform_.Initialize();
+	titleWorldTransform_.scale = { 0.8f,0.8f,1.0f };
+	titleWorldTransform_.translate = { 640,240,0 };
+	titleWorldTransform_.UpdateMatrix();
 
 	view.Initialize();
 	view.translation_ = { 0,3,-10 };
@@ -25,7 +28,10 @@ void TitleScene::Update(GameManager* Scene)
 {
 	if (ImGui::TreeNode("Scene"))
 	{
+
 		bool flag = false;
+		ImGui::SliderFloat3("uvS", &uvScele_.x, -2.0f, 2.0f);
+
 		if (ImGui::Checkbox("changeSecne", &flag))
 		{
 			
@@ -33,6 +39,8 @@ void TitleScene::Update(GameManager* Scene)
 		ImGui::TreePop();
 	}
 	
+	//titleWorldTransform_.scale = uvScele_;
+
 	if (Input::PushKeyPressed(DIK_SPACE) && !SceneChange::GetScenChangeFlag())
 	{
 		SceneChange::ChangeStart();
@@ -45,11 +53,11 @@ void TitleScene::Update(GameManager* Scene)
 	}
 
 	DebugTools::UpdateExecute(0);
-	worldTransform_.UpdateMatrix();
 
 	SkyBox::Update();
 	Ground::Update();
 	TruckManager::Update();
+	titleWorldTransform_.UpdateMatrix();
 
 	view.UpdateMatrix();
 	view = DebugTools::ConvertViewProjection(view);
@@ -63,7 +71,7 @@ void TitleScene::Back2dSpriteDraw()
 void TitleScene::Object3dDraw()
 {
 	DebugTools::DrawExecute(0);
-	//model_->Draw(worldTransform_, view);
+
 	TruckManager::Draw(view);
 
 	SkyBox::Draw(view);
@@ -72,5 +80,5 @@ void TitleScene::Object3dDraw()
 
 void TitleScene::Flont2dSpriteDraw()
 {
-	
+	titleSprite_->Draw(titleWorldTransform_);
 }

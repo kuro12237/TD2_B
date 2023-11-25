@@ -6,8 +6,6 @@
 #include"GameManager.h"
 #define STAGE_MAX 20
 
-#include"1_10Stage/Stage1.h"
-
 struct SelectScene_param
 {
 	bool IsSelect;
