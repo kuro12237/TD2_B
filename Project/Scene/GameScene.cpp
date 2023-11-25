@@ -104,6 +104,7 @@ void GameScene::Update(GameManager* Scene)
 	//objectの当たり判定
 	collisionManager_->ClliderClear();
 	collisionManager_->BoxColliderPush(player_.get());
+	collisionManager_->BoxColliderPush(goal_.get());
 	for (shared_ptr<Buggage>& buggage : buggages_)
 	{
 		collisionManager_->BoxColliderPush(buggage.get());
@@ -113,6 +114,23 @@ void GameScene::Update(GameManager* Scene)
 	player_->Update();
 	OffsideManager::Update();
 	goal_->Update();
+
+	if (buggages_.remove_if([](shared_ptr<Buggage>& b) {
+		if (!b->GetAlive())
+		{
+			b.reset();
+			return true;
+		}
+		return false;
+		}))
+	{
+		if (buggages_.size() == 0)
+		{
+			SceneChange::ChangeStart();
+		}
+	}
+
+
 
 	for (shared_ptr<Buggage>& buggage : buggages_)
 	{
@@ -157,7 +175,7 @@ void GameScene::Update(GameManager* Scene)
 
 	if (buggages_.size() == 0)
 	{
-		if (SceneChange::GetScenChangeFlag() && buggages_.size() == 0)
+		if (SceneChange::GetScenChangeFlag())
 		{
 			Scene->ChangeState(new SelectScene);
 			return;
@@ -168,7 +186,7 @@ void GameScene::Update(GameManager* Scene)
 	{
 		if (SceneChange::GetScenChangeFlag())
 		{
-			Scene->ChangeState(new SelectScene);
+			Scene->ChangeState(new GameScene);
 			return;
 		}
 	}

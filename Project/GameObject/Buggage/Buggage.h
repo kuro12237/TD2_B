@@ -49,6 +49,8 @@ public:
 
 	void SetOpenPortal(Vector3 pos);
 
+	bool GetAlive() { return isAlive_; }
+
 private:
 
 	/// <summary>
@@ -74,4 +76,6 @@ private:
 	uint32_t SelectDirection_ = Left;
 
 	bool isOpenPortal_ = false;
+
+	bool isAlive_ = true;
 };

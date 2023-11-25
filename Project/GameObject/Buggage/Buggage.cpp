@@ -182,6 +182,13 @@ void Buggage::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, u
 	position;
 	overlap;
 	id;
+	if (id==0b0001)
+	{
+		LogManager::Log("delete\n");
+		isAlive_ = false;
+		return;
+	}
+
 }
 
 void Buggage::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)

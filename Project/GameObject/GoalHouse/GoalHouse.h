@@ -1,8 +1,10 @@
 #pragma once
 #include"Model.h"
 #include"GameObject/MapManager/MapManager.h"
+#include"BoxCollider.h"
+#include"ColliderConfig.h"
 
-class GoalHouse
+class GoalHouse :public BoxCollider
 {
 public:
 	GoalHouse() {};
@@ -13,6 +15,19 @@ public:
 	void Update();
 
 	void Draw(ViewProjection view);
+
+	Vector3 GetWorldPosition()override{return worldTransform_.translate;}
+
+
+	void OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)override;
+
+	void OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
+	void OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
+
+	void OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
+	void OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
+
+
 
 private:
 
