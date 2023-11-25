@@ -5,6 +5,7 @@ void GoalHouse::Initialize(Vector3 pos)
 	testGoalModel_ = make_unique<Model>();
 	testGoalModel_->CreateFromObj("TestBox");
 
+
 	worldTransform_.Initialize();
 	worldTransform_.translate = pos;
 	worldTransform_.UpdateMatrix();

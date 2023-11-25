@@ -16,9 +16,9 @@ public:
 
 private:
 
+	unique_ptr<Model>model_ = nullptr;
+	WorldTransform worldTransform_ = {};
 
-	uint32_t Direction = Right;
 
-
-
+	
 };
