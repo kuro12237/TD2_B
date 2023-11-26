@@ -15,6 +15,7 @@ void MapManager::Initialize()
 	MapManager::GetInstance()->BaggageTexHandle_ = TextureManager::LoadTexture("Resources/BlockTex/BaggageSpownTex.png");
 	MapManager::GetInstance()->BlockDartTex_ = TextureManager::LoadTexture("Resources/BlockTex/Box.png");
 	MapManager::GetInstance()->LadderTex_ = TextureManager::LoadTexture("Resources/BlockTex/LadderTex.png");
+	MapManager::GetInstance()->InvertionSwich = TextureManager::LoadTexture("Resources/BlockTex/InvertionSwichSpownTex.png");
 	MapTip1_10();
 	MapTipLoad11_20();
 }
@@ -59,17 +60,12 @@ void MapManager::Draw(ViewProjection view)
 		{
 			if (MapManager::GetInstance()->NowMaptip_[y][x] == DART)
 			{
-				//MapManager::GetInstance()->block_[y][x].model->SetColor({ 1,1,1,0.5f });
-			
 				MapManager::GetInstance()->block_[y][x].model->SetTexHandle(MapManager::GetInstance()->BlockDartTex_);
 				MapManager::GetInstance()->block_[y][x].model->Draw(MapManager::GetInstance()->block_[y][x].worldTransform, view);				
 			}
-
-
 			if (MapManager::GetInstance()->NowMaptip_[y][x] == LADER)
 			{
 				MapManager::GetInstance()->block_[y][x].model->SetTexHandle(MapManager::GetInstance()->LadderTex_);
-				MapManager::GetInstance()->block_[y][x].model->SetColor({ 1,1,1,1.0f });
 				MapManager::GetInstance()->block_[y][x].model->Draw(MapManager::GetInstance()->block_[y][x].worldTransform, view);
 			}
 			if (MapManager::GetInstance()->NowMaptip_[y][x] == START)
@@ -89,9 +85,14 @@ void MapManager::Draw(ViewProjection view)
 				MapManager::GetInstance()->block_[y][x].model->SetTexHandle(MapManager::GetInstance()->BaggageTexHandle_);
 				MapManager::GetInstance()->block_[y][x].model->Draw(MapManager::GetInstance()->block_[y][x].worldTransform, view);
 			}
+			if (MapManager::GetInstance()->NowMaptip_[y][x] == INVERSIONSWICH)
+			{
+				MapManager::GetInstance()->block_[y][x].model->SetTexHandle(MapManager::GetInstance()->InvertionSwich);
+				MapManager::GetInstance()->block_[y][x].model->Draw(MapManager::GetInstance()->block_[y][x].worldTransform, view);
+			}
 		}
 	}
-	MapManager::GetInstance()->WorldCenterModel_->Draw(MapManager::GetInstance()->CenterWorldTransform_, view);
+
 }
 
 void MapManager::SetSelectMap(uint32_t stageNumber)

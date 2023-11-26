@@ -16,6 +16,7 @@
 #include"GameObject/Offside/OffSideManager.h"
 #include"GameObject/GoalHouse/GoalHouse.h"
 #include"GameManager.h"
+#include"GameObject/InvertionSwich/InvertionSwich.h"
 
 class GameScene :public IScene
 {
@@ -32,12 +33,15 @@ public:
 	void Flont2dSpriteDraw()override;
 private:
 	
+	void Collision();
 	
+	void MapCollision();
+
 	unique_ptr<Player>player_ = nullptr;
 	unique_ptr<GoalHouse>goal_ = nullptr;
 	
 	list<shared_ptr<Buggage>>buggages_ ;
-
+	list<shared_ptr<InvertionSwich>>invertionSwichs_;
 
 	ViewProjection viewProjection_{};
 	

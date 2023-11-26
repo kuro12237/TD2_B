@@ -1,14 +1,14 @@
 #pragma once
 #include"Model.h"
-#include"GameObject/MapManager/MapManager.h"
+#include"GameObject/Offside/OffSideManager.h"
 #include"BoxCollider.h"
 #include"ColliderConfig.h"
 
-class GoalHouse :public BoxCollider
+class InvertionSwich:public BoxCollider
 {
 public:
-	GoalHouse() {};
-	~GoalHouse() {};
+	InvertionSwich() {};
+	~InvertionSwich() {};
 
 	void Initialize(Vector3 pos);
 
@@ -16,8 +16,8 @@ public:
 
 	void Draw(ViewProjection view);
 
-	Vector3 GetWorldPosition()override{return worldTransform_.translate;}
 
+	Vector3 GetWorldPosition()override { return worldTransform_.translate; }
 
 	void OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)override;
 
@@ -27,14 +27,15 @@ public:
 	void OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)override;
 	void OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)override;
 
-
+	void Reset();
 
 private:
 
-
-	unique_ptr<Model>testGoalModel_ = nullptr;
+	unique_ptr<Model>model_ = nullptr;
 	WorldTransform worldTransform_ = {};
 
-
+	bool isHit_ = false;
+	bool Lock_ = false;
+	bool callbackCollisions = false;
+	bool prevcallBackCollision = false;
 };
-

@@ -12,6 +12,7 @@ enum BLOCK
 	START = 10,
 	GOAL = 11,
 	BAGGAGESPOWN = 12
+
 };
 
 struct SMapData {

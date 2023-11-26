@@ -52,6 +52,7 @@ private:
 	uint32_t BaggageTexHandle_ = 0;
 	uint32_t BlockDartTex_ = 0;
 	uint32_t LadderTex_ = 0;
+	uint32_t InvertionSwich = 0;
 
 #pragma region Singleton
 
