@@ -18,7 +18,7 @@ void Player::Initialize(Vector3 pos)
 	worldTransform_.scale = { 0.2f,0.2f,0.2f };
 	worldTransform_.rotation = { 0.0f,-2.0f,0.0f };
 	worldTransform_.UpdateMatrix();
-	//model_->SetColor({ 0,0,1,1 });
+	
 
 	SetCollosionAttribute(kCollisionAttributePlayer);
 	SetCollisionMask(kCollisionMaskPlayer);
@@ -29,8 +29,6 @@ void Player::Initialize(Vector3 pos)
 		SelectModel_[i]->CreateFromObj("SelectModel");
 		SelectWorldTransform[i].Initialize();
 		SelectWorldTransform[i].scale = { 0.5f,0.5f,1 };
-
-	
 	}
 	
 	SelectWorldTransform[0].UpdateMatrix();
@@ -56,32 +54,23 @@ void Player::Update()
 		ImGui::TreePop();
 	}
 	
-	
-	if (Input::PushKey(DIK_A))
+	KeyControl();
+
+	GamePadContorol();
+
+	//向き
+	if (velocity_.x > 0)
 	{
-		velocity_.x = -speed;
-		worldTransform_.rotation.y = 2.0f;
-	}
-	else if (Input::PushKey(DIK_D))
-	{
-		velocity_.x = speed;
 		worldTransform_.rotation.y = -2.0f;
 	}
-
-	if (nowMapPos_ != LADER)
+	if (velocity_.x < 0)
 	{
-		if (Input::PushKeyPressed(DIK_SPACE) && !isJamp)
-		{
-			JampFrame = 0;
-			jampVelocity = { 0,0.0f };
-			isJamp = true;
-		}
+
+		worldTransform_.rotation.y = 2.0f;
 	}
+
 	Jamp();
 	SelectBox();
-
-
-
 	Vector2 v = { velocity_.x,velocity_.y };
 
 	SetBoxVelocity(velocity_);
@@ -263,6 +252,43 @@ void Player::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity
 
 }
 
+void Player::KeyControl()
+{
+
+	if (Input::PushKey(DIK_A))
+	{
+		velocity_.x = -speed;
+	}
+	else if (Input::PushKey(DIK_D))
+	{
+		velocity_.x = speed;
+	}
+
+	if (Input::PushKeyPressed(DIK_SPACE) && !isJamp)
+	{
+		JampFrame = 0;
+		jampVelocity = { 0,0.0f };
+		isJamp = true;
+	}
+}
+
+void Player::GamePadContorol()
+{
+	XINPUT_STATE joyState{};
+	Input::NoneJoyState(joyState);
+	if (Input::GetInstance()->GetJoystickState(joyState))
+	{
+		velocity_.x += (float)joyState.Gamepad.sThumbLX / SHRT_MAX * speed;
+
+		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_A && !isJamp)
+		{
+			JampFrame = 0;
+			jampVelocity = { 0,0.0f };
+			isJamp = true;
+		}
+	}
+}
+
 void Player::Jamp()
 {
 	if (JampFrame < 10)
@@ -292,6 +318,33 @@ void Player::SelectBox()
 	{
 		BuggageSelectDirection = Right;
 	}
+
+	XINPUT_STATE joyState{};
+	Input::NoneJoyState(joyState);
+	if (Input::GetInstance()->GetJoystickState(joyState))
+	{
+		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT)
+		{
+			BuggageSelectDirection = Left;
+		}
+
+		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT)
+		{
+			BuggageSelectDirection = Right;
+		}
+
+		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_SHOULDER) 
+		{
+			if (isHit_)
+			{
+				isBuggagesSelect = true;
+			}
+		}
+
+	}
+
+
+
 
 	for (int i = 0; i < 2; i++)
 	{

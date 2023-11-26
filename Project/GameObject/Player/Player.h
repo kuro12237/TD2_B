@@ -50,6 +50,10 @@ public:
 
 private:
 
+	void KeyControl();
+
+	void GamePadContorol();
+
 	void Jamp();
 		 
 	void SelectBox();
