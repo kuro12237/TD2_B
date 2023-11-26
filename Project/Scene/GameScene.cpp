@@ -75,7 +75,6 @@ void GameScene::Initialize()
 
 				goal_->Initialize(goalPos);
 
-
 			}
 		}
 	}
