@@ -104,28 +104,28 @@ void CollisionManager::CheckBoxCollisionPair(BoxCollider* cA, BoxCollider* cB)
 	    //Aの右に当たった時Bの左の関数を使う
 		if (checkABoxRightCollision(cA->GetWorldPosition(), aabbA, cB->GetWorldPosition(), aabbB))
 		{
-			cA->OnLeftCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity());
-			cB->OnRightCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity());
+			cA->OnLeftCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity(),cB->GetObjectId());
+			cB->OnRightCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity(),cA->GetObjectId());
 		}
 
 		//左
 		else if (checkABoxLeftCoollision(cA->GetWorldPosition(),aabbA,cB->GetWorldPosition(), aabbB))
 		{
-			cA->OnRightCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity());
-			cB->OnLeftCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity());
+			cA->OnRightCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity(),cB->GetObjectId());
+			cB->OnLeftCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity(),cA->GetObjectId());
 			//return;
 		}
 	
 		//上
 		if (checkABoxTopCollision(cA->GetWorldPosition(), aabbA, cB->GetWorldPosition(), aabbB))
 		{
-			cA->OnTopCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity());
-			cB->OnTopCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity());
+			cA->OnTopCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity(), cB->GetObjectId());
+			cB->OnTopCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity(), cA->GetObjectId());
 		}
 		else if(checkABoxDownCollision(cA->GetWorldPosition(),aabbA,cB->GetWorldPosition(),aabbB))
 		{
-			cA->OnDownCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity());
-			cB->OnDownCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity());
+			cA->OnDownCollision(oBoverlap, cB->GetWorldPosition(), cB->GetBoxVelocity(), cB->GetObjectId());
+			cB->OnDownCollision(oAoverlap, cA->GetWorldPosition(), cA->GetBoxVelocity(), cA->GetObjectId());
 		}
 		
 

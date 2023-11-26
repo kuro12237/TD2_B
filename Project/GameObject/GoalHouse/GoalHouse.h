@@ -21,11 +21,11 @@ public:
 
 	void OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)override;
 
-	void OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
-	void OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
+	void OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)override;
+	void OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)override;
 
-	void OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
-	void OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)override;
+	void OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)override;
+	void OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)override;
 
 
 

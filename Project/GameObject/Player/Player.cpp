@@ -178,13 +178,20 @@ void Player::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, ui
 	position, velocity;
 	overlap;
 	id;
-
+	if (id==0b00010)
+	{
+		return;
+	}
 	//velocity_.y += overlap.y;
 }
 
-void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
-	overlap, position, velocity;
+	if (id == 0b00010)
+	{
+		return;
+	}
+	overlap, position, velocity,id;
 	if (overlap.x < 0.0f)
 	{
 		velocity_.x += overlap.x;
@@ -199,10 +206,13 @@ void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity
 	LogManager::Log("HitLeft!!\n");
 }
 
-void Player::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+void Player::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
-
-	overlap, position, velocity;
+	if (id == 0b00010)
+	{
+		return;
+	}
+	overlap, position, velocity,id;
 	if (overlap.x > 0.0f)
 	{
 		velocity_.x -= overlap.x;
@@ -222,10 +232,13 @@ void Player::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocit
 
 
 
-void Player::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+void Player::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
-
-	overlap, position, velocity;
+	if (id == 0b00010)
+	{
+		return;
+	}
+	overlap, position, velocity,id;
 	
 	
 	velocity_.y += overlap.y;
@@ -239,10 +252,14 @@ void Player::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
 
 }
 
-void Player::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+void Player::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
+	if (id == 0b00010)
+	{
+		return;
+	}
 	velocity_.y -= overlap.y;
-	overlap, position, velocity;
+	overlap, position, velocity,id;
 
 }
 

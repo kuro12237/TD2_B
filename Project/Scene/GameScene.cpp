@@ -80,6 +80,23 @@ void GameScene::Initialize()
 		}
 	}
 
+	for (int i = 0; i < MapTip_MAX_Y; i++)
+	{
+		for (int j = 0; j < MapTip_MAX_X; j++)
+		{
+			if (map[i][j] == INVERSIONSWICH)
+			{
+				Vector3 pos{};
+				pos.x = float(j);
+				pos.y = float(i + 1.5f);
+
+				shared_ptr<InvertionSwich>invertion_ = make_shared<InvertionSwich>();
+				invertion_->Initialize(pos);
+				invertionSwichs_.push_back(invertion_);
+			}
+		}
+	}
+
 	mapCollisionManager_ = make_unique<MapCollisionManager>();
 	collisionManager_ = make_unique<CollisionManager>();
 
@@ -101,15 +118,7 @@ void GameScene::Update(GameManager* Scene)
 
 	player_->GravityUpdate();
 
-	//objectの当たり判定
-	collisionManager_->ClliderClear();
-	collisionManager_->BoxColliderPush(player_.get());
-	collisionManager_->BoxColliderPush(goal_.get());
-	for (shared_ptr<Buggage>& buggage : buggages_)
-	{
-		collisionManager_->BoxColliderPush(buggage.get());
-	}
-	collisionManager_->CheckAllCollision();
+	Collision();
 
 	player_->Update();
 	OffsideManager::Update();
@@ -139,16 +148,14 @@ void GameScene::Update(GameManager* Scene)
 		buggage->Update();
 	}
 
+	for (shared_ptr<InvertionSwich>& invertion : invertionSwichs_)
+	{
+		invertion->Update();
+	}
+
 	//Mapの当たり判定
 	MapManager::Update();
-
-	mapCollisionManager_->ClearList();
-	mapCollisionManager_->AddCollider(player_.get());
-	for (shared_ptr<Buggage>& buggage : buggages_)
-	{
-		mapCollisionManager_->AddCollider(buggage.get());
-	}
-	mapCollisionManager_->ChackAllCollision();
+	MapCollision();
 
 	OffsideManager::ClearList();
 	for (shared_ptr<Buggage>& buggage : buggages_)
@@ -200,6 +207,12 @@ void GameScene::Object3dDraw()
 	{
 		buggage->Draw(viewProjection_);
 	}
+	
+	for (shared_ptr<InvertionSwich>& invertion : invertionSwichs_)
+	{
+		invertion->Draw(viewProjection_);
+	}
+
 	player_->Draw(viewProjection_);
 
 	goal_->Draw(viewProjection_);
@@ -215,4 +228,36 @@ void GameScene::Object3dDraw()
 
 void GameScene::Flont2dSpriteDraw()
 {
+}
+
+void GameScene::Collision()
+{
+	//objectの当たり判定
+	collisionManager_->ClliderClear();
+	collisionManager_->BoxColliderPush(player_.get());
+	collisionManager_->BoxColliderPush(goal_.get());
+	
+	for (shared_ptr<InvertionSwich>& invertion : invertionSwichs_)
+	{
+		collisionManager_->BoxColliderPush(invertion.get());
+	}
+
+	for (shared_ptr<Buggage>& buggage : buggages_)
+	{
+		collisionManager_->BoxColliderPush(buggage.get());
+	}
+	collisionManager_->CheckAllCollision();
+
+}
+
+void GameScene::MapCollision()
+{
+	mapCollisionManager_->ClearList();
+	mapCollisionManager_->AddCollider(player_.get());
+	for (shared_ptr<Buggage>& buggage : buggages_)
+	{
+		mapCollisionManager_->AddCollider(buggage.get());
+	}
+	mapCollisionManager_->ChackAllCollision();
+
 }

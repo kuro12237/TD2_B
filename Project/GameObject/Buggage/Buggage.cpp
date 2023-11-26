@@ -143,6 +143,10 @@ void Buggage::SetIsSelect(bool Selecr)
 
 void Buggage::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
+	if (id == 0b00010)
+	{
+		return;
+	}
 	isHit_ = true;
 	velocity;
 	position;
@@ -154,13 +158,16 @@ void Buggage::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, u
 		isAlive_ = false;
 		return;
 	}
-
 }
 
-void Buggage::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+void Buggage::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
 
-	overlap, position, velocity;
+	overlap, position, velocity,id;
+	if (id == 0b00010)
+	{
+		return;
+	}
 	if ( !isHitWall)
 	{
 		velocity_.x += overlap.x;
@@ -174,10 +181,14 @@ void Buggage::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocit
 
 }
 
-void Buggage::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+void Buggage::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
-	overlap, position, velocity;
+	overlap, position, velocity,id;
 	
+	if (id == 0b00010)
+	{
+		return;
+	}
 	if (!isHitWall)
 	{
 		velocity_.x -= overlap.x;
@@ -191,16 +202,24 @@ void Buggage::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 veloci
 
 }
 
-void Buggage::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+void Buggage::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
-
+	id;
+	if (id == 0b00010)
+	{
+		return;
+	}
 	overlap, position, velocity;
 
 }
 
-void Buggage::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+void Buggage::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
-
+	id;
+	if (id == 0b00010)
+	{
+		return;
+	}
 	overlap, position, velocity;
 
 }

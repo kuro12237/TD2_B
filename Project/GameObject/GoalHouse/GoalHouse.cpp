@@ -33,22 +33,22 @@ void GoalHouse::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity,
 	overlap, position, velocity,id;
 }
 
-void GoalHouse::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+void GoalHouse::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
-	overlap, position, velocity;
+	overlap, position, velocity,id;
 }
 
-void GoalHouse::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+void GoalHouse::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
-	overlap, position, velocity;
+	overlap, position, velocity,id;
 }
 
-void GoalHouse::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+void GoalHouse::OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
-	overlap, position, velocity;
+	overlap, position, velocity,id;
 }
 
-void GoalHouse::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity)
+void GoalHouse::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
-	overlap, position, velocity;
+	overlap, position, velocity,id;
 }
