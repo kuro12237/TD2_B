@@ -99,6 +99,7 @@ void GameScene::Initialize()
 
 	mapCollisionManager_ = make_unique<MapCollisionManager>();
 	collisionManager_ = make_unique<CollisionManager>();
+	OffsideManager::SetDirection(Right);
 
 	viewProjection_.Initialize();
 	viewProjection_.translation_.x = 7;
@@ -151,6 +152,7 @@ void GameScene::Update(GameManager* Scene)
 	for (shared_ptr<InvertionSwich>& invertion : invertionSwichs_)
 	{
 		invertion->Update();
+		invertion->Reset();
 	}
 
 	//Mapの当たり判定

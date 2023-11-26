@@ -27,6 +27,7 @@ public:
 	void OnTopCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)override;
 	void OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)override;
 
+	void Reset();
 
 private:
 
@@ -34,5 +35,7 @@ private:
 	WorldTransform worldTransform_ = {};
 
 	bool isHit_ = false;
-	
+	bool Lock_ = false;
+	bool callbackCollisions = false;
+	bool prevcallBackCollision = false;
 };
