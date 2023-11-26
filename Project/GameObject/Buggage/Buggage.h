@@ -70,7 +70,7 @@ private:
 	Vector3 playerPos_ = {};
 	WorldTransform PlayerWorldTransform_ = {};
 
-	float gravity = -0.1f;
+	float gravity = -0.05f;
 
 	bool isHitWall=false;
 	bool isHit_ = false;

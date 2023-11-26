@@ -14,6 +14,7 @@ void InvertionSwich::Initialize(Vector3 pos)
 
 	SetCollosionAttribute(kCollisionAttributeInvertionSwich);
 	SetCollisionMask(kCollisionMaskInvertionSwich);
+	Invertion = Right;
 
 }
 
