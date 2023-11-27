@@ -17,7 +17,7 @@ void Buggage::Initialize(Vector3 position, uint32_t Attubte, uint32_t Mask)
 
 	SetCollosionAttribute(Attubte);
 	SetCollisionMask(Mask);
-
+	isBuggagesSelect = false;
 
 }
 
