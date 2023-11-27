@@ -84,11 +84,14 @@
     <ClCompile Include="Project\GameObject\Buggage\Buggage.cpp" />
     <ClCompile Include="Project\GameObject\GoalHouse\GoalHouse.cpp" />
     <ClCompile Include="Project\GameObject\Ground\Ground.cpp" />
+    <ClCompile Include="Project\GameObject\House\House.cpp" />
     <ClCompile Include="Project\GameObject\InvertionSwich\InvertionSwich.cpp" />
     <ClCompile Include="Project\GameObject\MapCollisionManager\MapCollisionManager.cpp" />
     <ClCompile Include="Project\GameObject\MapManager\MapManager.cpp" />
     <ClCompile Include="Project\GameObject\Offside\OffSideManager.cpp" />
+    <ClCompile Include="Project\GameObject\PlayerCamera\PlayerCamera.cpp" />
     <ClCompile Include="Project\GameObject\Player\Player.cpp" />
+    <ClCompile Include="Project\GameObject\Road\Road.cpp" />
     <ClCompile Include="Project\GameObject\SceneChange\SceneChange.cpp" />
     <ClCompile Include="Project\GameObject\SkyBox\SkyBox.cpp" />
     <ClCompile Include="Project\GameObject\Truck\Truck.cpp" />
@@ -159,6 +162,7 @@
     <ClInclude Include="Project\GameObject\Buggage\Buggage.h" />
     <ClInclude Include="Project\GameObject\GoalHouse\GoalHouse.h" />
     <ClInclude Include="Project\GameObject\Ground\Ground.h" />
+    <ClInclude Include="Project\GameObject\House\House.h" />
     <ClInclude Include="Project\GameObject\InvertionSwich\InvertionSwich.h" />
     <ClInclude Include="Project\GameObject\MapCollisionManager\MapCollider.h" />
     <ClInclude Include="Project\GameObject\MapCollisionManager\MapCollisionManager.h" />
@@ -166,7 +170,9 @@
     <ClInclude Include="Project\GameObject\MapManager\MapManager.h" />
     <ClInclude Include="Project\GameObject\Offside\IOffside.h" />
     <ClInclude Include="Project\GameObject\Offside\OffSideManager.h" />
+    <ClInclude Include="Project\GameObject\PlayerCamera\PlayerCamera.h" />
     <ClInclude Include="Project\GameObject\Player\Player.h" />
+    <ClInclude Include="Project\GameObject\Road\Road.h" />
     <ClInclude Include="Project\GameObject\SceneChange\SceneChange.h" />
     <ClInclude Include="Project\GameObject\SkyBox\SkyBox.h" />
     <ClInclude Include="Project\GameObject\Truck\Truck.h" />

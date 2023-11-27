@@ -175,8 +175,14 @@
     <Filter Include="Project\GameObject\InvertionSwich">
       <UniqueIdentifier>{6a80b6be-7708-43ed-9441-53159ddd4c55}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Project\GameObject\PlayerCamera">
-      <UniqueIdentifier>{9dfd8170-bd54-4530-bddc-b4761dbe807e}</UniqueIdentifier>
+    <Filter Include="Project\GameObject\Player\Camera">
+      <UniqueIdentifier>{e7dc4938-3673-4014-a0c2-47f42c3188e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\Ground\Road">
+      <UniqueIdentifier>{7f12c4c5-b78f-453d-8842-c96e5981f010}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\House">
+      <UniqueIdentifier>{8e44a08e-6617-4223-a43b-2692c0408e8e}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -365,6 +371,15 @@
     </ClCompile>
     <ClCompile Include="Project\GameObject\InvertionSwich\InvertionSwich.cpp">
       <Filter>Project\GameObject\InvertionSwich</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\PlayerCamera\PlayerCamera.cpp">
+      <Filter>Project\GameObject\Player\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Road\Road.cpp">
+      <Filter>Project\GameObject\Ground\Road</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\House\House.cpp">
+      <Filter>Project\GameObject\House</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -598,6 +613,15 @@
     </ClInclude>
     <ClInclude Include="Project\GameObject\InvertionSwich\InvertionSwich.h">
       <Filter>Project\GameObject\InvertionSwich</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\PlayerCamera\PlayerCamera.h">
+      <Filter>Project\GameObject\Player\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Road\Road.h">
+      <Filter>Project\GameObject\Ground\Road</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\House\House.h">
+      <Filter>Project\GameObject\House</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

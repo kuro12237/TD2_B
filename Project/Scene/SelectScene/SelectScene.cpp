@@ -27,8 +27,8 @@ void SelectScene::Initialize()
 	}
 	SelectNumber = 0;
 
-	viewProjection_.translation_ = { 40,3.0f,-0.0f };
-	viewProjection_.rotation_ = { 0,-1.1f,0 };
+	viewProjection_.translation_ = { 40,3.0f,18.0f };
+	viewProjection_.rotation_ = { 0,-1.3f,0 };
 	viewProjection_.UpdateMatrix();
 }
 
@@ -50,6 +50,7 @@ void SelectScene::Update(GameManager* Scene)
 
 	ImGui::Begin("camera");
 	ImGui::SliderFloat3("r", &viewProjection_.rotation_.x,-2.0f,2.0f);
+	ImGui::DragFloat3("t", &viewProjection_.translation_.x, -2.0f, 2.0f);
 	ImGui::End();
 	for (int i = 0; i < STAGE_MAX; i++)
 	{

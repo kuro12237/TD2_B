@@ -19,9 +19,15 @@ void TitleScene::Initialize()
 	titleWorldTransform_.translate = { 640,240,0 };
 	titleWorldTransform_.UpdateMatrix();
 
+	house_ = make_unique<House>();
+	house_->Initialize({ 0,0,32 },{1,1,1});
+
 	view.Initialize();
-	view.translation_ = { 0,3,-10 };
+	view.translation_ = { 0,10,-10 };
+	view.rotation_.x = 0.2f;
 	view.UpdateMatrix();
+
+
 }
 
 void TitleScene::Update(GameManager* Scene)
@@ -54,6 +60,7 @@ void TitleScene::Update(GameManager* Scene)
 
 	DebugTools::UpdateExecute(0);
 
+	house_->Update();
 	SkyBox::Update();
 	Ground::Update();
 	TruckManager::Update();
@@ -74,6 +81,7 @@ void TitleScene::Object3dDraw()
 
 	TruckManager::Draw(view);
 
+	house_->Draw(view);
 	SkyBox::Draw(view);
 	Ground::Draw(view);
 }

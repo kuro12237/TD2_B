@@ -100,6 +100,9 @@ void GameScene::Initialize()
 	collisionManager_ = make_unique<CollisionManager>();
 	OffsideManager::SetDirection(Right);
 
+	playerCamera_ = make_unique<PlayerCamera>();
+	playerCamera_->Initialize();
+
 	viewProjection_.Initialize();
 	viewProjection_.translation_.x = 7;
 	viewProjection_.translation_.y = 7;
@@ -121,6 +124,7 @@ void GameScene::Update(GameManager* Scene)
 	Collision();
 
 	player_->Update();
+	playerCamera_->Update(player_->GetWorldPosition());
 	OffsideManager::Update();
 	goal_->Update();
 
@@ -178,6 +182,7 @@ void GameScene::Update(GameManager* Scene)
 	TruckManager::Update();
 
 	viewProjection_.UpdateMatrix();
+	viewProjection_ = playerCamera_->GetViewProjection();
 
 	if (buggages_.size() == 0)
 	{

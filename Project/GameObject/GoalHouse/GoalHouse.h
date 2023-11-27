@@ -3,6 +3,7 @@
 #include"GameObject/MapManager/MapManager.h"
 #include"BoxCollider.h"
 #include"ColliderConfig.h"
+#include"GameObject/House/House.h"
 
 class GoalHouse :public BoxCollider
 {
@@ -34,7 +35,7 @@ private:
 
 	unique_ptr<Model>testGoalModel_ = nullptr;
 	WorldTransform worldTransform_ = {};
-
+	unique_ptr<House>house_ = nullptr;
 
 };
 
