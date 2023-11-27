@@ -41,7 +41,7 @@ void GameScene::Initialize()
 
 			if (map[i][j] == BAGGAGESPOWN)
 			{
-				BaggagePos.y = float(i + 1.5f);
+				BaggagePos.y = float(i + 1.7f);
 				BaggagePos.x = float(j);
 
 				shared_ptr<Buggage> buggageA = make_shared<Buggage>();
@@ -113,12 +113,6 @@ void GameScene::Initialize()
 
 void GameScene::Update(GameManager* Scene)
 {
-	if (Input::PushKeyPressed(DIK_R))
-	{
-		isReset_ = true;
-		SceneChange::ChangeStart();
-	}
-
 	player_->GravityUpdate();
 
 	Collision();
@@ -188,17 +182,32 @@ void GameScene::Update(GameManager* Scene)
 	{
 		if (SceneChange::GetScenChangeFlag())
 		{
-			Scene->ChangeState(new SelectScene);
+			Scene->ChangeState(new TitleScene);
 			return;
 		}
 	}
-
 	if (isReset_)
 	{
 		if (SceneChange::GetScenChangeFlag())
 		{
 			Scene->ChangeState(new GameScene);
 			return;
+		}
+	}
+
+	if (Input::PushKeyPressed(DIK_R))
+	{
+		isReset_ = true;
+		SceneChange::ChangeStart();
+	}
+	XINPUT_STATE joyState{};
+	Input::NoneJoyState(joyState);
+	if (Input::GetInstance()->GetJoystickState(joyState))
+	{
+		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_Y)
+		{
+			isReset_ = true;
+			SceneChange::ChangeStart();
 		}
 	}
 }

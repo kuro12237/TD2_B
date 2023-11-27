@@ -32,4 +32,6 @@ private:
 
 	unique_ptr<House>house_ = nullptr;
 	
+	unique_ptr<Sprite>pushASprite_ = nullptr;
+	WorldTransform pushAWorldTransform_{};
 };
