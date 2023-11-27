@@ -100,6 +100,7 @@
     <ClCompile Include="Project\Scene\GameScene.cpp" />
     <ClCompile Include="Project\Scene\SelectScene\SelectScene.cpp" />
     <ClCompile Include="Project\Scene\Title\TitleScene.cpp" />
+    <ClCompile Include="Project\Scene\Tutorial\Tutorial_01.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLEYERA\Audio\AudioDataResource.h" />
@@ -182,6 +183,7 @@
     <ClInclude Include="Project\Scene\IScene.h" />
     <ClInclude Include="Project\Scene\SelectScene\SelectScene.h" />
     <ClInclude Include="Project\Scene\Title\TitleScene.h" />
+    <ClInclude Include="Project\Scene\Tutorial\Tutorial_01.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Resources\Shader\Harf_LambertLightObject.PS.hlsl">

@@ -184,6 +184,9 @@
     <Filter Include="Project\GameObject\House">
       <UniqueIdentifier>{8e44a08e-6617-4223-a43b-2692c0408e8e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\Scene\Tutorial">
+      <UniqueIdentifier>{554b6761-8343-442c-922f-f695943650f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="CLEYERA\Config\.editorconfig">
@@ -381,6 +384,7 @@
     <ClCompile Include="Project\GameObject\House\House.cpp">
       <Filter>Project\GameObject\House</Filter>
     </ClCompile>
+    <ClCompile Include="Project\Scene\Tutorial\Tutorial_01.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLEYERA\Utility\Pch\Pch.h">
@@ -622,6 +626,9 @@
     </ClInclude>
     <ClInclude Include="Project\GameObject\House\House.h">
       <Filter>Project\GameObject\House</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\Scene\Tutorial\Tutorial_01.h">
+      <Filter>Project\Scene\Tutorial</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -99,6 +99,14 @@ void SelectScene::Update(GameManager* Scene)
 	pushAWorldTransform_.UpdateMatrix();
 
 	viewProjection_.UpdateMatrix();
+	if (SelectNumber==0)
+	{
+		if (SceneChange::GetScenChangeFlag())
+		{
+			Scene->ChangeState(new Tutorial01Scene);
+			return;
+		}
+	}
 
 	if (SceneChange::GetScenChangeFlag())
 	{

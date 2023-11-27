@@ -5,6 +5,7 @@
 #include"Input.h"
 #include"GameManager.h"
 #include"GameObject/GoalHouse/GoalHouse.h"
+#include"Scene/Tutorial/Tutorial_01.h"
 #define STAGE_MAX 21
 
 struct SelectScene_param
@@ -46,4 +47,6 @@ private:
 	bool SelectLock = false;
 
 	uint32_t selectTimer_ = 0;
+
+
 };
