@@ -6,10 +6,17 @@ void InvertionSwich::Initialize(Vector3 pos)
 {
 	pos;
 	model_ = make_unique<Model>();
-	model_->CreateFromObj("TestBox");
+	model_->CreateFromObj("InvertionSwich");
 	worldTransform_.Initialize();
 	worldTransform_.translate = pos;
 	worldTransform_.UpdateMatrix();
+
+	FoundationModel_= make_unique <Model>();
+	FoundationModel_->CreateFromObj("InvertionSwichFoundation");
+	foundationWorldTransform_.Initialize();
+	foundationWorldTransform_.translate = pos;
+	foundationWorldTransform_.UpdateMatrix();
+
 	SetObjectId(0b00010);
 
 	SetCollosionAttribute(kCollisionAttributeInvertionSwich);
@@ -32,13 +39,24 @@ void InvertionSwich::Update()
 		}
 		isHit_ = false;
 	}
+	if (Invertion==Left)
+	{
+		worldTransform_.scale = { 1,1,1 };
+	}
+	if (Invertion == Right)
+	{
+	    worldTransform_.scale = { 1,0.2f,1 };
+	}
+
 	OffsideManager::SetDirection(Invertion);
 	worldTransform_.UpdateMatrix();
+	foundationWorldTransform_.UpdateMatrix();
 }
 
 void InvertionSwich::Draw(ViewProjection view)
 {
 	model_->Draw(worldTransform_, view);
+	FoundationModel_->Draw(foundationWorldTransform_, view);
 }
 
 void InvertionSwich::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)

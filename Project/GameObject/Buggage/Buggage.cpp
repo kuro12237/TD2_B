@@ -242,7 +242,10 @@ void Buggage::SetBoxR(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map)
 	{
 		if (isSelect && playerPos_.x <= OffsideManager::GetOffsidePos().x)
 		{
-			if (Input::PushKeyPressed(DIK_J))
+			XINPUT_STATE joyState{};
+			Input::NoneJoyState(joyState);
+
+			if (Input::PushKeyPressed(DIK_J)|| Input::GetInstance()->GetJoystickState(joyState)&& joyState.Gamepad.wButtons & XINPUT_GAMEPAD_B)
 			{
 				//右
 				if (SelectDirection_ == Right)
@@ -284,7 +287,10 @@ void Buggage::SetBoxL(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map)
 	{
 		if (isSelect && playerPos_.x >= OffsideManager::GetOffsidePos().x)
 		{
-			if (Input::PushKeyPressed(DIK_J))
+			XINPUT_STATE joyState{};
+			Input::NoneJoyState(joyState);
+
+			if (Input::PushKeyPressed(DIK_J) || Input::GetInstance()->GetJoystickState(joyState) && joyState.Gamepad.wButtons & XINPUT_GAMEPAD_B)
 			{
 				//右
 				if (SelectDirection_ == Right)

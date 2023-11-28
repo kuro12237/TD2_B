@@ -34,6 +34,9 @@ private:
 	unique_ptr<Model>model_ = nullptr;
 	WorldTransform worldTransform_ = {};
 
+	unique_ptr<Model>FoundationModel_ = nullptr;
+	WorldTransform foundationWorldTransform_ = {};
+
 	bool isHit_ = false;
 	bool Lock_ = false;
 	bool callbackCollisions = false;

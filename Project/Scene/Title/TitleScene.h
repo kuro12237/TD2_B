@@ -5,7 +5,7 @@
 #include"Model.h"
 #include"DebugTools/DebugTools.h"
 #include"Scene/SelectScene/SelectScene.h"
-
+#include"GameObject/House/House.h"
 
 class TitleScene : public IScene
 {
@@ -30,4 +30,8 @@ private:
 	WorldTransform titleWorldTransform_ = {};
 	Vector3 uvScele_ = { 1,1,1 };
 
+	unique_ptr<House>house_ = nullptr;
+	
+	unique_ptr<Sprite>pushASprite_ = nullptr;
+	WorldTransform pushAWorldTransform_{};
 };

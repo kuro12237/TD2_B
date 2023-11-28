@@ -10,7 +10,12 @@ void GoalHouse::Initialize(Vector3 pos)
 	worldTransform_.translate = pos;
 	worldTransform_.UpdateMatrix();
 
+	Vector3 spownHousePos = pos;
+	spownHousePos.y -= 0.5f;
+	spownHousePos.z += 1.0f;
 
+	house_ = make_unique<House>();
+	house_->Initialize(spownHousePos,{0.25f,0.25f,0.25f});
 	SetCollosionAttribute(kCollisionAttributeGoal);
 	SetCollisionMask(kCollisionMaskGoal);
 	SetObjectId(0b00001);
@@ -18,12 +23,14 @@ void GoalHouse::Initialize(Vector3 pos)
 
 void GoalHouse::Update()
 {
+	house_->Update();
 	worldTransform_.UpdateMatrix();
 }
 
 void GoalHouse::Draw(ViewProjection view)
 {
-	testGoalModel_->Draw(worldTransform_, view);
+	house_->Draw(view);
+	//testGoalModel_->Draw(worldTransform_, view);
 }
 
 

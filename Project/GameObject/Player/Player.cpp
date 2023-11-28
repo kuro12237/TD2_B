@@ -276,9 +276,10 @@ void Player::GamePadContorol()
 {
 	XINPUT_STATE joyState{};
 	Input::NoneJoyState(joyState);
+	float x = 0;
 	if (Input::GetInstance()->GetJoystickState(joyState))
 	{
-		velocity_.x += (float)joyState.Gamepad.sThumbLX / SHRT_MAX * speed;
+		x += (float)joyState.Gamepad.sThumbLX / SHRT_MAX * speed;
 
 		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_A && !isJamp)
 		{
@@ -287,6 +288,8 @@ void Player::GamePadContorol()
 			isJamp = true;
 		}
 	}
+	
+	velocity_.x += x;
 }
 
 void Player::Jamp()
@@ -374,47 +377,57 @@ void Player::SelectBox()
 
 	if (OffsideManager::GetDirection() == Right)
 	{
-		if (Input::PushKeyPressed(DIK_J) && worldTransform_.translate.x <= OffsideManager::GetOffsidePos().x)
+
+		if (Input::PushKeyPressed(DIK_J) || Input::GetInstance()->GetJoystickState(joyState) && joyState.Gamepad.wButtons & XINPUT_GAMEPAD_B)
 		{
-			if (BuggageSelectDirection == Left)
+			if (worldTransform_.translate.x <= OffsideManager::GetOffsidePos().x)
 			{
-				if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 0.8f)] == AIR)
-				{
-					isBuggagesSelect = false;
-				}
+			       
+			    if (BuggageSelectDirection == Left)
+			    {
+			    	if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 0.8f)] == AIR)
+			    	{
+			    		isBuggagesSelect = false;
+			    	}
+			    }
+			       
+			    if (BuggageSelectDirection == Right)
+			    {
+			    	if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x) + 2] == AIR)
+			    	{
+			    		isBuggagesSelect = false;
+			    	}
+			    }
+			       
+				
 			}
-
-			if (BuggageSelectDirection == Right)
-			{
-				if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x) + 2] == AIR)
-				{
-					isBuggagesSelect = false;
-				}
-			}
-
 		}
 	}
-
 	if (OffsideManager::GetDirection() == Left)
 	{
-		if (Input::PushKeyPressed(DIK_J) && worldTransform_.translate.x >= OffsideManager::GetOffsidePos().x)
+		
+		if (Input::PushKeyPressed(DIK_J) || Input::GetInstance()->GetJoystickState(joyState) && joyState.Gamepad.wButtons & XINPUT_GAMEPAD_B)
 		{
-			if (BuggageSelectDirection == Left)
+			if (worldTransform_.translate.x >= OffsideManager::GetOffsidePos().x)
 			{
-				if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 0.8f)] == AIR)
+				if (BuggageSelectDirection == Left)
 				{
-					isBuggagesSelect = false;
+					if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 0.8f)] == AIR)
+					{
+						isBuggagesSelect = false;
+					}
 				}
-			}
 
-			if (BuggageSelectDirection == Right)
-			{
-				if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x) + 2] == AIR)
+				if (BuggageSelectDirection == Right)
 				{
-					isBuggagesSelect = false;
+					if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x) + 2] == AIR)
+					{
+						isBuggagesSelect = false;
+					}
 				}
-			}
 
+			}
 		}
 	}
+
 }

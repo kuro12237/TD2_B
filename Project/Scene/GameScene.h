@@ -7,6 +7,7 @@
 #include"GameObject/MapManager/MapManager.h"
 #include"GameObject/MapCollisionManager/MapCollisionManager.h"
 #include"GameObject/Player/Player.h"
+#include"GameObject/PlayerCamera/PlayerCamera.h"
 #include"GameObject/Buggage/Buggage.h"
 #include"CollisionManager.h"
 
@@ -17,6 +18,7 @@
 #include"GameObject/GoalHouse/GoalHouse.h"
 #include"GameManager.h"
 #include"GameObject/InvertionSwich/InvertionSwich.h"
+
 
 class GameScene :public IScene
 {
@@ -38,6 +40,7 @@ private:
 	void MapCollision();
 
 	unique_ptr<Player>player_ = nullptr;
+	unique_ptr<PlayerCamera>playerCamera_ = nullptr;
 	unique_ptr<GoalHouse>goal_ = nullptr;
 	
 	list<shared_ptr<Buggage>>buggages_ ;
@@ -51,4 +54,6 @@ private:
 
 	bool isReset_ = false;
 
+	unique_ptr<Sprite>contorolSprite_ = nullptr;
+	WorldTransform contorolWorldTransform_{};
 };

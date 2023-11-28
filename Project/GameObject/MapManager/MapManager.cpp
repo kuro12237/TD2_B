@@ -190,4 +190,9 @@ void MapManager::MapTipLoad11_20()
 	MapTipFileLoad("Resources/MapData/stage13.csv");
 	MapTipFileLoad("Resources/MapData/stage14.csv");
 	MapTipFileLoad("Resources/MapData/stage15.csv");
+	MapTipFileLoad("Resources/MapData/stage16.csv");
+	MapTipFileLoad("Resources/MapData/stage17.csv");
+	MapTipFileLoad("Resources/MapData/stage18.csv");
+	MapTipFileLoad("Resources/MapData/stage19.csv");
+	MapTipFileLoad("Resources/MapData/stage20.csv");
 }

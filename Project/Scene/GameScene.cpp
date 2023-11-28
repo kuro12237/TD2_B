@@ -41,7 +41,7 @@ void GameScene::Initialize()
 
 			if (map[i][j] == BAGGAGESPOWN)
 			{
-				BaggagePos.y = float(i + 1.5f);
+				BaggagePos.y = float(i + 1.7f);
 				BaggagePos.x = float(j);
 
 				shared_ptr<Buggage> buggageA = make_shared<Buggage>();
@@ -100,6 +100,16 @@ void GameScene::Initialize()
 	collisionManager_ = make_unique<CollisionManager>();
 	OffsideManager::SetDirection(Right);
 
+	playerCamera_ = make_unique<PlayerCamera>();
+	playerCamera_->Initialize();
+
+	uint32_t tex = TextureManager::LoadTexture("Resources/ContorolExplain.png");
+	contorolSprite_ = make_unique<Sprite>();
+	contorolSprite_->SetTexHandle(tex);
+	contorolSprite_->Initialize(new SpriteBoxState, { 0,0 }, { 1280,720 });
+	contorolWorldTransform_.Initialize();
+	contorolWorldTransform_.translate.x = 640;
+	contorolWorldTransform_.translate.y = 360;
 	viewProjection_.Initialize();
 	viewProjection_.translation_.x = 7;
 	viewProjection_.translation_.y = 7;
@@ -110,17 +120,12 @@ void GameScene::Initialize()
 
 void GameScene::Update(GameManager* Scene)
 {
-	if (Input::PushKeyPressed(DIK_R))
-	{
-		isReset_ = true;
-		SceneChange::ChangeStart();
-	}
-
 	player_->GravityUpdate();
 
 	Collision();
 
 	player_->Update();
+	playerCamera_->Update(player_->GetWorldPosition());
 	OffsideManager::Update();
 	goal_->Update();
 
@@ -177,23 +182,40 @@ void GameScene::Update(GameManager* Scene)
 	Ground::Update();
 	TruckManager::Update();
 
+	contorolWorldTransform_.UpdateMatrix();
 	viewProjection_.UpdateMatrix();
+	viewProjection_ = playerCamera_->GetViewProjection();
 
 	if (buggages_.size() == 0)
 	{
 		if (SceneChange::GetScenChangeFlag())
 		{
-			Scene->ChangeState(new SelectScene);
+			Scene->ChangeState(new TitleScene);
 			return;
 		}
 	}
-
 	if (isReset_)
 	{
 		if (SceneChange::GetScenChangeFlag())
 		{
 			Scene->ChangeState(new GameScene);
 			return;
+		}
+	}
+
+	if (Input::PushKeyPressed(DIK_R))
+	{
+		isReset_ = true;
+		SceneChange::ChangeStart();
+	}
+	XINPUT_STATE joyState{};
+	Input::NoneJoyState(joyState);
+	if (Input::GetInstance()->GetJoystickState(joyState))
+	{
+		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_Y)
+		{
+			isReset_ = true;
+			SceneChange::ChangeStart();
 		}
 	}
 }
@@ -229,6 +251,7 @@ void GameScene::Object3dDraw()
 
 void GameScene::Flont2dSpriteDraw()
 {
+	contorolSprite_->Draw(contorolWorldTransform_);
 }
 
 void GameScene::Collision()

@@ -5,7 +5,8 @@
 #include"Input.h"
 #include"GameManager.h"
 #include"GameObject/GoalHouse/GoalHouse.h"
-#define STAGE_MAX 20
+#include"Scene/Tutorial/Tutorial_01.h"
+#define STAGE_MAX 21
 
 struct SelectScene_param
 {
@@ -39,8 +40,13 @@ private:
 	array<WorldTransform,STAGE_MAX> worldTransform_ = {};
 	array<SelectScene_param, STAGE_MAX> SelectParam_ = {};
 
+	unique_ptr<Sprite>pushASprite_ = nullptr;
+	WorldTransform pushAWorldTransform_{};
 
 	int SelectNumber = 0;
 	bool SelectLock = false;
+
+	uint32_t selectTimer_ = 0;
+
 
 };
