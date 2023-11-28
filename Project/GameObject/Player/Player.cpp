@@ -23,16 +23,14 @@ void Player::Initialize(Vector3 pos)
 	SetCollosionAttribute(kCollisionAttributePlayer);
 	SetCollisionMask(kCollisionMaskPlayer);
 	//Select用
-	for (int i = 0; i < SELECT_MODEL_MAX; i++)
-	{
-		SelectModel_[i] = make_unique<Model>();
-		SelectModel_[i]->CreateFromObj("SelectModel");
-		SelectWorldTransform[i].Initialize();
-		SelectWorldTransform[i].scale = { 0.5f,0.5f,1 };
-	}
+
+	SelectModel_ = make_unique<Model>();
+	SelectModel_->CreateFromObj("SelectModel");
+	SelectWorldTransform.Initialize();
+	SelectWorldTransform.scale = { 0.5f,0.5f,1 };
 	
-	SelectWorldTransform[0].UpdateMatrix();
-	SelectWorldTransform[1].UpdateMatrix();
+	
+	SelectWorldTransform.UpdateMatrix();
 }
 
 void Player::GravityUpdate()
@@ -61,14 +59,16 @@ void Player::Update()
 	//向き
 	if (velocity_.x > 0)
 	{
+		BuggageSelectDirection = Right;
+		
 		worldTransform_.rotation.y = -2.0f;
 	}
 	if (velocity_.x < 0)
 	{
-
+		BuggageSelectDirection = Left;
 		worldTransform_.rotation.y = 2.0f;
 	}
-
+	
 	Jamp();
 	SelectBox();
 	Vector2 v = { velocity_.x,velocity_.y };
@@ -89,16 +89,18 @@ void Player::Move()
 	worldTransform_.translate = VectorTransform::Add(worldTransform_.translate, velocity_);
 	worldTransform_.UpdateMatrix();
 
-	SelectWorldTransform[0].translate = worldTransform_.translate;
-	SelectWorldTransform[0].translate.x = worldTransform_.translate.x-1;
+	if (BuggageSelectDirection == Left)
+	{
+		SelectWorldTransform.translate = worldTransform_.translate;
+		SelectWorldTransform.translate.x = worldTransform_.translate.x - 1;
+	}
+	if (BuggageSelectDirection == Right)
+	{
+		SelectWorldTransform.translate = worldTransform_.translate;
+		SelectWorldTransform.translate.x = worldTransform_.translate.x + 1;
+	}
 
-	SelectWorldTransform[1].translate = worldTransform_.translate;
-	SelectWorldTransform[1].translate.x = worldTransform_.translate.x+1;
-
-
-	SelectWorldTransform[0].UpdateMatrix();
-	SelectWorldTransform[1].UpdateMatrix();
-
+	SelectWorldTransform.UpdateMatrix();
 }
 
 void Player::Draw(ViewProjection view)
@@ -110,10 +112,9 @@ void Player::Draw(ViewProjection view)
 	modelPlayerRightHand_->Draw(worldTransform_, view);
 	if (isBuggagesSelect)
 	{
-		for (int i = 0; i < SELECT_MODEL_MAX; i++)
-		{
-			SelectModel_[i]->Draw(SelectWorldTransform[i], view);
-		}
+		
+		SelectModel_->Draw(SelectWorldTransform, view);
+		
 	}
 }
 
@@ -321,40 +322,9 @@ void Player::SelectBox()
 		BuggageSelectDirection = Right;
 	}
 
-	XINPUT_STATE joyState{};
-	Input::NoneJoyState(joyState);
-	if (Input::GetInstance()->GetJoystickState(joyState))
-	{
-		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT)
-		{
-			BuggageSelectDirection = Left;
-		}
-
-		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT)
-		{
-			BuggageSelectDirection = Right;
-		}
-
-	}
-
 	if (isHit_)
 	{
 		isBuggagesSelect = true;
-	}
-
-
-
-	for (int i = 0; i < 2; i++)
-	{
-		SelectModel_[i]->SetColor({ 1,1,1,1 });
-	}
-	if (BuggageSelectDirection == Left)
-	{
-		SelectModel_[0]->SetColor({ 1,0,0,1 });
-	}
-	if (BuggageSelectDirection == Right)
-	{
-		SelectModel_[1]->SetColor({ 1,0,0,1 });
 	}
 
 	array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map = MapManager::GetNowMapTip();
@@ -370,6 +340,10 @@ void Player::SelectBox()
 
 	//設置
 
+	XINPUT_STATE joyState{};
+	Input::NoneJoyState(joyState);
+
+
 	if (OffsideManager::GetDirection() == Right)
 	{
 
@@ -380,7 +354,7 @@ void Player::SelectBox()
 			       
 			    if (BuggageSelectDirection == Left)
 			    {
-			    	if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 1.8f)] == AIR)
+			    	if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 1.3f)] == AIR)
 			    	{
 			    		isBuggagesSelect = false;
 			    	}
@@ -388,7 +362,7 @@ void Player::SelectBox()
 			       
 			    if (BuggageSelectDirection == Right)
 			    {
-			    	if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x) + 2] == AIR)
+			    	if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x + 2.4f)] == AIR)
 			    	{
 			    		isBuggagesSelect = false;
 			    	}

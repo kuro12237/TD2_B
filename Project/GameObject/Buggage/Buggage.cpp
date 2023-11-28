@@ -180,7 +180,7 @@ void Buggage::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocit
 	}
 	if ( !isHitWall)
 	{
-		velocity_.x += overlap.x;
+		velocity_.x += (overlap.x);
 	}
 	
 	if (isHitWall)
@@ -201,7 +201,7 @@ void Buggage::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 veloci
 	}
 	if (!isHitWall)
 	{
-		velocity_.x -= overlap.x;
+		velocity_.x -= (overlap.x);
 	}
 	
 	if (isHitWall)
@@ -255,10 +255,10 @@ void Buggage::SetBoxR(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map)
 				//右
 				if (SelectDirection_ == Right)
 				{
-					if (map[(int)(playerPos_.y)][(int)(playerPos_.x) + 2] == AIR)
+					if (map[(int)(playerPos_.y)][(int)(playerPos_.x + 2.4f) ] == AIR)
 					{
 						worldTransform_.translate = playerPos_;
-						worldTransform_.translate.x += 1.0f;
+						worldTransform_.translate.x += 1.4f;
 
 						isHitWall = false;
 						isBuggagesSelect = false;
@@ -273,7 +273,7 @@ void Buggage::SetBoxR(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map)
 					{
 
 						worldTransform_.translate = playerPos_;
-						worldTransform_.translate.x -= 1.0f;
+						worldTransform_.translate.x -= 1.4f;
 						isHitWall = false;
 						isBuggagesSelect = false;
 						isSelect = false;
