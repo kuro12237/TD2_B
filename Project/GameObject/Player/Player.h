@@ -80,7 +80,7 @@ private:
 	bool isBuggagesSelect = false;
 	uint32_t BuggageSelectDirection = Left;
 
-	array<unique_ptr<Model>,SELECT_MODEL_MAX>SelectModel_ = {};
-	array<WorldTransform, SELECT_MODEL_MAX > SelectWorldTransform = {};
+	unique_ptr<Model>SelectModel_ = {};
+	WorldTransform SelectWorldTransform = {};
 };
 

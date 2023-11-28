@@ -170,7 +170,7 @@ bool CollisionManager::checkABoxTopCollision(Vector3 v1,AABB aabb1, Vector3 v2,A
 {
 	v1, v2;
 	aabb1, aabb2;
-	if (v1.y + aabb1.min.y  < v2.y + aabb2.max.y && v1.x > v2.x - 0.9f && v1.x < v2.x + 0.9f)
+	if (v1.y + aabb1.min.y  < v2.y + aabb2.max.y && v1.x > v2.x - 0.8f && v1.x < v2.x + 0.8f)
 	{
 		return true;
 	}
