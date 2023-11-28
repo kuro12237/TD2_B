@@ -13,7 +13,7 @@ void MapManager::Initialize()
 	MapManager::GetInstance()->StartTexHandle_ = TextureManager::LoadTexture("Resources/BlockTex/StartTex.png");
 	MapManager::GetInstance()->GoalTexHandle_ = TextureManager::LoadTexture("Resources/BlockTex/GoalTex.png");
 	MapManager::GetInstance()->BaggageTexHandle_ = TextureManager::LoadTexture("Resources/BlockTex/BaggageSpownTex.png");
-	MapManager::GetInstance()->BlockDartTex_ = TextureManager::LoadTexture("Resources/BlockTex/Box.png");
+	MapManager::GetInstance()->BlockDartTex_ = TextureManager::LoadTexture("Resources/BlockTex/woodTex.png");
 	MapManager::GetInstance()->LadderTex_ = TextureManager::LoadTexture("Resources/BlockTex/LadderTex.png");
 	MapManager::GetInstance()->InvertionSwich = TextureManager::LoadTexture("Resources/BlockTex/InvertionSwichSpownTex.png");
 	MapTip1_10();
