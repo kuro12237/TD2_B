@@ -162,7 +162,7 @@ void Player::DownCollision(uint32_t nowMapPos)
 
 void Player::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
-	isHit_ = true;
+	
 	//isJamp = false;
 	position, velocity;
 	overlap;
@@ -171,6 +171,7 @@ void Player::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, ui
 	{
 		return;
 	}
+	isHit_ = true;
 	//velocity_.y += overlap.y;
 }
 
@@ -289,6 +290,11 @@ void Player::GamePadContorol()
 		}
 	}
 	
+	if (x<0.05f&&x>-0.05f)
+	{
+		x = 0;
+	}
+
 	velocity_.x += x;
 }
 
@@ -304,13 +310,6 @@ void Player::Jamp()
 void Player::SelectBox()
 {
 	//選択
-	if (Input::PushKeyPressed(DIK_G))
-	{
-		if (isHit_)
-		{
-			isBuggagesSelect = true;
-		}
-	}
 	//切り替え
 	if (Input::PushKeyPressed(DIK_LEFT))
 	{
@@ -336,16 +335,12 @@ void Player::SelectBox()
 			BuggageSelectDirection = Right;
 		}
 
-		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_RIGHT_SHOULDER) 
-		{
-			if (isHit_)
-			{
-				isBuggagesSelect = true;
-			}
-		}
-
 	}
 
+	if (isHit_)
+	{
+		isBuggagesSelect = true;
+	}
 
 
 
@@ -385,7 +380,7 @@ void Player::SelectBox()
 			       
 			    if (BuggageSelectDirection == Left)
 			    {
-			    	if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 0.8f)] == AIR)
+			    	if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 1.8f)] == AIR)
 			    	{
 			    		isBuggagesSelect = false;
 			    	}

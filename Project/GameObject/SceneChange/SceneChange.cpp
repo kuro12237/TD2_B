@@ -13,6 +13,7 @@ void SceneChange::Initialize()
 
 	for (int i = 0; i < SCENECHANGE_SPRITE_MAX; i++)
 	{
+		SceneChange::GetInstance()->isScaleFlag_[i] = false;
 		SceneChange::GetInstance()->sprite_[i] = make_unique<Sprite>();
 		SceneChange::GetInstance()->sprite_[i]->SetTexHandle(tex);
 		SceneChange::GetInstance()->sprite_[i]->Initialize(new SpriteBoxState, { 0,0 }, { 128,128 });
@@ -124,16 +125,30 @@ bool SceneChange::GetEndChandeFlag()
 
 bool SceneChange::Spown()
 {
-	const float ScaleAddSpeed = 0.01f;
+	const float ScaleAddSpeed = 0.075f;
 
 	for (int i = 0; i < SCENECHANGE_SPRITE_MAX; i++)
 	{
 		SceneChange::GetInstance()->DrawFlag = true;
 		SceneChange::GetInstance()->worldTransform_[i].scale = VectorTransform::Add(SceneChange::GetInstance()->worldTransform_[i].scale, { ScaleAddSpeed, ScaleAddSpeed, ScaleAddSpeed });
 	
-		if (SceneChange::GetInstance()->worldTransform_[i].scale.x >= 1.0f|| SceneChange::GetInstance()->worldTransform_[i].scale.y >= 1.0f|| SceneChange::GetInstance()->worldTransform_[i].scale.z >= 1.0f)
+		if (SceneChange::GetInstance()->worldTransform_[i].scale.x > 1.0f|| SceneChange::GetInstance()->worldTransform_[i].scale.y > 1.0f|| SceneChange::GetInstance()->worldTransform_[i].scale.z > 1.0f)
 		{
 			SceneChange::GetInstance()->worldTransform_[i].scale = {1,1,1};
+			SceneChange::GetInstance()->isScaleFlag_[i] = true;
+		}
+	}
+	uint32_t count = 0;
+
+	for (int i = 0; i < SCENECHANGE_SPRITE_MAX; i++)
+	{
+		if (SceneChange::GetInstance()->isScaleFlag_[i])
+		{
+			count++;
+		}
+
+		if (count==SCENECHANGE_SPRITE_MAX)
+		{
 			return true;
 		}
 	}
@@ -143,7 +158,7 @@ bool SceneChange::Spown()
 
 bool SceneChange::DeSpown()
 {
-	const float ScaleAddSpeed = 0.01f;
+	const float ScaleAddSpeed = 0.05f;
 
 	for (int i = 0; i < SCENECHANGE_SPRITE_MAX; i++)
 	{
@@ -151,12 +166,28 @@ bool SceneChange::DeSpown()
 
 		if (SceneChange::GetInstance()->worldTransform_[i].scale.x <= 0.0f || SceneChange::GetInstance()->worldTransform_[i].scale.y <= 0.0f || SceneChange::GetInstance()->worldTransform_[i].scale.z <= 0.0f)
 		{
+			SceneChange::GetInstance()->isScaleFlag_[i] = false;
 			SceneChange::GetInstance()->worldTransform_[i].scale = {0,0,0};
 			SceneChange::GetInstance()->DrawFlag = false;
 			SceneChange::GetInstance()->EndTimer_ = 0;
+			
+		}
+	}
+
+	uint32_t count = 0;
+	for (int i = 0; i < SCENECHANGE_SPRITE_MAX; i++)
+	{
+		if (!SceneChange::GetInstance()->isScaleFlag_[i])
+		{
+			count++;
+		}
+		if (count == SCENECHANGE_SPRITE_MAX)
+		{
 			return true;
 		}
 	}
+
+
 	return false;
 }
 

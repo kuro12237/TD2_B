@@ -23,6 +23,9 @@ public:
 
 	void Move();
 
+	bool isSelectChange(bool Select);
+	bool GetisSelect() { return isSelect; }
+
 	void SetPlayerVelocity(Vector3 v);
 	
 	void RightCollision(uint32_t nowMapPos)override;

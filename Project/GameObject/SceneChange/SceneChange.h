@@ -47,6 +47,7 @@ private:
 	
 	unique_ptr<Sprite>sprite_[SCENECHANGE_SPRITE_MAX] = {};
 	WorldTransform worldTransform_[SCENECHANGE_SPRITE_MAX]{};
+	bool isScaleFlag_[SCENECHANGE_SPRITE_MAX] = {};
 
 	bool DrawFlag = false;
 
@@ -55,7 +56,7 @@ private:
 	bool isEnd_ = false;
 
 	uint32_t EndTimer_ = 0;
-	const uint32_t EndTimerMax_ = 60;
+	const uint32_t EndTimerMax_ = 30;
 
 	bool SceneChangeFlag = false;
 

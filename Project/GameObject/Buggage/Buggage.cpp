@@ -7,18 +7,14 @@ static bool isBuggagesSelect = false;
 void Buggage::Initialize(Vector3 position, uint32_t Attubte, uint32_t Mask)
 {
 	model_ = make_unique<Model>();
-	//uint32_t tex = TextureManager::LoadTexture("Resources/uvChecker.png");
-	//model_->SetTexHandle(tex);
 	model_->CreateFromObj("Luggage");
 	worldTransform_.Initialize();
 	worldTransform_.translate = position;
 	worldTransform_.UpdateMatrix();
 
-
 	SetCollosionAttribute(Attubte);
 	SetCollisionMask(Mask);
 	isBuggagesSelect = false;
-
 }
 
 void Buggage::Update()
@@ -39,15 +35,14 @@ void Buggage::Update()
 		ImGui::TreePop();
 	}
 	
-
 	if (!isHit_)
 	{
 		velocity_.x = 0;
 	}
 	
-	if (isHit_)
+	if (isHit_ && isBuggagesSelect)
 	{
-		SelectBox();
+
 	}
 
 	array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map = MapManager::GetNowMapTip();
@@ -92,6 +87,17 @@ void Buggage::Move()
 
 }
 
+bool Buggage::isSelectChange(bool Select)
+{
+	if (!isHit_&&isBuggagesSelect&&isSelect&&Select)
+	{
+		isSelect = false;
+		return true;
+	}
+
+	return false;
+}
+
 void Buggage::SetPlayerVelocity(Vector3 v)
 {
 	if (isHit_)
@@ -134,12 +140,13 @@ void Buggage::DownCollision(uint32_t nowMapPos)
 
 void Buggage::SetIsSelect(bool Selecr)
 {
+
+
 	if (Selecr && !isBuggagesSelect&&isHit_)
 	{
 		isSelect = Selecr;
 		isBuggagesSelect = true;
 		model_->SetColor({ 1,0,0,1 });
-
 	}
 }
 
@@ -149,6 +156,7 @@ void Buggage::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, u
 	{
 		return;
 	}
+	
 	isHit_ = true;
 	velocity;
 	position;
@@ -228,15 +236,10 @@ void Buggage::OnDownCollision(Vector3 overlap, Vector3 position, Vector3 velocit
 
 void Buggage::SetOpenPortal(Vector3 pos)
 {
-	//isOpenPortal_ = false;
+
 	pos;
-
 }
 
-void Buggage::SelectBox()
-{
-	
-}
 
 void Buggage::SetBoxR(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map)
 {
@@ -255,7 +258,7 @@ void Buggage::SetBoxR(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map)
 					if (map[(int)(playerPos_.y)][(int)(playerPos_.x) + 2] == AIR)
 					{
 						worldTransform_.translate = playerPos_;
-						worldTransform_.translate.x += 1;
+						worldTransform_.translate.x += 1.0f;
 
 						isHitWall = false;
 						isBuggagesSelect = false;
@@ -266,11 +269,11 @@ void Buggage::SetBoxR(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map)
 				//左
 				if (SelectDirection_ == Left)
 				{
-					if (map[(int)(playerPos_.y)][(int)(playerPos_.x - 0.8f)] == AIR)
+					if (map[(int)(playerPos_.y)][(int)(playerPos_.x - 1.3f)] == AIR)
 					{
 
 						worldTransform_.translate = playerPos_;
-						worldTransform_.translate.x = playerPos_.x - 1.0f;
+						worldTransform_.translate.x -= 1.0f;
 						isHitWall = false;
 						isBuggagesSelect = false;
 						isSelect = false;
