@@ -24,12 +24,6 @@ void Ground::Initialize()
 
 void Ground::Update()
 {
-	ImGui::Begin("Ground");
-
-	ImGui::DragFloat3("s", &Ground::GetInstance()->uvScale_.x,-1.0f,1.0f);
-	Ground::GetInstance()->model_->SetUvScale(Ground::GetInstance()->uvScale_);
-	ImGui::End();
-
 	Ground::GetInstance()->road_->Update();
 	Ground::GetInstance()->worldTransform_.UpdateMatrix();
 }

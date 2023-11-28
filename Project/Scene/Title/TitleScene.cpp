@@ -2,6 +2,8 @@
 
 void TitleScene::Initialize()
 {
+	WinApp::SetTiTleName(L"オフサイド運送株式会社");
+
 	DebugCamera* Camera;
 	Camera = new DebugCamera();
 	Camera->Initialize();

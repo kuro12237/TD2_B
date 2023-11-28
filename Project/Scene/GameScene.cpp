@@ -103,6 +103,13 @@ void GameScene::Initialize()
 	playerCamera_ = make_unique<PlayerCamera>();
 	playerCamera_->Initialize();
 
+	uint32_t tex = TextureManager::LoadTexture("Resources/ContorolExplain.png");
+	contorolSprite_ = make_unique<Sprite>();
+	contorolSprite_->SetTexHandle(tex);
+	contorolSprite_->Initialize(new SpriteBoxState, { 0,0 }, { 1280,720 });
+	contorolWorldTransform_.Initialize();
+	contorolWorldTransform_.translate.x = 640;
+	contorolWorldTransform_.translate.y = 360;
 	viewProjection_.Initialize();
 	viewProjection_.translation_.x = 7;
 	viewProjection_.translation_.y = 7;
@@ -175,6 +182,7 @@ void GameScene::Update(GameManager* Scene)
 	Ground::Update();
 	TruckManager::Update();
 
+	contorolWorldTransform_.UpdateMatrix();
 	viewProjection_.UpdateMatrix();
 	viewProjection_ = playerCamera_->GetViewProjection();
 
@@ -243,6 +251,7 @@ void GameScene::Object3dDraw()
 
 void GameScene::Flont2dSpriteDraw()
 {
+	contorolSprite_->Draw(contorolWorldTransform_);
 }
 
 void GameScene::Collision()

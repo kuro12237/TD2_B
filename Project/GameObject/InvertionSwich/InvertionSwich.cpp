@@ -6,7 +6,7 @@ void InvertionSwich::Initialize(Vector3 pos)
 {
 	pos;
 	model_ = make_unique<Model>();
-	model_->CreateFromObj("InvertionSwich");//Foundation");
+	model_->CreateFromObj("InvertionSwich");
 	worldTransform_.Initialize();
 	worldTransform_.translate = pos;
 	worldTransform_.UpdateMatrix();

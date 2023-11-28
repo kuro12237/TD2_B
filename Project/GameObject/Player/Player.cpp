@@ -276,9 +276,10 @@ void Player::GamePadContorol()
 {
 	XINPUT_STATE joyState{};
 	Input::NoneJoyState(joyState);
+	float x = 0;
 	if (Input::GetInstance()->GetJoystickState(joyState))
 	{
-		velocity_.x += (float)joyState.Gamepad.sThumbLX / SHRT_MAX * speed;
+		x += (float)joyState.Gamepad.sThumbLX / SHRT_MAX * speed;
 
 		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_A && !isJamp)
 		{
@@ -287,6 +288,12 @@ void Player::GamePadContorol()
 			isJamp = true;
 		}
 	}
+	if (x < 0.1f&&x>0.1f)
+	{
+		x = 0.0f;
+	}
+
+	velocity_.x += x;
 }
 
 void Player::Jamp()

@@ -384,7 +384,9 @@
     <ClCompile Include="Project\GameObject\House\House.cpp">
       <Filter>Project\GameObject\House</Filter>
     </ClCompile>
-    <ClCompile Include="Project\Scene\Tutorial\Tutorial_01.cpp" />
+    <ClCompile Include="Project\Scene\Tutorial\Tutorial_01.cpp">
+      <Filter>Project\Scene\Tutorial</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="CLEYERA\Utility\Pch\Pch.h">

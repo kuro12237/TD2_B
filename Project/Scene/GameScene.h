@@ -54,4 +54,6 @@ private:
 
 	bool isReset_ = false;
 
+	unique_ptr<Sprite>contorolSprite_ = nullptr;
+	WorldTransform contorolWorldTransform_{};
 };

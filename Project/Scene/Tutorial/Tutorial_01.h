@@ -24,4 +24,9 @@ public:
 private:
 
 	ViewProjection viewProjection_{};
+	unique_ptr<Sprite>explainSprite_ = nullptr;
+	WorldTransform explainWorldTransform = {};
+
+	unique_ptr<Sprite>pushASprite_ = nullptr;
+	WorldTransform pushAWorldTransform_{};
 };

@@ -77,10 +77,6 @@ void SelectScene::Update(GameManager* Scene)
 	SelectParam_[SelectNumber].IsSelect = true;
 	worldTransform_[SelectNumber].scale = { 1.2f,1.2f,1.0f };
 
-	ImGui::Begin("camera");
-	ImGui::SliderFloat3("r", &viewProjection_.rotation_.x,-2.0f,2.0f);
-	ImGui::DragFloat3("t", &viewProjection_.translation_.x, -2.0f, 2.0f);
-	ImGui::End();
 
 	Matrix4x4 r = MatrixTransform::RotateZMatrix(float(numbers::pi/2));
 	Matrix4x4 t = MatrixTransform::TranslateMatrix(worldTransform_[0].translate);
