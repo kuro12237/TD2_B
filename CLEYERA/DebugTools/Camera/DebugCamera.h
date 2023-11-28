@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"Pch.h"
 #include"ViewProjection.h"
 #include"DebugTools/Commands/ICommand.h"
@@ -14,7 +14,7 @@ public:
 
 	static DebugCamera* GetInstance();
 
-	//‰Šú‰»
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	void Initialize();
 
 

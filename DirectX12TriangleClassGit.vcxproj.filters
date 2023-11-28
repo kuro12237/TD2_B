@@ -130,6 +130,63 @@
     <Filter Include="Project\GameObject">
       <UniqueIdentifier>{e6c962cd-fcc4-4e45-9870-1c278152fe09}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\Scene\Title">
+      <UniqueIdentifier>{643e5fca-e344-49a0-bd8e-50c2f83dae94}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Scene\Debug">
+      <UniqueIdentifier>{98cc9ca6-0246-48b2-ac83-b05a01be6967}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\SceneChange">
+      <UniqueIdentifier>{cb85cf71-5b01-4520-8908-62cd261aeee0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\MapManager">
+      <UniqueIdentifier>{435aa8ee-a54d-46a3-bc6e-81397eaebc32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\MapManager\MapData">
+      <UniqueIdentifier>{09d0888e-9b16-4c35-abe8-961666c7046e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\MapManager\MapCollision">
+      <UniqueIdentifier>{4467e59e-1b32-43b9-8e88-0962da7b380e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\Player">
+      <UniqueIdentifier>{552a071c-fbaa-42d1-beda-77f9346882ee}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\Buggage">
+      <UniqueIdentifier>{11ebe54f-9a8d-4a9a-9d5f-3510661f629d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\SkyDome">
+      <UniqueIdentifier>{decb7369-e369-4435-bd41-34806b7635f6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\Ground">
+      <UniqueIdentifier>{7945d6cc-9f6e-491f-a71d-a67ddbf6d230}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\Truck">
+      <UniqueIdentifier>{2f06c32a-cf3d-45f8-865d-ffd7da0ab974}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\OffSide">
+      <UniqueIdentifier>{f112c3e9-c4f9-4fcb-9e0a-99c20cc68e2c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Scene\SelectScene">
+      <UniqueIdentifier>{0afdf98a-fac1-4bc3-8999-e75850ee2e20}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\GorlObject">
+      <UniqueIdentifier>{2f871547-abd7-456b-9bcb-d43cbcbcab10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\InvertionSwich">
+      <UniqueIdentifier>{6a80b6be-7708-43ed-9441-53159ddd4c55}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\Player\Camera">
+      <UniqueIdentifier>{e7dc4938-3673-4014-a0c2-47f42c3188e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\Ground\Road">
+      <UniqueIdentifier>{7f12c4c5-b78f-453d-8842-c96e5981f010}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\House">
+      <UniqueIdentifier>{8e44a08e-6617-4223-a43b-2692c0408e8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\Scene\Tutorial">
+      <UniqueIdentifier>{554b6761-8343-442c-922f-f695943650f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="CLEYERA\Config\.editorconfig">
@@ -233,9 +290,6 @@
     <ClCompile Include="CLEYERA\Sprite\state\SpriteBoxState.cpp">
       <Filter>CLEYERA\Sprite\state</Filter>
     </ClCompile>
-    <ClCompile Include="Project\Scene\DebugScene.cpp">
-      <Filter>Project\Scene</Filter>
-    </ClCompile>
     <ClCompile Include="CLEYERA\Input\Input.cpp">
       <Filter>CLEYERA\Input</Filter>
     </ClCompile>
@@ -275,6 +329,63 @@
     </ClCompile>
     <ClCompile Include="Project\Scene\GameScene.cpp">
       <Filter>Project\Scene</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\Scene\DebugScene.cpp">
+      <Filter>Project\Scene\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\Scene\Title\TitleScene.cpp">
+      <Filter>Project\Scene\Title</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\SceneChange\SceneChange.cpp">
+      <Filter>Project\GameObject\SceneChange</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\MapManager\MapManager.cpp">
+      <Filter>Project\GameObject\MapManager</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Player\Player.cpp">
+      <Filter>Project\GameObject\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\MapCollisionManager\MapCollisionManager.cpp">
+      <Filter>Project\GameObject\MapManager\MapCollision</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Buggage\Buggage.cpp">
+      <Filter>Project\GameObject\Buggage</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\SkyBox\SkyBox.cpp">
+      <Filter>Project\GameObject\SkyDome</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Ground\Ground.cpp">
+      <Filter>Project\GameObject\Ground</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Truck\Truck.cpp">
+      <Filter>Project\GameObject\Truck</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Truck\TruckManager.cpp">
+      <Filter>Project\GameObject\Truck</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Offside\OffSideManager.cpp">
+      <Filter>Project\GameObject\OffSide</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\Scene\SelectScene\SelectScene.cpp">
+      <Filter>Project\Scene\SelectScene</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\GoalHouse\GoalHouse.cpp">
+      <Filter>Project\GameObject\GorlObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\InvertionSwich\InvertionSwich.cpp">
+      <Filter>Project\GameObject\InvertionSwich</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\PlayerCamera\PlayerCamera.cpp">
+      <Filter>Project\GameObject\Player\Camera</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\Road\Road.cpp">
+      <Filter>Project\GameObject\Ground\Road</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\House\House.cpp">
+      <Filter>Project\GameObject\House</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\Scene\Tutorial\Tutorial_01.cpp">
+      <Filter>Project\Scene\Tutorial</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -401,9 +512,6 @@
     <ClInclude Include="Project\Scene\IScene.h">
       <Filter>Project\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="Project\Scene\DebugScene.h">
-      <Filter>Project\Scene</Filter>
-    </ClInclude>
     <ClInclude Include="CLEYERA\Input\Input.h">
       <Filter>CLEYERA\Input</Filter>
     </ClInclude>
@@ -454,6 +562,75 @@
     </ClInclude>
     <ClInclude Include="Project\Scene\GameScene.h">
       <Filter>Project\Scene</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\Scene\Title\TitleScene.h">
+      <Filter>Project\Scene\Title</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\Scene\DebugScene.h">
+      <Filter>Project\Scene\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\SceneChange\SceneChange.h">
+      <Filter>Project\GameObject\SceneChange</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\MapManager\MapManager.h">
+      <Filter>Project\GameObject\MapManager</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\MapManager\Data\MapData.h">
+      <Filter>Project\GameObject\MapManager\MapData</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\MapCollisionManager\MapCollisionManager.h">
+      <Filter>Project\GameObject\MapManager\MapCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\MapCollisionManager\MapCollider.h">
+      <Filter>Project\GameObject\MapManager\MapCollision</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Player\Player.h">
+      <Filter>Project\GameObject\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Buggage\Buggage.h">
+      <Filter>Project\GameObject\Buggage</Filter>
+    </ClInclude>
+    <ClInclude Include="CLEYERA\Utility\CollisionManager\Collider\BoxCollider.h">
+      <Filter>CLEYERA\Utility\CollisionManager\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\SkyBox\SkyBox.h">
+      <Filter>Project\GameObject\SkyDome</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Ground\Ground.h">
+      <Filter>Project\GameObject\Ground</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Truck\Truck.h">
+      <Filter>Project\GameObject\Truck</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Truck\TruckManager.h">
+      <Filter>Project\GameObject\Truck</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Offside\OffSideManager.h">
+      <Filter>Project\GameObject\OffSide</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Offside\IOffside.h">
+      <Filter>Project\GameObject\OffSide</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\Scene\SelectScene\SelectScene.h">
+      <Filter>Project\Scene\SelectScene</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\GoalHouse\GoalHouse.h">
+      <Filter>Project\GameObject\GorlObject</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\InvertionSwich\InvertionSwich.h">
+      <Filter>Project\GameObject\InvertionSwich</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\PlayerCamera\PlayerCamera.h">
+      <Filter>Project\GameObject\Player\Camera</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\Road\Road.h">
+      <Filter>Project\GameObject\Ground\Road</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\House\House.h">
+      <Filter>Project\GameObject\House</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\Scene\Tutorial\Tutorial_01.h">
+      <Filter>Project\Scene\Tutorial</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

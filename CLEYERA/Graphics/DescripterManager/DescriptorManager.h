@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"Pch.h"
 #include"DirectXCommon.h"
 #define DESCRIPTER_MAX 64
@@ -24,17 +24,17 @@ public:
 	static void Clear();
 
 	/// <summary>
-	/// Instancing‚ÌSRV‚ğì¬
+	/// Instancingï¿½ï¿½SRVï¿½ï¿½ì¬
 	/// </summary>
 	static uint32_t CreateInstancingSRV(uint32_t NumInstansing, ComPtr<ID3D12Resource>& resource, UINT size);
 
 	/// <summary>
-    /// CPU‚ÆGPU‚Ìptr‚ğ‚¸‚ç‚·
+    /// CPUï¿½ï¿½GPUï¿½ï¿½ptrï¿½ï¿½ï¿½ï¿½ç‚·
     /// </summary>
 	static void CGHandlePtr();
 
 	/// <summary>
-	/// index‚ğƒCƒ“ƒNƒŠƒƒ“ƒg‚µ‚Ädescripter‚ğ‚¸‚ç‚·
+	/// indexï¿½ï¿½Cï¿½ï¿½ï¿½Nï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½descripterï¿½ï¿½ï¿½ï¿½ç‚·
 	/// </summary>
 	static void IndexIncrement() { DescriptorManager::GetInstance()->index++; }
 
@@ -66,7 +66,7 @@ public:
 #pragma region Command
 
 	/// <summary> 
-	/// rootParameter‚ÌƒRƒ}ƒ“ƒhÏ‚Ş
+	/// rootParameterï¿½ÌƒRï¿½}ï¿½ï¿½ï¿½hï¿½Ï‚ï¿½
     /// </summary>
 	static void rootParamerterCommand(UINT rootPatramerterIndex, uint32_t texhandle);
 

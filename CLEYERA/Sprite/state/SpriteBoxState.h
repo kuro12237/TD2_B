@@ -5,6 +5,7 @@
 #include"GraphicsPipelineManager.h"
 #include"ShaderManager.h"
 #include"Graphics/TextureManager/TextureManager.h"
+#include"VectorTransform.h"
 
 class SpriteBoxState:public ISpriteState
 {

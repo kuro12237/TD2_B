@@ -4,6 +4,12 @@
 #include"DebugScene.h"
 #include"../DebugTools/Camera/DebugCamera.h"
 #include"GameScene.h"
+#include"Title/TitleScene.h"
+
+#include"GameObject/SkyBox/SkyBox.h"
+#include"GameObject/Ground/Ground.h"
+#include"GameObject/Truck/TruckManager.h"
+
 class GameManager
 {
 public:
@@ -13,6 +19,8 @@ public:
 
     void Run();
     void ChangeState(IScene *newScene);
+
+
 
 private:
 

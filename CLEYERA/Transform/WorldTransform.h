@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"Pch.h"
 #include"MatrixTransform.h"
 #include"CreateResource.h"
@@ -21,7 +21,7 @@ struct WorldTransform
 	const WorldTransform* parent = {};
 
 	/// <summary>
-	/// ’PˆÊs—ñ‚Å‰Šú‰»
+	/// ï¿½Pï¿½Êsï¿½ï¿½Åï¿½ï¿½ï¿½ï¿½ï¿½
 	/// </summary>
 	void Initialize();
 

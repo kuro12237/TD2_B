@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"Pch.h"
 #include"DebugTools/Commands/ICommand.h"
 #include"Grid/Grid.h"
@@ -13,42 +13,42 @@ public:
 	static DebugTools* GetInstance();
 
 	/// <summary>
-	/// ƒRƒ}ƒ“ƒh‚ğ’Ç‰Á‚·‚é
+	/// ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ï¿½Ç‰ï¿½ï¿½ï¿½ï¿½ï¿½
 	/// </summary>
 	static void addCommand(ICommand* command,const string &log=0);
 	
 	/// <summary>
-    /// “o˜^‚µ‚½ƒRƒ}ƒ“ƒh‚ğ‚·‚×‚ÄÁ‚· 
+    /// ï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ï¿½ï¿½ï¿½×‚Äï¿½ï¿½ï¿½ 
 	/// </summary>
 	static void ClearCommand();
 
 	/// <summary>
-	/// DebugTool‚ğg‚¤ê‡‚ÍScene‚ÌUpdate‚ÌÅŒã‚É•K‚¸‚Í‚³‚Ş
+	/// DebugToolï¿½ï¿½gï¿½ï¿½ï¿½ê‡ï¿½ï¿½Sceneï¿½ï¿½Updateï¿½ÌÅŒï¿½É•Kï¿½ï¿½ï¿½Í‚ï¿½ï¿½ï¿½
 	/// </summary>
 	static ViewProjection ConvertViewProjection(ViewProjection& viewProjection);
 
 	/// <summary>
-	/// “o˜^‚µ‚½ƒRƒ}ƒ“ƒh‚ÌXVˆ—
+	/// ï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½ÌXï¿½Vï¿½ï¿½ï¿½ï¿½
 	/// </summary>
 	static void UpdateExecute(int commandNumber);
 
 	/// <summary>
-	/// “o˜^‚µ‚½ƒRƒ}ƒ“ƒh‚Ì•`‰æˆ—
+	/// ï¿½oï¿½^ï¿½ï¿½ï¿½ï¿½ï¿½Rï¿½}ï¿½ï¿½ï¿½hï¿½Ì•`ï¿½æˆï¿½ï¿½
 	/// </summary>
 	static void DrawExecute(int commandNumber);
 
 	/// <summary>
-	/// gameScene‚Ì“à‚Å‚Íg‚í‚È‚¢
+	/// gameSceneï¿½Ì“ï¿½Å‚Ígï¿½ï¿½È‚ï¿½
 	/// </summary>
 	static void SetViewProjection(ViewProjection viewProjection) { DebugTools::GetInstance()->viewProjection_ = viewProjection; }
 
 	/// <summary>
-	/// gameScene‚Ì“à‚Å‚Íg‚í‚È‚¢
+	/// gameSceneï¿½Ì“ï¿½Å‚Ígï¿½ï¿½È‚ï¿½
 	/// </summary>
 	static void SetIsviewProjectionReWrite(bool Flag) { DebugTools::GetInstance()->isViewProjectionReWrite = Flag; }
 
 	/// <summary>
-	/// gameScene‚Ì“à‚Å‚Íg‚í‚È‚¢
+	/// gameSceneï¿½Ì“ï¿½Å‚Ígï¿½ï¿½È‚ï¿½
 	/// </summary>
 	static ViewProjection GetViewProjection() { return DebugTools::GetInstance()->viewProjection_; }
 

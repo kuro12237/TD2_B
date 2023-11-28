@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"WorldTransform.h"
 #include"ViewProjection.h"
 #include"state/ParticlePlaneState.h"
@@ -13,16 +13,16 @@ public:
 	~Particle() { delete state_; }
 
 	/// <summary>
-	/// ‰Šú‰»
+	/// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	/// </summary>
-	/// <param name="new Œ`ó‘I‘ğ"></param>
-	/// <param name="ƒCƒ“ƒXƒ^ƒ“ƒXÅ‘å”"></param>
+	/// <param name="new ï¿½`ï¿½ï¿½Iï¿½ï¿½"></param>
+	/// <param name="ï¿½Cï¿½ï¿½ï¿½Xï¿½^ï¿½ï¿½ï¿½Xï¿½Å‘å”"></param>
 	void Initialize(IParticleState *state ,const uint32_t NumInstance = 1);
 
 	void Draw(ViewProjection viewProjection);
 
 	/// <summary>
-	/// particle‚ÌXVˆ—‚ÌÅ‰‚É•K‚¸‘‚­
+	/// particleï¿½ÌXï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½ÌÅï¿½ï¿½É•Kï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	/// </summary>
 	list<Particle_param>begin();
 
@@ -34,7 +34,7 @@ public:
 	void SetBlendMode(BlendMode blend) { blendMode_ = blend; }
 
 	/// <summary>
-	/// ƒŠƒXƒg‚É“o˜^
+	/// ï¿½ï¿½ï¿½Xï¿½gï¿½É“oï¿½^
 	/// </summary>
 	void PushList(Particle_param particle) { particles_.push_back(particle);}
 
@@ -50,12 +50,12 @@ public:
 	uint32_t GetTexhandle() { return texhandle; }
 	
 	/// <summary>
-	/// “¯‚É•\¦‚Å‚«‚éÅ‘å”
+	/// ï¿½ï¿½ï¿½ï¿½ï¿½É•\ï¿½ï¿½ï¿½Å‚ï¿½ï¿½ï¿½Å‘å”
 	/// </summary>
 	const uint32_t GetNumInstancing() const{ return NumInstance_; }
 	
 	/// <summary>
-    /// ƒŠƒXƒg‚ÌGet
+    /// ï¿½ï¿½ï¿½Xï¿½gï¿½ï¿½Get
 	/// </summary>
 	list<Particle_param> GetParticles() { return particles_; }
 

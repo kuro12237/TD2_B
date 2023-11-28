@@ -13,7 +13,6 @@ public:
 	DebugScene() {};
 	~DebugScene();
 
-
 	void Initialize()override;
 
 	void Update(GameManager* Scene)override;
@@ -37,7 +36,7 @@ private:
 	unique_ptr<Sprite>sprite2_ = nullptr;
 	WorldTransform sprite2WorldTransform_{};
 
-	uint32_t SpriteTexHandle = 0;
+	uint32_t SpriteTexHandle_ = 0;
 	Vector4 color = { 1,1,1,1 };
 
 	bool NoneFlag = true;

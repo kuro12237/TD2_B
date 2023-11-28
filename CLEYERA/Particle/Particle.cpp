@@ -1,9 +1,9 @@
-#include"Particle/Particle.h"
+ï»¿#include"Particle/Particle.h"
 
 void Particle::Initialize(IParticleState* state, const uint32_t NumInstance)
 {
 	if (InitializeLock){
-		//Initialize‚ª“ñ‰ñŒÄ‚Ño‚³‚ê‚Ä‚¢‚é
+		//Initializeï¿½ï¿½ï¿½ï¿½ï¿½Ä‚Ñoï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½
 		LogManager::Log("Particle Initialize ERROR " + name_+"\n");
 		assert(0);
 	}
@@ -17,7 +17,7 @@ void Particle::Draw(ViewProjection viewProjection)
 {
 	if (particles_.size() >= NumInstance_ )
 	{
-		//Instance‚Ì”‚æ‚èƒŠƒXƒg‚Ì”‚ª‘‚¦‚é‚ÆƒGƒ‰[
+		//Instanceï¿½Ìï¿½ï¿½ï¿½èƒŠï¿½Xï¿½gï¿½Ìï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÆƒGï¿½ï¿½ï¿½[
 		LogManager::Log("Particle Draw ERROR "+ name_+"\n");
 		assert(0);
 	}
@@ -27,7 +27,7 @@ void Particle::Draw(ViewProjection viewProjection)
 
 list<Particle_param> Particle::begin()
 {
-	//¶‘¶ƒtƒ‰ƒO‚ªtrue‚É‚È‚Á‚½‚çƒŠƒXƒg‚©‚ç‰ğ•ú
+	//ï¿½ï¿½ï¿½ï¿½ï¿½tï¿½ï¿½ï¿½Oï¿½ï¿½trueï¿½É‚È‚ï¿½ï¿½ï¿½ï¿½çƒŠï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	for (list<Particle_param>::iterator p=particles_.begin(); p != particles_.end();)
 	{
 		if ((*p).isAlive)
@@ -38,8 +38,8 @@ list<Particle_param> Particle::begin()
 			++p;
 		}
 	}
-	//¡ƒŠƒXƒg‚É“o˜^‚µ‚Ä‚ ‚é•¨‚ğ‚¤‚Â‚µ‚ÄƒŠƒXƒg‚ğÁ‹
-	//‚Ü‚½“o˜^‚µ‚È‚¨‚·
+	//ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½gï¿½É“oï¿½^ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½é•¨ï¿½ï¿½ï¿½ï¿½Â‚ï¿½ï¿½Äƒï¿½ï¿½Xï¿½gï¿½ï¿½ï¿½ï¿½ï¿½
+	//ï¿½Ü‚ï¿½ï¿½oï¿½^ï¿½ï¿½ï¿½È‚ï¿½ï¿½ï¿½
 	list<Particle_param> p = particles_;
 	particles_.clear();
 	return p;

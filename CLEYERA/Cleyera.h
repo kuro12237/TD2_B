@@ -23,7 +23,6 @@
 
 #endif // _DEBUG
 
-
 class Cleyera
 {
 public:
@@ -39,7 +38,6 @@ public:
 	static void EndFlame();
 
 private:
-
 
 	D3DResourceLeakChecker leakCheck;
 };

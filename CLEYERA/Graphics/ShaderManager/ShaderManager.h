@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include"Pch.h"
 #include"LogManager.h"
 struct  SShaderMode
@@ -37,7 +37,7 @@ public:
 private:
 
 	/// <summary>
-	/// ƒVƒF[ƒ_[‚ÌƒRƒ“ƒpƒCƒ‹ŠÖ”
+	/// ï¿½Vï¿½Fï¿½[ï¿½_ï¿½[ï¿½ÌƒRï¿½ï¿½ï¿½pï¿½Cï¿½ï¿½ï¿½Öï¿½
 	/// </summary>
 	static IDxcBlob* CompilerShaderFanc(
 		const std::wstring& filePath,
