@@ -192,7 +192,13 @@ void GameScene::Update(GameManager* Scene)
 	{
 		if (SceneChange::GetScenChangeFlag())
 		{
-			Scene->ChangeState(new TitleScene);
+			if (MapManager::GetNowStageNumber()+1>20)
+			{
+				Scene->ChangeState(new TitleScene);
+				return;
+			}
+			MapManager::SetSelectMap(MapManager::GetNowStageNumber()+1);
+			Scene->ChangeState(new GameScene);
 			return;
 		}
 	}
@@ -203,6 +209,20 @@ void GameScene::Update(GameManager* Scene)
 			Scene->ChangeState(new GameScene);
 			return;
 		}
+	}
+	if (isSelectScene_)
+	{
+		if (SceneChange::GetScenChangeFlag())
+		{
+			Scene->ChangeState(new SelectScene);
+			return;
+		}
+	}
+
+	if (Input::PushKeyPressed(DIK_T))
+	{
+		isSelectScene_ = true;
+		SceneChange::ChangeStart();
 	}
 
 	if (Input::PushKeyPressed(DIK_R))

@@ -53,6 +53,7 @@ private:
 	unique_ptr<MapCollisionManager> mapCollisionManager_ = nullptr;
 
 	bool isReset_ = false;
+	bool isSelectScene_ = false;
 
 	unique_ptr<Sprite>contorolSprite_ = nullptr;
 	WorldTransform contorolWorldTransform_{};
