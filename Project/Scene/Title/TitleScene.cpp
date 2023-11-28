@@ -2,7 +2,7 @@
 
 void TitleScene::Initialize()
 {
-	WinApp::SetTiTleName(L"オフサイド運送株式会社");
+	WinApp::SetTiTleName(L"2224_オフサイド運送株式会社");
 
 	DebugCamera* Camera;
 	Camera = new DebugCamera();
@@ -14,7 +14,7 @@ void TitleScene::Initialize()
 	titleSprite_ = make_unique<Sprite>();
 	uint32_t tex = TextureManager::LoadTexture("Resources/OffSideLogisticsLogo.png");
 	titleSprite_->SetTexHandle(tex);
-	titleSprite_->Initialize(new SpriteBoxState, { 0,0 }, { 1383, 285 });
+	titleSprite_->Initialize(new SpriteBoxState, { 0,0 }, { 1223, 285 });
 	
 	titleWorldTransform_.Initialize();
 	titleWorldTransform_.scale = { 0.8f,0.8f,1.0f };

@@ -71,6 +71,8 @@ void Buggage::Update()
 
 	SetPosition(worldTransform_.translate);
 	SetVelocity(v);
+	SetVec3Velocity(velocity_);
+
 	SetBoxVelocity(velocity_);
 	SetRadious(0.5f);
 }

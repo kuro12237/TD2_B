@@ -22,7 +22,7 @@ void OffsideManager::CheckAllOffside()
 			{
 				if (maxpos >= offsideA->GetPosition().x)
 				{
-					maxpos = offsideA->GetPosition().x;
+					maxpos = offsideA->GetPosition().x - offsideA->GetVelocity().x+0.5f;
 					offside = offsideA;
 					offside->SetPosition({ maxpos,offsideA->GetPosition().y,offsideA->GetPosition().z });
 				}
@@ -32,13 +32,13 @@ void OffsideManager::CheckAllOffside()
 			{
 				if (maxpos <= offsideA->GetPosition().x)
 				{
-					maxpos = offsideA->GetPosition().x;
+					maxpos = offsideA->GetPosition().x+offsideA->GetVelocity().x-0.5f;
 					offside = offsideA;
-					offside->SetPosition({ maxpos,offsideA->GetPosition().y,offsideA->GetPosition().z });
+					offside->SetPosition({ maxpos-0.5f,offsideA->GetPosition().y,offsideA->GetPosition().z });
 				}
 			}
 		}
-		OffsideManager::GetInstance()->offsidePos_ = offside->GetPosition();
+		OffsideManager::GetInstance()->offsidePos_ = { maxpos,0,0 };
 	}
 }
 
