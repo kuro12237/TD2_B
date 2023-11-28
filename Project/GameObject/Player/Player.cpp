@@ -349,7 +349,7 @@ void Player::SelectBox()
 
 		if (Input::PushKeyPressed(DIK_J) || Input::GetInstance()->GetJoystickState(joyState) && joyState.Gamepad.wButtons & XINPUT_GAMEPAD_B)
 		{
-			if (worldTransform_.translate.x <= OffsideManager::GetOffsidePos().x)
+			if (worldTransform_.translate.x-1 <= OffsideManager::GetOffsidePos().x)
 			{
 			       
 			    if (BuggageSelectDirection == Left)
@@ -377,7 +377,7 @@ void Player::SelectBox()
 		
 		if (Input::PushKeyPressed(DIK_J) || Input::GetInstance()->GetJoystickState(joyState) && joyState.Gamepad.wButtons & XINPUT_GAMEPAD_B)
 		{
-			if (worldTransform_.translate.x >= OffsideManager::GetOffsidePos().x)
+			if (worldTransform_.translate.x-1 >= OffsideManager::GetOffsidePos().x)
 			{
 				if (BuggageSelectDirection == Left)
 				{
