@@ -23,6 +23,7 @@ public:
 	static void Draw(ViewProjection view);
 
 	static void SetSelectMap(uint32_t stageNumber);
+	static uint32_t GetNowStageNumber() { return MapManager::GetInstance()->NowStageNumber_; }
 
 	static array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> GetNowMapTip() { return MapManager::GetInstance()->NowMaptip_; }
 

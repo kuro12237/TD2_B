@@ -136,13 +136,7 @@ void GameScene::Update(GameManager* Scene)
 			return true;
 		}
 		return false;
-		}))
-	{
-		if (buggages_.size() == 0)
-		{
-			SceneChange::ChangeStart();
-		}
-	}
+		}));
 
 
 	for (shared_ptr<Buggage>& buggage : buggages_)
@@ -188,11 +182,23 @@ void GameScene::Update(GameManager* Scene)
 	viewProjection_.UpdateMatrix();
 	viewProjection_ = playerCamera_->GetViewProjection();
 
+	if (Input::PushKeyPressed(DIK_T))
+	{
+		Scene->ChangeState(new TitleScene);
+	}
+
+	if (buggages_.size()==0&&MapManager::GetNowStageNumber() + 1>20)
+	{
+		SceneChange::ChangeStart();
+		Scene->ChangeState(new TitleScene);
+	}
+
 	if (buggages_.size() == 0)
 	{
-		if (SceneChange::GetScenChangeFlag())
+		if (SceneChange::GetScenChangeFlag()&&MapManager::GetNowStageNumber()+1<=20)
 		{
-			Scene->ChangeState(new TitleScene);
+			MapManager::SetSelectMap(MapManager::GetNowStageNumber() + 1);
+			Scene->ChangeState(new GameScene);
 			return;
 		}
 	}
