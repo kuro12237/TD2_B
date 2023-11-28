@@ -144,6 +144,7 @@ void GameScene::Update(GameManager* Scene)
 		}
 	}
 
+
 	for (shared_ptr<Buggage>& buggage : buggages_)
 	{
 		buggage->SetIsSelect(player_->GetIsBuggageSelect());
@@ -152,6 +153,13 @@ void GameScene::Update(GameManager* Scene)
 		buggage->SetPlayerWorldTransform(player_->GetWorldTransform());
 		buggage->Update();
 	}
+
+	OffsideManager::ClearList();
+	for (shared_ptr<Buggage>& buggage : buggages_)
+	{
+		OffsideManager::AddList(buggage.get());
+	}
+	OffsideManager::CheckAllOffside();
 
 	for (shared_ptr<InvertionSwich>& invertion : invertionSwichs_)
 	{
@@ -163,13 +171,7 @@ void GameScene::Update(GameManager* Scene)
 	MapManager::Update();
 	MapCollision();
 
-	OffsideManager::ClearList();
-	for (shared_ptr<Buggage>& buggage : buggages_)
-	{
-		OffsideManager::AddList(buggage.get());
-	}
-	OffsideManager::CheckAllOffside();
-
+	
 
 	for (shared_ptr<Buggage>& buggage : buggages_)
 	{
