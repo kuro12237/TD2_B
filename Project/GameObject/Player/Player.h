@@ -33,6 +33,8 @@ public:
 	bool GetIsBuggageSelect() { return isBuggagesSelect; }
 	uint32_t GetIsBuggageSelectDirection() { return BuggageSelectDirection; }
 
+	void SetisSetBuggate(bool flag) { isBuggagesSelect = flag; }
+
 	void RightCollision(uint32_t nowMapPos)override;
 	void LeftCollision(uint32_t nowMapPos)override;
 

@@ -133,11 +133,14 @@ void GameScene::Update(GameManager* Scene)
 		if (!b->GetAlive())
 		{
 			b.reset();
+	
 			return true;
 		}
 		return false;
 		}))
 	{
+		player_->SetisSetBuggate(false);
+
 		if (buggages_.size() == 0)
 		{
 			SceneChange::ChangeStart();
