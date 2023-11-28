@@ -15,8 +15,10 @@ void MapManager::Initialize()
 	MapManager::GetInstance()->LadderTex_ = TextureManager::LoadTexture("Resources/BlockTex/LadderTex.png");
 	MapManager::GetInstance()->InvertionSwich = TextureManager::LoadTexture("Resources/BlockTex/InvertionSwichSpownTex.png");
 	CreateModels();
-	MapTip1_10();
+	MapTipLoad1_10();
 	MapTipLoad11_20();
+	MapTipLoad21_30();
+	//MapTipLoad31_40();
 }
 
 void MapManager::Update()
@@ -170,7 +172,7 @@ void MapManager::MapTipFileLoad(const string filePath)
 	MapManager::GetInstance()->mapDatas_[filePath] = make_unique<MapData>(data);
 }
 
-void MapManager::MapTip1_10()
+void MapManager::MapTipLoad1_10()
 {
 	MapTipFileLoad("Resources/MapData/stage1.csv");
 	MapTipFileLoad("Resources/MapData/stage2.csv");
@@ -197,3 +199,32 @@ void MapManager::MapTipLoad11_20()
 	MapTipFileLoad("Resources/MapData/stage19.csv");
 	MapTipFileLoad("Resources/MapData/stage20.csv");
 }
+
+//
+void MapManager::MapTipLoad21_30()
+{
+	MapTipFileLoad("Resources/MapData/stage21.csv");
+	MapTipFileLoad("Resources/MapData/stage22.csv");
+	MapTipFileLoad("Resources/MapData/stage23.csv");
+	MapTipFileLoad("Resources/MapData/stage24.csv");
+	MapTipFileLoad("Resources/MapData/stage25.csv");
+	MapTipFileLoad("Resources/MapData/stage26.csv");
+	MapTipFileLoad("Resources/MapData/stage27.csv");
+	MapTipFileLoad("Resources/MapData/stage28.csv");
+	MapTipFileLoad("Resources/MapData/stage29.csv");
+	MapTipFileLoad("Resources/MapData/stage30.csv");
+}
+//
+//void MapManager::MapTipLoad31_40()
+//{
+//	MapTipFileLoad("Resources/MapData/stage31.csv");
+//	MapTipFileLoad("Resources/MapData/stage32.csv");
+//	MapTipFileLoad("Resources/MapData/stage33.csv");
+//	MapTipFileLoad("Resources/MapData/stage34.csv");
+//	MapTipFileLoad("Resources/MapData/stage35.csv");
+//	MapTipFileLoad("Resources/MapData/stage36.csv");
+//	MapTipFileLoad("Resources/MapData/stage37.csv");
+//	MapTipFileLoad("Resources/MapData/stage38.csv");
+//	MapTipFileLoad("Resources/MapData/stage39.csv");
+//	MapTipFileLoad("Resources/MapData/stage40.csv");
+//}

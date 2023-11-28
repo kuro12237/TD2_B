@@ -32,9 +32,10 @@ private:
 	static void CreateModels();
 
 	static void MapTipFileLoad(const string filePath);
-	static void MapTip1_10();
+	static void MapTipLoad1_10();
 	static void MapTipLoad11_20();
-
+	static void MapTipLoad21_30();
+	static void MapTipLoad31_40();
 	uint32_t NowStageNumber_ = 0;
 	uint32_t prevStageNumber_ = 0;
 
