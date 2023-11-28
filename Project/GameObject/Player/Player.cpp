@@ -288,11 +288,7 @@ void Player::GamePadContorol()
 			isJamp = true;
 		}
 	}
-	if (x < 0.1f&&x>0.1f)
-	{
-		x = 0.0f;
-	}
-
+	
 	velocity_.x += x;
 }
 
