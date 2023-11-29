@@ -167,12 +167,12 @@ void GameScene::Initialize()
 
 	stageButtonHomeSprite_ = make_unique<Sprite>();
 	stageButtonHomeSprite_->SetTexHandle(UITex);
-	stageButtonHomeSprite_->Initialize(new SpriteBoxState, { 0,0 }, { 593.0f,152.0f });
+	stageButtonHomeSprite_->Initialize(new SpriteBoxState, { 0,0 }, { 648.0f,152.0f });
 			   
 	stageButtonHomeWorldTransform_.Initialize();
-	stageButtonHomeWorldTransform_.scale = { 0.35f,0.35f,0.35f };
+	stageButtonHomeWorldTransform_.scale = { 0.3f,0.3f,0.3f };
 	stageButtonHomeWorldTransform_.translate.y = 636.8f + Height;
-	stageButtonHomeWorldTransform_.translate.x = 92.0f + width + 10.0f;
+	stageButtonHomeWorldTransform_.translate.x = 97.0f + width + 4.0f;
 	stageButtonHomeWorldTransform_.UpdateMatrix();
 
 #pragma endregion
