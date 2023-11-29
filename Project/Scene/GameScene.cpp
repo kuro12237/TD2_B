@@ -266,6 +266,7 @@ void GameScene::Update(GameManager* Scene)
 	SkyBox::Update();
 	Ground::Update();
 	TruckManager::Update();
+	StageTitleName::Update();
 
 	stageButtonAWorldTransform_.UpdateMatrix();
 	stageButtonBWorldTransform_.UpdateMatrix();
@@ -359,6 +360,7 @@ void GameScene::Flont2dSpriteDraw()
 	stageButtonBSprite_->Draw(stageButtonBWorldTransform_);
 	stageButtonASprite_->Draw(stageButtonAWorldTransform_);
 	stageButtonHomeSprite_->Draw(stageButtonHomeWorldTransform_);
+	StageTitleName::Draw(viewProjection_);
 }
 
 void GameScene::Collision()
