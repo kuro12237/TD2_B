@@ -10,12 +10,14 @@ void StageTitleName::Initialize()
 {
 	LoadTexs();
 
+	Vector2 size = { 1548.0f,288.0f };
+
 	StageTitleName::GetInstance()->sprites_ = make_unique<Sprite>();
 	StageTitleName::GetInstance()->sprites_->SetTexHandle(StageTitleName::GetInstance()->tex[0]);
-	StageTitleName::GetInstance()->sprites_->Initialize(new SpriteBoxState, { 0,0 }, { 1548.0f,288.0f });
+	StageTitleName::GetInstance()->sprites_->Initialize(new SpriteBoxState, { 0,0 }, { size.x,size.y });
 	StageTitleName::GetInstance()->worldTransform.Initialize();
-	StageTitleName::GetInstance()->worldTransform.translate = { 1548/4+32,(228/4)+32,1 };
-	StageTitleName::GetInstance()->worldTransform.scale = { 0.5f,0.5f,1.0f };
+	StageTitleName::GetInstance()->worldTransform.translate = { size.x / 8 + 32,size.y / 8 + 32,1 };
+	StageTitleName::GetInstance()->worldTransform.scale = { 0.25f,0.25f,1.0f };
 	StageTitleName::GetInstance()->worldTransform.UpdateMatrix();
 
 	for (int i = 0; i < STAGE_TITLE_NAME; i++)
