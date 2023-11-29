@@ -14,7 +14,7 @@ void Player::Initialize(Vector3 pos)
 	modelPlayerRightHand_->CreateFromObj("PlayerRight");
 	
 	Audiohandle_ = AudioManager::SoundLoadWave("Resources/sounds/Soilwalk.wav");
-
+	Audiohandle2_ = AudioManager::SoundLoadWave("Resources/sounds/Pushluggage.wav");
 	worldTransform_.Initialize();
 	worldTransform_.translate = pos;
 	worldTransform_.scale = { 0.2f,0.2f,0.2f };
@@ -181,6 +181,21 @@ void Player::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, ui
 
 void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
+	this->time_+=5;
+
+	if (this->time_ > 18)
+	{
+		this->isPlayingAudio_ = true;
+	}
+
+	if (isPlayingAudio_)
+	{
+		AudioManager::AudioPlayWave(Audiohandle2_);
+		this->isPlayingAudio_ = false;
+		this->time_ = 0;
+	}
+
+
 	if (id == 0b00010)
 	{
 		return;
@@ -202,6 +217,22 @@ void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity
 
 void Player::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
+	this->time_++;
+
+	if (this->time_ > 20)
+	{
+		this->isPlayingAudio_ = true;
+	}
+
+	if (isPlayingAudio_)
+	{
+		AudioManager::AudioPlayWave(Audiohandle2_);
+		this->isPlayingAudio_ = false;
+		this->time_ = 0;
+	}
+	
+
+
 	if (id == 0b00010)
 	{
 		return;
@@ -303,7 +334,7 @@ void Player::GamePadContorol()
 		this->time_++;
 	}
 
-	if (this->time_ > 30)
+	if (this->time_ >18.5)
 	{
 	  this->isPlayingAudio_ = true;
 	}

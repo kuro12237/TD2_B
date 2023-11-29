@@ -171,7 +171,6 @@ void GameScene::Update(GameManager* Scene)
 
 
 
-
 	OffsideManager::ClearList();
 	for (shared_ptr<Buggage>& buggage : buggages_)
 	{

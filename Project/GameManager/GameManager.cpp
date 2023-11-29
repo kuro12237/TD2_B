@@ -25,22 +25,23 @@ GameManager::~GameManager()
 
 void GameManager::Run()
 {
-	if (isPlayerAudio == false)
+	this->time_++;
+
+	if (this->time_ > 0)
 	{
-		isPlayerAudio = true;
+		this->isPlayingAudio_ = true;
 	}
 
-	if (isPlayerAudio == true)
+	if (this->isPlayingAudio_)
 	{
 		AudioManager::AudioPlayWave(Audiohandle_);
-		time -= 1;
-	}
-	if (time < 1)
-	{
-		time = 600;
-		isPlayerAudio = false;
+		this->isPlayingAudio_ = false;
 	}
 
+	if (this->time_ > 2000)
+	{
+		this->time_ = 0;
+	}
 	while (WinApp::WinMsg())
 	{
 		

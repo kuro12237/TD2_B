@@ -11,7 +11,7 @@ void TitleScene::Initialize()
 
 	LogManager::Log(SceneName + "\n");
 
-	Audiohandle_ = AudioManager::SoundLoadWave("Resources/sounds/Title.wav");
+	Audiohandle_ = AudioManager::SoundLoadWave("Resources/sounds/Decision.wav");
 
 	titleSprite_ = make_unique<Sprite>();
 	uint32_t tex = TextureManager::LoadTexture("Resources/OffSideLogisticsLogo.png");
