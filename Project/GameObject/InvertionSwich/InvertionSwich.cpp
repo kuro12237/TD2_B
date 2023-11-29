@@ -27,19 +27,20 @@ void InvertionSwich::Initialize(Vector3 pos)
 
 void InvertionSwich::Update()
 {
+	if (!isHit_ && OffsideManager::GetDirection() == Left)
+	{
+		Invertion = Right;
+	}
+
 	if (callbackCollisions && !prevcallBackCollision)
 	{
 		if (isHit_ && OffsideManager::GetDirection() == Right)
 		{
 			Invertion = Left;
 		}
-		if (isHit_ && OffsideManager::GetDirection() == Left)
-		{
-			Invertion = Right;
-		}
-		isHit_ = false;
 	}
-	if (Invertion==Left)
+	isHit_ = false;
+	if (Invertion == Left)
 	{
 		worldTransform_.scale = { 1,1,1 };
 	}
