@@ -280,7 +280,20 @@ void GameScene::Update(GameManager* Scene)
 
 	if (buggages_.size() == 0)
 	{
-		AudioManager::AudioPlayWave(Audiohandle_);
+
+		if (this->isPlayingAudio_)
+		{
+			this->time_++;
+			if (this->time_ > 120)
+			{
+				this->isPlayingAudio_ = false;
+				this->time_ = 0;
+			}
+		}
+		else {
+			this->isPlayingAudio_ = true;
+			AudioManager::AudioPlayWave(Audiohandle_);
+		}
 
 		if (SceneChange::GetScenChangeFlag())
 		{
