@@ -87,5 +87,8 @@ private:
 	WorldTransform SelectWorldTransform = {};
 
 	uint32_t Audiohandle_ = 0;
+
+	bool isPlayingAudio_ = false;
+	int time_ = 0;
 };
 
