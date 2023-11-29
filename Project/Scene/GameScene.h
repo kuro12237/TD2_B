@@ -18,7 +18,7 @@
 #include"GameObject/GoalHouse/GoalHouse.h"
 #include"GameManager.h"
 #include"GameObject/InvertionSwich/InvertionSwich.h"
-
+#include"GameObject/StageTitleName/StageTitleName.h"
 
 class GameScene :public IScene
 {
@@ -52,12 +52,26 @@ private:
 	unique_ptr<CollisionManager> collisionManager_ = nullptr;
 	unique_ptr<MapCollisionManager> mapCollisionManager_ = nullptr;
 
+
 	bool isReset_ = false;
 	bool isSelectScene_ = false;
 
 	unique_ptr<Sprite>contorolSprite_ = nullptr;
 	WorldTransform contorolWorldTransform_{};
 
+
 	uint32_t Audiohandle_ = 0;
+
+	unique_ptr<Sprite>stageButtonASprite_ = nullptr;
+	WorldTransform stageButtonAWorldTransform_{};
+
+	unique_ptr<Sprite>stageButtonBSprite_ = nullptr;
+	WorldTransform stageButtonBWorldTransform_{};
+
+	unique_ptr<Sprite>stageButtonYSprite_ = nullptr;
+	WorldTransform stageButtonYWorldTransform_{};
+
+	unique_ptr<Sprite>stageButtonHomeSprite_ = nullptr;
+	WorldTransform stageButtonHomeWorldTransform_{};
 
 };

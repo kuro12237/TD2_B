@@ -32,9 +32,9 @@ void TitleScene::Initialize()
 	view.UpdateMatrix();
 
 	pushASprite_ = make_unique<Sprite>();
-	tex = TextureManager::LoadTexture("Resources/PushATex.png");
+	tex = TextureManager::LoadTexture("Resources/Buttons/TitleButtons/TitleButtonA.png");
 	pushASprite_->SetTexHandle(tex);
-	pushASprite_->Initialize(new SpriteBoxState, { 0,0 }, { 1280, 720 });
+	pushASprite_->Initialize(new SpriteBoxState, { 0,0 }, { 331, 152 });
 
 	pushAWorldTransform_.Initialize();
 	pushAWorldTransform_.scale = { 0.4f,0.4f,1.0f };

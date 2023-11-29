@@ -13,7 +13,7 @@ class Buggage:public MapCollider,public BoxCollider,public IOffside
 {
 public:
 	Buggage() {};
-	~Buggage() {};
+	~Buggage();
 
 	void Initialize(Vector3 position,uint32_t Attubte,uint32_t Mask);
 
@@ -59,6 +59,8 @@ public:
 
 	bool isNowHit() { return isHit_; }
 	bool isPrevHit() { return prevHit_; }
+
+	
 private:
 
 	/// <summary>

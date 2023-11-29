@@ -9,9 +9,9 @@ void Tutorial01Scene::Initialize()
 	viewProjection_.UpdateMatrix();
 
 	pushASprite_ = make_unique<Sprite>();
-	uint32_t tex = TextureManager::LoadTexture("Resources/PushATex.png");
+	uint32_t tex = TextureManager::LoadTexture("Resources/Buttons/TitleButtons/TitleButtonA.png");
 	pushASprite_->SetTexHandle(tex);
-	pushASprite_->Initialize(new SpriteBoxState, { 0,0 }, { 1280, 720 });
+	pushASprite_->Initialize(new SpriteBoxState, { 0,0 }, { 331, 152 });
 
 	pushAWorldTransform_.Initialize();
 	pushAWorldTransform_.scale = { 0.4f,0.4f,1.0f };
@@ -25,6 +25,7 @@ void Tutorial01Scene::Initialize()
 	explainSprite_->Initialize(new SpriteBoxState, { 0,0 }, { 1280,720 });
 
 	explainWorldTransform.Initialize();
+	explainWorldTransform.scale = { 0.8f,0.8f,0.8f };
 	explainWorldTransform.translate = { 640,360,0 };
 	explainWorldTransform.UpdateMatrix();
 }

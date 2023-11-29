@@ -4,6 +4,11 @@
 static bool isBuggagesSelect = false;
 
 
+Buggage::~Buggage()
+{
+	isBuggagesSelect = false;
+}
+
 void Buggage::Initialize(Vector3 position, uint32_t Attubte, uint32_t Mask)
 {
 	model_ = make_unique<Model>();
@@ -142,12 +147,11 @@ void Buggage::DownCollision(uint32_t nowMapPos)
 
 void Buggage::SetIsSelect(bool Selecr)
 {
-
-
 	if (Selecr && !isBuggagesSelect&&isHit_)
 	{
 		isSelect = Selecr;
 		isBuggagesSelect = true;
+		//
 		model_->SetColor({ 1,0,0,1 });
 	}
 }
@@ -260,7 +264,7 @@ void Buggage::SetBoxR(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map)
 {
 	if (OffsideManager::GetDirection() == Right)
 	{
-		if (isSelect && playerPos_.x-1 <= OffsideManager::GetOffsidePos().x)
+		if (isSelect && playerPos_.x -1 <= OffsideManager::GetOffsidePos().x)
 		{
 			XINPUT_STATE joyState{};
 			Input::NoneJoyState(joyState);

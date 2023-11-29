@@ -187,6 +187,12 @@
     <Filter Include="Project\Scene\Tutorial">
       <UniqueIdentifier>{554b6761-8343-442c-922f-f695943650f7}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Project\GameObject\t">
+      <UniqueIdentifier>{b1441e8d-27c0-419a-8614-4e413c6d5070}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Project\GameObject\MapManager\MapTitle">
+      <UniqueIdentifier>{67733a45-c473-4b56-b0da-d4e77ddb01b2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <None Include="CLEYERA\Config\.editorconfig">
@@ -386,6 +392,9 @@
     </ClCompile>
     <ClCompile Include="Project\Scene\Tutorial\Tutorial_01.cpp">
       <Filter>Project\Scene\Tutorial</Filter>
+    </ClCompile>
+    <ClCompile Include="Project\GameObject\StageTitleName\StageTitleName.cpp">
+      <Filter>Project\GameObject\MapManager\MapTitle</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -631,6 +640,9 @@
     </ClInclude>
     <ClInclude Include="Project\Scene\Tutorial\Tutorial_01.h">
       <Filter>Project\Scene\Tutorial</Filter>
+    </ClInclude>
+    <ClInclude Include="Project\GameObject\StageTitleName\StageTitleName.h">
+      <Filter>Project\GameObject\MapManager\MapTitle</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
