@@ -152,6 +152,7 @@ void GameScene::Update(GameManager* Scene)
 	{
 		for (shared_ptr<Buggage>& buggageB : buggages_)
 		{ 
+			//当たったら選択切り替え
 			if (!buggage->isNowHit()&&buggage->GetisSelect()&&buggageB->isNowHit()&&!buggageB->GetisSelect())
 			{
 				buggageB->ChangeOnSelect();
