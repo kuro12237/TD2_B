@@ -3,6 +3,7 @@
 void GameScene::Initialize()
 {
 	Audiohandle_ = AudioManager::SoundLoadWave("Resources/sounds/Clear.wav");
+	
 
 	MapManager::Update();
 
@@ -246,9 +247,13 @@ void GameScene::Update(GameManager* Scene)
 
 	for (shared_ptr<InvertionSwich>& invertion : invertionSwichs_)
 	{
+		
 		invertion->Update();
 		
 		invertion->Reset();
+
+	
+
 	}
 
 	//Mapの当たり判定
@@ -280,7 +285,7 @@ void GameScene::Update(GameManager* Scene)
 
 	if (buggages_.size() == 0)
 	{
-
+		//クリア音
 		if (this->isPlayingAudio_)
 		{
 			this->time_++;
@@ -294,6 +299,8 @@ void GameScene::Update(GameManager* Scene)
 			this->isPlayingAudio_ = true;
 			AudioManager::AudioPlayWave(Audiohandle_);
 		}
+		//
+
 
 		if (SceneChange::GetScenChangeFlag())
 		{

@@ -61,6 +61,7 @@ private:
 
 
 	uint32_t Audiohandle_ = 0;
+	
 
 	unique_ptr<Sprite>stageButtonASprite_ = nullptr;
 	WorldTransform stageButtonAWorldTransform_{};
@@ -77,4 +78,6 @@ private:
 	bool isPlayingAudio_ = false;
 	int time_ = 0;
 
+	bool isPlayingAudio2_ = false;
+	int time2_ = 0;
 };

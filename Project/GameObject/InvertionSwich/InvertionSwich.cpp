@@ -37,6 +37,7 @@ void InvertionSwich::Update()
 		
 		if (isHit_ && OffsideManager::GetDirection() == Right)
 		{
+
 			Invertion = Left;
 		}
 	}
@@ -65,6 +66,8 @@ void InvertionSwich::OnCollision(Vector3 overlap, Vector3 position, Vector3 velo
 {
 	isHit_ = true;
 	
+	
+
 	callbackCollisions = true;
 	LogManager::Log("swich\n");
 	overlap, position, velocity,id;
