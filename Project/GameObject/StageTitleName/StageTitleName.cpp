@@ -10,18 +10,24 @@ void StageTitleName::Initialize()
 {
 	LoadTexs();
 
+
+	StageTitleName::GetInstance()->sprites_ = make_unique<Sprite>();
+	StageTitleName::GetInstance()->sprites_->SetTexHandle(StageTitleName::GetInstance()->tex[0]);
+	//StageTitleName::GetInstance()->sprites_[i]->Initialize(new SpriteBoxState,{0,0},{})
+	StageTitleName::GetInstance()->worldTransform.Initialize();
 	for (int i = 0; i < STAGE_TITLE_NAME; i++)
 	{
-
-		StageTitleName::GetInstance()->sprites_[i] = make_unique<Sprite>();
-		StageTitleName::GetInstance()->sprites_[i]->SetTexHandle(StageTitleName::GetInstance()->tex[i]);
-
+		StageTitleName::GetInstance()->isPrintFlag_[i] = false;
 	}
 
 }
 
 void StageTitleName::Update()
 {
+	uint32_t ifNowMapNumber = MapManager::GetNowStageNumber();
+
+
+
 }
 
 void StageTitleName::Draw(ViewProjection view)

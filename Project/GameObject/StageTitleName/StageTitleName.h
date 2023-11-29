@@ -1,6 +1,7 @@
 #pragma once
 #include"Model.h"
 #include"Sprite/Sprite.h"
+#include"GameObject/MapManager/MapManager.h"
 #define STAGE_TITLE_NAME 10
 
 class StageTitleName
@@ -18,11 +19,11 @@ public:
 private:
 
 	static void LoadTexs();
-	
-	unique_ptr<Sprite>sprites_[STAGE_TITLE_NAME] = {};
-	WorldTransform worldTransform[STAGE_TITLE_NAME] = {};
+
+	unique_ptr<Sprite>sprites_ = {};
+	WorldTransform worldTransform = {};
 	uint32_t tex[STAGE_TITLE_NAME] = {};
+	bool isPrintFlag_[STAGE_TITLE_NAME] = {};
+
 
 };
-
-
