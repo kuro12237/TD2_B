@@ -59,6 +59,9 @@ private:
 	unique_ptr<Sprite>contorolSprite_ = nullptr;
 	WorldTransform contorolWorldTransform_{};
 
+
+	uint32_t Audiohandle_ = 0;
+
 	unique_ptr<Sprite>stageButtonASprite_ = nullptr;
 	WorldTransform stageButtonAWorldTransform_{};
 
