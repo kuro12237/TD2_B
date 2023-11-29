@@ -287,7 +287,6 @@ void Player::GamePadContorol()
 	if (Input::GetInstance()->GetJoystickState(joyState))
 	{
 		x += (float)joyState.Gamepad.sThumbLX / SHRT_MAX * speed;
-		AudioManager::AudioPlayWave(Audiohandle_);
 		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_A && !isJamp)
 		{
 			JampFrame = 0;
@@ -296,9 +295,24 @@ void Player::GamePadContorol()
 		}
 	}
 	
-	if (x<0.05f&&x>-0.05f)
+	if (x<0.05f && x>-0.05f)
 	{
 		x = 0;
+
+	}else{
+		this->time_++;
+	}
+
+	if (this->time_ > 30)
+	{
+	  this->isPlayingAudio_ = true;
+	}
+
+	if (isPlayingAudio_)
+	{
+		AudioManager::AudioPlayWave(Audiohandle_);
+		this->isPlayingAudio_ = false;
+		this->time_ = 0;
 	}
 
 	velocity_.x += x;
