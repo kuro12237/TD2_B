@@ -80,8 +80,10 @@ void Buggage::Draw(ViewProjection view)
 
 void Buggage::Move()
 {
-	
+	prevHit_ = isHit_;
 	isHit_ = false;
+
+
 	worldTransform_.translate = VectorTransform::Add(worldTransform_.translate, velocity_);
 	worldTransform_.UpdateMatrix();
 
@@ -238,6 +240,19 @@ void Buggage::SetOpenPortal(Vector3 pos)
 {
 
 	pos;
+}
+
+void Buggage::ChangeOnSelect()
+{
+	isSelect = true;
+	model_->SetColor({ 1,0,0,1 });
+}
+
+
+void Buggage::ChangeNoneSelect()
+{
+	isSelect = false;
+	model_->SetColor({ 1,1,1,1 });
 }
 
 

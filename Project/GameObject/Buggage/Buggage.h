@@ -52,8 +52,13 @@ public:
 
 	void SetOpenPortal(Vector3 pos);
 
+	void ChangeOnSelect();
+	void ChangeNoneSelect();
+
 	bool GetAlive() { return isAlive_; }
 
+	bool isNowHit() { return isHit_; }
+	bool isPrevHit() { return prevHit_; }
 private:
 
 	/// <summary>
@@ -77,6 +82,7 @@ private:
 
 	bool isHitWall=false;
 	bool isHit_ = false;
+	bool prevHit_ = false;
 
 	bool isSelect = false;
 

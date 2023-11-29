@@ -150,12 +150,18 @@ void GameScene::Update(GameManager* Scene)
 	
 	for (shared_ptr<Buggage>& buggage : buggages_)
 	{
+		for (shared_ptr<Buggage>& buggageB : buggages_)
+		{ 
+			//当たったら選択切り替え
+			if (!buggage->isNowHit()&&buggage->GetisSelect()&&buggageB->isNowHit()&&!buggageB->GetisSelect())
+			{
+				buggageB->ChangeOnSelect();
+				buggage->ChangeNoneSelect();
 
+			}
+		}
 	
 		buggage->SetIsSelect(player_->GetIsBuggageSelect());
-		
-
-
 		buggage->SetSelectDirection(player_->GetIsBuggageSelectDirection());
 		buggage->SetPlayerPosition(player_->GetWorldPosition());
 		buggage->SetPlayerWorldTransform(player_->GetWorldTransform());
