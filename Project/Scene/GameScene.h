@@ -18,7 +18,7 @@
 #include"GameObject/GoalHouse/GoalHouse.h"
 #include"GameManager.h"
 #include"GameObject/InvertionSwich/InvertionSwich.h"
-
+#include"GameObject/StageTitleName/StageTitleName.h"
 
 class GameScene :public IScene
 {

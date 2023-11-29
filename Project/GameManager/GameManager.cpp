@@ -14,6 +14,7 @@ GameManager::GameManager()
 	Ground::Initialize();
 	TruckManager::Initialize();
 	OffsideManager::Initialize();
+	StageTitleName::Initialize();
 }
 
 GameManager::~GameManager()
