@@ -34,4 +34,6 @@ private:
 	
 	unique_ptr<Sprite>pushASprite_ = nullptr;
 	WorldTransform pushAWorldTransform_{};
+
+	uint32_t Audiohandle_ = 0;
 };
