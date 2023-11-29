@@ -50,14 +50,14 @@ void SelectScene::Initialize()
 	SelectNumber = 0;
 
 	pushASprite_ = make_unique<Sprite>();
-	tex = TextureManager::LoadTexture("Resources/PushATex.png");
+	tex = TextureManager::LoadTexture("Resources/Buttons/StageButtons/StageButtonA.png");
 	pushASprite_->SetTexHandle(tex);
-	pushASprite_->Initialize(new SpriteBoxState, { 0,0 }, { 1280, 720 });
+	pushASprite_->Initialize(new SpriteBoxState, { 0,0 }, { 331, 152 });
 	
 
 	pushAWorldTransform_.Initialize();
-	pushAWorldTransform_.scale = { 0.2f,0.2f,0.2f };
-	pushAWorldTransform_.translate = { 1024,640,0 };
+	pushAWorldTransform_.scale = { 0.5f,0.5f,1.0f };
+	pushAWorldTransform_.translate = { 1024,660,0 };
 	pushAWorldTransform_.UpdateMatrix();
 
 	viewProjection_.translation_ = { 40,3.0f,18.0f };
