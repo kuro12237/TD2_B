@@ -53,10 +53,11 @@ void SelectScene::Initialize()
 	tex = TextureManager::LoadTexture("Resources/PushATex.png");
 	pushASprite_->SetTexHandle(tex);
 	pushASprite_->Initialize(new SpriteBoxState, { 0,0 }, { 1280, 720 });
+	
 
 	pushAWorldTransform_.Initialize();
-	pushAWorldTransform_.scale = { 0.25f,0.25f,1.0f };
-	pushAWorldTransform_.translate = { 960,640,0 };
+	pushAWorldTransform_.scale = { 0.2f,0.2f,0.2f };
+	pushAWorldTransform_.translate = { 1024,640,0 };
 	pushAWorldTransform_.UpdateMatrix();
 
 	viewProjection_.translation_ = { 40,3.0f,18.0f };

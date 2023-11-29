@@ -37,7 +37,7 @@ void TitleScene::Initialize()
 	pushASprite_->Initialize(new SpriteBoxState, { 0,0 }, { 1280, 720 });
 
 	pushAWorldTransform_.Initialize();
-	pushAWorldTransform_.scale = { 0.4f,0.4f,1.0f };
+	pushAWorldTransform_.scale = { 0.3f,0.3f,1.0f };
 	pushAWorldTransform_.translate = { 640,640,0 };
 	pushAWorldTransform_.UpdateMatrix();
 

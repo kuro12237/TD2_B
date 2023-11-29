@@ -112,6 +112,68 @@ void GameScene::Initialize()
 	contorolWorldTransform_.Initialize();
 	contorolWorldTransform_.translate.x = 640;
 	contorolWorldTransform_.translate.y = 360;
+
+#pragma region A
+
+	stageButtonASprite_ = make_unique<Sprite>();
+	uint32_t UITex = TextureManager::LoadTexture("Resources/Buttons/StageButtons/StageButtonA.png");
+	stageButtonASprite_->SetTexHandle(UITex);
+	stageButtonASprite_->SetAnkerPos({ 0,0 });
+	stageButtonASprite_->Initialize(new SpriteBoxState, { 0,0 }, { 415.0f,152.0f });
+
+	stageButtonAWorldTransform_.Initialize();
+	stageButtonAWorldTransform_.scale = { 0.3f,0.3f,0.3f };
+	stageButtonAWorldTransform_.translate.y = 500.0f+40.0f;
+	stageButtonAWorldTransform_.translate.x = 66.0f;
+	stageButtonAWorldTransform_.UpdateMatrix();
+#pragma endregion
+
+#pragma region B
+	stageButtonBSprite_ = make_unique<Sprite>();
+    UITex = TextureManager::LoadTexture("Resources/Buttons/StageButtons/StageButtonB.png");
+
+	stageButtonBSprite_->SetTexHandle(UITex);
+	stageButtonBSprite_->Initialize(new SpriteBoxState, { 0,0 }, { 489.0f,152.0f });
+			   
+	stageButtonBWorldTransform_.Initialize();
+	stageButtonBWorldTransform_.scale = { 0.3f,0.3f,0.3f };
+	stageButtonBWorldTransform_.translate.y = 545.6f+40.0f;
+	stageButtonBWorldTransform_.translate.x = 76.0f;
+	stageButtonBWorldTransform_.UpdateMatrix();
+#pragma endregion
+
+#pragma region Y
+
+	UITex = TextureManager::LoadTexture("Resources/Buttons/StageButtons/StageButtonY.png");
+
+	stageButtonYSprite_ = make_unique<Sprite>();
+	stageButtonYSprite_->SetTexHandle(UITex);
+	stageButtonYSprite_->Initialize(new SpriteBoxState, { 0,0 }, { 395.0f,152.0f });
+
+	stageButtonYWorldTransform_.Initialize();
+	stageButtonYWorldTransform_.scale = { 0.3f,0.3f,0.3f };
+	stageButtonYWorldTransform_.translate.y = 591.2f+40.0f;
+	stageButtonYWorldTransform_.translate.x = 62.0f;
+	stageButtonYWorldTransform_.UpdateMatrix();
+#pragma endregion
+
+#pragma region Home
+
+	UITex = TextureManager::LoadTexture("Resources/Buttons/StageButtons/StageButtonHome.png");
+
+	stageButtonHomeSprite_ = make_unique<Sprite>();
+	stageButtonHomeSprite_->SetTexHandle(UITex);
+	stageButtonHomeSprite_->Initialize(new SpriteBoxState, { 0,0 }, { 652.0f,152.0f });
+			   
+	stageButtonHomeWorldTransform_.Initialize();
+	stageButtonHomeWorldTransform_.scale = { 0.3f,0.3f,0.3f };
+	stageButtonHomeWorldTransform_.translate.y = 636.8f+40.0f;
+	stageButtonHomeWorldTransform_.translate.x = 100.0f;
+	stageButtonHomeWorldTransform_.UpdateMatrix();
+
+#pragma endregion
+
+
 	viewProjection_.Initialize();
 	viewProjection_.translation_.x = 7;
 	viewProjection_.translation_.y = 7;
@@ -203,6 +265,11 @@ void GameScene::Update(GameManager* Scene)
 	Ground::Update();
 	TruckManager::Update();
 
+	stageButtonAWorldTransform_.UpdateMatrix();
+	stageButtonBWorldTransform_.UpdateMatrix();
+	stageButtonYWorldTransform_.UpdateMatrix();
+	stageButtonHomeWorldTransform_.UpdateMatrix();
+
 	contorolWorldTransform_.UpdateMatrix();
 	viewProjection_.UpdateMatrix();
 	viewProjection_ = playerCamera_->GetViewProjection();
@@ -286,7 +353,10 @@ void GameScene::Object3dDraw()
 
 void GameScene::Flont2dSpriteDraw()
 {
-	contorolSprite_->Draw(contorolWorldTransform_);
+	stageButtonYSprite_->Draw(stageButtonYWorldTransform_);
+	stageButtonBSprite_->Draw(stageButtonBWorldTransform_);
+	stageButtonASprite_->Draw(stageButtonAWorldTransform_);
+	stageButtonHomeSprite_->Draw(stageButtonHomeWorldTransform_);
 }
 
 void GameScene::Collision()
