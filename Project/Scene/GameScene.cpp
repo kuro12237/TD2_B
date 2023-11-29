@@ -172,7 +172,7 @@ void GameScene::Initialize()
 	stageButtonHomeWorldTransform_.Initialize();
 	stageButtonHomeWorldTransform_.scale = { 0.3f,0.3f,0.3f };
 	stageButtonHomeWorldTransform_.translate.y = 636.8f + Height;
-	stageButtonHomeWorldTransform_.translate.x = 97.0f + width + 4.0f;
+	stageButtonHomeWorldTransform_.translate.x = 97.0f + width + 3.0f;
 	stageButtonHomeWorldTransform_.UpdateMatrix();
 
 #pragma endregion
