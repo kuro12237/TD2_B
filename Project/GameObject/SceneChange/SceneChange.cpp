@@ -9,8 +9,7 @@ SceneChange* SceneChange::GetInstance()
 void SceneChange::Initialize()
 {
 	uint32_t Logotex =TextureManager::LoadTexture("Resources/SceneChangeLogoTex.png");
-	//uint32_t Titletex = TextureManager::LoadTexture("Reosurces/SceneChangeTitleTex.jpg");
-	//Titletex;
+	uint32_t Titletex = TextureManager::LoadTexture("Resources/SceneChangeTitleTex.png");
 	SceneChange::GetInstance()->texHandle =Logotex;
 
 	SceneChange::GetInstance()->soundHandle_ = AudioManager::SoundLoadWave("Resources/sounds/SceneChange.wav");
@@ -19,8 +18,9 @@ void SceneChange::Initialize()
 	{
 		SceneChange::GetInstance()->isScaleFlag_[i] = false;
 		SceneChange::GetInstance()->sprite_[i] = make_unique<Sprite>();
-		SceneChange::GetInstance()->sprite_[i]->SetTexHandle(Logotex);
 		SceneChange::GetInstance()->sprite_[i]->Initialize(new SpriteBoxState, { 0,0 }, { 128,128 });
+	
+		SceneChange::GetInstance()->sprite_[i]->SetTexHandle(Logotex);
 	}
 
 	int width = 1;
@@ -34,20 +34,27 @@ void SceneChange::Initialize()
 		SceneChange::GetInstance()->worldTransform_[i].translate = { 128.0f * width-64.0f,128.0f * height-64.0f,0 };
 		SceneChange::GetInstance()->worldTransform_[i].UpdateMatrix();
 		width++;
-		if (width % 11 == 0)
+		if (width % 12 == 0)
 		{
 			height++;
 			width = 1;
 		}
 	}
+
+	width = 0;
+	for (int i = 0; i < SCENECHANGE_SPRITE_MAX ; i++)
+	{
+		if (i % 2 == 0)
+		{
+			SceneChange::GetInstance()->sprite_[i + 1]->SetTexHandle(Titletex);
+		}
+	}
+
 }
 
 void SceneChange::Update()
 {	
-	ImGui::Begin("v");
-
-	ImGui::DragFloat("vc", &SceneChange::GetInstance()->volume, -0.1f, 0.1f);
-	ImGui::End();
+	
 
 	if (!SceneChange::GetInstance()->isUpdate)
 	{

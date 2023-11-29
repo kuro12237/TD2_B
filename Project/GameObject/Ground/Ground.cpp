@@ -14,7 +14,7 @@ void Ground::Initialize()
 		Ground::GetInstance()->model_->CreateFromObj("MapGround");
 		Ground::GetInstance()->worldTransform_.Initialize();
 		Ground::GetInstance()->worldTransform_.scale = { 10,1,10 };
-		Ground::GetInstance()->uvScale_.x = 24.0f;
+	
 		Ground::GetInstance()->worldTransform_.UpdateMatrix();
 		Ground::GetInstance()->InitializeLock = true;
 		Ground::GetInstance()->road_=make_unique<Road>();

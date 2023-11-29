@@ -5,7 +5,7 @@ void Truck::Initialize()
 	bodyModel_ = make_unique<Model>();
 	bodyModel_->CreateFromObj("TruckBody");
 	bodyWorldTransform_.Initialize();
-	bodyWorldTransform_.translate = { -20,0,24 };
+	bodyWorldTransform_.translate = { -22,0,26 };
 	bodyWorldTransform_.scale = { 0.5f,0.5f,0.5f };
 	bodyWorldTransform_.UpdateMatrix();
 

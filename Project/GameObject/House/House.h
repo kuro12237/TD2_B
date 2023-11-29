@@ -19,4 +19,7 @@ private:
 
 	unique_ptr<Model>model_ = nullptr;
 	WorldTransform worldTransform_ = {};
+
+	unique_ptr<Model>woodModel_ = nullptr;
+	WorldTransform woodWorldTransform{};
 };
