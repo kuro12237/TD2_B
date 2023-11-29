@@ -9,8 +9,8 @@ SceneChange* SceneChange::GetInstance()
 void SceneChange::Initialize()
 {
 	uint32_t Logotex =TextureManager::LoadTexture("Resources/SceneChangeLogoTex.png");
-	uint32_t Titletex = TextureManager::LoadTexture("Reosurces/SceneChangeTitleTex.jpg");
-	Titletex;
+	//uint32_t Titletex = TextureManager::LoadTexture("Reosurces/SceneChangeTitleTex.jpg");
+	//Titletex;
 	SceneChange::GetInstance()->texHandle =Logotex;
 
 	SceneChange::GetInstance()->soundHandle_ = AudioManager::SoundLoadWave("Resources/sounds/SceneChange.wav");
