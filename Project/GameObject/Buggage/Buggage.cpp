@@ -4,6 +4,11 @@
 static bool isBuggagesSelect = false;
 
 
+Buggage::~Buggage()
+{
+	isBuggagesSelect = false;
+}
+
 void Buggage::Initialize(Vector3 position, uint32_t Attubte, uint32_t Mask)
 {
 	model_ = make_unique<Model>();
