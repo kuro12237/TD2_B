@@ -179,13 +179,10 @@ void SelectScene::Contorol()
 		selectTimer_++;
 		Input::NoneJoyState(joyState);
 
-		if (Input::GetInstance()->GetJoystickState(joyState)&&selectTimer_>=10)
+		if (Input::GetInstance()->GetJoystickState(joyState)&&selectTimer_　>=　10)
 		{
 			float x = (float)joyState.Gamepad.sThumbLX / SHRT_MAX;
 			float y = (float)joyState.Gamepad.sThumbLY / SHRT_MAX;
-
-			y;
-
 			if (x > 0.5f)
 			{
 				if (SelectNumber + 1 < STAGE_MAX)
@@ -222,44 +219,6 @@ void SelectScene::Contorol()
 					SelectNumber += 5;
 					selectTimer_ = 0;
 
-				}
-			}
-
-			if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT)
-			{
-				if (SelectNumber - 1 >= 0)
-				{
-					SelectNumber--;
-					selectTimer_ = 0;
-				}
-			}
-
-			if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_RIGHT)
-			{
-				if(SelectNumber + 1 < STAGE_MAX)
-				{
-					SelectNumber++;
-					selectTimer_ = 0;
-				}
-			}
-			if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_UP)
-			{
-			
-					if (SelectNumber - 5 >= 0)
-					{
-						SelectNumber -= 5;
-						selectTimer_ = 0;
-					}
-				
-			}
-			if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_DOWN)
-			{
-				if (SelectNumber  + 5 < STAGE_MAX) 
-				{
-					
-					SelectNumber += 5;
-					selectTimer_ = 0;
-					
 				}
 			}
 		}
