@@ -13,7 +13,7 @@ void SelectScene::Initialize()
 
 	worldTransform_[0].Initialize();
 	worldTransform_[0].translate.x += 128.0f;
-	worldTransform_[0].translate.y += 96.0f;
+	worldTransform_[0].translate.y += 128.0f;
 	worldTransform_[0].UpdateMatrix();
 
 	SelectParam_[0].IsSelect = false;
@@ -33,7 +33,7 @@ void SelectScene::Initialize()
 
 		worldTransform_[i].Initialize();
 		worldTransform_[i].translate.x += (Height * 128 + 320 +32 * Height);
-		worldTransform_[i].translate.y += (Width * 128 + 96 + 10 * Width);
+		worldTransform_[i].translate.y += (Width * 128 + 128 + 10 * Width);
 		worldTransform_[i].UpdateMatrix();
 
 		SelectParam_[i].IsSelect = false;
