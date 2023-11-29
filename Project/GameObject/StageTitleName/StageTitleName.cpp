@@ -24,17 +24,27 @@ void StageTitleName::Initialize()
 
 void StageTitleName::Update()
 {
-	uint32_t ifNowMapNumber = MapManager::GetNowStageNumber();
+	uint32_t NowMapNumber = MapManager::GetNowStageNumber();
 
-
+	if (NowMapNumber<= 10)
+	{
+		StageTitleName::GetInstance()->isPrintFlag_[NowMapNumber - 1] = true;
+		StageTitleName::GetInstance()->sprites_->SetTexHandle(StageTitleName::GetInstance()->tex[NowMapNumber - 1]);
+	}
 
 }
 
 void StageTitleName::Draw(ViewProjection view)
 {
+	for (int i = 0; i < 10; i++)
+	{
+		if (StageTitleName::GetInstance()->isPrintFlag_[i])
+		{
+			StageTitleName::GetInstance()->sprites_->Draw(StageTitleName::GetInstance()->worldTransform);
+			StageTitleName::GetInstance()->isPrintFlag_[i] = false;
+		}
+	}
 	view;
-
-
 }
 
 void StageTitleName::LoadTexs()
