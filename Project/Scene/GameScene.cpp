@@ -4,6 +4,8 @@ void GameScene::Initialize()
 {
 	MapManager::Update();
 
+	
+
 	array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map = {};
 
 	//マップチップ反転Y
@@ -121,7 +123,6 @@ void GameScene::Initialize()
 void GameScene::Update(GameManager* Scene)
 {
 	player_->GravityUpdate();
-
 	Collision();
 
 	player_->Update();

@@ -12,7 +12,6 @@ void SceneChange::Initialize()
 	uint32_t Titletex = TextureManager::LoadTexture("Resources/SceneChangeTitleTex.png");
 	SceneChange::GetInstance()->texHandle =Logotex;
 
-	SceneChange::GetInstance()->soundHandle_ = AudioManager::SoundLoadWave("Resources/sounds/SceneChange.wav");
 	
 	for (int i = 0; i < SCENECHANGE_SPRITE_MAX; i++)
 	{
@@ -67,8 +66,6 @@ void SceneChange::Update()
 		//スポーン処理開始
 		if (Spown())
 		{
-			AudioManager::AudioPlayWave(SceneChange::GetInstance()->soundHandle_);
-			AudioManager::AudioVolumeControl(SceneChange::GetInstance()->soundHandle_, SceneChange::GetInstance()->volume);
 			SceneChange::GetInstance()->SceneChangeFlag = true;
 			SceneChange::GetInstance()->isStart_ = false;
 			SceneChange::GetInstance()->isEnd_ = true;

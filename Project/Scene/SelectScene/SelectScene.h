@@ -48,5 +48,7 @@ private:
 
 	uint32_t selectTimer_ = 0;
 
+	uint32_t Audiohandle_ = 0;
 
+	uint32_t Audiohandle_2 = 0;
 };

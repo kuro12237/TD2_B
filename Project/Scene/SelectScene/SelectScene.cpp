@@ -11,6 +11,9 @@ void SelectScene::Initialize()
 	model_[0]->Initialize(new SpriteBoxState, { 0,0 }, { 128,128 });
 	model_[0]->SetSrc({ 0.8f,0.8f }, { 0.8f,1.0f }, { 0.6f,0.8f },{0.6f,1.0f});
 
+	Audiohandle_ = AudioManager::SoundLoadWave("Resources/sounds/Choice.wav");
+	Audiohandle_2 = AudioManager::SoundLoadWave("Resources/sounds/Decision.wav");
+
 	worldTransform_[0].Initialize();
 	worldTransform_[0].translate.x += 128.0f;
 	worldTransform_[0].translate.y += 128.0f;
@@ -111,6 +114,7 @@ void SelectScene::Update(GameManager* Scene)
 	{
 		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_A)
 		{
+			AudioManager::AudioPlayWave(Audiohandle_2);
 			SceneChange::ChangeStart();
 			SelectLock = true;
 		}
@@ -121,6 +125,7 @@ void SelectScene::Update(GameManager* Scene)
 	{
 		if (Input::PushKeyPressed(DIK_SPACE))
 		{
+			AudioManager::AudioPlayWave(Audiohandle_2);
 			SceneChange::ChangeStart();
 			SelectLock = true;
 		}
@@ -157,20 +162,24 @@ void SelectScene::Contorol()
 	{
 		if (Input::PushKeyPressed(DIK_LEFT) && SelectNumber - 1 >= 0)
 		{
+			AudioManager::AudioPlayWave(Audiohandle_);
 			SelectNumber--;
 		}
 		if (Input::PushKeyPressed(DIK_RIGHT) && SelectNumber + 1 < STAGE_MAX)
 		{
+			AudioManager::AudioPlayWave(Audiohandle_);
 			SelectNumber++;
 		}
 
 		if (Input::PushKeyPressed(DIK_UP) && SelectNumber - 5 >= 0)
 		{
+			AudioManager::AudioPlayWave(Audiohandle_);
 			SelectNumber -= 5;
 		}
 
 		if (Input::PushKeyPressed(DIK_DOWN) && SelectNumber + 5 < STAGE_MAX)
 		{
+			AudioManager::AudioPlayWave(Audiohandle_);
 			SelectNumber += 5;
 			
 		}
@@ -187,6 +196,7 @@ void SelectScene::Contorol()
 			{
 				if (SelectNumber + 1 < STAGE_MAX)
 				{
+					AudioManager::AudioPlayWave(Audiohandle_);
 					SelectNumber++;
 					selectTimer_ = 0;
 				}
@@ -196,6 +206,7 @@ void SelectScene::Contorol()
 			{
 				if (SelectNumber - 1 >= 0)
 				{
+					AudioManager::AudioPlayWave(Audiohandle_);
 					SelectNumber--;
 					selectTimer_ = 0;
 				}
@@ -205,6 +216,7 @@ void SelectScene::Contorol()
 			{
 				if (SelectNumber - 5 >= 0)
 				{
+					AudioManager::AudioPlayWave(Audiohandle_);
 					SelectNumber -= 5;
 					selectTimer_ = 0;
 				}
@@ -215,7 +227,7 @@ void SelectScene::Contorol()
 			{
 				if (SelectNumber + 5 < STAGE_MAX)
 				{
-
+					AudioManager::AudioPlayWave(Audiohandle_);
 					SelectNumber += 5;
 					selectTimer_ = 0;
 

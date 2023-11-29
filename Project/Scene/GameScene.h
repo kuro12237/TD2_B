@@ -57,4 +57,5 @@ private:
 
 	unique_ptr<Sprite>contorolSprite_ = nullptr;
 	WorldTransform contorolWorldTransform_{};
+
 };
