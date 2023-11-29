@@ -14,7 +14,8 @@ void SkyBox::Initialize()
 		SkyBox::GetInstance()->model_->CreateFromObj("SkyBox");
 
 		SkyBox::GetInstance()->worldTransform_.Initialize();
-		SkyBox::GetInstance()->worldTransform_.scale = { 128,128,128  };
+		const float scaleMax = 64;
+		SkyBox::GetInstance()->worldTransform_.scale = { scaleMax,scaleMax,scaleMax  };
 		SkyBox::GetInstance()->worldTransform_.UpdateMatrix();
 		SkyBox::GetInstance()->InitializeLock = true;
 	}

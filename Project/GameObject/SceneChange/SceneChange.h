@@ -3,7 +3,7 @@
 #include"Graphics/TextureManager/TextureManager.h"
 #include"VectorTransform.h"
 #include"AudioManager.h"
-#define SCENECHANGE_SPRITE_MAX 60
+#define SCENECHANGE_SPRITE_MAX 80
 
 class SceneChange
 {

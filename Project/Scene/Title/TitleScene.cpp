@@ -25,8 +25,8 @@ void TitleScene::Initialize()
 	house_->Initialize({ 0,0,32 },{1,1,1});
 
 	view.Initialize();
-	view.translation_ = { 0,10,-10 };
-	view.rotation_.x = 0.2f;
+	view.translation_ = { 0,4,-10 };
+	
 	view.UpdateMatrix();
 
 	pushASprite_ = make_unique<Sprite>();
@@ -78,11 +78,9 @@ void TitleScene::Update(GameManager* Scene)
 		SceneChange::ChangeStart();
 	}
 
-\
-
 	DebugTools::UpdateExecute(0);
 
-	house_->Update();
+
 	SkyBox::Update();
 	Ground::Update();
 	TruckManager::Update();
@@ -104,7 +102,6 @@ void TitleScene::Object3dDraw()
 
 	TruckManager::Draw(view);
 
-	house_->Draw(view);
 	SkyBox::Draw(view);
 	Ground::Draw(view);
 }
