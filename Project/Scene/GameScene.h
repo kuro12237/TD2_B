@@ -58,4 +58,6 @@ private:
 	unique_ptr<Sprite>contorolSprite_ = nullptr;
 	WorldTransform contorolWorldTransform_{};
 
+	uint32_t Audiohandle_ = 0;
+
 };

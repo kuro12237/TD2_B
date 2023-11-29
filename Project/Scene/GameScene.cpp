@@ -2,6 +2,8 @@
 
 void GameScene::Initialize()
 {
+	Audiohandle_ = AudioManager::SoundLoadWave("Resources/sounds/Clear.wav");
+
 	MapManager::Update();
 
 	
@@ -208,6 +210,8 @@ void GameScene::Update(GameManager* Scene)
 
 	if (buggages_.size() == 0)
 	{
+		AudioManager::AudioPlayWave(Audiohandle_);
+
 		if (SceneChange::GetScenChangeFlag())
 		{
 			if (MapManager::GetNowStageNumber()+1>20)

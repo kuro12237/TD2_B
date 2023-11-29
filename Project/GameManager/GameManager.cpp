@@ -25,26 +25,11 @@ GameManager::~GameManager()
 
 void GameManager::Run()
 {
-	this->time_++;
-
-	if (this->time_ > 0)
-	{
-		this->isPlayingAudio_ = true;
-	}
-
-	if (this->isPlayingAudio_)
-	{
-		AudioManager::AudioPlayWave(Audiohandle_);
-		this->isPlayingAudio_ = false;
-	}
-
-	if (this->time_ > 2000)
-	{
-		this->time_ = 0;
-	}
+	
+	
 	while (WinApp::WinMsg())
 	{
-		
+
 
 		Cleyera::BeginFlame();
 
@@ -56,6 +41,23 @@ void GameManager::Run()
 
 		Scene_->Update(this);
 
+
+		if (this->isPlayingAudio_)
+		{
+			this->time_++;
+
+			if (this->time_ > 2640)
+			{
+				this->isPlayingAudio_ = false;
+				this->time_ = 0;
+			}
+			
+		}
+		else {
+			this->isPlayingAudio_ = true;
+			AudioManager::AudioPlayWave(Audiohandle_);
+
+		}
 		
 
 		ImGui::PopStyleColor();
