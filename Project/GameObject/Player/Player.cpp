@@ -17,7 +17,7 @@ void Player::Initialize(Vector3 pos)
 
 	worldTransform_.Initialize();
 	worldTransform_.translate = pos;
-	worldTransform_.scale = { 0.2f,0.2f,0.2f };
+	worldTransform_.scale = { 1.0f,1.0f,1.0f };
 	worldTransform_.rotation = { 0.0f,-2.0f,0.0f };
 	worldTransform_.UpdateMatrix();
 	
