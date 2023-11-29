@@ -22,6 +22,7 @@ void Player::Initialize(Vector3 pos)
 	worldTransform_.UpdateMatrix();
 	
 
+
 	SetCollosionAttribute(kCollisionAttributePlayer);
 	SetCollisionMask(kCollisionMaskPlayer);
 	//Select用
