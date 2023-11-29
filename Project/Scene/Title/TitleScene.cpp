@@ -11,6 +11,8 @@ void TitleScene::Initialize()
 
 	LogManager::Log(SceneName + "\n");
 
+	Audiohandle_ = AudioManager::SoundLoadWave("Resources/sounds/Title.wav");
+
 	titleSprite_ = make_unique<Sprite>();
 	uint32_t tex = TextureManager::LoadTexture("Resources/OffSideLogisticsLogo.png");
 	titleSprite_->SetTexHandle(tex);
@@ -60,6 +62,7 @@ void TitleScene::Update(GameManager* Scene)
 	//titleWorldTransform_.scale = uvScele_;
 	if (SceneChange::GetScenChangeFlag())
 	{
+		AudioManager::AudioPlayWave(Audiohandle_);
 		Scene->ChangeState(new SelectScene);
 		return;
 	}

@@ -13,6 +13,8 @@ void Player::Initialize(Vector3 pos)
 	modelPlayerRightHand_ = make_unique<Model>();
 	modelPlayerRightHand_->CreateFromObj("PlayerRight");
 	
+	Audiohandle_ = AudioManager::SoundLoadWave("Resources/sounds/Soilwalk.wav");
+
 	worldTransform_.Initialize();
 	worldTransform_.translate = pos;
 	worldTransform_.scale = { 0.2f,0.2f,0.2f };
@@ -91,6 +93,7 @@ void Player::Move()
 
 	if (BuggageSelectDirection == Left)
 	{
+		
 		SelectWorldTransform.translate = worldTransform_.translate;
 		SelectWorldTransform.translate.x = worldTransform_.translate.x - 1;
 	}
@@ -259,10 +262,12 @@ void Player::KeyControl()
 
 	if (Input::PushKey(DIK_A))
 	{
+		AudioManager::AudioPlayWave(Audiohandle_);
 		velocity_.x = -speed;
 	}
 	else if (Input::PushKey(DIK_D))
 	{
+		AudioManager::AudioPlayWave(Audiohandle_);
 		velocity_.x = speed;
 	}
 
@@ -282,7 +287,7 @@ void Player::GamePadContorol()
 	if (Input::GetInstance()->GetJoystickState(joyState))
 	{
 		x += (float)joyState.Gamepad.sThumbLX / SHRT_MAX * speed;
-
+		AudioManager::AudioPlayWave(Audiohandle_);
 		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_A && !isJamp)
 		{
 			JampFrame = 0;

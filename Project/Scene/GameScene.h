@@ -70,4 +70,5 @@ private:
 
 	unique_ptr<Sprite>stageButtonHomeSprite_ = nullptr;
 	WorldTransform stageButtonHomeWorldTransform_{};
+
 };

@@ -7,6 +7,7 @@
 #include"Collider/ColliderConfig.h"
 #include"GameObject/MapManager/MapManager.h"
 #include"GameObject/Offside/OffSideManager.h"
+#include"Audio/AudioManager.h"
 #define SELECT_MODEL_MAX 2
 
 
@@ -84,5 +85,7 @@ private:
 
 	unique_ptr<Model>SelectModel_ = {};
 	WorldTransform SelectWorldTransform = {};
+
+	uint32_t Audiohandle_ = 0;
 };
 
