@@ -113,6 +113,8 @@ void GameScene::Initialize()
 	contorolWorldTransform_.translate.x = 640;
 	contorolWorldTransform_.translate.y = 360;
 
+	const float Height = 8.0f;
+	const float width = 16.0f;
 #pragma region A
 
 	stageButtonASprite_ = make_unique<Sprite>();
@@ -123,8 +125,8 @@ void GameScene::Initialize()
 
 	stageButtonAWorldTransform_.Initialize();
 	stageButtonAWorldTransform_.scale = { 0.3f,0.3f,0.3f };
-	stageButtonAWorldTransform_.translate.y = 500.0f+40.0f;
-	stageButtonAWorldTransform_.translate.x = 66.0f;
+	stageButtonAWorldTransform_.translate.y = 500.0f + Height;
+	stageButtonAWorldTransform_.translate.x = 66.0f + width;
 	stageButtonAWorldTransform_.UpdateMatrix();
 #pragma endregion
 
@@ -137,8 +139,8 @@ void GameScene::Initialize()
 			   
 	stageButtonBWorldTransform_.Initialize();
 	stageButtonBWorldTransform_.scale = { 0.3f,0.3f,0.3f };
-	stageButtonBWorldTransform_.translate.y = 545.6f+40.0f;
-	stageButtonBWorldTransform_.translate.x = 76.0f;
+	stageButtonBWorldTransform_.translate.y = 545.6f + Height;
+	stageButtonBWorldTransform_.translate.x = 76.0f + width;
 	stageButtonBWorldTransform_.UpdateMatrix();
 #pragma endregion
 
@@ -152,8 +154,8 @@ void GameScene::Initialize()
 
 	stageButtonYWorldTransform_.Initialize();
 	stageButtonYWorldTransform_.scale = { 0.3f,0.3f,0.3f };
-	stageButtonYWorldTransform_.translate.y = 591.2f+40.0f;
-	stageButtonYWorldTransform_.translate.x = 62.0f;
+	stageButtonYWorldTransform_.translate.y = 591.2f + Height;
+	stageButtonYWorldTransform_.translate.x = 62.0f + width;
 	stageButtonYWorldTransform_.UpdateMatrix();
 #pragma endregion
 
@@ -163,12 +165,12 @@ void GameScene::Initialize()
 
 	stageButtonHomeSprite_ = make_unique<Sprite>();
 	stageButtonHomeSprite_->SetTexHandle(UITex);
-	stageButtonHomeSprite_->Initialize(new SpriteBoxState, { 0,0 }, { 652.0f,152.0f });
+	stageButtonHomeSprite_->Initialize(new SpriteBoxState, { 0,0 }, { 1347.0f,288.0f });
 			   
 	stageButtonHomeWorldTransform_.Initialize();
-	stageButtonHomeWorldTransform_.scale = { 0.3f,0.3f,0.3f };
-	stageButtonHomeWorldTransform_.translate.y = 636.8f+40.0f;
-	stageButtonHomeWorldTransform_.translate.x = 100.0f;
+	stageButtonHomeWorldTransform_.scale = { 0.15f,0.15f,0.15f };
+	stageButtonHomeWorldTransform_.translate.y = 636.8f + Height;
+	stageButtonHomeWorldTransform_.translate.x = 105.0f + width;
 	stageButtonHomeWorldTransform_.UpdateMatrix();
 
 #pragma endregion
