@@ -34,12 +34,13 @@ void InvertionSwich::Update()
 
 	if (callbackCollisions && !prevcallBackCollision)
 	{
+		
 		if (isHit_ && OffsideManager::GetDirection() == Right)
 		{
 			Invertion = Left;
 		}
 	}
-	isHit_ = false;
+	//isHit_ = false;
 	if (Invertion == Left)
 	{
 		worldTransform_.scale = { 1,1,1 };
@@ -93,6 +94,6 @@ void InvertionSwich::Reset()
 {
 	prevcallBackCollision = callbackCollisions;
 	callbackCollisions = false;
-	
+	isHit_ = false;
 }
 

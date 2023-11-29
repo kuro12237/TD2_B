@@ -181,6 +181,7 @@ void GameScene::Update(GameManager* Scene)
 	for (shared_ptr<InvertionSwich>& invertion : invertionSwichs_)
 	{
 		invertion->Update();
+		
 		invertion->Reset();
 	}
 
@@ -236,24 +237,18 @@ void GameScene::Update(GameManager* Scene)
 		}
 	}
 
-	if (Input::PushKeyPressed(DIK_T))
-	{
-		isSelectScene_ = true;
-		SceneChange::ChangeStart();
-	}
-
-	if (Input::PushKeyPressed(DIK_R))
-	{
-		isReset_ = true;
-		SceneChange::ChangeStart();
-	}
 	XINPUT_STATE joyState{};
 	Input::NoneJoyState(joyState);
 	if (Input::GetInstance()->GetJoystickState(joyState))
 	{
-		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_Y)
+		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_Y|| Input::PushKeyPressed(DIK_R))
 		{
 			isReset_ = true;
+			SceneChange::ChangeStart();
+		}
+		if (Input::PushKeyPressed(DIK_T)|| joyState.Gamepad.wButtons & XINPUT_GAMEPAD_START)
+		{
+			isSelectScene_ = true;
 			SceneChange::ChangeStart();
 		}
 	}

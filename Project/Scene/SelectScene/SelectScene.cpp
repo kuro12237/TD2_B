@@ -8,12 +8,12 @@ void SelectScene::Initialize()
 	model_[0] = make_unique<Sprite>();
 	uint32_t tex = TextureManager::LoadTexture("Resources/SelectTex/SelectNumber.png");
 	model_[0]->SetTexHandle(tex);
-	model_[0]->Initialize(new SpriteBoxState, { 0,0 }, { 128*3,128 });
-	model_[0]->SetSrc({ 0.60f,0.8f }, { 0.60f,1.00f }, { 0,0.8f }, { 0,1.00f });
+	model_[0]->Initialize(new SpriteBoxState, { 0,0 }, { 128,128 });
+	model_[0]->SetSrc({ 0.8f,0.8f }, { 0.8f,1.0f }, { 0.6f,0.8f },{0.6f,1.0f});
 
 	worldTransform_[0].Initialize();
 	worldTransform_[0].translate.x += 128.0f;
-	worldTransform_[0].translate.y += 360.0f;
+	worldTransform_[0].translate.y += 96.0f;
 	worldTransform_[0].UpdateMatrix();
 
 	SelectParam_[0].IsSelect = false;
@@ -33,7 +33,7 @@ void SelectScene::Initialize()
 
 		worldTransform_[i].Initialize();
 		worldTransform_[i].translate.x += (Height * 128 + 320 +32 * Height);
-		worldTransform_[i].translate.y += (Width * 128 + 128 + 10 * Width);
+		worldTransform_[i].translate.y += (Width * 128 + 96 + 10 * Width);
 		worldTransform_[i].UpdateMatrix();
 
 		SelectParam_[i].IsSelect = false;
@@ -77,14 +77,7 @@ void SelectScene::Update(GameManager* Scene)
 	SelectParam_[SelectNumber].IsSelect = true;
 	worldTransform_[SelectNumber].scale = { 1.2f,1.2f,1.0f };
 
-
-	Matrix4x4 r = MatrixTransform::RotateZMatrix(float(numbers::pi/2));
-	Matrix4x4 t = MatrixTransform::TranslateMatrix(worldTransform_[0].translate);
-	Matrix4x4 s = MatrixTransform::ScaleMatrix(worldTransform_[0].scale);
-
-	worldTransform_[0].matWorld = MatrixTransform::Multiply(s ,MatrixTransform::Multiply(r,t));
-
-	for (int i = 1; i < STAGE_MAX; i++)
+	for (int i = 0; i < STAGE_MAX; i++)
 	{
 		worldTransform_[i].UpdateMatrix();
 	}
@@ -188,6 +181,50 @@ void SelectScene::Contorol()
 
 		if (Input::GetInstance()->GetJoystickState(joyState)&&selectTimer_>=10)
 		{
+			float x = (float)joyState.Gamepad.sThumbLX / SHRT_MAX;
+			float y = (float)joyState.Gamepad.sThumbLY / SHRT_MAX;
+
+			y;
+
+			if (x > 0.5f)
+			{
+				if (SelectNumber + 1 < STAGE_MAX)
+				{
+					SelectNumber++;
+					selectTimer_ = 0;
+				}
+			}
+
+			if(x < -0.5f)
+			{
+				if (SelectNumber - 1 >= 0)
+				{
+					SelectNumber--;
+					selectTimer_ = 0;
+				}
+			}
+
+			if (y>0.5f)
+			{
+				if (SelectNumber - 5 >= 0)
+				{
+					SelectNumber -= 5;
+					selectTimer_ = 0;
+				}
+
+			}
+
+			if (y<-0.5f)
+			{
+				if (SelectNumber + 5 < STAGE_MAX)
+				{
+
+					SelectNumber += 5;
+					selectTimer_ = 0;
+
+				}
+			}
+
 			if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_DPAD_LEFT)
 			{
 				if (SelectNumber - 1 >= 0)

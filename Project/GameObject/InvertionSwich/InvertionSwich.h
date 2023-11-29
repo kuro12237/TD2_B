@@ -29,6 +29,9 @@ public:
 
 	void Reset();
 
+	void SetisHit(bool flag) { isHit_ = flag; }
+	bool getIsHit() { return isHit_; }
+
 private:
 
 	unique_ptr<Model>model_ = nullptr;
@@ -37,8 +40,10 @@ private:
 	unique_ptr<Model>FoundationModel_ = nullptr;
 	WorldTransform foundationWorldTransform_ = {};
 
-	bool isHit_ = false;
+	
 	bool Lock_ = false;
 	bool callbackCollisions = false;
 	bool prevcallBackCollision = false;
+	bool isHit_ = false;
+
 };
