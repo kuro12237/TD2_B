@@ -8,8 +8,10 @@ SceneChange* SceneChange::GetInstance()
 
 void SceneChange::Initialize()
 {
-	uint32_t tex =TextureManager::LoadTexture("Resources/SceneChangeTex.png");
-	SceneChange::GetInstance()->texHandle =tex;
+	uint32_t Logotex =TextureManager::LoadTexture("Resources/SceneChangeLogoTex.png");
+	uint32_t Titletex = TextureManager::LoadTexture("Reosurces/SceneChangeTitleTex.jpg");
+	Titletex;
+	SceneChange::GetInstance()->texHandle =Logotex;
 
 	SceneChange::GetInstance()->soundHandle_ = AudioManager::SoundLoadWave("Resources/sounds/SceneChange.wav");
 	
@@ -17,7 +19,7 @@ void SceneChange::Initialize()
 	{
 		SceneChange::GetInstance()->isScaleFlag_[i] = false;
 		SceneChange::GetInstance()->sprite_[i] = make_unique<Sprite>();
-		SceneChange::GetInstance()->sprite_[i]->SetTexHandle(tex);
+		SceneChange::GetInstance()->sprite_[i]->SetTexHandle(Logotex);
 		SceneChange::GetInstance()->sprite_[i]->Initialize(new SpriteBoxState, { 0,0 }, { 128,128 });
 	}
 
