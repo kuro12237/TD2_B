@@ -19,6 +19,7 @@ void Tutorial01Scene::Initialize()
 	pushAWorldTransform_.UpdateMatrix();
 
 	tex = TextureManager::LoadTexture("Resources/Tutorial/TutorialRule.png");
+	Audiohandle_ = AudioManager::SoundLoadWave("Resources/sounds/Decision.wav");
 	explainSprite_ = make_unique<Sprite>();
 	explainSprite_->SetTexHandle(tex);
 	explainSprite_->Initialize(new SpriteBoxState, { 0,0 }, { 1280,720 });
@@ -32,18 +33,33 @@ void Tutorial01Scene::Update(GameManager* Scene)
 {
 	Scene;
 	XINPUT_STATE joyState{};
+
 	if (SceneChange::GetScenChangeFlag())
 	{
 		Scene->ChangeState(new SelectScene);
 		return;
 	}
+
 	Input::NoneJoyState(joyState);
 	if (Input::GetInstance()->GetJoystickState(joyState))
 	{
 		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_A)
 		{
-			
 			SceneChange::ChangeStart();
+			this->time_++;
+
+			if (this->time_ > 5)
+			{
+				this->isPlayingAudio_ = true;
+			}
+
+			if (isPlayingAudio_)
+			{
+				AudioManager::AudioPlayWave(Audiohandle_);
+				this->isPlayingAudio_ = false;
+				this->time_ = 0;
+			}
+			
 		}
 	}
 

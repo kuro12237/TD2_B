@@ -26,8 +26,8 @@ private:
 
 	IScene* Scene_ = nullptr;
 	uint32_t Audiohandle_ = 0;
-	bool isPlayerAudio = false;
-	int time = 600;
+	bool isPlayingAudio_ = false;
+	int time_ = 0;
 
 };
 

@@ -115,9 +115,9 @@ void SelectScene::Update(GameManager* Scene)
 	{
 		if (joyState.Gamepad.wButtons & XINPUT_GAMEPAD_A)
 		{
-			AudioManager::AudioPlayWave(Audiohandle_2);
 			SceneChange::ChangeStart();
 			SelectLock = true;
+			AudioManager::AudioPlayWave(Audiohandle_2);
 		}
 	}
 	

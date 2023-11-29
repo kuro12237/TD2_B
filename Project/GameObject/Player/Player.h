@@ -87,6 +87,7 @@ private:
 	WorldTransform SelectWorldTransform = {};
 
 	uint32_t Audiohandle_ = 0;
+	uint32_t Audiohandle2_ = 0;
 
 
 	uint32_t NotSetBaggage_ = 0;
