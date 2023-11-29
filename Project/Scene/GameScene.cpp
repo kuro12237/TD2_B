@@ -110,6 +110,9 @@ void GameScene::Initialize()
 	contorolWorldTransform_.Initialize();
 	contorolWorldTransform_.translate.x = 640;
 	contorolWorldTransform_.translate.y = 360;
+
+	uint32_t JampUITex=TextureManager::LoadTexture("Resources/")
+
 	viewProjection_.Initialize();
 	viewProjection_.translation_.x = 7;
 	viewProjection_.translation_.y = 7;

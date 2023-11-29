@@ -52,6 +52,7 @@ private:
 	unique_ptr<CollisionManager> collisionManager_ = nullptr;
 	unique_ptr<MapCollisionManager> mapCollisionManager_ = nullptr;
 
+
 	bool isReset_ = false;
 	bool isSelectScene_ = false;
 

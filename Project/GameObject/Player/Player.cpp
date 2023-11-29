@@ -27,7 +27,7 @@ void Player::Initialize(Vector3 pos)
 	SelectModel_ = make_unique<Model>();
 	SelectModel_->CreateFromObj("SelectModel");
 	SelectWorldTransform.Initialize();
-	SelectWorldTransform.scale = { 0.5f,0.5f,1 };
+	SelectWorldTransform.scale = { 1.0f,1.0f,1 };
 	
 	
 	SelectWorldTransform.UpdateMatrix();
