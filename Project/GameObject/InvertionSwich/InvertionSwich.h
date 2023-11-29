@@ -3,6 +3,7 @@
 #include"GameObject/Offside/OffSideManager.h"
 #include"BoxCollider.h"
 #include"ColliderConfig.h"
+#include"Audio/AudioManager.h"
 
 class InvertionSwich:public BoxCollider
 {
@@ -45,5 +46,4 @@ private:
 	bool callbackCollisions = false;
 	bool prevcallBackCollision = false;
 	bool isHit_ = false;
-
 };
