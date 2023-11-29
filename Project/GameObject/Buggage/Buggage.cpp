@@ -293,7 +293,7 @@ void Buggage::SetBoxL(array<array<int, MapTip_MAX_X>, MapTip_MAX_Y> map)
 {
 	if (OffsideManager::GetDirection() == Left)
 	{
-		if (isSelect && playerPos_.x-1 >= OffsideManager::GetOffsidePos().x)
+		if (isSelect && playerPos_.x > OffsideManager::GetOffsidePos().x)
 		{
 			XINPUT_STATE joyState{};
 			Input::NoneJoyState(joyState);
