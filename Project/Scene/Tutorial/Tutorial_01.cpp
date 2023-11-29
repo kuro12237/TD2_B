@@ -14,8 +14,8 @@ void Tutorial01Scene::Initialize()
 	pushASprite_->Initialize(new SpriteBoxState, { 0,0 }, { 331, 152 });
 
 	pushAWorldTransform_.Initialize();
-	pushAWorldTransform_.scale = { 0.6f,0.6f,1.0f };
-	pushAWorldTransform_.translate = { 640,520,0 };
+	pushAWorldTransform_.scale = { 0.4f,0.4f,1.0f };
+	pushAWorldTransform_.translate = { 640,640,0 };
 	pushAWorldTransform_.UpdateMatrix();
 
 	tex = TextureManager::LoadTexture("Resources/Tutorial/TutorialRule.png");
