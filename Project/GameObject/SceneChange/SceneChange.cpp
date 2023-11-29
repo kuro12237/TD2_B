@@ -9,7 +9,7 @@ SceneChange* SceneChange::GetInstance()
 void SceneChange::Initialize()
 {
 	uint32_t Logotex =TextureManager::LoadTexture("Resources/SceneChangeLogoTex.png");
-	uint32_t Titletex = TextureManager::LoadTexture("Reosurces/SceneChangeTitleTex.png");
+	uint32_t Titletex = TextureManager::LoadTexture("Reosurces/SceneChangeTitleTex.jpg");
 	Titletex;
 	SceneChange::GetInstance()->texHandle =Logotex;
 
