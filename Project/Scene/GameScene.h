@@ -74,4 +74,7 @@ private:
 	unique_ptr<Sprite>stageButtonHomeSprite_ = nullptr;
 	WorldTransform stageButtonHomeWorldTransform_{};
 
+	bool isPlayingAudio_ = false;
+	int time_ = 0;
+
 };
