@@ -89,7 +89,12 @@ private:
 	uint32_t Audiohandle_ = 0;
 	uint32_t Audiohandle2_ = 0;
 
+
+	uint32_t NotSetBaggage_ = 0;
+	uint32_t SetBaggage_ = 0;
+
 	bool isPlayingAudio_ = false;
 	int time_ = 0;
+
 };
 

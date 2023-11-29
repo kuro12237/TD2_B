@@ -17,7 +17,7 @@ void Player::Initialize(Vector3 pos)
 	Audiohandle2_ = AudioManager::SoundLoadWave("Resources/sounds/Pushluggage.wav");
 	worldTransform_.Initialize();
 	worldTransform_.translate = pos;
-	worldTransform_.scale = { 0.2f,0.2f,0.2f };
+	worldTransform_.scale = { 1.0f,1.0f,1.0f };
 	worldTransform_.rotation = { 0.0f,-2.0f,0.0f };
 	worldTransform_.UpdateMatrix();
 	
@@ -31,7 +31,8 @@ void Player::Initialize(Vector3 pos)
 	SelectWorldTransform.Initialize();
 	SelectWorldTransform.scale = { 0.5f,0.5f,1 };
 	
-	
+	SetBaggage_ = TextureManager::LoadTexture("Resources/SelectModel/SelectTex.png");
+	NotSetBaggage_ = TextureManager::LoadTexture("Resources/SelectModel/SelectTexDisabled.png");
 	SelectWorldTransform.UpdateMatrix();
 }
 
@@ -102,7 +103,7 @@ void Player::Move()
 		SelectWorldTransform.translate = worldTransform_.translate;
 		SelectWorldTransform.translate.x = worldTransform_.translate.x + 1;
 	}
-
+	SelectWorldTransform.translate.z = worldTransform_.translate.z;
 	SelectWorldTransform.UpdateMatrix();
 }
 
@@ -397,6 +398,35 @@ void Player::SelectBox()
 	if (OffsideManager::GetDirection() == Right)
 	{
 
+		if (worldTransform_.translate.x < OffsideManager::GetOffsidePos().x)
+		{
+			if (BuggageSelectDirection == Left)
+			{
+				if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 1.3f)] == AIR)
+				{
+					SelectModel_->SetTexHandle(SetBaggage_);
+				}else
+				{
+					SelectModel_->SetTexHandle(NotSetBaggage_);
+				}
+			}
+
+			if (BuggageSelectDirection == Right)
+			{
+				if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x + 2.4f)] == AIR)
+				{
+					SelectModel_->SetTexHandle(SetBaggage_);
+				}else
+				{
+					SelectModel_->SetTexHandle(NotSetBaggage_);
+				}
+			}
+		}
+		else
+		{
+			SelectModel_->SetTexHandle(NotSetBaggage_);
+		}
+
 		if (Input::PushKeyPressed(DIK_J) || Input::GetInstance()->GetJoystickState(joyState) && joyState.Gamepad.wButtons & XINPUT_GAMEPAD_B)
 		{
 			if (worldTransform_.translate.x < OffsideManager::GetOffsidePos().x)
@@ -408,8 +438,8 @@ void Player::SelectBox()
 			    	{
 			    		isBuggagesSelect = false;
 			    	}
-			    }
-			       
+				}
+				
 			    if (BuggageSelectDirection == Right)
 			    {
 			    	if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x + 2.4f)] == AIR)
@@ -424,7 +454,40 @@ void Player::SelectBox()
 	}
 	if (OffsideManager::GetDirection() == Left)
 	{
-		
+		if (worldTransform_.translate.x - 1 >= OffsideManager::GetOffsidePos().x)
+		{
+			if (BuggageSelectDirection == Left)
+			{
+				if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 0.8f)] == AIR)
+				{
+					SelectModel_->SetTexHandle(SetBaggage_);
+				}
+				else
+				{
+					SelectModel_->SetTexHandle(NotSetBaggage_);
+				}
+			}
+
+			if (BuggageSelectDirection == Right)
+			{
+				if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x) + 2] == AIR)
+				{
+					SelectModel_->SetTexHandle(SetBaggage_);
+				}
+				else
+				{
+					SelectModel_->SetTexHandle(NotSetBaggage_);
+				}
+			}
+
+		}
+		else
+		{
+			SelectModel_->SetTexHandle(NotSetBaggage_);
+		}
+
+
+
 		if (Input::PushKeyPressed(DIK_J) || Input::GetInstance()->GetJoystickState(joyState) && joyState.Gamepad.wButtons & XINPUT_GAMEPAD_B)
 		{
 			if (worldTransform_.translate.x-1 >= OffsideManager::GetOffsidePos().x)
@@ -433,7 +496,12 @@ void Player::SelectBox()
 				{
 					if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x - 0.8f)] == AIR)
 					{
+						SelectModel_->SetTexHandle(SetBaggage_);
 						isBuggagesSelect = false;
+					}
+					else
+					{
+						SelectModel_->SetTexHandle(NotSetBaggage_);
 					}
 				}
 
@@ -441,7 +509,12 @@ void Player::SelectBox()
 				{
 					if (map[(int)(worldTransform_.translate.y)][(int)(worldTransform_.translate.x) + 2] == AIR)
 					{
+						SelectModel_->SetTexHandle(SetBaggage_);
 						isBuggagesSelect = false;
+					}
+					else
+					{
+						SelectModel_->SetTexHandle(NotSetBaggage_);
 					}
 				}
 

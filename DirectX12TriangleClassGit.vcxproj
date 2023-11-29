@@ -94,6 +94,7 @@
     <ClCompile Include="Project\GameObject\Road\Road.cpp" />
     <ClCompile Include="Project\GameObject\SceneChange\SceneChange.cpp" />
     <ClCompile Include="Project\GameObject\SkyBox\SkyBox.cpp" />
+    <ClCompile Include="Project\GameObject\StageTitleName\StageTitleName.cpp" />
     <ClCompile Include="Project\GameObject\Truck\Truck.cpp" />
     <ClCompile Include="Project\GameObject\Truck\TruckManager.cpp" />
     <ClCompile Include="Project\Scene\DebugScene.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="Project\GameObject\Road\Road.h" />
     <ClInclude Include="Project\GameObject\SceneChange\SceneChange.h" />
     <ClInclude Include="Project\GameObject\SkyBox\SkyBox.h" />
+    <ClInclude Include="Project\GameObject\StageTitleName\StageTitleName.h" />
     <ClInclude Include="Project\GameObject\Truck\Truck.h" />
     <ClInclude Include="Project\GameObject\Truck\TruckManager.h" />
     <ClInclude Include="Project\Scene\DebugScene.h" />
