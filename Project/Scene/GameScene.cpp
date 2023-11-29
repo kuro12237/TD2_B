@@ -43,7 +43,7 @@ void GameScene::Initialize()
 
 			if (map[i][j] == BAGGAGESPOWN)
 			{
-				BaggagePos.y = float(i + 1.5f);
+				BaggagePos.y = float(i + 2.0f);
 				BaggagePos.x = float(j);
 
 				shared_ptr<Buggage> buggageA = make_shared<Buggage>();
