@@ -56,7 +56,7 @@ void SelectScene::Initialize()
 	
 
 	pushAWorldTransform_.Initialize();
-	pushAWorldTransform_.scale = { 0.5f,0.5f,1.0f };
+	pushAWorldTransform_.scale = { 0.4f,0.4f,1.0f };
 	pushAWorldTransform_.translate = { 1024,660,0 };
 	pushAWorldTransform_.UpdateMatrix();
 
