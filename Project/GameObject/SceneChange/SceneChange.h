@@ -2,6 +2,7 @@
 #include"Sprite/Sprite.h"
 #include"Graphics/TextureManager/TextureManager.h"
 #include"VectorTransform.h"
+#include"AudioManager.h"
 #define SCENECHANGE_SPRITE_MAX 60
 
 class SceneChange
@@ -62,5 +63,8 @@ private:
 
 	bool isUpdate = false;
 	
+	uint32_t soundHandle_ = 0;
+	float volume = 1.0f;
+
 };
 

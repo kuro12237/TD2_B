@@ -11,6 +11,8 @@ void SceneChange::Initialize()
 	uint32_t tex =TextureManager::LoadTexture("Resources/SceneChangeTex.png");
 	SceneChange::GetInstance()->texHandle =tex;
 
+	SceneChange::GetInstance()->soundHandle_ = AudioManager::SoundLoadWave("Resources/sounds/SceneChange.wav");
+	
 	for (int i = 0; i < SCENECHANGE_SPRITE_MAX; i++)
 	{
 		SceneChange::GetInstance()->isScaleFlag_[i] = false;
@@ -40,6 +42,11 @@ void SceneChange::Initialize()
 
 void SceneChange::Update()
 {	
+	ImGui::Begin("v");
+
+	ImGui::DragFloat("vc", &SceneChange::GetInstance()->volume, -0.1f, 0.1f);
+	ImGui::End();
+
 	if (!SceneChange::GetInstance()->isUpdate)
 	{
 		return;
@@ -51,6 +58,8 @@ void SceneChange::Update()
 		//スポーン処理開始
 		if (Spown())
 		{
+			AudioManager::AudioPlayWave(SceneChange::GetInstance()->soundHandle_);
+			AudioManager::AudioVolumeControl(SceneChange::GetInstance()->soundHandle_, SceneChange::GetInstance()->volume);
 			SceneChange::GetInstance()->SceneChangeFlag = true;
 			SceneChange::GetInstance()->isStart_ = false;
 			SceneChange::GetInstance()->isEnd_ = true;
