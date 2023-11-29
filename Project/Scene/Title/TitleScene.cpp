@@ -46,7 +46,7 @@ void TitleScene::Initialize()
 
 void TitleScene::Update(GameManager* Scene)
 {
-	if (ImGui::TreeNode("Scene"))
+	/*if (ImGui::TreeNode("Scene"))
 	{
 
 		bool flag = false;
@@ -57,7 +57,7 @@ void TitleScene::Update(GameManager* Scene)
 
 		}
 		ImGui::TreePop();
-	}
+	}*/
 
 	//titleWorldTransform_.scale = uvScele_;
 	if (SceneChange::GetScenChangeFlag())
@@ -81,7 +81,7 @@ void TitleScene::Update(GameManager* Scene)
 		SceneChange::ChangeStart();
 	}
 
-	DebugTools::UpdateExecute(0);
+
 
 
 	SkyBox::Update();
@@ -91,7 +91,7 @@ void TitleScene::Update(GameManager* Scene)
 	pushAWorldTransform_.UpdateMatrix();
 
 	view.UpdateMatrix();
-	view = DebugTools::ConvertViewProjection(view);
+
 }
 
 void TitleScene::Back2dSpriteDraw()
@@ -101,8 +101,7 @@ void TitleScene::Back2dSpriteDraw()
 
 void TitleScene::Object3dDraw()
 {
-	DebugTools::DrawExecute(0);
-
+	
 	TruckManager::Draw(view);
 
 	SkyBox::Draw(view);

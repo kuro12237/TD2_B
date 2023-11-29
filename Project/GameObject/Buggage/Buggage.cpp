@@ -25,7 +25,7 @@ void Buggage::Initialize(Vector3 position, uint32_t Attubte, uint32_t Mask)
 void Buggage::Update()
 {
 
-	if (ImGui::TreeNode("Baggage"))
+	/*if (ImGui::TreeNode("Baggage"))
 	{
 		ImGui::Text("position %f %f %f", worldTransform_.translate.x, worldTransform_.translate.y, worldTransform_.translate.z);
 		ImGui::Text("Velocity %f %f %f", velocity_.x, velocity_.y, velocity_.z);
@@ -38,7 +38,7 @@ void Buggage::Update()
 		ImGui::Text("G Select");
 		ImGui::Text("J warp");
 		ImGui::TreePop();
-	}
+	}*/
 	
 	if (!isHit_)
 	{

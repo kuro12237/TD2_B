@@ -68,10 +68,10 @@ void OffsideManager::Initialize()
 }
 void OffsideManager::Update()
 {
-	if (ImGui::TreeNode("Offside"))
-	{
-		ImGui::Text("t::%f,%f,%f", OffsideManager::GetInstance()->offsidePos_.x, OffsideManager::GetInstance()->offsidePos_.y, OffsideManager::GetInstance()->offsidePos_.z);
-		ImGui::Checkbox("di", &OffsideManager::GetInstance()->testDirectionFlag_);
+	/*if (ImGui::TreeNode("Offside"))
+	{*/
+	/*	ImGui::Text("t::%f,%f,%f", OffsideManager::GetInstance()->offsidePos_.x, OffsideManager::GetInstance()->offsidePos_.y, OffsideManager::GetInstance()->offsidePos_.z);
+		ImGui::Checkbox("di", &OffsideManager::GetInstance()->testDirectionFlag_);*/
 		if (OffsideManager::GetInstance()->testDirectionFlag_)
 		{
 			OffsideManager::GetInstance()->Direction_ = Left;
@@ -81,9 +81,9 @@ void OffsideManager::Update()
 		}
 
 
-		ImGui::ColorPicker4("color", &OffsideManager::GetInstance()->color_.x);
-		ImGui::TreePop();
-	}
+		/*ImGui::ColorPicker4("color", &OffsideManager::GetInstance()->color_.x);
+		ImGui::TreePop();*/
+	//}
 	if (OffsideManager::GetInstance()->Direction_ == Left)
 	{
 		OffsideManager::GetInstance()->leftModel_->SetColor(OffsideManager::GetInstance()->color_);

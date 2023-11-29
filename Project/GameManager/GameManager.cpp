@@ -34,10 +34,10 @@ void GameManager::Run()
 
 		Cleyera::BeginFlame();
 
-		ImGui::PushStyleColor(ImGuiCol_TitleBgActive, ImVec4(0.08f, 0.08f, 0.08f, 1.0f));
+		/*ImGui::PushStyleColor(ImGuiCol_TitleBgActive, ImVec4(0.08f, 0.08f, 0.08f, 1.0f));
 		ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.02f, 0.02f, 0.02f, 1.0f));
 
-		ImGui::Begin("Test");
+		ImGui::Begin("Test");*/
 		SceneChange::Update();
 
 		Scene_->Update(this);
@@ -61,10 +61,10 @@ void GameManager::Run()
 		}
 		
 
-		ImGui::PopStyleColor();
+	/*	ImGui::PopStyleColor();
 		ImGui::PopStyleColor();
 		
-		ImGui::End();
+		ImGui::End();*/
 
 		Scene_->Back2dSpriteDraw();
 		Scene_->Object3dDraw();

@@ -46,7 +46,7 @@ void DebugScene::Initialize()
 
 void DebugScene::Update(GameManager* Scene)
 {
-	ImGui::Begin("MainCamera");
+	/*ImGui::Begin("MainCamera");
 	ImGui::SliderFloat3("trans", &viewProjection.translation_.x, -15, 15);
 	ImGui::SliderFloat3("rotate", &viewProjection.rotation_.x, -1, 1);
 	ImGui::End();
@@ -64,7 +64,7 @@ void DebugScene::Update(GameManager* Scene)
 	ImGui::Checkbox("Subtract", &SubtractFlag);
 	ImGui::Checkbox("Multiply", &MultiplyFlag);
 	ImGui::Checkbox("Screen", &ScreenFlag);
-	ImGui::End();
+	ImGui::End();*/
 
 	if (Input::GetInstance()->PushKeyPressed(DIK_S))
 	{
@@ -175,10 +175,10 @@ void DebugScene::Flont2dSpriteDraw()
 
 void DebugScene::Testparticle()
 {
-	ImGui::Begin("SpownParticle");
+	/*ImGui::Begin("SpownParticle");
 	ImGui::SliderFloat3("translate", &TestParticlesTranslate.x, 3.0f, -3.0f);
 	ImGui::SliderFloat4("color", &TestParticleColor.x, 1.0f, -0.0f);
-	ImGui::End();
+	ImGui::End();*/
 
 	if (Input::GetInstance()->PushKeyPressed(DIK_P))
 	{

@@ -47,14 +47,14 @@ void Player::GravityUpdate()
 void Player::Update()
 {
 
-	if (ImGui::TreeNode("Player"))
+	/*if (ImGui::TreeNode("Player"))
 	{
 		ImGui::Text("position %f %f %f", worldTransform_.translate.x, worldTransform_.translate.y, worldTransform_.translate.z);
 		ImGui::Text("SelectSet key::left,Right ");
 
 		ImGui::SliderFloat("speed", &speed,-1.0f,1.0f);
 		ImGui::TreePop();
-	}
+	}*/
 	
 	KeyControl();
 
