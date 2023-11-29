@@ -50,7 +50,7 @@ void SelectScene::Initialize()
 	SelectNumber = 0;
 
 	pushASprite_ = make_unique<Sprite>();
-	tex = TextureManager::LoadTexture("Resources/Buttons/StageButtons/StageButtonA.png");
+	tex = TextureManager::LoadTexture("Resources/Buttons/TitleButtons/titleButtonA.png");
 	pushASprite_->SetTexHandle(tex);
 	pushASprite_->Initialize(new SpriteBoxState, { 0,0 }, { 331, 152 });
 	

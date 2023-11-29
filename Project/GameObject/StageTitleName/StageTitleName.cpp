@@ -15,7 +15,7 @@ void StageTitleName::Initialize()
 	StageTitleName::GetInstance()->sprites_->Initialize(new SpriteBoxState, { 0,0 }, { 1548.0f,228.0f });
 	StageTitleName::GetInstance()->worldTransform.Initialize();
 	StageTitleName::GetInstance()->worldTransform.translate = { (1548/4)+32,(228/4)+32,1 };
-	StageTitleName::GetInstance()->worldTransform.scale = { 0.5f,0.5f,0.5f };
+	StageTitleName::GetInstance()->worldTransform.scale = { 0.5f,0.5f,1.0f };
 	StageTitleName::GetInstance()->worldTransform.UpdateMatrix();
 
 	for (int i = 0; i < STAGE_TITLE_NAME; i++)
