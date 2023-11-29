@@ -181,19 +181,6 @@ void Player::OnCollision(Vector3 overlap, Vector3 position, Vector3 velocity, ui
 
 void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
-	this->time_+=5;
-
-	if (this->time_ > 18)
-	{
-		this->isPlayingAudio_ = true;
-	}
-
-	if (isPlayingAudio_)
-	{
-		AudioManager::AudioPlayWave(Audiohandle2_);
-		this->isPlayingAudio_ = false;
-		this->time_ = 0;
-	}
 
 
 	if (id == 0b00010)
@@ -217,20 +204,6 @@ void Player::OnLeftCollision(Vector3 overlap, Vector3 position, Vector3 velocity
 
 void Player::OnRightCollision(Vector3 overlap, Vector3 position, Vector3 velocity, uint32_t id)
 {
-	this->time_++;
-
-	if (this->time_ > 20)
-	{
-		this->isPlayingAudio_ = true;
-	}
-
-	if (isPlayingAudio_)
-	{
-		AudioManager::AudioPlayWave(Audiohandle2_);
-		this->isPlayingAudio_ = false;
-		this->time_ = 0;
-	}
-	
 
 
 	if (id == 0b00010)
@@ -334,18 +307,24 @@ void Player::GamePadContorol()
 		this->time_++;
 	}
 
-	if (this->time_ >18.5)
+	if (x != 0)
 	{
-	  this->isPlayingAudio_ = true;
-	}
 
-	if (isPlayingAudio_)
-	{
-		AudioManager::AudioPlayWave(Audiohandle_);
-		this->isPlayingAudio_ = false;
-		this->time_ = 0;
+		if (this->isPlayingAudio_)
+		{
+			this->time_++;
+			if (this->time_ > 60)
+			{
+				AudioManager::AudioStopWave(Audiohandle_);
+				this->isPlayingAudio_ = false;
+				this->time_ = 0;
+			}
+		}
+		else {
+			this->isPlayingAudio_ = true;
+			AudioManager::AudioPlayWave(Audiohandle_);
+		}
 	}
-
 	velocity_.x += x;
 }
 
