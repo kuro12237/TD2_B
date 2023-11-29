@@ -32,13 +32,13 @@ void TitleScene::Initialize()
 	view.UpdateMatrix();
 
 	pushASprite_ = make_unique<Sprite>();
-	tex = TextureManager::LoadTexture("Resources/PushATex.png");
+	tex = TextureManager::LoadTexture("Resources/Buttons/StageButtons/StageButtonA.png");
 	pushASprite_->SetTexHandle(tex);
-	pushASprite_->Initialize(new SpriteBoxState, { 0,0 }, { 1280, 720 });
+	pushASprite_->Initialize(new SpriteBoxState, { 0,0 }, { 331, 152 });
 
 	pushAWorldTransform_.Initialize();
-	pushAWorldTransform_.scale = { 0.3f,0.3f,1.0f };
-	pushAWorldTransform_.translate = { 640,640,0 };
+	pushAWorldTransform_.scale = { 0.6f,0.6f,1.0f };
+	pushAWorldTransform_.translate = { 640,520,0 };
 	pushAWorldTransform_.UpdateMatrix();
 
 	
