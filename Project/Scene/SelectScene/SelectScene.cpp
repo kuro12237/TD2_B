@@ -179,7 +179,7 @@ void SelectScene::Contorol()
 		selectTimer_++;
 		Input::NoneJoyState(joyState);
 
-		if (Input::GetInstance()->GetJoystickState(joyState)&&selectTimer_　>=　10)
+		if (Input::GetInstance()->GetJoystickState(joyState)&&selectTimer_ >= 10)
 		{
 			float x = (float)joyState.Gamepad.sThumbLX / SHRT_MAX;
 			float y = (float)joyState.Gamepad.sThumbLY / SHRT_MAX;
