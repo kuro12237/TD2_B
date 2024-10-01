@@ -8,8 +8,7 @@
 class SceneChange
 {
 public:
-	SceneChange() {};
-	~SceneChange() {};
+
 
 	static SceneChange* GetInstance();
 
@@ -65,6 +64,9 @@ private:
 	
 	uint32_t soundHandle_ = 0;
 	float volume = 1.0f;
-
+	SceneChange() = default;
+	~SceneChange() = default;
+	SceneChange(const SceneChange&) = delete;
+	const SceneChange& operator=(const SceneChange&) = delete;
 };
 
